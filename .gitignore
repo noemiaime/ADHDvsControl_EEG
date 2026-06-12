@@ -1,0 +1,3 @@
+# ignore heavy csv dataset
+# you will find the .zip dataset and the code 0a will unzip it for you in local
+data/*.csv
