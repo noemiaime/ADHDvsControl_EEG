@@ -1,5 +1,4 @@
 # ADHDvsControl_EEG
-# ADHD vs Control EEG Analysis
 
 This repository contains a computational neuroscience project focused on the analysis and classification of EEG signals from ADHD and Control subjects.
 
