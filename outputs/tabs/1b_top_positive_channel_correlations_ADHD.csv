@@ -1,0 +1,11 @@
+group,feature_subset,feature_1,feature_2,spearman_r,abs_spearman_r
+ADHD,channel,F3_alpha_power,Fz_alpha_power,0.9376520359598096,0.9376520359598096
+ADHD,channel,F3_beta_power,Fz_beta_power,0.9171866737176098,0.9171866737176098
+ADHD,channel,P3_theta_beta_ratio,Pz_theta_beta_ratio,0.9120571126388154,0.9120571126388154
+ADHD,channel,P3_beta_power,Pz_beta_power,0.9070861977789529,0.9070861977789529
+ADHD,channel,P3_theta_power,Pz_theta_power,0.904653622421999,0.904653622421999
+ADHD,channel,F3_theta_power,Fz_theta_power,0.8846113167636172,0.8846113167636172
+ADHD,channel,P4_beta_power,Cz_beta_power,0.8813855103120042,0.8813855103120042
+ADHD,channel,O2_delta_power,O2_theta_power,0.8757800105764146,0.8757800105764146
+ADHD,channel,P8_delta_power,P8_theta_power,0.8735589635113696,0.8735589635113696
+ADHD,channel,F4_beta_power,C4_beta_power,0.8707562136435748,0.8707562136435748

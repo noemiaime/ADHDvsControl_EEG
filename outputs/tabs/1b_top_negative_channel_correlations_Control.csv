@@ -1,0 +1,11 @@
+group,feature_subset,feature_1,feature_2,spearman_r,abs_spearman_r
+Control,channel,P8_beta_power,P8_theta_beta_ratio,-0.5327035287579883,0.5327035287579883
+Control,channel,O2_beta_power,O2_theta_beta_ratio,-0.5193664906918588,0.5193664906918588
+Control,channel,Pz_beta_power,Pz_theta_beta_ratio,-0.5072520144484579,0.5072520144484579
+Control,channel,F3_theta_beta_ratio,F4_beta_power,-0.5034731869963879,0.5034731869963879
+Control,channel,C4_beta_power,Pz_theta_beta_ratio,-0.4890803000833565,0.4890803000833565
+Control,channel,Fz_beta_power,Fz_theta_beta_ratio,-0.48674631842178384,0.48674631842178384
+Control,channel,F4_beta_power,Pz_theta_beta_ratio,-0.4851347596554598,0.4851347596554598
+Control,channel,Fz_theta_beta_ratio,Pz_beta_power,-0.4777438177271464,0.4777438177271464
+Control,channel,C4_beta_power,Fz_theta_beta_ratio,-0.46863017504862464,0.46863017504862464
+Control,channel,F3_theta_beta_ratio,C4_beta_power,-0.4596276743539872,0.4596276743539872

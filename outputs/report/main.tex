@@ -1,0 +1,37 @@
+\documentclass[12pt,a4paper]{article}
+
+\usepackage[italian]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+
+\usepackage{graphicx}
+\usepackage{float}
+\usepackage{amsmath}
+\usepackage{booktabs}
+\usepackage{geometry}
+\usepackage{caption}
+\usepackage{subcaption}
+
+\usepackage{url}
+\usepackage{hyperref}
+\geometry{margin=2.5cm}
+
+\title{Analisi EEG per la classificazione ADHD vs Control}
+\author{Noemi Aime}
+\date{\today}
+
+\begin{document}
+	
+	\maketitle
+	
+	\tableofcontents
+	\newpage
+	
+	\input{sections/introduction}
+	\input{sections/methods}
+	\input{sections/results}
+	
+	\bibliographystyle{plain}
+	\bibliography{references.bib}
+	
+\end{document}

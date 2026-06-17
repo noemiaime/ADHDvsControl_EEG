@@ -1,0 +1,25 @@
+\begin{thebibliography}{1}
+
+\bibitem{Kaggle}
+{Ali Motie Nasrabadi}.
+\newblock Eeg dataset for adhd.
+\newblock \url{DOI: 10.21227/rzfh-zn36}, 2025.
+
+\bibitem{multiple}
+Shi-Yi Chen.
+\newblock A general introduction to adjustment for multiple comparisons.
+\newblock 2018.
+
+\bibitem{test}
+Francis~Sahngun Nahm.
+\newblock Nonparametric statistical tests for the continuous data: the basic
+  concept and the practical use.
+\newblock 2016.
+
+\bibitem{Welch}
+Peter~D. Welch.
+\newblock The use of fast fourier transform for the estimation of power
+  spectra: A method based on time averaging over short, modified periodograms.
+\newblock 1967.
+
+\end{thebibliography}
