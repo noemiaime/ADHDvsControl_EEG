@@ -8,10 +8,5 @@ In questo progetto vengono analizzati segnali EEG di soggetti ADHD e soggetti di
 
 A differenza di altri problemi EEG in cui il target può variare nel tempo, in questo dataset la classe ADHD o Control è associata al soggetto e non cambia durante la registrazione. Per questo motivo l'analisi è stata svolta a livello di soggetto: ogni soggetto viene rappresentato da una singola riga nella tabella finale delle features.
 
-La pipeline sviluppata comprende diverse fasi. In primo luogo, il dataset viene esplorato per verificare la struttura dei dati, la distribuzione delle classi, il numero di soggetti e la presenza di eventuali valori mancanti. Successivamente, le serie temporali EEG vengono trasformate in features spettrali mediante stima della Power Spectral Density con il metodo di Welch. Da questa stima vengono ricavate le potenze di banda e il rapporto theta/beta, sia a livello di singolo canale sia a livello regionale.
 
-Dopo l'estrazione delle features, vengono eseguite analisi esplorative e statistiche per confrontare i soggetti ADHD e i controlli. In particolare, vengono utilizzati il test di Mann-Whitney U, Cohen's d come misura di effect size e la correzione FDR per confronti multipli. Inoltre, viene analizzata la correlazione tra features per studiare la ridondanza informativa del dataset.
-
-Infine, viene utilizzato un classificatore Random Forest per valutare la capacità delle feature EEG di distinguere i soggetti ADHD dai soggetti di controllo. Diversi insiemi di feature vengono confrontati tramite cross-validation, e il modello finale viene interpretato mediante features importance e SHAP values. 
-
-Poiché il progetto è ancora in fase di completamento, i risultati devono essere considerati preliminari ed esplorativi.
+\hl{Poiché il progetto è ancora in fase di completamento, i risultati devono essere considerati preliminari.}

@@ -6,12 +6,12 @@
 \contentsline {subsection}{\numberline {2.2}Feature extraction}{3}{subsection.2.2}%
 \contentsline {subsection}{\numberline {2.3}Esplorazione delle feature}{4}{subsection.2.3}%
 \contentsline {subsubsection}{\numberline {2.3.1}Test di Mann-Whitney U}{4}{subsubsection.2.3.1}%
-\contentsline {subsubsection}{\numberline {2.3.2}Cohen's d}{5}{subsubsection.2.3.2}%
+\contentsline {subsubsection}{\numberline {2.3.2}Cohen's d}{4}{subsubsection.2.3.2}%
 \contentsline {subsubsection}{\numberline {2.3.3}Correzione per confronti multipli}{5}{subsubsection.2.3.3}%
-\contentsline {subsection}{\numberline {2.4}Analisi di correlazione}{6}{subsection.2.4}%
-\contentsline {subsection}{\numberline {2.5}Classificazione con Random Forest}{6}{subsection.2.5}%
-\contentsline {subsubsection}{\numberline {2.5.1}Tuning degli iperparametri}{7}{subsubsection.2.5.1}%
-\contentsline {subsubsection}{\numberline {2.5.2}Feature importance}{8}{subsubsection.2.5.2}%
+\contentsline {subsubsection}{\numberline {2.3.4}Analisi di correlazione}{5}{subsubsection.2.3.4}%
+\contentsline {subsection}{\numberline {2.4}Classificazione con Random Forest}{6}{subsection.2.4}%
+\contentsline {subsubsection}{\numberline {2.4.1}Tuning degli iperparametri}{7}{subsubsection.2.4.1}%
+\contentsline {subsubsection}{\numberline {2.4.2}Feature importance}{7}{subsubsection.2.4.2}%
 \contentsline {section}{\numberline {3}Risultati}{8}{section.3}%
 \contentsline {subsection}{\numberline {3.1}Differenze tra gruppi ed effect size}{8}{subsection.3.1}%
 \contentsline {subsection}{\numberline {3.2}Feature significative dopo correzione FDR}{10}{subsection.3.2}%

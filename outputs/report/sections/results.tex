@@ -1,8 +1,9 @@
 \section{Risultati}
 
 \subsection{Differenze tra gruppi ed effect size}
-
-Le feature EEG sono state confrontate tra soggetti ADHD e soggetti Control mediante test di Mann-Whitney U. Per quantificare la grandezza della differenza tra i due gruppi è stato calcolato Cohen's $d$. Le prime dieci feature ordinate secondo il valore assoluto di Cohen's $d$ sono riportate nella Tabella~\ref{tab:top10_cohen}.
+Le features EEG sono state confrontate tra soggetti ADHD e Control mediante test di Mann-Whitney U. 
+Per quantificare la grandezza della differenza tra i gruppi è stato calcolato Cohen's $d$.
+ Le prime dieci feature ordinate secondo il valore assoluto di Cohen's $d$ sono riportate nella Tabella~\ref{tab:top10_cohen}.
 
 \begin{table}[H]
 	\centering
@@ -27,7 +28,7 @@ Le feature EEG sono state confrontate tra soggetti ADHD e soggetti Control media
 	\label{tab:top10_cohen}
 \end{table}
 
-Le feature con maggiore effect size sono prevalentemente associate al rapporto theta/beta e alle potenze nelle bande lente, soprattutto in regioni temporali, parietali e occipitali. Tutte le prime dieci feature mostrano Cohen's $d$ negativo, indicando valori medi più elevati nel gruppo Control. Questo suggerisce che, nel dataset analizzato, la separazione tra ADHD e Control sia legata soprattutto a differenze nelle componenti spettrali lente e nei rapporti tra bande.
+Le feature con maggiore effect size sono prevalentemente associate al rapporto theta/beta e alle potenze nelle bande lente, soprattutto in regioni temporali, parietali e occipitali. Tutte le prime dieci feature mostrano Cohen's $d$ negativo, indicando valori medi più elevati nel gruppo Control. 
 
 Per visualizzare la distribuzione spaziale degli effect size, Cohen's $d$ è stato rappresentato sia a livello regionale sia a livello di singolo canale.
 
@@ -38,7 +39,7 @@ Per visualizzare la distribuzione spaziale degli effect size, Cohen's $d$ è sta
 	\label{fig:regional_effect_size}
 \end{figure}
 
-La matrice regionale mostra effect size prevalentemente negativi, in particolare per la banda delta e per il rapporto theta/beta. Il valore più marcato riguarda il rapporto theta/beta temporale, che risulta anche significativo dopo correzione FDR. Questo risultato è coerente con la Tabella~\ref{tab:top10_cohen}, dove la stessa feature presenta il maggiore valore assoluto di Cohen's $d$.
+Anche matrice regionale mostra effect size prevalentemente negativi, in particolare per la banda delta e per il rapporto theta/beta. Il valore più marcato riguarda il rapporto theta/beta temporale, che risulta anche significativo dopo correzione FDR (contrassegnato con $*$).
 
 \begin{figure}[H]
 	\centering
@@ -47,7 +48,7 @@ La matrice regionale mostra effect size prevalentemente negativi, in particolare
 	\label{fig:channel_effect_size}
 \end{figure}
 
-La matrice canale-livello evidenzia che le differenze più marcate si concentrano soprattutto nei canali temporali e parietali, in particolare per il rapporto theta/beta e per le potenze delta e theta. La rappresentazione a singolo canale conserva maggiore dettaglio spaziale, mentre la rappresentazione regionale fornisce una sintesi più compatta e più facilmente interpretabile.
+La matrice canale-livello evidenzia che le differenze più marcate si concentrano soprattutto nei canali temporali e parietali, in particolare per il rapporto theta/beta e per le potenze delta e theta. La rappresentazione a singolo canale conserva maggiore dettaglio spaziale, mentre la rappresentazione regionale fornisce una sintesi più compatta.
 
 \subsection{Feature significative dopo correzione FDR}
 
@@ -82,7 +83,6 @@ Le feature significative dopo correzione FDR confermano il coinvolgimento del ra
 	\label{fig:fdr_features_boxplot}
 \end{figure}
 
-La Figura~\ref{fig:fdr_features_boxplot} mostra che alcune feature significative presentano distribuzioni con forte variabilità inter-soggetto e presenza di valori estremi, soprattutto nelle potenze di banda. Questo conferma l'utilità di un approccio non parametrico per il confronto statistico tra gruppi.
 
 \subsection{Correlazione tra feature}
 
@@ -222,11 +222,26 @@ Per valutare il contenuto predittivo delle feature EEG, è stato addestrato un c
 	\label{fig:rf_feature_set_comparison}
 \end{figure}
 
-Le feature regionali ottengono la migliore balanced accuracy media e il miglior ROC-AUC, pur utilizzando solo 25 variabili. Le differenze rispetto all'insieme completo non sono ampie, ma il risultato suggerisce che una rappresentazione regionale sia sufficiente a conservare informazione discriminativa, riducendo la dimensionalità rispetto alle feature relative ai canali singoli.
+Le feature regionali ottengono la migliore balanced accuracy media. Le differenze rispetto all'insieme completo non sono ampie, ma il risultato suggerisce che una rappresentazione regionale sia sufficiente a conservare informazione discriminativa, riducendo così la dimensionalità rispetto alle feature relative ai canali singoli.
 
 \subsection{Performance del modello finale}
 
-Il modello finale è stato addestrato sull'intero training/validation set utilizzando il miglior feature set, cioè le feature regionali, ed è stato valutato sul test set indipendente. Le metriche finali sono riportate nella Tabella~\ref{tab:rf_final_metrics}.
+Il modello finale, dopo tunng sui parametri ha mostrato performance migliori con parametri: 
+\begin{table}
+\begin{tabular}{ll}
+	\hline
+	\textbf{Iperparametro} & \textbf{Valori ottimali} \\
+	\hline
+	\texttt{n\_estimators} & \text{3000} \\
+	\texttt{max\_depth} & \text{None0} \\
+	\texttt{min\_samples\_leaf} & 1 \\
+	\texttt{max\_features} & \text{log2} \\
+	\hline
+\end{tabular}
+\caption{Iperparametri ottimali Random Forest su features regionali.}
+\end{table}
+
+È stato addestrato sull'intero training/validation set utilizzando le feature regionali, ed è stato valutato sul test set indipendente. Le metriche finali sono riportate nella Tabella~\ref{tab:rf_final_metrics}.
 
 \begin{table}[H]
 	\centering

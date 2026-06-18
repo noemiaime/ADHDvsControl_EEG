@@ -2,7 +2,7 @@
 
 \subsection{Dataset}
 
-Il dataset utilizzato è stato scaricato da Kaggle, dalla pagina \textit{EEG Dataset for ADHD} \cite{Kaggle}. Esso contiene registrazioni EEG di 61 bambini con ADHD e 60 soggetti di controllo, di età compresa tra 7 e 12 anni, registrati durante un compito di attenzione visiva. La distribuzione delle classi risulta quindi approssimativamente bilanciata.
+Il dataset utilizzato è disponibile su Kaggl (\cite{Kaggle}). Esso contiene registrazioni EEG di 61 bambini con ADHD e 60 soggetti di controllo, di età compresa tra 7 e 12 anni, registrati durante un compito di attenzione visiva in cui si mostra ai bambini immagini di personaggi di cartoni animati. La distribuzione delle classi risulta approssimativamente bilanciata.
 
 I dati sono organizzati in formato tabellare: ogni riga corrisponde a un campione temporale del segnale EEG, mentre le colonne contengono i valori dei canali EEG, l'identificativo del soggetto e la classe diagnostica. Le registrazioni sono state acquisite con frequenza di campionamento$
 f_s = 128 \ \text{Hz}$.
@@ -11,11 +11,11 @@ Il dataset contiene 19 canali EEG:
 \\
 \texttt{Fp1}, \texttt{Fp2}, \texttt{F3}, \texttt{F4}, \texttt{C3}, \texttt{C4}, \texttt{P3}, \texttt{P4}, \texttt{O1}, \texttt{O2}, \texttt{F7}, \texttt{F8}, \texttt{T7}, \texttt{T8}, \texttt{P7}, \texttt{P8}, \texttt{Fz}, \texttt{Cz}, \texttt{Pz}.
 
-I canali seguono la nomenclatura del sistema internazionale 10--20, uno standard utilizzato per descrivere la posizione degli elettrodi sullo scalpo in modo riproducibile tra soggetti diversi. In questo sistema, le lettere indicano approssimativamente la regione corticale sottostante: \texttt{Fp} indica la regione frontopolare, \texttt{F} la regione frontale, \texttt{C} la regione centrale, \texttt{P} la regione parietale, \texttt{O} la regione occipitale e \texttt{T} la regione temporale. I numeri dispari indicano elettrodi localizzati prevalentemente sull'emisfero sinistro, mentre i numeri pari indicano elettrodi localizzati prevalentemente sull'emisfero destro. Gli elettrodi indicati con la lettera \texttt{z}, come \texttt{Fz}, \texttt{Cz} e \texttt{Pz}, si trovano lungo la linea mediana.
+I canali seguono la nomenclatura del sistema internazionale 10-20. È uno standard utilizzato per descrivere la posizione degli elettrodi sullo scalpo in modo riproducibile tra soggetti diversi. In questo sistema la distanza tra gli elettrodi che viene calcolata in percentuali (10$\%$ o 20$\%$) rispetto alla lunghezza della testa, misurata in senso fronto-occipitale e laterale. Le lettere dei canali indicano approssimativamente la regione corticale sottostante: \texttt{Fp} indica la regione frontopolare, \texttt{F} la regione frontale, \texttt{C} la regione centrale, \texttt{P} la regione parietale, \texttt{O} la regione occipitale e \texttt{T} la regione temporale. I numeri dispari indicano elettrodi localizzati prevalentemente sull'emisfero sinistro, mentre i numeri pari indicano elettrodi localizzati prevalentemente sull'emisfero destro. Gli elettrodi indicati con la lettera \texttt{z}, come \texttt{Fz}, \texttt{Cz} e \texttt{Pz}, si trovano lungo la linea mediana.
 
-Questa organizzazione spaziale è stata utilizzata per raggruppare i canali EEG in regioni più ampie. Questo raggruppamento consente di analizzare le feature sia a livello di singolo canale sia a livello regionale, confrontando informazioni più localizzate con rappresentazioni più sintetiche dell'attività EEG.
+ Questo raggruppamento consente di analizzare le feature sia a livello di singolo canale sia a livello regionale, confrontando informazioni più localizzate con rappresentazioni più sintetiche dell'attività EEG.
 
-Durante la registrazione non sono presenti variazioni di condizione associate al target e al task. Per questo motivo, le serie temporali EEG sono state trasformate in feature soggetto-livello. In questo modo, ogni soggetto è rappresentato da una singola riga nella tabella finale delle feature, evitando di trattare campioni temporalmente correlati come osservazioni indipendenti.
+Durante la registrazione non sono presenti variazioni di condizione associate al target e al task. Per questo motivo, le serie temporali EEG sono state trasformate in feature soggetto-livello. In questo modo, ogni soggetto è rappresentato da una singola riga nella tabella finale delle feature.
 
 \subsection{Feature extraction}
 
@@ -55,7 +55,7 @@ A partire dalla PSD sono state calcolate le potenze nelle principali bande EEG: 
 	\label{tab:eeg_bands}
 \end{table}
 
-La potenza di ciascuna banda è stata calcolata integrando la PSD nell'intervallo di frequenze corrispondente
+La potenza di ciascuna banda è stata calcolata integrando la PSD nell'intervallo di frequenze corrispondente ($f_1, f_2$):
 
 \begin{equation}
 	P_{\text{band}} =\int_{f_1}^{f_2} PSD(f),df
@@ -67,14 +67,7 @@ In aggiunta alle potenze di banda, è stato calcolato il rapporto tra theta e be
 	TBR =\frac{P_{\theta}}{P_{\beta}}
 \end{equation}
 
-Questo è stato calcolato sia a livello di singolo canale sia a livello regionale. Le feature regionali sono state ottenute mediando le feature dei canali appartenenti alla stessa regione. Ad esempio, la potenza theta frontale è stata calcolata come:
-
-\begin{equation}
-	P_{\theta}^{frontal} =\frac{1}{N}\sum_{i=1}^{N} P_{\theta}^{(i)}
-\end{equation}
-
-
-dove $N$ è il numero di canali appartenenti alla regione frontale e $P_{\theta}^{(i)}$ è la potenza theta del canale $i$.
+Ogni feature è stato calcolata sia a livello di singolo canale sia a livello regionale mediando le feature dei canali appartenenti alla stessa regione. 
 
 L'output finale della feature extraction è una tabella soggetto-livello contenente potenze di banda per ciascun canale, rapporti theta/beta per ciascun canale, potenze medie regionali, rapporti theta/beta regionali e metadati del soggetto, come identificativo, classe e durata della registrazione.
 
@@ -93,17 +86,18 @@ Questo test è un test non parametrico per il confronto tra due gruppi indipende
 
 Il procedimento consiste nel considerare insieme tutti i valori della feature nei due gruppi, ordinarli dal più piccolo al più grande e assegnare a ciascun valore un rango. Se i due gruppi provengono dalla stessa distribuzione, i ranghi dovrebbero essere distribuiti in modo simile tra ADHD e Control. Se invece un gruppo tende ad avere valori più alti o più bassi, anche i ranghi tenderanno a essere sistematicamente più alti o più bassi.
 
-Per un gruppo con $n_1$ osservazioni, la statistica U può essere scritta come:
-
+Per un gruppo con $n_1$ osservazioni, la statistica $U_1$ può essere scritta come:
 \begin{equation}
 	U_1 =R_1 -\frac{n_1(n_1+1)}{2}
-\end{equation}
+\end{equation}) 
 
-dove $R_1$ è la somma dei ranghi del primo gruppo e $n_1$ è il numero di osservazioni nel primo gruppo.
+dove $R_1$ è la somma dei ranghi del primo gruppo. 
+
+La statistica U finale del test viene calcolata come il valore minimo tra $U_1$ e la controparte $U_2$ del secondo gruppo. 
 
 Nel presente progetto è stato utilizzato un test a due code, poiché non si è imposto a priori che le feature dovessero essere maggiori nel gruppo ADHD o nel gruppo Control. In questo modo, il test è sensibile a differenze in entrambe le direzioni.
 
-Il p-value ottenuto dal test indica la probabilità di osservare una differenza nei ranghi almeno pari a quella osservata, assumendo vera l'ipotesi nulla. L'ipotesi nulla è che la feature abbia distribuzioni simili nei due gruppi.
+Il p-value ottenuto dal test indica la probabilità di osservare una differenza nei ranghi almeno pari a quella osservata, assumendo vera l'ipotesi nulla. L'ipotesi nulla è che la feature abbia distribuzioni identiche nei due gruppi.
 
 \subsubsection{Cohen's d}
 
@@ -155,11 +149,11 @@ $
 p_{FDR} < 0.05
 $
 
-\subsection{Analisi di correlazione}
+\subsubsection{Analisi di correlazione}
 
 Dopo il confronto tra gruppi, è stata analizzata la correlazione tra tutte le feature EEG numeriche.
 
-Questa analisi non ha lo scopo di distinguere direttamente ADHD e Control, ma di studiare la ridondanza tra le feature estratte. Infatti, molte feature EEG possono essere correlate tra loro perché derivano dalla stessa banda di frequenza, da canali spazialmente vicini o da rapporti calcolati a partire dalle stesse grandezze.
+Molte feature EEG possono essere correlate tra loro perché derivano dalla stessa banda di frequenza, da canali spazialmente vicini o da rapporti calcolati a partire dalle stesse grandezze.
 
 Per questa analisi è stata utilizzata la correlazione di Spearman, una misura non parametrica di associazione monotona tra due variabili. A differenza della correlazione di Pearson, Spearman non richiede che la relazione tra le variabili sia lineare e non richiede l'assunzione di normalità.
 
@@ -174,8 +168,6 @@ Nel caso senza ranghi uguali, il coefficiente di Spearman può essere scritto co
 dove $d_i$ è la differenza tra i ranghi delle due variabili per l'osservazione $i$, e $n$ è il numero di osservazioni.
 
 Il coefficiente $\rho$ varia tra $-1$ e $1$ e $\rho = 1$ indica una relazione monotona positiva perfetta e $ \rho = -1$ indica una relazione monotona negativa perfetta, mentre $ \rho = 0$ indica assenza di relazione monotona.
-
-La matrice di correlazione è stata calcolata considerando tutte le feature EEG numeriche. Inoltre, sono state estratte le coppie di feature con correlazione positiva o negativa più forte, in modo da identificare le principali ridondanze nel dataset.
 
 
 \subsection{Classificazione con Random Forest}
@@ -205,7 +197,7 @@ Sono stati confrontati tre insiemi di feature:
 
 Questo confronto permette di valutare se la classificazione dipenda maggiormente da informazioni locali a livello di elettrodo, oppure da pattern più globali a livello regionale.
 
-Il classificatore Random Forest è stato configurato con 500 alberi decisionali. È stato inoltre utilizzato il parametro $\texttt{class\_weight="balanced"}$ per compensare eventuali differenze nella distribuzione delle classi.
+Il classificatore Random Forest presenta diversi iperparametri, vedi Sezione 2.5.1. È stato inoltre utilizzato il parametro $\texttt{class\_weight="balanced"}$ per compensare eventuali differenze nella distribuzione delle classi.
 
 Le metriche utilizzate per valutare le prestazioni del modello sono state:
 
@@ -221,7 +213,7 @@ Le metriche utilizzate per valutare le prestazioni del modello sono state:
 
 La balanced accuracy è stata utilizzata come metrica principale per confrontare i feature set.
 
-Dopo il confronto in cross-validation, il miglior feature set è stato selezionato in base alla balanced accuracy media. Il modello finale è stato quindi addestrato sull'intero training/validation set e valutato una sola volta sul test set indipendente.
+Dopo il confronto in cross-validation, il miglior feature set è stato selezionato in base alla balanced accuracy media. ì
 
 \subsubsection{Tuning degli iperparametri}
 
@@ -238,9 +230,9 @@ La griglia di iperparametri considerata è stata:
 		\hline
 		\textbf{Iperparametro} & \textbf{Valori testati} \\
 		\hline
-		\texttt{n\_estimators} & \text{300, 500, 800} \\
-		\texttt{max\_depth} & \text{None, 5, 10} \\
-		\texttt{min\_samples\_leaf} & 1, 2, 4 \\
+		\texttt{n\_estimators} & \text{300, 500, 800, 1200} \\
+		\texttt{max\_depth} & \text{None, 3, 5, 7, 10} \\
+		\texttt{min\_samples\_leaf} & 1, 2, 4, 6 \\
 		\texttt{max\_features} & \text{sqrt, log2, None} \\
 		\hline
 	\end{tabular}
@@ -256,13 +248,13 @@ Dopo l'addestramento del modello finale, sono stati estratti i valori di feature
 
 La feature importance della Random Forest si basa sulla riduzione media dell'impurità, chiamata anche mean decrease in impurity. In un albero decisionale, ogni nodo viene diviso scegliendo la feature e la soglia che permettono di separare meglio le classi.
 
-Come misura comune dell'impurità si è usata la Gini impurity:
+Come misura comune dell'impurità si usa la Gini impurity:
 
 \begin{equation}
 	Gini = 1 - p_{ADHD}^{2} - p_{Control}^{2}
 \end{equation}
 
-dove $p_k$ è la proporzione di campioni appartenenti alla classe (k) nel nodo.
+dove $p_k$ è la proporzione di campioni appartenenti alla classe $k$ nel nodo.
 
 La riduzione di impurità prodotta da uno split è calcolata come:
 
