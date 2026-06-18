@@ -45,6 +45,7 @@ ADHDvsControl_EEG/
 │   └── archive.zip
 │
 ├── documentation/
+|   └── paper/
 │
 ├── outputs/
 │   ├── figures/
