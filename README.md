@@ -147,17 +147,14 @@ Three feature sets are compared using stratified cross-validation:
 The best-performing feature set is selected using balanced accuracy and then tuning on the hyperparameters is execuded.
 
 The final model is then trained on the full training/validation set and evaluated on the independent test set.
+Features importance is computed. 
 
-The notebook reports:
+The best-performing feature set is then reduced using correlation matrix. 
 
-* accuracy;
-* balanced accuracy;
-* precision;
-* recall;
-* F1-score;
-* ROC-AUC;
-* confusion matrix;
-* Random Forest feature importance;
+It has been evaluated a regional theta-beta ratio features set and channel level theta-beta ratio, to understand if theta
+beta ratio is sufficient to classify ADHD.
+
+Every final model's hyperparameters has been selected through tuning based on randomized search and grid search.
 
 ## Notes
 
