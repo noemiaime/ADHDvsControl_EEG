@@ -1,0 +1,20 @@
+selected_feature,pretty_feature
+central_theta_power_mean,Central ${\theta}$ power
+temporal_theta_beta_ratio,Temporal ${\theta}/{\beta}$ ratio
+central_alpha_power_mean,Central ${\alpha}$ power
+central_beta_power_mean,Central ${\beta}$ power
+parietal_theta_power_mean,Parietal ${\theta}$ power
+occipital_theta_beta_ratio,Occipital ${\theta}/{\beta}$ ratio
+parietal_alpha_power_mean,Parietal ${\alpha}$ power
+central_theta_beta_ratio,Central ${\theta}/{\beta}$ ratio
+parietal_delta_power_mean,Parietal ${\delta}$ power
+frontal_alpha_power_mean,Frontal ${\alpha}$ power
+frontal_theta_power_mean,Frontal ${\theta}$ power
+occipital_beta_power_mean,Occipital ${\beta}$ power
+frontal_delta_power_mean,frontal_delta_power_mean
+parietal_beta_power_mean,Parietal ${\beta}$ power
+temporal_delta_power_mean,Temporal ${\delta}$ power
+occipital_alpha_power_mean,occipital_alpha_power_mean
+temporal_beta_power_mean,Temporal ${\beta}$ power
+frontal_beta_power_mean,Frontal ${\beta}$ power
+frontal_theta_beta_ratio,Frontal ${\theta}/{\beta}$ ratio

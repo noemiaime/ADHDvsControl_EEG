@@ -1,26 +1,26 @@
 feature,importance,pretty_feature
-temporal_theta_beta_ratio,0.07274461880891338,Temporal ${\theta}/{\beta}$ ratio
-central_theta_power_mean,0.07260957999279885,Central ${\theta}$ power
-central_alpha_power_mean,0.06743467460435544,Central ${\alpha}$ power
-central_beta_power_mean,0.06350927872988364,Central ${\beta}$ power
-parietal_theta_power_mean,0.06215260266487092,Parietal ${\theta}$ power
-occipital_theta_beta_ratio,0.0502057959598843,Occipital ${\theta}/{\beta}$ ratio
-central_theta_beta_ratio,0.04824315999509673,Central ${\theta}/{\beta}$ ratio
-occipital_theta_power_mean,0.040534742536299496,Occipital ${\theta}$ power
-parietal_alpha_power_mean,0.039697805513684056,Parietal ${\alpha}$ power
-parietal_delta_power_mean,0.03885341902994025,Parietal ${\delta}$ power
-occipital_delta_power_mean,0.03802446561121574,Occipital ${\delta}$ power
-frontal_alpha_power_mean,0.036712956140117346,Frontal ${\alpha}$ power
-frontal_theta_power_mean,0.03180478551098931,Frontal ${\theta}$ power
-occipital_alpha_power_mean,0.031361086959942476,occipital_alpha_power_mean
-temporal_alpha_power_mean,0.03097630658699393,Temporal ${\alpha}$ power
-frontal_delta_power_mean,0.02999518457746434,frontal_delta_power_mean
-temporal_delta_power_mean,0.02945451305678103,Temporal ${\delta}$ power
-occipital_beta_power_mean,0.029376475679072478,Occipital ${\beta}$ power
-parietal_theta_beta_ratio,0.029116696938307433,Parietal ${\theta}/{\beta}$ ratio
-temporal_theta_power_mean,0.028056636798997368,Temporal ${\theta}$ power
-central_delta_power_mean,0.027288027460134187,Central ${\delta}$ power
-parietal_beta_power_mean,0.026783615268300906,Parietal ${\beta}$ power
-frontal_theta_beta_ratio,0.025442321144042292,Frontal ${\theta}/{\beta}$ ratio
-temporal_beta_power_mean,0.025190042580324222,Temporal ${\beta}$ power
-frontal_beta_power_mean,0.02443120785158986,Frontal ${\beta}$ power
+central_theta_power_mean,0.07884251606143429,Central ${\theta}$ power
+temporal_theta_beta_ratio,0.07862645717189304,Temporal ${\theta}/{\beta}$ ratio
+central_alpha_power_mean,0.06795159333899764,Central ${\alpha}$ power
+central_beta_power_mean,0.06375008693788528,Central ${\beta}$ power
+parietal_theta_power_mean,0.06153875634872036,Parietal ${\theta}$ power
+occipital_theta_beta_ratio,0.04690960016150839,Occipital ${\theta}/{\beta}$ ratio
+occipital_theta_power_mean,0.046324096201812964,Occipital ${\theta}$ power
+parietal_alpha_power_mean,0.04509481892616475,Parietal ${\alpha}$ power
+central_theta_beta_ratio,0.04331002449966064,Central ${\theta}/{\beta}$ ratio
+parietal_delta_power_mean,0.039349530257202454,Parietal ${\delta}$ power
+occipital_delta_power_mean,0.03715778235395692,Occipital ${\delta}$ power
+frontal_alpha_power_mean,0.03404650694290311,Frontal ${\alpha}$ power
+temporal_theta_power_mean,0.03272332791926084,Temporal ${\theta}$ power
+frontal_theta_power_mean,0.03240586278182375,Frontal ${\theta}$ power
+central_delta_power_mean,0.0318783867149034,Central ${\delta}$ power
+occipital_beta_power_mean,0.02992860996809067,Occipital ${\beta}$ power
+frontal_delta_power_mean,0.02935306253663967,frontal_delta_power_mean
+parietal_theta_beta_ratio,0.028212416303243785,Parietal ${\theta}/{\beta}$ ratio
+parietal_beta_power_mean,0.027688181334407466,Parietal ${\beta}$ power
+temporal_delta_power_mean,0.026642773076878675,Temporal ${\delta}$ power
+temporal_alpha_power_mean,0.025962361459851493,Temporal ${\alpha}$ power
+occipital_alpha_power_mean,0.025799957103226627,occipital_alpha_power_mean
+temporal_beta_power_mean,0.022699703860621638,Temporal ${\beta}$ power
+frontal_beta_power_mean,0.02249422939609817,Frontal ${\beta}$ power
+frontal_theta_beta_ratio,0.021309358342813958,Frontal ${\theta}/{\beta}$ ratio

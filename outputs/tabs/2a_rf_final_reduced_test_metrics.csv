@@ -1,0 +1,2 @@
+feature_set,correlation_threshold,n_features,accuracy,balanced_accuracy,precision,recall,f1,roc_auc
+Correlation-reduced RF features,0.8,19,0.72,0.717948717948718,0.7142857142857143,0.7692307692307693,0.7407407407407407,0.7435897435897436

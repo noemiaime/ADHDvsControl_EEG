@@ -1,0 +1,2 @@
+feature_set,n_features,accuracy_mean,accuracy_std,balanced_accuracy_mean,balanced_accuracy_std,f1_mean,f1_std,roc_auc_mean,roc_auc_std,precision_mean,precision_std,recall_mean,recall_std
+Correlation-reduced RF features | threshold=0.75,17,0.6968421052631578,0.11422871550526768,0.6988888888888888,0.10797804989561194,0.7219679633867276,0.0993552517457609,0.7186666666666667,0.0854975272185917,0.6744522144522145,0.1064801864801865,0.7911111111111111,0.12695872761853957
