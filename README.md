@@ -6,14 +6,13 @@ The aim of the project is to extract interpretable EEG features from time-series
 
 ## Project overview
 
-The project follows a complete EEG analysis workflow:
+The project follows the workflow:
 
 1. dataset exploration;
 2. EEG spectral feature extraction;
 3. feature exploration and statistical analysis;
 4. feature correlation analysis;
-5. Random Forest classification;
-6. model interpretation using feature importance.
+5. Random Forest classification and feature importance.
 
 The analysis is performed at subject level. This means that each subject is represented by one row in the final feature table.
 
