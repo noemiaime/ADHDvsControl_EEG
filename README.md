@@ -155,6 +155,11 @@ beta ratio is sufficient to classify ADHD.
 
 Every final model's hyperparameters has been selected through tuning based on randomized search and grid search.
 
+### `3a_logistic_regressiom.ipynb`
+
+The selected features sets from the Random Forest analysis were also evaluated using Logistic Regression. 
+This analysis was performed to compare the Random Forest model with a simpler linear classifier and to assess whether the two group could be separated using a linear decision boundary. 
+
 ## Notes
 
 This project is developed for the Computational Applications to Neuroscience course and it is still working progress.
