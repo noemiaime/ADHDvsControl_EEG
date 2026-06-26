@@ -6,6 +6,9 @@
 \providecommand\HyField@AuxAddToCoFields[2]{}
 \babel@aux{italian}{}
 \babel@aux{italian}{}
+\citation{Arns2013}
+\citation{Arns2013}
+\citation{Arns2013}
 \citation{Kaggle}
 \@writefile{toc}{\contentsline {section}{\numberline {1}Introduzione}{2}{section.1}\protected@file@percent }
 \@writefile{toc}{\contentsline {section}{\numberline {2}Metodi}{2}{section.2}\protected@file@percent }
@@ -18,15 +21,15 @@
 \citation{test}
 \@writefile{toc}{\contentsline {subsection}{\numberline {2.3}Esplorazione delle feature}{4}{subsection.2.3}\protected@file@percent }
 \@writefile{toc}{\contentsline {subsubsection}{\numberline {2.3.1}Test di Mann-Whitney U}{4}{subsubsection.2.3.1}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsubsection}{\numberline {2.3.2}Cohen's d}{4}{subsubsection.2.3.2}\protected@file@percent }
 \citation{multiple}
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {2.3.2}Cohen's d}{5}{subsubsection.2.3.2}\protected@file@percent }
 \@writefile{toc}{\contentsline {subsubsection}{\numberline {2.3.3}Correzione per confronti multipli}{5}{subsubsection.2.3.3}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsubsection}{\numberline {2.3.4}Analisi di correlazione}{5}{subsubsection.2.3.4}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {2.3.4}Analisi di correlazione}{6}{subsubsection.2.3.4}\protected@file@percent }
 \@writefile{toc}{\contentsline {subsection}{\numberline {2.4}Classificazione con Random Forest}{6}{subsection.2.4}\protected@file@percent }
 \@writefile{toc}{\contentsline {subsubsection}{\numberline {2.4.1}Tuning degli iperparametri}{7}{subsubsection.2.4.1}\protected@file@percent }
-\@writefile{lot}{\contentsline {table}{\numberline {2}{\ignorespaces Griglia di iperparametri utilizzata per il tuning della Random Forest.}}{7}{table.caption.3}\protected@file@percent }
-\newlabel{tab:rf_hyperparameter_grid}{{2}{7}{Griglia di iperparametri utilizzata per il tuning della Random Forest}{table.caption.3}{}}
-\@writefile{toc}{\contentsline {subsubsection}{\numberline {2.4.2}Feature importance}{7}{subsubsection.2.4.2}\protected@file@percent }
+\@writefile{lot}{\contentsline {table}{\numberline {2}{\ignorespaces Spazio di ricerca degli iperparametri utilizzato nella \texttt  {RandomizedSearchCV}.}}{7}{table.caption.3}\protected@file@percent }
+\newlabel{tab:rf_randomized_hyperparameter_space}{{2}{7}{Spazio di ricerca degli iperparametri utilizzato nella \texttt {RandomizedSearchCV}}{table.caption.3}{}}
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {2.4.2}Feature importance}{8}{subsubsection.2.4.2}\protected@file@percent }
 \@writefile{toc}{\contentsline {section}{\numberline {3}Risultati}{8}{section.3}\protected@file@percent }
 \@writefile{toc}{\contentsline {subsection}{\numberline {3.1}Differenze tra gruppi ed effect size}{8}{subsection.3.1}\protected@file@percent }
 \@writefile{lot}{\contentsline {table}{\numberline {3}{\ignorespaces Prime dieci feature EEG ordinate secondo il valore assoluto di Cohen's $d$. Valori negativi indicano valori medi più alti nel gruppo Control rispetto al gruppo ADHD.}}{8}{table.caption.4}\protected@file@percent }
@@ -40,7 +43,7 @@
 \newlabel{tab:fdr_features}{{4}{11}{Feature EEG risultate significative dopo correzione FDR}{table.caption.7}{}}
 \@writefile{lof}{\contentsline {figure}{\numberline {3}{\ignorespaces Distribuzione delle feature EEG significative dopo correzione FDR.}}{12}{figure.caption.8}\protected@file@percent }
 \newlabel{fig:fdr_features_boxplot}{{3}{12}{Distribuzione delle feature EEG significative dopo correzione FDR}{figure.caption.8}{}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {3.3}Correlazione tra feature}{13}{subsection.3.3}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.3}Correlazione tra feature}{12}{subsection.3.3}\protected@file@percent }
 \@writefile{toc}{\contentsline {subsubsection}{\numberline {3.3.1}Correlazioni canale-livello}{13}{subsubsection.3.3.1}\protected@file@percent }
 \@writefile{lot}{\contentsline {table}{\numberline {5}{\ignorespaces Dieci correlazioni di Spearman più forti in valore assoluto tra feature canale-livello, calcolate separatamente nei gruppi ADHD e Control.}}{13}{table.caption.9}\protected@file@percent }
 \newlabel{tab:top_channel_correlations}{{5}{13}{Dieci correlazioni di Spearman più forti in valore assoluto tra feature canale-livello, calcolate separatamente nei gruppi ADHD e Control}{table.caption.9}{}}
@@ -60,21 +63,46 @@
 \@writefile{lof}{\contentsline {figure}{\numberline {7}{\ignorespaces Confronto delle metriche di cross-validation del modello Random Forest per i tre insiemi di feature.}}{16}{figure.caption.15}\protected@file@percent }
 \newlabel{fig:rf_feature_set_comparison}{{7}{16}{Confronto delle metriche di cross-validation del modello Random Forest per i tre insiemi di feature}{figure.caption.15}{}}
 \@writefile{toc}{\contentsline {subsection}{\numberline {3.5}Performance del modello finale}{17}{subsection.3.5}\protected@file@percent }
-\@writefile{lot}{\contentsline {table}{\numberline {8}{\ignorespaces Metriche finali del modello Random Forest valutato sul test set indipendente.}}{17}{table.caption.16}\protected@file@percent }
-\newlabel{tab:rf_final_metrics}{{8}{17}{Metriche finali del modello Random Forest valutato sul test set indipendente}{table.caption.16}{}}
-\@writefile{lof}{\contentsline {figure}{\numberline {8}{\ignorespaces Confusion matrix del modello Random Forest finale valutato sul test set indipendente.}}{17}{figure.caption.17}\protected@file@percent }
-\newlabel{fig:rf_confusion_matrix}{{8}{17}{Confusion matrix del modello Random Forest finale valutato sul test set indipendente}{figure.caption.17}{}}
-\@writefile{lof}{\contentsline {figure}{\numberline {9}{\ignorespaces Curva ROC del modello Random Forest finale sul test set indipendente. La linea tratteggiata rappresenta la performance casuale.}}{18}{figure.caption.18}\protected@file@percent }
-\newlabel{fig:rf_roc_curve}{{9}{18}{Curva ROC del modello Random Forest finale sul test set indipendente. La linea tratteggiata rappresenta la performance casuale}{figure.caption.18}{}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {3.6}Feature importance}{18}{subsection.3.6}\protected@file@percent }
-\@writefile{lof}{\contentsline {figure}{\numberline {10}{\ignorespaces Prime dieci feature più importanti secondo il modello Random Forest finale.}}{19}{figure.caption.19}\protected@file@percent }
-\newlabel{fig:rf_feature_importance}{{10}{19}{Prime dieci feature più importanti secondo il modello Random Forest finale}{figure.caption.19}{}}
+\@writefile{lot}{\contentsline {table}{\numberline {8}{\ignorespaces Iperparametri ottimali Random Forest su features regionali.}}{17}{table.caption.16}\protected@file@percent }
+\@writefile{lot}{\contentsline {table}{\numberline {9}{\ignorespaces Metriche finali del modello Random Forest valutato sul test set indipendente.}}{17}{table.caption.17}\protected@file@percent }
+\newlabel{tab:rf_final_metrics}{{9}{17}{Metriche finali del modello Random Forest valutato sul test set indipendente}{table.caption.17}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {8}{\ignorespaces Confusion matrix del modello Random Forest finale valutato sul test set indipendente.}}{18}{figure.caption.18}\protected@file@percent }
+\newlabel{fig:rf_confusion_matrix}{{8}{18}{Confusion matrix del modello Random Forest finale valutato sul test set indipendente}{figure.caption.18}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {9}{\ignorespaces Curva ROC del modello Random Forest finale sul test set indipendente. La linea tratteggiata rappresenta la performance casuale.}}{19}{figure.caption.19}\protected@file@percent }
+\newlabel{fig:rf_roc_curve}{{9}{19}{Curva ROC del modello Random Forest finale sul test set indipendente. La linea tratteggiata rappresenta la performance casuale}{figure.caption.19}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.6}Feature importance}{19}{subsection.3.6}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {10}{\ignorespaces Prime dieci feature più importanti secondo il modello Random Forest finale.}}{20}{figure.caption.20}\protected@file@percent }
+\newlabel{fig:rf_feature_importance}{{10}{20}{Prime dieci feature più importanti secondo il modello Random Forest finale}{figure.caption.20}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {11}{\ignorespaces Matrice di correlazione di Spearman tra le dieci feature più importanti secondo la Random Forest.}}{21}{figure.caption.21}\protected@file@percent }
+\newlabel{fig:rf_top10_importance_corr}{{11}{21}{Matrice di correlazione di Spearman tra le dieci feature più importanti secondo la Random Forest}{figure.caption.21}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.7}Riduzione del feature set in base alla correlazione}{21}{subsection.3.7}\protected@file@percent }
+\@writefile{lot}{\contentsline {table}{\numberline {10}{\ignorespaces Confronto in cross-validation delle soglie di correlazione utilizzate per ridurre il feature set. Le metriche sono calcolate sul training/validation set.}}{22}{table.caption.22}\protected@file@percent }
+\newlabel{tab:rf_corr_threshold_comparison}{{10}{22}{Confronto in cross-validation delle soglie di correlazione utilizzate per ridurre il feature set. Le metriche sono calcolate sul training/validation set}{table.caption.22}{}}
+\@writefile{lot}{\contentsline {table}{\numberline {11}{\ignorespaces Iperparametri ottimali del modello Random Forest applicato al feature set ridotto in base alla correlazione.}}{22}{table.caption.23}\protected@file@percent }
+\newlabel{tab:rf_reduced_hyperparameters}{{11}{22}{Iperparametri ottimali del modello Random Forest applicato al feature set ridotto in base alla correlazione}{table.caption.23}{}}
+\@writefile{lot}{\contentsline {table}{\numberline {12}{\ignorespaces Metriche finali del modello Random Forest con feature set ridotto, valutato sul test set indipendente.}}{22}{table.caption.24}\protected@file@percent }
+\newlabel{tab:rf_reduced_final_metrics}{{12}{22}{Metriche finali del modello Random Forest con feature set ridotto, valutato sul test set indipendente}{table.caption.24}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {12}{\ignorespaces Confusion matrix del modello Random Forest basato sul feature set ridotto in base alla correlazione.}}{23}{figure.caption.25}\protected@file@percent }
+\newlabel{fig:rf_reduced_confusion_matrix}{{12}{23}{Confusion matrix del modello Random Forest basato sul feature set ridotto in base alla correlazione}{figure.caption.25}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {13}{\ignorespaces Curva ROC del modello Random Forest basato sul feature set ridotto in base alla correlazione.}}{23}{figure.caption.26}\protected@file@percent }
+\newlabel{fig:rf_reduced_roc_curve}{{13}{23}{Curva ROC del modello Random Forest basato sul feature set ridotto in base alla correlazione}{figure.caption.26}{}}
+\citation{Arns2013}
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.8}Studio feature theta/beta ratio}{24}{subsection.3.8}\protected@file@percent }
+\@writefile{lot}{\contentsline {table}{\numberline {13}{\ignorespaces Confronto in cross-validation dei tre insiemi di feature basati esclusivamente sul rapporto theta/beta.}}{24}{table.caption.27}\protected@file@percent }
+\newlabel{tab:rf_tbr_cv_comparison}{{13}{24}{Confronto in cross-validation dei tre insiemi di feature basati esclusivamente sul rapporto theta/beta}{table.caption.27}{}}
+\@writefile{lot}{\contentsline {table}{\numberline {14}{\ignorespaces Iperparametri ottimali del modello Random Forest basato sulle sole feature theta/beta ratio.}}{24}{table.caption.28}\protected@file@percent }
+\newlabel{tab:rf_tbr_hyperparameters}{{14}{24}{Iperparametri ottimali del modello Random Forest basato sulle sole feature theta/beta ratio}{table.caption.28}{}}
+\@writefile{lot}{\contentsline {table}{\numberline {15}{\ignorespaces Metriche finali del modello Random Forest basato sulle sole feature theta/beta ratio, valutato sul test set indipendente.}}{25}{table.caption.29}\protected@file@percent }
+\newlabel{tab:rf_tbr_final_metrics}{{15}{25}{Metriche finali del modello Random Forest basato sulle sole feature theta/beta ratio, valutato sul test set indipendente}{table.caption.29}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {14}{\ignorespaces Confusion matrix del modello Random Forest basato sulle sole feature theta/beta ratio.}}{25}{figure.caption.30}\protected@file@percent }
+\newlabel{fig:rf_tbr_confusion_matrix}{{14}{25}{Confusion matrix del modello Random Forest basato sulle sole feature theta/beta ratio}{figure.caption.30}{}}
 \bibstyle{plain}
 \bibdata{references.bib}
 \bibcite{Kaggle}{1}
-\bibcite{multiple}{2}
-\bibcite{test}{3}
-\bibcite{Welch}{4}
-\@writefile{lof}{\contentsline {figure}{\numberline {11}{\ignorespaces Matrice di correlazione di Spearman tra le dieci feature più importanti secondo la Random Forest.}}{20}{figure.caption.20}\protected@file@percent }
-\newlabel{fig:rf_top10_importance_corr}{{11}{20}{Matrice di correlazione di Spearman tra le dieci feature più importanti secondo la Random Forest}{figure.caption.20}{}}
-\gdef \@abspage@last{20}
+\bibcite{Arns2013}{2}
+\bibcite{multiple}{3}
+\bibcite{test}{4}
+\bibcite{Welch}{5}
+\@writefile{lof}{\contentsline {figure}{\numberline {15}{\ignorespaces Curva ROC del modello Random Forest basato sulle sole feature theta/beta ratio.}}{26}{figure.caption.31}\protected@file@percent }
+\newlabel{fig:rf_tbr_roc_curve}{{15}{26}{Curva ROC del modello Random Forest basato sulle sole feature theta/beta ratio}{figure.caption.31}{}}
+\gdef \@abspage@last{26}

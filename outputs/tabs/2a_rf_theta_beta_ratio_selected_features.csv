@@ -1,0 +1,20 @@
+feature_set,selected_feature,pretty_feature
+Channel-level theta/beta ratio features,Fp1_theta_beta_ratio,Fp1 ${\theta}/{\beta}$ ratio
+Channel-level theta/beta ratio features,Fp2_theta_beta_ratio,Fp2_theta_beta_ratio
+Channel-level theta/beta ratio features,F3_theta_beta_ratio,F3 ${\theta}/{\beta}$ ratio
+Channel-level theta/beta ratio features,F4_theta_beta_ratio,F4 ${\theta}/{\beta}$ ratio
+Channel-level theta/beta ratio features,C3_theta_beta_ratio,C3 ${\theta}/{\beta}$ ratio
+Channel-level theta/beta ratio features,C4_theta_beta_ratio,C4 ${\theta}/{\beta}$ ratio
+Channel-level theta/beta ratio features,P3_theta_beta_ratio,P3 ${\theta}/{\beta}$ ratio
+Channel-level theta/beta ratio features,P4_theta_beta_ratio,P4_theta_beta_ratio
+Channel-level theta/beta ratio features,O1_theta_beta_ratio,O1 ${\theta}/{\beta}$ ratio
+Channel-level theta/beta ratio features,O2_theta_beta_ratio,O2 ${\theta}/{\beta}$ ratio
+Channel-level theta/beta ratio features,F7_theta_beta_ratio,F7 ${\theta}/{\beta}$ ratio
+Channel-level theta/beta ratio features,F8_theta_beta_ratio,F8 ${\theta}/{\beta}$ ratio
+Channel-level theta/beta ratio features,T7_theta_beta_ratio,T7 ${\theta}/{\beta}$ ratio
+Channel-level theta/beta ratio features,T8_theta_beta_ratio,T8 ${\theta}/{\beta}$ ratio
+Channel-level theta/beta ratio features,P7_theta_beta_ratio,P7 ${\theta}/{\beta}$ ratio
+Channel-level theta/beta ratio features,P8_theta_beta_ratio,P8_theta_beta_ratio
+Channel-level theta/beta ratio features,Fz_theta_beta_ratio,Fz_theta_beta_ratio
+Channel-level theta/beta ratio features,Cz_theta_beta_ratio,Cz_theta_beta_ratio
+Channel-level theta/beta ratio features,Pz_theta_beta_ratio,Pz ${\theta}/{\beta}$ ratio

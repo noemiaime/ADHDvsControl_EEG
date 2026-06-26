@@ -1,0 +1,20 @@
+feature_set,correlation_threshold,selected_feature,pretty_feature
+Correlation-reduced RF features,0.8,central_theta_power_mean,Central ${\theta}$ power
+Correlation-reduced RF features,0.8,temporal_theta_beta_ratio,Temporal ${\theta}/{\beta}$ ratio
+Correlation-reduced RF features,0.8,central_alpha_power_mean,Central ${\alpha}$ power
+Correlation-reduced RF features,0.8,central_beta_power_mean,Central ${\beta}$ power
+Correlation-reduced RF features,0.8,parietal_theta_power_mean,Parietal ${\theta}$ power
+Correlation-reduced RF features,0.8,occipital_theta_beta_ratio,Occipital ${\theta}/{\beta}$ ratio
+Correlation-reduced RF features,0.8,parietal_alpha_power_mean,Parietal ${\alpha}$ power
+Correlation-reduced RF features,0.8,central_theta_beta_ratio,Central ${\theta}/{\beta}$ ratio
+Correlation-reduced RF features,0.8,parietal_delta_power_mean,Parietal ${\delta}$ power
+Correlation-reduced RF features,0.8,frontal_alpha_power_mean,Frontal ${\alpha}$ power
+Correlation-reduced RF features,0.8,frontal_theta_power_mean,Frontal ${\theta}$ power
+Correlation-reduced RF features,0.8,occipital_beta_power_mean,Occipital ${\beta}$ power
+Correlation-reduced RF features,0.8,frontal_delta_power_mean,frontal_delta_power_mean
+Correlation-reduced RF features,0.8,parietal_beta_power_mean,Parietal ${\beta}$ power
+Correlation-reduced RF features,0.8,temporal_delta_power_mean,Temporal ${\delta}$ power
+Correlation-reduced RF features,0.8,occipital_alpha_power_mean,occipital_alpha_power_mean
+Correlation-reduced RF features,0.8,temporal_beta_power_mean,Temporal ${\beta}$ power
+Correlation-reduced RF features,0.8,frontal_beta_power_mean,Frontal ${\beta}$ power
+Correlation-reduced RF features,0.8,frontal_theta_beta_ratio,Frontal ${\theta}/{\beta}$ ratio

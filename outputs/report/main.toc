@@ -6,19 +6,21 @@
 \contentsline {subsection}{\numberline {2.2}Feature extraction}{3}{subsection.2.2}%
 \contentsline {subsection}{\numberline {2.3}Esplorazione delle feature}{4}{subsection.2.3}%
 \contentsline {subsubsection}{\numberline {2.3.1}Test di Mann-Whitney U}{4}{subsubsection.2.3.1}%
-\contentsline {subsubsection}{\numberline {2.3.2}Cohen's d}{4}{subsubsection.2.3.2}%
+\contentsline {subsubsection}{\numberline {2.3.2}Cohen's d}{5}{subsubsection.2.3.2}%
 \contentsline {subsubsection}{\numberline {2.3.3}Correzione per confronti multipli}{5}{subsubsection.2.3.3}%
-\contentsline {subsubsection}{\numberline {2.3.4}Analisi di correlazione}{5}{subsubsection.2.3.4}%
+\contentsline {subsubsection}{\numberline {2.3.4}Analisi di correlazione}{6}{subsubsection.2.3.4}%
 \contentsline {subsection}{\numberline {2.4}Classificazione con Random Forest}{6}{subsection.2.4}%
 \contentsline {subsubsection}{\numberline {2.4.1}Tuning degli iperparametri}{7}{subsubsection.2.4.1}%
-\contentsline {subsubsection}{\numberline {2.4.2}Feature importance}{7}{subsubsection.2.4.2}%
+\contentsline {subsubsection}{\numberline {2.4.2}Feature importance}{8}{subsubsection.2.4.2}%
 \contentsline {section}{\numberline {3}Risultati}{8}{section.3}%
 \contentsline {subsection}{\numberline {3.1}Differenze tra gruppi ed effect size}{8}{subsection.3.1}%
 \contentsline {subsection}{\numberline {3.2}Feature significative dopo correzione FDR}{10}{subsection.3.2}%
-\contentsline {subsection}{\numberline {3.3}Correlazione tra feature}{13}{subsection.3.3}%
+\contentsline {subsection}{\numberline {3.3}Correlazione tra feature}{12}{subsection.3.3}%
 \contentsline {subsubsection}{\numberline {3.3.1}Correlazioni canale-livello}{13}{subsubsection.3.3.1}%
 \contentsline {subsubsection}{\numberline {3.3.2}Correlazioni regionali}{13}{subsubsection.3.3.2}%
 \contentsline {subsubsection}{\numberline {3.3.3}Distribuzione delle correlazioni}{14}{subsubsection.3.3.3}%
 \contentsline {subsection}{\numberline {3.4}Classificazione Random Forest}{16}{subsection.3.4}%
 \contentsline {subsection}{\numberline {3.5}Performance del modello finale}{17}{subsection.3.5}%
-\contentsline {subsection}{\numberline {3.6}Feature importance}{18}{subsection.3.6}%
+\contentsline {subsection}{\numberline {3.6}Feature importance}{19}{subsection.3.6}%
+\contentsline {subsection}{\numberline {3.7}Riduzione del feature set in base alla correlazione}{21}{subsection.3.7}%
+\contentsline {subsection}{\numberline {3.8}Studio feature theta/beta ratio}{24}{subsection.3.8}%

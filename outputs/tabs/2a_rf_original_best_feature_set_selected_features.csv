@@ -1,0 +1,26 @@
+feature_set,selected_feature,pretty_feature
+Regional mean features,frontal_delta_power_mean,frontal_delta_power_mean
+Regional mean features,frontal_theta_power_mean,Frontal ${\theta}$ power
+Regional mean features,frontal_alpha_power_mean,Frontal ${\alpha}$ power
+Regional mean features,frontal_beta_power_mean,Frontal ${\beta}$ power
+Regional mean features,frontal_theta_beta_ratio,Frontal ${\theta}/{\beta}$ ratio
+Regional mean features,central_delta_power_mean,Central ${\delta}$ power
+Regional mean features,central_theta_power_mean,Central ${\theta}$ power
+Regional mean features,central_alpha_power_mean,Central ${\alpha}$ power
+Regional mean features,central_beta_power_mean,Central ${\beta}$ power
+Regional mean features,central_theta_beta_ratio,Central ${\theta}/{\beta}$ ratio
+Regional mean features,parietal_delta_power_mean,Parietal ${\delta}$ power
+Regional mean features,parietal_theta_power_mean,Parietal ${\theta}$ power
+Regional mean features,parietal_alpha_power_mean,Parietal ${\alpha}$ power
+Regional mean features,parietal_beta_power_mean,Parietal ${\beta}$ power
+Regional mean features,parietal_theta_beta_ratio,Parietal ${\theta}/{\beta}$ ratio
+Regional mean features,temporal_delta_power_mean,Temporal ${\delta}$ power
+Regional mean features,temporal_theta_power_mean,Temporal ${\theta}$ power
+Regional mean features,temporal_alpha_power_mean,Temporal ${\alpha}$ power
+Regional mean features,temporal_beta_power_mean,Temporal ${\beta}$ power
+Regional mean features,temporal_theta_beta_ratio,Temporal ${\theta}/{\beta}$ ratio
+Regional mean features,occipital_delta_power_mean,Occipital ${\delta}$ power
+Regional mean features,occipital_theta_power_mean,Occipital ${\theta}$ power
+Regional mean features,occipital_alpha_power_mean,occipital_alpha_power_mean
+Regional mean features,occipital_beta_power_mean,Occipital ${\beta}$ power
+Regional mean features,occipital_theta_beta_ratio,Occipital ${\theta}/{\beta}$ ratio

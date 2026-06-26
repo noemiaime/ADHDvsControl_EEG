@@ -217,30 +217,35 @@ Dopo il confronto in cross-validation, il miglior feature set è stato seleziona
 
 \subsubsection{Tuning degli iperparametri}
 
-Il tuning degli iperparametri è stato quindi eseguito sul miglior feature set, utilizzando esclusivamente il training/validation set.
+Il tuning degli iperparametri è stato eseguito sul miglior feature set selezionato nella fase precedente, utilizzando esclusivamente il training/validation set. 
 
-L'ottimizzazione è stata effettuata tramite \texttt{GridSearchCV}, utilizzando una cross-validation stratificata a 5 fold. La metrica utilizzata per selezionare la migliore combinazione di iperparametri è stata la balanced accuracy.
+L'ottimizzazione degli iperparametri è stata effettuata in due passaggi. È stata inzialmente utilizzata una \texttt{RandomizedSearchCV} per esplorare in modo efficiente uno spazio ampio di possibili combinazioni di iperparametri. Successivamente, è stata applicata una \texttt{GridSearchCV} locale attorno alla migliore combinazione individuata dalla ricerca randomizzata, con l'obiettivo di raffinare ulteriormente la selezione dei parametri.
 
-La griglia di iperparametri considerata è stata:
+Entrambe le fasi di tuning sono state eseguite mediante cross-validation stratificata a 5 fold sul training/validation set. La metrica utilizzata per selezionare la migliore combinazione di iperparametri è stata la balanced accuracy, poiché tiene conto delle performance su entrambe le classi.
+
+Lo spazio di ricerca iniziale utilizzato nella \texttt{RandomizedSearchCV} è riportato nella Tabella~\ref{tab:rf_randomized_hyperparameter_space}.
 
 \begin{table}[H]
 	\centering
 	\small
 	\begin{tabular}{ll}
 		\hline
-		\textbf{Iperparametro} & \textbf{Valori testati} \\
+		\textbf{Iperparametro} & \textbf{Valori o intervallo testato} \\
 		\hline
-		\texttt{n\_estimators} & \text{300, 500, 800, 1200} \\
-		\texttt{max\_depth} & \text{None, 3, 5, 7, 10} \\
-		\texttt{min\_samples\_leaf} & 1, 2, 4, 6 \\
-		\texttt{max\_features} & \text{sqrt, log2, None} \\
+		\texttt{n\_estimators} & interi tra 200 e 1500 \\
+		\texttt{max\_depth} & \texttt{None}, 3, 5, 7, 10, 15, 20, 30 \\
+		\texttt{min\_samples\_leaf} & interi tra 1 e 9 \\
+		\texttt{min\_samples\_split} & interi tra 2 e 14 \\
+		\texttt{max\_features} & \texttt{sqrt}, \texttt{log2}, \texttt{None} \\
 		\hline
 	\end{tabular}
-	\caption{Griglia di iperparametri utilizzata per il tuning della Random Forest.}
-	\label{tab:rf_hyperparameter_grid}
+	\caption{Spazio di ricerca degli iperparametri utilizzato nella \texttt{RandomizedSearchCV}.}
+	\label{tab:rf_randomized_hyperparameter_space}
 \end{table}
- 
- Dopo la selezione della migliore combinazione di iperparametri, il modello finale è stato riaddestrato sull'intero training/validation set e valutato una sola volta sul test set.
+
+Dopo la ricerca randomizzata, è stata costruita una griglia locale centrata sui migliori valori individuati. Per i parametri numerici sono stati testati valori vicini al valore ottimale trovato dalla \texttt{RandomizedSearchCV}; per \texttt{max\_depth} e \texttt{max\_features} sono stati mantenuti anche valori alternativi comuni. 
+
+Dopo la selezione finale degli iperparametri, il modello Random Forest è stato riaddestrato sull'intero training/validation set e valutato una sola volta sul test set.
 
 \subsubsection{Feature importance}
 

@@ -226,15 +226,18 @@ Le feature regionali ottengono la migliore balanced accuracy media. Le differenz
 
 \subsection{Performance del modello finale}
 
-Il modello finale, dopo tunng sui parametri ha mostrato performance migliori con parametri: 
-\begin{table}
+Il modello finale, dopo tuning sugli iperparametri ha mostrato performance migliori con parametri: 
+
+\begin{table}[H]
+	\centering
 \begin{tabular}{ll}
 	\hline
 	\textbf{Iperparametro} & \textbf{Valori ottimali} \\
 	\hline
-	\texttt{n\_estimators} & \text{3000} \\
-	\texttt{max\_depth} & \text{None0} \\
-	\texttt{min\_samples\_leaf} & 1 \\
+	\texttt{n\_estimators} & \text{1028} \\
+	\texttt{max\_depth} & \text{15} \\
+	\texttt{min\_samples\_leaf} & 2 \\
+	\texttt{min\_samples\_split} & 2 \\
 	\texttt{max\_features} & \text{log2} \\
 	\hline
 \end{tabular}
@@ -257,7 +260,7 @@ Il modello finale, dopo tunng sui parametri ha mostrato performance migliori con
 		Precision & 0.733 \\
 		Recall & 0.846 \\
 		F1-score & 0.786 \\
-		ROC-AUC & 0.717 \\
+		ROC-AUC & 0.731 \\
 		\hline
 	\end{tabular}
 	\caption{Metriche finali del modello Random Forest valutato sul test set indipendente.}
@@ -266,7 +269,7 @@ Il modello finale, dopo tunng sui parametri ha mostrato performance migliori con
 
 \begin{figure}[H]
 	\centering
-	\includegraphics[width=0.60\textwidth]{../figures/2a_rf_best_feature_set_confusion_matrix.png}
+	\includegraphics[width=0.60\textwidth]{../figures/2a_rf_original_best_feature_set_confusion_matrix.png}
 	\caption{Confusion matrix del modello Random Forest finale valutato sul test set indipendente.}
 	\label{fig:rf_confusion_matrix}
 \end{figure}
@@ -277,7 +280,7 @@ La capacità discriminativa del modello finale è stata valutata anche tramite c
 
 \begin{figure}[H]
 	\centering
-	\includegraphics[width=0.60\textwidth]{../figures/2a_rf_best_feature_set_roc_curve.png}
+	\includegraphics[width=0.60\textwidth]{../figures/2a_rf_original_best_feature_set_roc_curve.png}
 	\caption{Curva ROC del modello Random Forest finale sul test set indipendente. La linea tratteggiata rappresenta la performance casuale.}
 	\label{fig:rf_roc_curve}
 \end{figure}
@@ -308,5 +311,170 @@ Per valutare la ridondanza tra le feature maggiormente utilizzate dal modello, �
 \end{figure}
 
 La matrice mostra che diverse feature importanti sono tra loro correlate. Questo indica che il modello non utilizza dieci feature completamente indipendenti, ma un insieme di variabili parzialmente ridondanti che descrivono aspetti correlati dell'attività spettrale regionale.
+
+\subsection{Riduzione del feature set in base alla correlazione}
+
+La matrice di correlazione tra le dieci feature più importanti ha mostrato la presenza di correlazioni moderate o elevate tra alcune variabili. Per questo motivo è stata effettuata un'analisi aggiuntiva per valutare se fosse possibile ridurre la ridondanza del feature set senza peggiorare le performance di classificazione.
+
+Le feature sono state ordinate in base alla feature importance ottenuta dal modello Random Forest finale. Successivamente partendo dalla feature più importante, una nuova feature veniva mantenuta solo se la sua correlazione assoluta di Spearman con tutte le feature già selezionate era inferiore a una soglia prefissata. In questo modo, tra feature altamente correlate, veniva conservata quella con maggiore importanza nel modello.
+
+Sono state testate diverse soglie di correlazione sul solo training/validation set mediante cross-validation stratificata a 5 fold. 
+
+\begin{table}[H]
+	\centering
+	\small
+	\begin{tabular}{llllllll}
+		\hline
+		\textbf{Soglia} & \textbf{N} & \textbf{Accuracy} & \textbf{Balanced acc.} & \textbf{Precision} & \textbf{Recall} & \textbf{F1} & \textbf{ROC-AUC} \\
+		\hline
+		0.70 & 12 & 0.645 & 0.647 & 0.640 & 0.711 & 0.664& 0.737  \\
+		0.75 & 17 & 0.665 & 0.668 & 0.657 & 0.749 & 0.693& 0.723 \\
+		0.80 & 19 & 0.718 & 0.719 & 0.700 & 0.853 & 0.750 & 0.752 \\
+		0.85 & 24 & 0.655 & 0.658 & 0.643 & 0.731 & 0.674 & 0.701\\
+		\hline
+	\end{tabular}
+	\caption{Confronto in cross-validation delle soglie di correlazione utilizzate per ridurre il feature set. Le metriche sono calcolate sul training/validation set.}
+	\label{tab:rf_corr_threshold_comparison}
+\end{table}
+
+La soglia selezionata è stata pari a 0.80, poiché ha ottenuto la migliore balanced accuracy media in cross-validation. Il feature set ridotto risultante contiene 19 feature. Dopo la selezione della soglia, il modello Random Forest è stato nuovamente ottimizzato sul feature set ridotto mediante la stessa procedura di tuning utilizzata per il modello principale.
+
+\begin{table}[H]
+	\centering
+	\small
+	\begin{tabular}{ll}
+		\hline
+		\textbf{Iperparametro} & \textbf{Valore ottimale} \\
+		\hline
+		\texttt{n\_estimators} & 954 \\
+		\texttt{max\_depth} & 5 \\
+		\texttt{min\_samples\_leaf} & 1 \\
+		\texttt{min\_samples\_split} & 13 \\
+		\texttt{max\_features} & \text{sqrt} \\
+		\hline
+	\end{tabular}
+	\caption{Iperparametri ottimali del modello Random Forest applicato al feature set ridotto in base alla correlazione.}
+	\label{tab:rf_reduced_hyperparameters}
+\end{table}
+
+Il modello finale basato sul feature set ridotto è stato addestrato sull'intero training/validation set e valutato sul test set indipendente. Le performance ottenute sono riportate nella Tabella~\ref{tab:rf_reduced_final_metrics}.
+
+\begin{table}[H]
+	\centering
+	\small
+	\begin{tabular}{lr}
+		\hline
+		\textbf{Metrica} & \textbf{Valore} \\
+		\hline
+		Soglia di correlazione & 0.80 \\
+		N feature & 19 \\
+		Accuracy & 0.720 \\
+		Balanced accuracy & 0.718 \\
+		Precision & 0.714 \\
+		Recall & 0.769 \\
+		F1-score & 0.741 \\
+		ROC-AUC & 0.756 \\
+		\hline
+	\end{tabular}
+	\caption{Metriche finali del modello Random Forest con feature set ridotto, valutato sul test set indipendente.}
+	\label{tab:rf_reduced_final_metrics}
+\end{table}
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.60\textwidth]{../figures/2a_rf_correlation_reduced_feature_set_confusion_matrix.png}
+	\caption{Confusion matrix del modello Random Forest basato sul feature set ridotto in base alla correlazione.}
+	\label{fig:rf_reduced_confusion_matrix}
+\end{figure}
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.60\textwidth]{../figures/2a_rf_correlation_reduced_feature_set_roc_curve.png}
+	\caption{Curva ROC del modello Random Forest basato sul feature set ridotto in base alla correlazione.}
+	\label{fig:rf_reduced_roc_curve}
+\end{figure}
+
+Il confronto con il modello basato sul feature set originale permette di valutare se la rimozione delle feature ridondanti riduca, mantenga o migliori la capacità discriminativa del classificatore. Se le performance rimangono simili, il risultato suggerisce che parte dell'informazione contenuta nelle feature originali era ridondante; se invece peggiorano, significa che le feature rimosse contribuivano comunque alla classificazione.
+
+\subsection{Studio feature theta/beta ratio}
+
+L'analisi delle feature importance e degli effect size ha mostrato che alcune feature basate sul rapporto theta/beta sono tra le variabili più rilevanti del dataset, in particolare il rapporto theta/beta temporale. Questo risultato è coerente con la letteratura precedente, che ha spesso associato l'ADHD ad alterazioni del rapporto theta/beta. Tuttavia, alla luce della meta-analisi di Arns et al., è importante distinguere tra la presenza di informazione discriminativa nel TBR e la sua sufficienza come marker diagnostico autonomo \cite{Arns2013}.
+
+Per questo motivo, è stata condotta un'analisi specifica utilizzando esclusivamente feature derivate dal rapporto theta/beta. Sono stati confrontati tre insiemi di feature: rapporti theta/beta regionali, rapporti theta/beta a livello di singolo canale e l'insieme completo di tutte le feature theta/beta ratio. L'obiettivo era verificare se l'informazione contenuta nel TBR fosse sufficiente per classificare ADHD e controlli, oppure se il modello multifeature mantenesse un vantaggio predittivo.
+
+Il confronto iniziale è stato effettuato mediante cross-validation stratificata a 5 fold sul training/validation set.
+
+\begin{table}[H]
+	\centering
+	\small
+	\begin{tabular}{lrrrrrrr}
+		\hline
+		\textbf{Feature set} & \textbf{N} & \textbf{Accuracy} & \textbf{Balanced acc.} & \textbf{Precision} & \textbf{Recall} & \textbf{F1} & \textbf{ROC-AUC} \\
+		\hline
+		Regional TBR & 12 & 0.542 & 0.541 & 0.550 & 0.644 & 0.573 & 0.681 \\
+		Channel-level TBR & 19 & 0.575 & 0.576 & 0.586 & 0.649 & 0.609 & 0.614 \\
+		All TBR & 24 & 0.553 & 0.554 & 0.568 & 0.649 & 0.596 & 0.618\\
+		\hline
+	\end{tabular}
+	\caption{Confronto in cross-validation dei tre insiemi di feature basati esclusivamente sul rapporto theta/beta.}
+	\label{tab:rf_tbr_cv_comparison}
+\end{table}
+
+Il miglior insieme di feature theta/beta ratio è risultato essere \textbf{Channel-level TBR}. Questo insieme è stato quindi utilizzato per addestrare un modello Random Forest, ottimizzato con la stessa procedura adottata per i modelli precedenti.
+
+\begin{table}[H]
+	\centering
+	\small
+	\begin{tabular}{ll}
+		\hline
+		\textbf{Iperparametro} & \textbf{Valore ottimale} \\
+		\hline
+		\texttt{n\_estimators} & 330 \\
+		\texttt{max\_depth} & 1 \\
+		\texttt{min\_samples\_leaf} & 3 \\
+		\texttt{min\_samples\_split} & 7 \\
+		\texttt{max\_features} & \text{sqrt} \\
+		\hline
+	\end{tabular}
+	\caption{Iperparametri ottimali del modello Random Forest basato sulle sole feature theta/beta ratio.}
+	\label{tab:rf_tbr_hyperparameters}
+\end{table}
+
+Le metriche finali sul test set indipendente sono riportate nella Tabella~\ref{tab:rf_tbr_final_metrics}.
+
+\begin{table}[H]
+	\centering
+	\small
+	\begin{tabular}{lr}
+		\hline
+		\textbf{Metrica} & \textbf{Valore} \\
+		\hline
+		Accuracy & 0.760 \\
+		Balanced accuracy & 0.753 \\
+		Precision & 0.706 \\
+		Recall & 0.923 \\
+		F1-score & 0.800 \\
+		ROC-AUC & 0.705 \\
+		\hline
+	\end{tabular}
+	\caption{Metriche finali del modello Random Forest basato sulle sole feature theta/beta ratio, valutato sul test set indipendente.}
+	\label{tab:rf_tbr_final_metrics}
+\end{table}
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.60\textwidth]{../figures/2a_rf_theta_beta_ratio_feature_set_confusion_matrix.png}
+	\caption{Confusion matrix del modello Random Forest basato sulle sole feature theta/beta ratio.}
+	\label{fig:rf_tbr_confusion_matrix}
+\end{figure}
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.60\textwidth]{../figures/2a_rf_theta_beta_ratio_feature_set_roc_curve.png}
+	\caption{Curva ROC del modello Random Forest basato sulle sole feature theta/beta ratio.}
+	\label{fig:rf_tbr_roc_curve}
+\end{figure}
+
+Questa analisi permette di confrontare direttamente l'informazione contenuta nel rapporto theta/beta con quella contenuta nel modello multifeature. Se il modello basato solo su feature theta/beta ottiene performance inferiori rispetto al modello completo o al modello ridotto, ciò suggerisce che il rapporto theta/beta contiene informazione discriminativa ma non è sufficiente, da solo, per una classificazione robusta. Se invece le performance risultano simili, il risultato suggerisce che una parte rilevante dell'informazione discriminativa è catturata proprio dalle feature theta/beta ratio.
 
 

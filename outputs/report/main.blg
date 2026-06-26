@@ -8,45 +8,45 @@ Database file #1: references.bib
 Warning--empty journal in multiple
 Warning--empty journal in test
 Warning--empty journal in Welch
-You've used 4 entries,
+You've used 5 entries,
             2118 wiz_defined-function locations,
-            516 strings with 4454 characters,
-and the built_in function-call counts, 841 in all, are:
-= -- 77
-> -- 28
+            525 strings with 4639 characters,
+and the built_in function-call counts, 1207 in all, are:
+= -- 114
+> -- 46
 < -- 0
-+ -- 14
-- -- 8
-* -- 32
-:= -- 158
-add.period$ -- 12
-call.type$ -- 4
-change.case$ -- 16
++ -- 22
+- -- 14
+* -- 63
+:= -- 219
+add.period$ -- 15
+call.type$ -- 5
+change.case$ -- 22
 chr.to.int$ -- 0
-cite$ -- 7
-duplicate$ -- 37
-empty$ -- 74
-format.name$ -- 8
-if$ -- 167
+cite$ -- 8
+duplicate$ -- 48
+empty$ -- 101
+format.name$ -- 14
+if$ -- 240
 int.to.chr$ -- 0
-int.to.str$ -- 4
-missing$ -- 3
-newline$ -- 23
-num.names$ -- 8
-pop$ -- 26
+int.to.str$ -- 5
+missing$ -- 4
+newline$ -- 28
+num.names$ -- 10
+pop$ -- 30
 preamble$ -- 1
-purify$ -- 12
+purify$ -- 17
 quote$ -- 0
-skip$ -- 28
+skip$ -- 35
 stack$ -- 0
-substring$ -- 22
-swap$ -- 1
+substring$ -- 53
+swap$ -- 2
 text.length$ -- 0
 text.prefix$ -- 0
 top$ -- 0
-type$ -- 16
+type$ -- 20
 warning$ -- 3
-while$ -- 8
-width$ -- 5
-write$ -- 39
+while$ -- 12
+width$ -- 6
+write$ -- 50
 (There were 3 warnings)
