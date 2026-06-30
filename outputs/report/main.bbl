@@ -1,5 +1,12 @@
 \begin{thebibliography}{1}
 
+\bibitem{Moghadam2024}
+Elham Ahmadi~Moghadam, Farhad Abedinzadeh~Torghabeh, Seyyed~Abed Hosseini, and
+  Mohammad~Hossein Moattar.
+\newblock Improved adhd diagnosis using eeg connectivity and deep learning
+  through combining pearson correlation coefficient and phase-locking value.
+\newblock {\em Neuroinformatics}, 22(4):521--537, 2024.
+
 \bibitem{Kaggle}
 {Ali Motie Nasrabadi}.
 \newblock Eeg dataset for adhd.

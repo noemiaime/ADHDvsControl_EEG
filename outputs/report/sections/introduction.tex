@@ -1,19 +1,14 @@
 \section{Introduzione}
 
-Il disturbo da deficit di attenzione e iperattività (ADHD) è un disturbo del neurosviluppo caratterizzato da sintomi di disattenzione, impulsività e iperattività. Questo può influire sulle capacità attentive, il controllo cognitivo e il comportamento durante compiti che richiedono concentrazione e risposta a stimoli esterni.
+Il disturbo da deficit di attenzione e iperattività (ADHD) è un disturbo del neurosviluppo caratterizzato da sintomi di disattenzione, impulsività e iperattività. Questo può influire sul comportamento durante compiti che richiedono concentrazione e risposta a stimoli esterni.
 
 L'elettroencefalografia (EEG) risulta uno strumento utile per studiare l'attività cerebrale associata a questi processi, permette infatti di registrare l'attività elettrica cerebrale con elevata risoluzione temporale. I segnali EEG sono costituiti da serie temporali misurate da elettrodi posizionati sullo scalpo secondo configurazioni standard, come il sistema internazionale 10--20. Attraverso l'analisi di tali segnali è possibile estrarre informazioni sull'attività cerebrale in diverse bande di frequenza, come delta, theta, alpha e beta.
 
-Un indice molto studiato è il rapporto theta/beta, o theta/beta ratio (TBR). Il TBR è stato proposto come possibile misura quantitativa per distinguere soggetti con ADHD da soggetti di controllo. Tuttavia, il suo ruolo diagnostico è ancora discusso. La meta-analisi di Arns, Conners e Kraemer ha mostrato che, sebbene molti studi abbiano riportato un TBR aumentato nei soggetti con ADHD, gli effect size complessivi presentavano una significativa eterogeneità. Gli autori riportano un effect size medio pari a 0.75 nei soggetti di 6--13 anni e pari a 0.62 nel gruppo 6--18 anni, ma sottolineano che questi valori possono rappresentare una sovrastima a causa dell'eterogeneità tra gli studi \cite{Arns2013}. Inoltre, l'analisi post-hoc evidenzia una riduzione della differenza di TBR tra ADHD e controlli nel corso degli anni, principalmente associata a un aumento del TBR nei gruppi di controllo \cite{Arns2013}.
+Un indice molto studiato è il rapporto theta/beta, o theta/beta ratio (TBR). Il TBR è stato proposto come possibile misura quantitativa per distinguere soggetti con ADHD da soggetti di controllo. Tuttavia, il suo ruolo diagnostico è ancora discusso. Lo studio di Arns, Conners e Kraemer (\cite{Arns2013}) ha mostrato che, sebbene molti studi abbiano riportato un TBR aumentato nei soggetti con ADHD, gli effect size complessivi presentavano una significativa eterogeneità. Inoltre si evidenzia una riduzione della differenza di TBR tra ADHD e controlli nel corso degli anni, principalmente associata a un aumento del TBR nei gruppi di controll.
 
-Per questo motivo, Arns et al. concludono che un TBR elevato non può essere considerato una misura diagnostica affidabile per l'ADHD, pur potendo avere valore prognostico in un sottogruppo di pazienti \cite{Arns2013}. A partire da questa osservazione, il presente lavoro non assume il theta/beta ratio come unico marker diagnostico, ma lo analizza all'interno di una pipeline multifeature.
+Per questo motivo, Arns et al. concludono che un TBR elevato non può essere considerato una misura diagnostica affidabile per l'ADHD.
+A partire da questa osservazione, il presente lavoro non assume il theta/beta ratio come unico marker diagnostico, ma lo analizza all'interno di una pipeline multifeature.
+Recentemente, l'analisi della functional connectivity EEG è stata proposta come rappresentazione complementare alle tradizionali feature spettrali per la classificazione dell'ADHD. In particolare, Ahmadi Moghadam et al. hanno proposto un approccio basato su mappe di connettività EEG ottenute combinando Pearson Correlation Coefficient e Phase-Locking Value, successivamente utilizzate come input per un modello deep learning (\cite{Moghadam2024}).
+Nel presente lavoro non viene replicata tale architettura, ma viene adottata una strategia più semplice, basata su feature di connettività derivate dalla correlazione di Pearson e valutate mediante modelli Random Forest e Logistic Regression.
 
-L'obiettivo del progetto è quindi valutare se feature EEG spettrali possano distinguere soggetti ADHD e Control. In particolare, il lavoro si propone di:
-\begin{enumerate}
-	\item confrontare statisticamente le feature EEG tra i due gruppi;
-	\item valutare le performance di classificazione di un modello Random Forest;
-	\item analizzare quali feature contribuiscono maggiormente alla classificazione;
-	\item verificare se le sole feature theta/beta ratio siano sufficienti a ottenere performance comparabili a quelle del modello multifeature.
-\end{enumerate}
-
-\hl{Poiché il progetto è ancora in fase di completamento, i risultati devono essere considerati preliminari.}
+L'obiettivo del progetto è valutare se differenti rappresentazioni dei segnali EEG possano distinguere soggetti ADHD e Control. 

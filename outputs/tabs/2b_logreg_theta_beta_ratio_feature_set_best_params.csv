@@ -1,0 +1,2 @@
+classifier__C,classifier__penalty,classifier__solver,best_cv_balanced_accuracy
+0.1,l2,lbfgs,0.6244444444444445

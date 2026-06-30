@@ -3,24 +3,34 @@
 \contentsline {section}{\numberline {1}Introduzione}{2}{section.1}%
 \contentsline {section}{\numberline {2}Metodi}{2}{section.2}%
 \contentsline {subsection}{\numberline {2.1}Dataset}{2}{subsection.2.1}%
-\contentsline {subsection}{\numberline {2.2}Feature extraction}{3}{subsection.2.2}%
-\contentsline {subsection}{\numberline {2.3}Esplorazione delle feature}{4}{subsection.2.3}%
+\contentsline {subsection}{\numberline {2.2}Estrazione features spettrali}{3}{subsection.2.2}%
+\contentsline {subsection}{\numberline {2.3}Esplorazione featurea spettrali}{4}{subsection.2.3}%
 \contentsline {subsubsection}{\numberline {2.3.1}Test di Mann-Whitney U}{4}{subsubsection.2.3.1}%
-\contentsline {subsubsection}{\numberline {2.3.2}Cohen's d}{5}{subsubsection.2.3.2}%
+\contentsline {subsubsection}{\numberline {2.3.2}Cohen's d}{4}{subsubsection.2.3.2}%
 \contentsline {subsubsection}{\numberline {2.3.3}Correzione per confronti multipli}{5}{subsubsection.2.3.3}%
-\contentsline {subsubsection}{\numberline {2.3.4}Analisi di correlazione}{6}{subsubsection.2.3.4}%
-\contentsline {subsection}{\numberline {2.4}Classificazione con Random Forest}{6}{subsection.2.4}%
-\contentsline {subsubsection}{\numberline {2.4.1}Tuning degli iperparametri}{7}{subsubsection.2.4.1}%
-\contentsline {subsubsection}{\numberline {2.4.2}Feature importance}{8}{subsubsection.2.4.2}%
-\contentsline {section}{\numberline {3}Risultati}{8}{section.3}%
-\contentsline {subsection}{\numberline {3.1}Differenze tra gruppi ed effect size}{8}{subsection.3.1}%
-\contentsline {subsection}{\numberline {3.2}Feature significative dopo correzione FDR}{10}{subsection.3.2}%
-\contentsline {subsection}{\numberline {3.3}Correlazione tra feature}{12}{subsection.3.3}%
-\contentsline {subsubsection}{\numberline {3.3.1}Correlazioni canale-livello}{13}{subsubsection.3.3.1}%
-\contentsline {subsubsection}{\numberline {3.3.2}Correlazioni regionali}{13}{subsubsection.3.3.2}%
-\contentsline {subsubsection}{\numberline {3.3.3}Distribuzione delle correlazioni}{14}{subsubsection.3.3.3}%
-\contentsline {subsection}{\numberline {3.4}Classificazione Random Forest}{16}{subsection.3.4}%
-\contentsline {subsection}{\numberline {3.5}Performance del modello finale}{17}{subsection.3.5}%
-\contentsline {subsection}{\numberline {3.6}Feature importance}{19}{subsection.3.6}%
-\contentsline {subsection}{\numberline {3.7}Riduzione del feature set in base alla correlazione}{21}{subsection.3.7}%
-\contentsline {subsection}{\numberline {3.8}Studio feature theta/beta ratio}{24}{subsection.3.8}%
+\contentsline {subsubsection}{\numberline {2.3.4}Analisi di correlazione}{5}{subsubsection.2.3.4}%
+\contentsline {subsection}{\numberline {2.4}Classificazione}{6}{subsection.2.4}%
+\contentsline {subsubsection}{\numberline {2.4.1}Random Forest}{6}{subsubsection.2.4.1}%
+\contentsline {paragraph}{Tuning degli iperparametri:}{7}{section*.3}%
+\contentsline {paragraph}{Feature importance:}{7}{section*.4}%
+\contentsline {subsubsection}{\numberline {2.4.2}Logistic Regression}{7}{subsubsection.2.4.2}%
+\contentsline {paragraph}{Tuning degli iperparametri:}{8}{section*.5}%
+\contentsline {subsection}{\numberline {2.5}Features di functional connectivity}{8}{subsection.2.5}%
+\contentsline {section}{\numberline {3}Risultati}{9}{section.3}%
+\contentsline {subsection}{\numberline {3.1}Features spettrali}{9}{subsection.3.1}%
+\contentsline {subsubsection}{\numberline {3.1.1}Differenze tra gruppi ed effect size}{9}{subsubsection.3.1.1}%
+\contentsline {subsubsection}{\numberline {3.1.2}Feature significative dopo correzione FDR}{11}{subsubsection.3.1.2}%
+\contentsline {subsubsection}{\numberline {3.1.3}Correlazione tra feature}{13}{subsubsection.3.1.3}%
+\contentsline {subsubsection}{\numberline {3.1.4}Correlazioni canale-livello}{13}{subsubsection.3.1.4}%
+\contentsline {subsubsection}{\numberline {3.1.5}Correlazioni regionali}{13}{subsubsection.3.1.5}%
+\contentsline {subsubsection}{\numberline {3.1.6}Distribuzione delle correlazioni}{14}{subsubsection.3.1.6}%
+\contentsline {subsubsection}{\numberline {3.1.7}Classificazione Random Forest}{15}{subsubsection.3.1.7}%
+\contentsline {subsubsection}{\numberline {3.1.8}Performance del modello finale}{16}{subsubsection.3.1.8}%
+\contentsline {subsubsection}{\numberline {3.1.9}Feature importance}{18}{subsubsection.3.1.9}%
+\contentsline {subsubsection}{\numberline {3.1.10}Riduzione del feature set in base alla correlazione}{20}{subsubsection.3.1.10}%
+\contentsline {subsubsection}{\numberline {3.1.11}Studio feature theta/beta ratio}{23}{subsubsection.3.1.11}%
+\contentsline {subsubsection}{\numberline {3.1.12}Classificazione con Logistic Regression}{25}{subsubsection.3.1.12}%
+\contentsline {subsection}{\numberline {3.2}Feature di functional connectivity}{26}{subsection.3.2}%
+\contentsline {subsubsection}{\numberline {3.2.1}Feature importance delle connessioni funzionali}{28}{subsubsection.3.2.1}%
+\contentsline {subsubsection}{\numberline {3.2.2}Classificazione con Logistic Regression}{29}{subsubsection.3.2.2}%
+\contentsline {section}{\numberline {4}Conclusioni}{31}{section.4}%

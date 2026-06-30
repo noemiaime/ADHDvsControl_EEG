@@ -1,9 +1,26 @@
 \section{Risultati}
+\subsection{Features spettrali}
+\subsubsection{Differenze tra gruppi ed effect size}
+Si riportano le matrici di effect size per Cohen's $d$, rappresentate separatamente a livello regionale e a livello di singolo canale. L'asterisco indica una feature significativa dopo correzione FDR.
 
-\subsection{Differenze tra gruppi ed effect size}
-Le features EEG sono state confrontate tra soggetti ADHD e Control mediante test di Mann-Whitney U. 
-Per quantificare la grandezza della differenza tra i gruppi è stato calcolato Cohen's $d$.
- Le prime dieci feature ordinate secondo il valore assoluto di Cohen's $d$ sono riportate nella Tabella~\ref{tab:top10_cohen}.
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.85\textwidth]{../figures/1b_regional_effect_size.png}
+	\caption{Matrice degli effect size regionali. Ogni cella riporta Cohen's $d$ per una combinazione regione-banda. L'asterisco indica una feature significativa dopo correzione FDR.}
+	\label{fig:regional_effect_size}
+\end{figure}
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.85\textwidth]{../figures/1b_Tchannel_effect_size.png}
+	\caption{Matrice degli effect size a livello di singolo canale. Ogni cella riporta Cohen's $d$ per una combinazione canale-banda. L'asterisco indica una feature significativa dopo correzione FDR.}
+	\label{fig:channel_effect_size}
+\end{figure}
+
+Le feature con maggiore effect size sono prevalentemente associate al rapporto theta/beta e alle potenze nelle bande lente, soprattutto in regioni temporali, parietali e occipitali.
+Inoltre, la maggior parte di queste mostrano Cohen's $d$ negativo, indicando valori medi più elevati nel gruppo Control.
+
+Per riassumere si mostrano le prime dieci feature ordinate secondo il valore assoluto di Cohen's $d$ nella Tabella~\ref{tab:top10_cohen}.
 
 \begin{table}[H]
 	\centering
@@ -24,35 +41,14 @@ Per quantificare la grandezza della differenza tra i gruppi è stato calcolato C
 		\texttt{occipital\_theta\_beta\_ratio} & 1.477 & 1.980 & -0.484 & 0.233 \\
 		\hline
 	\end{tabular}
-	\caption{Prime dieci feature EEG ordinate secondo il valore assoluto di Cohen's $d$. Valori negativi indicano valori medi più alti nel gruppo Control rispetto al gruppo ADHD.}
+	\caption{Prime dieci feature EEG ordinate secondo il valore assoluto di Cohen's $d$.}
 	\label{tab:top10_cohen}
 \end{table}
 
-Le feature con maggiore effect size sono prevalentemente associate al rapporto theta/beta e alle potenze nelle bande lente, soprattutto in regioni temporali, parietali e occipitali. Tutte le prime dieci feature mostrano Cohen's $d$ negativo, indicando valori medi più elevati nel gruppo Control. 
 
-Per visualizzare la distribuzione spaziale degli effect size, Cohen's $d$ è stato rappresentato sia a livello regionale sia a livello di singolo canale.
+\subsubsection{Feature significative dopo correzione FDR}
 
-\begin{figure}[H]
-	\centering
-	\includegraphics[width=0.85\textwidth]{../figures/1b_regional_effect_size.png}
-	\caption{Matrice degli effect size regionali. Ogni cella riporta Cohen's $d$ per una combinazione regione-banda. L'asterisco indica una feature significativa dopo correzione FDR.}
-	\label{fig:regional_effect_size}
-\end{figure}
-
-Anche matrice regionale mostra effect size prevalentemente negativi, in particolare per la banda delta e per il rapporto theta/beta. Il valore più marcato riguarda il rapporto theta/beta temporale, che risulta anche significativo dopo correzione FDR (contrassegnato con $*$).
-
-\begin{figure}[H]
-	\centering
-	\includegraphics[width=0.85\textwidth]{../figures/1b_Tchannel_effect_size.png}
-	\caption{Matrice degli effect size a livello di singolo canale. Ogni cella riporta Cohen's $d$ per una combinazione canale-banda. L'asterisco indica una feature significativa dopo correzione FDR.}
-	\label{fig:channel_effect_size}
-\end{figure}
-
-La matrice canale-livello evidenzia che le differenze più marcate si concentrano soprattutto nei canali temporali e parietali, in particolare per il rapporto theta/beta e per le potenze delta e theta. La rappresentazione a singolo canale conserva maggiore dettaglio spaziale, mentre la rappresentazione regionale fornisce una sintesi più compatta.
-
-\subsection{Feature significative dopo correzione FDR}
-
-Per controllare il problema dei confronti multipli, i p-value ottenuti dai test di Mann-Whitney U sono stati corretti mediante procedura Benjamini-Hochberg. Le feature con $p_{FDR} < 0.05$ sono state considerate statisticamente significative dopo correzione. I risultati sono riportati nella Tabella~\ref{tab:fdr_features} e visualizzati in Figura~\ref{fig:fdr_features_boxplot}.
+ Le feature con $p_{FDR} < 0.05$ sono state considerate statisticamente significative dopo correzione. I risultati sono riportati nella Tabella~\ref{tab:fdr_features} e visualizzati in Figura~\ref{fig:fdr_features_boxplot}.
 
 \begin{table}[H]
 	\centering
@@ -84,9 +80,7 @@ Le feature significative dopo correzione FDR confermano il coinvolgimento del ra
 \end{figure}
 
 
-\subsection{Correlazione tra feature}
-
-Per valutare la ridondanza tra feature EEG, sono state calcolate correlazioni di Spearman separatamente nei gruppi ADHD e Control. L'analisi è stata condotta sia sulle feature canale-livello sia sulle feature regionali.
+\subsubsection{Correlazione tra feature}
 
 \subsubsection{Correlazioni canale-livello}
 
@@ -126,18 +120,10 @@ Le correlazioni più forti tra feature canale-livello sono riportate nella Tabel
 	\label{tab:top_channel_correlations}
 \end{table}
 
-Le correlazioni canale-livello più forti in valore assoluto risultano tutte positive in entrambi i gruppi. Questo indica che le principali ridondanze tra feature derivano soprattutto da potenze della stessa banda o da feature spettrali simili misurate in canali vicini. Nel gruppo ADHD compaiono correlazioni elevate tra canali frontali e parietali, come \texttt{F3}--\texttt{Fz} e \texttt{P3}--\texttt{Pz}. Nel gruppo Control si osservano correlazioni molto alte tra canali frontali, centrali e parietali, in particolare per le bande theta, alpha, beta e delta. Questa struttura conferma che molte feature canale-livello non sono indipendenti, ma descrivono pattern spettrali parzialmente sovrapposti.
+Le correlazioni canale-livello più forti in valore assoluto risultano tutte positive in entrambi i gruppi. Questo indica che le principali ridondanze tra feature derivano soprattutto da potenze della stessa banda o da feature spettrali simili misurate in canali vicini. Nel gruppo ADHD compaiono correlazioni elevate tra canali frontali e parietali, come \texttt{F3}--\texttt{Fz} e \texttt{P3}--\texttt{Pz}. Nel gruppo Control si osservano correlazioni molto alte anche tra canali centrali. Questa struttura conferma che molte feature canale-livello non sono indipendenti, ma descrivono pattern spettrali parzialmente sovrapposti.
 
 \subsubsection{Correlazioni regionali}
-
-Le matrici di correlazione tra feature regionali sono mostrate in Figura~\ref{fig:regional_corr_matrix_by_group}. Le dieci correlazioni regionali più forti in valore assoluto sono riportate nella Tabella~\ref{tab:top_regional_correlations}.
-
-\begin{figure}[H]
-	\centering
-	\includegraphics[width=0.98\textwidth]{../figures/1b_regional_correlation_matrix_by_group.png}
-	\caption{Matrici di correlazione di Spearman tra feature regionali, calcolate separatamente nei gruppi ADHD e Control.}
-	\label{fig:regional_corr_matrix_by_group}
-\end{figure}
+Le correlazioni più forti tra feature regionali sono riportate nella Tabella~\ref{{tab:top_regional_correlations}. Sono state selezionate le dieci correlazioni più forti in valore assoluto per ciascun gruppo.
 
 \begin{table}[H]
 	\centering
@@ -195,7 +181,7 @@ Le distribuzioni dei coefficienti di Spearman sono riportate separatamente per f
 
 Le distribuzioni mostrano che la maggior parte delle correlazioni è positiva in entrambi i gruppi. Per le feature regionali, il gruppo Control presenta una distribuzione leggermente più spostata verso correlazioni positive elevate, suggerendo una maggiore co-variazione tra feature regionali. Per le feature canale-livello, le distribuzioni dei due gruppi sono più sovrapposte, anche se il gruppo Control mantiene una coda più estesa verso valori positivi alti.
 
-\subsection{Classificazione Random Forest}
+\subsubsection{Classificazione Random Forest}
 
 Per valutare il contenuto predittivo delle feature EEG, è stato addestrato un classificatore Random Forest. Sono stati confrontati tre set di feature: tutte le feature EEG, le sole feature canale-livello e le sole feature regionali. Il confronto è stato eseguito mediante cross-validation stratificata a 5 fold sul training/validation set.
 
@@ -224,7 +210,7 @@ Per valutare il contenuto predittivo delle feature EEG, è stato addestrato un c
 
 Le feature regionali ottengono la migliore balanced accuracy media. Le differenze rispetto all'insieme completo non sono ampie, ma il risultato suggerisce che una rappresentazione regionale sia sufficiente a conservare informazione discriminativa, riducendo così la dimensionalità rispetto alle feature relative ai canali singoli.
 
-\subsection{Performance del modello finale}
+\subsubsection{Performance del modello finale}
 
 Il modello finale, dopo tuning sugli iperparametri ha mostrato performance migliori con parametri: 
 
@@ -288,7 +274,7 @@ La capacità discriminativa del modello finale è stata valutata anche tramite c
 La curva ROC mostra una capacità di separazione superiore al caso casuale. Il valore di ROC-AUC ottenuto sul test set è pari a 0.72 come già indicato in \ref{tab:rf_final_metrics}. 
 
 
-\subsection{Feature importance}
+\subsubsection{Feature importance}
 
 La feature importance della Random Forest è stata utilizzata per identificare le variabili maggiormente coinvolte nella classificazione. Le dieci feature più importanti sono riportate in Figura~\ref{fig:rf_feature_importance}.
 
@@ -312,9 +298,9 @@ Per valutare la ridondanza tra le feature maggiormente utilizzate dal modello, �
 
 La matrice mostra che diverse feature importanti sono tra loro correlate. Questo indica che il modello non utilizza dieci feature completamente indipendenti, ma un insieme di variabili parzialmente ridondanti che descrivono aspetti correlati dell'attività spettrale regionale.
 
-\subsection{Riduzione del feature set in base alla correlazione}
+\subsubsection{Riduzione del feature set in base alla correlazione}
 
-La matrice di correlazione tra le dieci feature più importanti ha mostrato la presenza di correlazioni moderate o elevate tra alcune variabili. Per questo motivo è stata effettuata un'analisi aggiuntiva per valutare se fosse possibile ridurre la ridondanza del feature set senza peggiorare le performance di classificazione.
+È stata effettuata un'analisi aggiuntiva per valutare se fosse possibile ridurre la ridondanza del feature set senza peggiorare le performance di classificazione.
 
 Le feature sono state ordinate in base alla feature importance ottenuta dal modello Random Forest finale. Successivamente partendo dalla feature più importante, una nuova feature veniva mantenuta solo se la sua correlazione assoluta di Spearman con tutte le feature già selezionate era inferiore a una soglia prefissata. In questo modo, tra feature altamente correlate, veniva conservata quella con maggiore importanza nel modello.
 
@@ -337,7 +323,7 @@ Sono state testate diverse soglie di correlazione sul solo training/validation s
 	\label{tab:rf_corr_threshold_comparison}
 \end{table}
 
-La soglia selezionata è stata pari a 0.80, poiché ha ottenuto la migliore balanced accuracy media in cross-validation. Il feature set ridotto risultante contiene 19 feature. Dopo la selezione della soglia, il modello Random Forest è stato nuovamente ottimizzato sul feature set ridotto mediante la stessa procedura di tuning utilizzata per il modello principale.
+La soglia selezionata è stata pari a 0.80. Il feature set ridotto risultante contiene 19 feature. Dopo la selezione della soglia, il modello Random Forest è stato nuovamente ottimizzato sul feature set ridotto mediante la stessa procedura di tuning utilizzata per il modello principale.
 
 \begin{table}[H]
 	\centering
@@ -394,15 +380,13 @@ Il modello finale basato sul feature set ridotto è stato addestrato sull'intero
 	\label{fig:rf_reduced_roc_curve}
 \end{figure}
 
-Il confronto con il modello basato sul feature set originale permette di valutare se la rimozione delle feature ridondanti riduca, mantenga o migliori la capacità discriminativa del classificatore. Se le performance rimangono simili, il risultato suggerisce che parte dell'informazione contenuta nelle feature originali era ridondante; se invece peggiorano, significa che le feature rimosse contribuivano comunque alla classificazione.
+La riduzione del feature set ha permesso di diminuire il numero di variabili da 25 a 19 mantenendo prestazioni comparabili a quelle del modello basato su tutte le feature regionali. La balanced accuracy risulta leggermente inferiore rispetto al modello regionale completo, mentre la ROC-AUC è lievemente superiore. Questo suggerisce che parte dell'informazione contenuta nelle feature regionali sia ridondante.
 
-\subsection{Studio feature theta/beta ratio}
+\subsubsection{Studio feature theta/beta ratio}
 
-L'analisi delle feature importance e degli effect size ha mostrato che alcune feature basate sul rapporto theta/beta sono tra le variabili più rilevanti del dataset, in particolare il rapporto theta/beta temporale. Questo risultato è coerente con la letteratura precedente, che ha spesso associato l'ADHD ad alterazioni del rapporto theta/beta. Tuttavia, alla luce della meta-analisi di Arns et al., è importante distinguere tra la presenza di informazione discriminativa nel TBR e la sua sufficienza come marker diagnostico autonomo \cite{Arns2013}.
+Alla luce dell'analisi di Arns et al., è interessante distinguere tra la presenza di informazione discriminativa nel TBR e la sua sufficienza come marker diagnostico autonomo \cite{Arns2013}.
 
-Per questo motivo, è stata condotta un'analisi specifica utilizzando esclusivamente feature derivate dal rapporto theta/beta. Sono stati confrontati tre insiemi di feature: rapporti theta/beta regionali, rapporti theta/beta a livello di singolo canale e l'insieme completo di tutte le feature theta/beta ratio. L'obiettivo era verificare se l'informazione contenuta nel TBR fosse sufficiente per classificare ADHD e controlli, oppure se il modello multifeature mantenesse un vantaggio predittivo.
-
-Il confronto iniziale è stato effettuato mediante cross-validation stratificata a 5 fold sul training/validation set.
+Per questo motivo, è stata condotta un'analisi specifica utilizzando esclusivamente feature derivate dal rapporto theta/beta. Sono stati confrontati tre insiemi di feature: rapporti theta/beta regionali, rapporti theta/beta a livello di singolo canale e l'insieme completo di tutte le feature theta/beta ratio. I metodi utilizzati corrispondono ai precedenti.
 
 \begin{table}[H]
 	\centering
@@ -420,7 +404,7 @@ Il confronto iniziale è stato effettuato mediante cross-validation stratificata
 	\label{tab:rf_tbr_cv_comparison}
 \end{table}
 
-Il miglior insieme di feature theta/beta ratio è risultato essere \textbf{Channel-level TBR}. Questo insieme è stato quindi utilizzato per addestrare un modello Random Forest, ottimizzato con la stessa procedura adottata per i modelli precedenti.
+Il miglior insieme di feature theta/beta ratio è risultato essere Channel-level TBR. Questo insieme è stato quindi utilizzato per addestrare un modello Random Forest, ottimizzato con la stessa procedura adottata per i modelli precedenti.
 
 \begin{table}[H]
 	\centering
@@ -475,6 +459,162 @@ Le metriche finali sul test set indipendente sono riportate nella Tabella~\ref{t
 	\label{fig:rf_tbr_roc_curve}
 \end{figure}
 
-Questa analisi permette di confrontare direttamente l'informazione contenuta nel rapporto theta/beta con quella contenuta nel modello multifeature. Se il modello basato solo su feature theta/beta ottiene performance inferiori rispetto al modello completo o al modello ridotto, ciò suggerisce che il rapporto theta/beta contiene informazione discriminativa ma non è sufficiente, da solo, per una classificazione robusta. Se invece le performance risultano simili, il risultato suggerisce che una parte rilevante dell'informazione discriminativa è catturata proprio dalle feature theta/beta ratio.
+Il modello basato sulle sole feature theta/beta ratio ha ottenuto prestazioni simili al modello Random Forest basato sulle feature regionali complete in termini di accuracy e balanced accuracy, ma con una ROC-AUC inferiore. Questo indica che il rapporto theta/beta contiene informazione discriminativa rilevante, ma non descrive completamente la separazione tra ADHD e Control. Il risultato supporta quindi l'idea che il TBR sia utile all'interno di una pipeline multifeature, ma non sufficiente come unico marker diagnostico.
+
+\subsubsection{Classificazione con Logistic Regression}
+
+Il feature set regionale, il feature set ridotto in base alla correlazione e il feature set basato esclusivamente sul rapporto theta/beta sono stati valutati mediante Logistic Regression.
+
+In tutti e tre i casi, il valore ottimale del parametro di regolarizzazione è risultato pari a $C=0.1$.
+
+I risultati finali sul test set indipendente sono riportati nella Tabella~\ref{tab:logreg_spectral_results}.
+
+\begin{table}[H]
+	\centering
+	\small
+	\begin{tabular}{lrrrrrrr}
+		\hline
+		\textbf{Feature set} & \textbf{N} & \textbf{Accuracy} & \textbf{Balanced acc.} & \textbf{Precision} & \textbf{Recall} & \textbf{F1} & \textbf{ROC-AUC} \\
+		\hline
+		Regional & 25 & 0.600 & 0.596 & 0.600 & 0.692 & 0.643 & 0.615 \\
+		Correlation-reduced& 19 & 0.560 & 0.558 & 0.571 & 0.615 & 0.593 & 0.590 \\
+		Theta/beta ratio & 19 & 0.720 & 0.715 & 0.688 & 0.846 & 0.759 & 0.712 \\
+		\hline
+	\end{tabular}
+	\caption{Performance della Logistic Regression sui diversi insiemi di feature spettrali, valutate sul test set indipendente.}
+	\label{tab:logreg_spectral_results}
+\end{table}
+
+Tra i tre insiemi di feature, il modello basato esclusivamente sul rapporto theta/beta ha ottenuto le prestazioni migliori. Di tale feature set si riporta la confusion matrix e la curva ROC. 
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.60\textwidth]{../figures/2b_logreg_theta_beta_ratio_feature_set_confusion_matrix.png}
+	\caption{Confusion matrix della Logistic Regression basata sulle feature theta/beta ratio, valutata sul test set indipendente.}
+	\label{fig:logreg_tbr_confusion_matrix}
+\end{figure}
 
 
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.60\textwidth]{../figures/2b_logreg_theta_beta_ratio_feature_set_roc_curve.png}
+	\caption{Curva ROC della Logistic Regression basata sulle feature theta/beta ratio. La linea tratteggiata rappresenta la performance casuale.}
+	\label{fig:logreg_tbr_roc_curve}
+\end{figure}
+
+Nel complesso, la Logistic Regression ha mostrato prestazioni inferiori rispetto alla Random Forest sulle feature spettrali regionali e ridotte. Tuttavia, il risultato ottenuto con le sole feature theta/beta ratio indica che queste feature sono informative anche per un modello lineare.
+
+\subsection{Feature di functional connectivity}
+
+Le feature di functional connectivity sono state valutate per verificare se le relazioni temporali tra canali e regioni EEG contenessero informazione utile per distinguere soggetti ADHD e Control. Sono stati confrontati tre insiemi di feature: tutte le feature di connettività, le sole feature di connettività canale-livello e le sole feature di connettività regionale.
+
+Il confronto in cross-validation mediante Random Forest è riportato nella Tabella~\ref{tab:rf_connectivity_cv_comparison}.
+
+\begin{table}[H]
+	\centering
+	\small
+	\begin{tabular}{lrrrrrrr}
+		\hline
+		\textbf{Feature set} & \textbf{N} & \textbf{Accuracy} & \textbf{Balanced acc.} & \textbf{Precision} & \textbf{Recall} & \textbf{F1} & \textbf{ROC-AUC} \\
+		\hline
+		All & 724 & 0.688 & 0.684 & 0.661 & 0.769 & 0.703 & 0.721 \\
+		Channel-level & 684 & 0.709 & 0.706 & 0.692 & 0.791 & 0.731 & 0.722 \\
+		Regional & 40 & 0.710 & 0.708 & 0.686 & 0.773 & 0.718 & 0.769 \\
+		\hline
+	\end{tabular}
+	\caption{Confronto in cross-validation dei tre insiemi di feature di functional connectivity mediante Random Forest.}
+	\label{tab:rf_connectivity_cv_comparison}
+\end{table}
+
+Il miglior feature set di functional connectivity è risultato essere quello basato sulle feature regionali. Questo risultato suggerisce che una rappresentazione regionale della connettività sia sufficiente a conservare informazione discriminativa, riducendo notevolmente la dimensionalità rispetto alle feature di connettività canale-livello.
+
+Il modello Random Forest basato sulle feature regionali è stato quindi ottimizzato mediante la stessa procedura di tuning utilizzata per le feature spettrali. I migliori iperparametri ottenuti sono riportati nella Tabella~\ref{tab:rf_connectivity_hyperparameters}.
+
+\begin{table}[H]
+	\centering
+	\small
+	\begin{tabular}{ll}
+		\hline
+		\textbf{Iperparametro} & \textbf{Valore ottimale} \\
+		\hline
+		\texttt{n\_estimators} & 330 \\
+		\texttt{max\_depth} & 15 \\
+		\texttt{min\_samples\_leaf} & 3 \\
+		\texttt{min\_samples\_split} & 10 \\
+		\texttt{max\_features} & \texttt{log2} \\
+		\hline
+	\end{tabular}
+	\caption{Iperparametri ottimali del modello Random Forest basato sulle feature regionali di functional connectivity.}
+	\label{tab:rf_connectivity_hyperparameters}
+\end{table}
+
+Il modello finale è stato addestrato sull'intero training/validation set e valutato sul test set indipendente. Le metriche finali sono riportate nella Tabella~\ref{tab:rf_connectivity_final_metrics}.
+
+\begin{table}[H]
+	\centering
+	\small
+	\begin{tabular}{lr}
+		\hline
+		\textbf{Metrica} & \textbf{Valore} \\
+		\hline
+		Feature set & Regional connectivity features \\
+		N feature & 40 \\
+		Accuracy & 0.920 \\
+		Balanced accuracy & 0.920 \\
+		Precision & 0.923 \\
+		Recall & 0.923 \\
+		F1-score & 0.923 \\
+		ROC-AUC & 0.929 \\
+		\hline
+	\end{tabular}
+	\caption{Metriche finali del modello Random Forest basato su feature regionali di functional connectivity, valutato sul test set indipendente.}
+	\label{tab:rf_connectivity_final_metrics}
+\end{table}
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.60\textwidth]{../figures/3b_rf_connectivity_best_feature_set_confusion_matrix.png}
+	\caption{Confusion matrix del modello Random Forest basato su feature regionali di functional connectivity.}
+	\label{fig:rf_connectivity_confusion_matrix}
+\end{figure}
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.60\textwidth]{../figures/3b_rf_connectivity_best_feature_set_roc_curve.png}
+	\caption{Curva ROC del modello Random Forest basato su feature regionali di functional connectivity. La linea tratteggiata rappresenta la performance casuale.}
+	\label{fig:rf_connectivity_roc_curve}
+\end{figure}
+
+Il modello Random Forest basato sulle feature regionali di functional connectivity ha ottenuto prestazioni superiori rispetto ai modelli basati sulle feature spettrali. Questo risultato suggerisce che le relazioni funzionali tra regioni EEG forniscano una rappresentazione particolarmente informativa per distinguere soggetti ADHD e Control nel dataset analizzato.
+
+\subsubsection{Feature importance delle connessioni funzionali}
+
+Per interpretare il modello Random Forest basato sulle feature di functional connectivity, è stata analizzata la feature importance delle connessioni regionali. Questa analisi permette di identificare quali coppie di regioni e bande di frequenza contribuiscano maggiormente alla classificazione tra ADHD e Control.
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.85\textwidth]{../figures/3b_rf_connectivity_feature_importance_top15.png}
+	\caption{Prime quindici feature di functional connectivity più importanti secondo il modello Random Forest.}
+	\label{fig:rf_connectivity_feature_importance}
+\end{figure}
+
+Le feature più importanti coinvolgono soprattutto connessioni tra regioni centrali, parietali, temporali e occipitali, in particolare nelle bande beta e alpha. Questo suggerisce che la classificazione non dipenda da una singola connessione, ma da un pattern distribuito di relazioni funzionali tra regioni EEG.
+
+\subsubsection{Classificazione con Logistic Regression}
+Successivamente, lo stesso feature set di connettività regionale è stato valutato mediante Logistic Regression, in modo da confrontare un modello non lineare con un modello lineare a parità di input.
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.60\textwidth]{../figures/3b_logreg_connectivity_best_feature_set_confusion_matrix.png}
+	\caption{Confusion matrix della Logistic Regression basata su feature regionali di functional connectivity.}
+	\label{fig:logreg_connectivity_confusion_matrix}
+\end{figure}
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.60\textwidth]{../figures/3b_logreg_connectivity_best_feature_set_roc_curve.png}
+	\caption{Curva ROC della Logistic Regression basata su feature regionali di functional connectivity.}
+	\label{fig:logreg_connectivity_roc_curve}
+\end{figure}
+
+La Logistic Regression basata sulle feature regionali di functional connectivity ha ottenuto prestazioni comparabili, e in parte superiori, a quelle ottenute dalla Random Forest sulle stesse feature. Questo suggerisce che le feature di connettività regionale separino i due gruppi in modo relativamente lineare, almeno nel dataset considerato.

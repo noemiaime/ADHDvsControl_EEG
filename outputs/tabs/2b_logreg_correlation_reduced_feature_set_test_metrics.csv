@@ -1,0 +1,2 @@
+feature_set,n_features,accuracy,balanced_accuracy,precision,recall,f1,roc_auc
+Logistic Regression - Correlation-reduced feature set,19,0.56,0.5576923076923077,0.5714285714285714,0.6153846153846154,0.5925925925925926,0.5897435897435898

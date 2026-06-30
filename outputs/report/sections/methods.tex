@@ -2,27 +2,26 @@
 
 \subsection{Dataset}
 
-Il dataset utilizzato è disponibile su Kaggl (\cite{Kaggle}). Esso contiene registrazioni EEG di 61 bambini con ADHD e 60 soggetti di controllo, di età compresa tra 7 e 12 anni, registrati durante un compito di attenzione visiva in cui si mostra ai bambini immagini di personaggi di cartoni animati. La distribuzione delle classi risulta approssimativamente bilanciata.
+Il dataset utilizzato è disponibile su Kaggle (\cite{Kaggle}). Contiene registrazioni EEG di 61 bambini con ADHD e 60 soggetti di controllo, di età compresa tra 7 e 12 anni, registrati durante un compito di attenzione visiva in cui si mostra ai bambini immagini di personaggi di cartoni animati. La distribuzione delle classi risulta approssimativamente bilanciata.
 
-I dati sono organizzati in formato tabellare: ogni riga corrisponde a un campione temporale del segnale EEG, mentre le colonne contengono i valori dei canali EEG, l'identificativo del soggetto e la classe diagnostica. Le registrazioni sono state acquisite con frequenza di campionamento$
+Le registrazioni sono state acquisite con frequenza di campionamento$
 f_s = 128 \ \text{Hz}$.
 
 Il dataset contiene 19 canali EEG:
 \\
 \texttt{Fp1}, \texttt{Fp2}, \texttt{F3}, \texttt{F4}, \texttt{C3}, \texttt{C4}, \texttt{P3}, \texttt{P4}, \texttt{O1}, \texttt{O2}, \texttt{F7}, \texttt{F8}, \texttt{T7}, \texttt{T8}, \texttt{P7}, \texttt{P8}, \texttt{Fz}, \texttt{Cz}, \texttt{Pz}.
 
-I canali seguono la nomenclatura del sistema internazionale 10-20. È uno standard utilizzato per descrivere la posizione degli elettrodi sullo scalpo in modo riproducibile tra soggetti diversi. In questo sistema la distanza tra gli elettrodi che viene calcolata in percentuali (10$\%$ o 20$\%$) rispetto alla lunghezza della testa, misurata in senso fronto-occipitale e laterale. Le lettere dei canali indicano approssimativamente la regione corticale sottostante: \texttt{Fp} indica la regione frontopolare, \texttt{F} la regione frontale, \texttt{C} la regione centrale, \texttt{P} la regione parietale, \texttt{O} la regione occipitale e \texttt{T} la regione temporale. I numeri dispari indicano elettrodi localizzati prevalentemente sull'emisfero sinistro, mentre i numeri pari indicano elettrodi localizzati prevalentemente sull'emisfero destro. Gli elettrodi indicati con la lettera \texttt{z}, come \texttt{Fz}, \texttt{Cz} e \texttt{Pz}, si trovano lungo la linea mediana.
+I canali seguono la nomenclatura del sistema internazionale 10-20, in cui la distanza tra gli elettrodi che viene calcolata in percentuali (10$\%$ o 20$\%$) rispetto alla lunghezza della testa, misurata in senso fronto-occipitale e laterale. Le lettere dei canali indicano approssimativamente la regione corticale sottostante: \texttt{Fp} indica la regione frontopolare, \texttt{F} la regione frontale, \texttt{C} la regione centrale, \texttt{P} la regione parietale, \texttt{O} la regione occipitale e \texttt{T} la regione temporale. I numeri dispari indicano elettrodi localizzati prevalentemente sull'emisfero sinistro, mentre i numeri pari indicano elettrodi localizzati prevalentemente sull'emisfero destro. Gli elettrodi indicati con la lettera \texttt{z}, come \texttt{Fz}, \texttt{Cz} e \texttt{Pz}, si trovano lungo la linea mediana.
 
- Questo raggruppamento consente di analizzare le feature sia a livello di singolo canale sia a livello regionale, confrontando informazioni più localizzate con rappresentazioni più sintetiche dell'attività EEG.
 
-Durante la registrazione non sono presenti variazioni di condizione associate al target e al task. Per questo motivo, le serie temporali EEG sono state trasformate in feature soggetto-livello. In questo modo, ogni soggetto è rappresentato da una singola riga nella tabella finale delle feature.
+Durante la registrazione non sono presenti variazioni di condizione associate al target e al task.
 
-\subsection{Feature extraction}
+\subsection{Estrazione features spettrali}
 
 L'estrazione delle feature è stata effettuata a partire dalle serie temporali EEG di ciascun soggetto. Per ogni soggetto e per ogni canale EEG, il segnale temporale è stato trasformato nel dominio della frequenza mediante stima della Power Spectral Density.
 
 La Power Spectral Density, o PSD, descrive come la potenza del segnale è distribuita sulle diverse frequenze.
-La PSD è stata stimata utilizzando il metodo di Welch (\cite{Welch}). Tale metodo suddivide il segnale in finestre temporali parzialmente sovrapposte, calcola lo spettro per ciascuna finestra e infine media gli spettri ottenuti.
+La PSD è stata stimata utilizzando il metodo di Welch. Tale metodo suddivide il segnale in finestre temporali parzialmente sovrapposte, calcola lo spettro per ciascuna finestra e infine media gli spettri ottenuti.
 
 I parametri utilizzati per il metodo di Welch sono stati:
 
@@ -67,29 +66,28 @@ In aggiunta alle potenze di banda, è stato calcolato il rapporto tra theta e be
 	TBR =\frac{P_{\theta}}{P_{\beta}}
 \end{equation}
 
-Ogni feature è stato calcolata sia a livello di singolo canale sia a livello regionale mediando le feature dei canali appartenenti alla stessa regione. 
+Ogni feature è stato calcolata sia a livello di singolo canale sia a livello regionale mediando le features dei canali appartenenti alla stessa regione. 
 
-L'output finale della feature extraction è una tabella soggetto-livello contenente potenze di banda per ciascun canale, rapporti theta/beta per ciascun canale, potenze medie regionali, rapporti theta/beta regionali e metadati del soggetto, come identificativo, classe e durata della registrazione.
+L'output finale della features extraction è una tabella soggetto-livello contenente potenze di banda per ciascun canale, rapporti theta/beta per ciascun canale, potenze medie regionali, rapporti theta/beta regionali e metadati del soggetto, come identificativo, classe e durata della registrazione.
 
 
-\subsection{Esplorazione delle feature}
+\subsection{Esplorazione featurea spettrali}
 
 Dopo l'estrazione delle feature, è stata eseguita un'analisi esplorativa per studiare la distribuzione delle variabili e confrontare i due gruppi ADHD e Control.
 
-In primo luogo, sono state calcolate statistiche descrittive per ciascuna feature, tra cui media, deviazione standard, minimo, massimo e quartili. Questa fase ha permesso di osservare la scala delle variabili, la loro variabilità e la possibile presenza di valori estremi.
 
 \subsubsection{Test di Mann-Whitney U}
 
 Per confrontare ciascuna feature tra soggetti ADHD e soggetti Control è stato utilizzato il test di Mann-Whitney U.
 
-Questo test è un test non parametrico per il confronto tra due gruppi indipendenti (\cite{test}). È stato scelto perché le feature EEG possono non seguire una distribuzione normale e possono contenere outlier. A differenza del test t di Student, il test di Mann-Whitney non confronta direttamente le medie dei due gruppi, ma confronta i ranghi dei valori.
+Questo è un test non parametrico per il confronto tra due gruppi indipendenti. È stato scelto perché le feature EEG possono non seguire una distribuzione normale. A differenza del test t di Student, il test di Mann-Whitney non confronta direttamente le medie dei due gruppi, ma confronta i ranghi dei valori.
 
 Il procedimento consiste nel considerare insieme tutti i valori della feature nei due gruppi, ordinarli dal più piccolo al più grande e assegnare a ciascun valore un rango. Se i due gruppi provengono dalla stessa distribuzione, i ranghi dovrebbero essere distribuiti in modo simile tra ADHD e Control. Se invece un gruppo tende ad avere valori più alti o più bassi, anche i ranghi tenderanno a essere sistematicamente più alti o più bassi.
 
 Per un gruppo con $n_1$ osservazioni, la statistica $U_1$ può essere scritta come:
 \begin{equation}
 	U_1 =R_1 -\frac{n_1(n_1+1)}{2}
-\end{equation}) 
+\end{equation}
 
 dove $R_1$ è la somma dei ranghi del primo gruppo. 
 
@@ -97,7 +95,7 @@ La statistica U finale del test viene calcolata come il valore minimo tra $U_1$ 
 
 Nel presente progetto è stato utilizzato un test a due code, poiché non si è imposto a priori che le feature dovessero essere maggiori nel gruppo ADHD o nel gruppo Control. In questo modo, il test è sensibile a differenze in entrambe le direzioni.
 
-Il p-value ottenuto dal test indica la probabilità di osservare una differenza nei ranghi almeno pari a quella osservata, assumendo vera l'ipotesi nulla. L'ipotesi nulla è che la feature abbia distribuzioni identiche nei due gruppi.
+Il p-value misura quanto la differenza osservata tra ADHD e Control sia compatibile con l'ipotesi che i due gruppi non differiscano realmente. Se il p-value è piccolo, la differenza osservata è poco compatibile con questa ipotesi e può essere considerata statisticamente significativa. Se invece il p-value è grande, la differenza potrebbe essere dovuta alla variabilità casuale dei dati.
 
 \subsubsection{Cohen's d}
 
@@ -121,7 +119,7 @@ La deviazione standard pooled si definisce come:
 
 dove $s_{ADHD}$ e $s_{Control}$ sono le deviazioni standard nei due gruppi.
 
-Un valore positivo di Cohen's $d$ indica che la feature ha valori medi più alti nel gruppo ADHD, mentre un valore negativo indica valori medi più alti nel gruppo Control. Il valore assoluto di Cohen's $d$ è stato utilizzato per ordinare le feature in base alla grandezza della differenza tra i gruppi.
+Il valore assoluto di Cohen's $d$ è stato utilizzato per ordinare le feature in base alla grandezza della differenza tra i gruppi.
 
 In questo modo è stato possibile identificare le feature con la maggiore separazione tra ADHD e Control, indipendentemente dalla direzione della differenza.
 
@@ -155,7 +153,7 @@ Dopo il confronto tra gruppi, è stata analizzata la correlazione tra tutte le f
 
 Molte feature EEG possono essere correlate tra loro perché derivano dalla stessa banda di frequenza, da canali spazialmente vicini o da rapporti calcolati a partire dalle stesse grandezze.
 
-Per questa analisi è stata utilizzata la correlazione di Spearman, una misura non parametrica di associazione monotona tra due variabili. A differenza della correlazione di Pearson, Spearman non richiede che la relazione tra le variabili sia lineare e non richiede l'assunzione di normalità.
+È stata utilizzata la correlazione di Spearman, una misura non parametrica di associazione monotona tra due variabili. A differenza della correlazione di Pearson, Spearman non richiede che la relazione tra le variabili sia lineare e non richiede l'assunzione di normalità.
 
 Il coefficiente di Spearman si basa sui ranghi delle osservazioni. Date due variabili $X$ e $Y$, i valori vengono trasformati nei rispettivi ranghi $R(X)$ e $R(Y)$, e la correlazione viene calcolata sui ranghi.
 
@@ -170,84 +168,49 @@ dove $d_i$ è la differenza tra i ranghi delle due variabili per l'osservazione 
 Il coefficiente $\rho$ varia tra $-1$ e $1$ e $\rho = 1$ indica una relazione monotona positiva perfetta e $ \rho = -1$ indica una relazione monotona negativa perfetta, mentre $ \rho = 0$ indica assenza di relazione monotona.
 
 
-\subsection{Classificazione con Random Forest}
+\subsection{Classificazione}
 
-Per valutare se le feature EEG estratte permettono di distinguere soggetti ADHD e Control, è stato utilizzato un classificatore Random Forest.
+Dopo l'estrazione e l'analisi esplorativa delle feature EEG, si sono classificati i re soggetti ADHD e soggetti Control. Ogni soggetto è stato rappresentato mediante un vettore di feature, ottenuto a partire dalle registrazioni EEG. La classe diagnostica, ADHD oppure Control, è stata utilizzata come variabile target.
+
+Sono stati considerati due modelli di classificazione: Random Forest e Logistic Regression. La Random Forest è stata utilizzata come modello non lineare, capace di catturare relazioni complesse tra le feature EEG. La Logistic Regression è stata invece utilizzata come modello lineare di confronto, con l'obiettivo di verificare se la separazione tra i due gruppi potesse essere ottenuta anche tramite una combinazione lineare delle feature.
 
 Prima dell'addestramento, il dataset soggetto-livello è stato diviso in due sottoinsiemi:
 
 \begin{itemize}
-	\item [--] training/validation set, pari all'80% dei soggetti;
-	\item [--] test set indipendente, pari al 20% dei soggetti.
+	\item [--] training/validation set, pari all'80$\%$ dei soggetti;
+	\item [--] test set indipendente, pari al 20$\%$ dei soggetti.
 \end{itemize}
 
-La divisione è stata effettuata in modo da mantenere proporzioni simili di soggetti ADHD e Control nei due sottoinsiemi.
-
-Il test set è stato mantenuto separato durante la fase di selezione del modello ed è stato utilizzato solo per la valutazione finale. Questa scelta riduce il rischio di data leakage.
+La divisione è stata effettuata in modo da mantenere proporzioni simili di soggetti ADHD e Control nei due sottoinsiemi. Il test set è stato mantenuto separato durante la fase di selezione del modello e di ottimizzazione degli iperparametri, ed è stato utilizzato solo per la valutazione finale. 
 
 Sul training/validation set è stata eseguita una cross-validation stratificata a 5 fold. In ogni iterazione, il modello è stato addestrato su quattro fold e validato sul fold rimanente. La procedura è stata ripetuta cinque volte, in modo che ogni fold fosse utilizzato una volta come validation set.
 
-Sono stati confrontati tre insiemi di feature:
+Le metriche utilizzate per valutare le prestazioni dei modelli sono state: accuracy, balanced accuracy, precision, recall, F1-score, ROC-AUC e confusion matrix.
 
-\begin{enumerate}
-	\item tutte le feature EEG;
-	\item solo le feature a livello di singolo canale;
-	\item solo le feature medie regionali.
-\end{enumerate}
 
-Questo confronto permette di valutare se la classificazione dipenda maggiormente da informazioni locali a livello di elettrodo, oppure da pattern più globali a livello regionale.
+\subsubsection{Random Forest}
 
-Il classificatore Random Forest presenta diversi iperparametri, vedi Sezione 2.5.1. È stato inoltre utilizzato il parametro $\texttt{class\_weight="balanced"}$ per compensare eventuali differenze nella distribuzione delle classi.
+La Random Forest è un modello di classificazione ensemble basato sulla combinazione di molti alberi decisionali. Ogni albero viene addestrato su una diversa sottoinsieme del training set e, durante la costruzione dei nodi, considera solo un sottoinsieme casuale delle feature disponibili. Questa doppia casualità riduce la dipendenza del modello da un singolo albero e migliora la capacità di generalizzazione.
 
-Le metriche utilizzate per valutare le prestazioni del modello sono state:
+Nel caso della classificazione, ogni albero della Random Forest produce una predizione di classe. La predizione finale corrisponde a quella di maggioranza. Nell'implementazione di \texttt{scikit-learn}, la Random Forest stima inoltre la probabilità di appartenenza a ciascuna classe mediando le probabilità prodotte dai singoli alberi, e assegna il campione alla classe con probabilità media più alta.
 
-\begin{itemize}
-	\item [--] accuracy;
-	\item [--] balanced accuracy;
-	\item [--] precision;
-	\item [--] recall;
-	\item [--] F1-score;
-	\item [--] ROC-AUC;
-	\item [--] confusion matrix.
-\end{itemize}
 
-La balanced accuracy è stata utilizzata come metrica principale per confrontare i feature set.
+Nel presente lavoro, la Random Forest è stata utilizzata sia per valutare le performance di classificazione sia per stimare l'importanza relativa delle feature. È stato inoltre utilizzato il parametro \texttt{class\_weight="balanced"} per compensare eventuali differenze nella distribuzione delle classi.
 
-Dopo il confronto in cross-validation, il miglior feature set è stato selezionato in base alla balanced accuracy media. ì
 
-\subsubsection{Tuning degli iperparametri}
+\paragraph{Tuning degli iperparametri:}
+
 
 Il tuning degli iperparametri è stato eseguito sul miglior feature set selezionato nella fase precedente, utilizzando esclusivamente il training/validation set. 
 
-L'ottimizzazione degli iperparametri è stata effettuata in due passaggi. È stata inzialmente utilizzata una \texttt{RandomizedSearchCV} per esplorare in modo efficiente uno spazio ampio di possibili combinazioni di iperparametri. Successivamente, è stata applicata una \texttt{GridSearchCV} locale attorno alla migliore combinazione individuata dalla ricerca randomizzata, con l'obiettivo di raffinare ulteriormente la selezione dei parametri.
+L'ottimizzazione degli iperparametri è stata effettuata in due passaggi. È stata inzialmente utilizzata una \texttt{RandomizedSearchCV} per esplorare in modo efficiente uno spazio ampio di possibili combinazioni di iperparametri. Successivamente, è stata applicata una \texttt{GridSearchCV} locale attorno alla migliore combinazione individuata dalla ricerca randomizzata, con l'obiettivo di raffinare ulteriormente la selezione degli iperparametri.
 
-Entrambe le fasi di tuning sono state eseguite mediante cross-validation stratificata a 5 fold sul training/validation set. La metrica utilizzata per selezionare la migliore combinazione di iperparametri è stata la balanced accuracy, poiché tiene conto delle performance su entrambe le classi.
-
-Lo spazio di ricerca iniziale utilizzato nella \texttt{RandomizedSearchCV} è riportato nella Tabella~\ref{tab:rf_randomized_hyperparameter_space}.
-
-\begin{table}[H]
-	\centering
-	\small
-	\begin{tabular}{ll}
-		\hline
-		\textbf{Iperparametro} & \textbf{Valori o intervallo testato} \\
-		\hline
-		\texttt{n\_estimators} & interi tra 200 e 1500 \\
-		\texttt{max\_depth} & \texttt{None}, 3, 5, 7, 10, 15, 20, 30 \\
-		\texttt{min\_samples\_leaf} & interi tra 1 e 9 \\
-		\texttt{min\_samples\_split} & interi tra 2 e 14 \\
-		\texttt{max\_features} & \texttt{sqrt}, \texttt{log2}, \texttt{None} \\
-		\hline
-	\end{tabular}
-	\caption{Spazio di ricerca degli iperparametri utilizzato nella \texttt{RandomizedSearchCV}.}
-	\label{tab:rf_randomized_hyperparameter_space}
-\end{table}
-
-Dopo la ricerca randomizzata, è stata costruita una griglia locale centrata sui migliori valori individuati. Per i parametri numerici sono stati testati valori vicini al valore ottimale trovato dalla \texttt{RandomizedSearchCV}; per \texttt{max\_depth} e \texttt{max\_features} sono stati mantenuti anche valori alternativi comuni. 
+Entrambe le fasi di tuning sono state eseguite mediante cross-validation stratificata a 5 fold sul training/validation set. La metrica utilizzata per selezionare la migliore combinazione di iperparametri è stata la balanced accuracy.
 
 Dopo la selezione finale degli iperparametri, il modello Random Forest è stato riaddestrato sull'intero training/validation set e valutato una sola volta sul test set.
 
-\subsubsection{Feature importance}
+\paragraph{Feature importance:}
+
 
 Dopo l'addestramento del modello finale, sono stati estratti i valori di feature importance della Random Forest.
 
@@ -268,3 +231,61 @@ La riduzione di impurità prodotta da uno split è calcolata come:
 \end{equation}
 
 Una feature viene considerata importante se viene utilizzata in split che riducono fortemente l'impurità. Nella Random Forest, l'importanza viene calcolata mediando il contributo della feature su tutti gli alberi e normalizzando i valori.
+
+\subsubsection{Logistic Regression}
+
+La Logistic Regression è un classificatore che stima la probabilità di appartenenza a una classe a partire da una combinazione lineare delle feature. Nel caso binario, il modello calcola una probabilità associata alla classe positiva (ADHD).
+
+Data una combinazione lineare delle feature,
+
+\begin{equation}
+	z = w_0 + w_1x_1 + w_2x_2 + ... + w_px_p,
+\end{equation}
+
+la Logistic Regression applica una funzione sigmoide per trasformare il valore $z$ in una probabilità compresa tra 0 e 1:
+
+\begin{equation}
+	P(y=1|x) = \frac{1}{1 + e^{-z}}.
+\end{equation}
+
+I coefficienti $w_j$ indicano il contributo delle singole feature alla classificazione. Coefficienti positivi aumentano la probabilità stimata della classe ADHD, mentre coefficienti negativi la riducono, favorendo la classe Control..
+
+La Logistic Regression è sensibile alla scala delle variabili, la standardizzazione delle feature è stata inclusa mediante \texttt{StandardScaler}, in cui la media e la deviazione standard utilizzate per la normalizzazione vengono calcolate esclusivamente sul training set in ciascun fold di cross-validation.
+
+\paragraph{Tuning degli iperparametri:}
+
+L'iperparametro principale ottimizzato è stato il parametro di regolarizzazione $C = \lambda ^{-1}$, che controlla l'intensità della penalizzazione applicata ai coefficienti del modello. Valori piccoli di $C$ corrispondono a una penalizzazione più forte, mentre valori grandi di $C$ riducono l'effetto della regolarizzazione.
+La penalizzazione utilizzata è stata $L_2$, utilizzata per ridurre il rischio di overfitting. 
+\begin{equation}
+	L_2 = \lambda \sum_{j=1}^{p} w_j^2
+\end{equation}
+
+dove $w_j$ rappresenta il coefficiente associato alla feature $j$, $p$ è il numero totale di feature e $\lambda$ controlla l'intensità della penalizzazione.
+
+Il tuning è stato eseguito mediante \texttt{GridSearchCV} con cross-validation stratificata a 5 fold sul training/validation set.
+
+\subsection{Features di functional connectivity}
+
+Per ogni soggetto, i segnali EEG sono stati filtrati separatamente nelle bande delta, theta, alpha e beta. Successivamente, per ciascuna banda, è stata calcolata la correlazione di Pearson tra tutte le coppie di canali EEG. Ogni valore di correlazione è stato utilizzato come feature di connettività canale-livello.
+
+In aggiunta, sono state calcolate feature di connettività media regionale. 
+
+Sono stati così confrontati tre insiemi di feature di connettività:
+\begin{enumerate}
+	\item tutte le feature di functional connectivity;
+	\item solo le feature di connettività tra canali;
+	\item solo le feature di connettività tra regioni.
+\end{enumerate}
+
+Dato un segnale EEG $x(t)$ e un secondo segnale $y(t)$, il coefficiente di Pearson è definito come:
+
+\begin{equation}
+	r =
+	\frac{\sum_{i=1}^{n}(x_i-\bar{x})(y_i-\bar{y})}
+	{\sqrt{\sum_{i=1}^{n}(x_i-\bar{x})^2}
+		\sqrt{\sum_{i=1}^{n}(y_i-\bar{y})^2}}
+\end{equation}
+
+Il coefficiente assume valori compresi tra $-1$ e $1$. Valori positivi indicano che i due segnali tendono a variare nella stessa direzione, valori negativi indicano un andamento opposto, mentre valori prossimi a zero indicano assenza di correlazione lineare.
+
+La classificazione è stata effettuata utilizzando sia Random Forest sia Logistic Regression. Questa è stata eseguita con le stesse modalità descritte per le feature spettrali.
