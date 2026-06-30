@@ -2,7 +2,7 @@
 
 This repository contains a computational neuroscience project focused on the analysis and classification of EEG signals from ADHD and Control subjects.
 
-The aim of the project is to extract interpretable EEG features from time-series recordings and evaluate whether these features can distinguish ADHD subjects from Control subjects using statistical analysis and machine learning.
+The aim of the project is to extract interpretable EEG features from time-series recordings and evaluate whether these features can distinguish ADHD subjects from Control subjects using machine learning.
 
 ## Project overview
 
@@ -56,6 +56,9 @@ ADHDvsControl_EEG/
 ├── 1a_features_extraction.ipynb
 ├── 1b_features_exploration.ipynb
 ├── 2a_random_forest.ipynb
+├── 3a_logistic_regression.ipynb
+├── 4a_functional_connectivity.ipynb
+├── 5a_final_comparison.ipynb
 ├── .gitignore
 └── README.md
 ```
@@ -155,10 +158,21 @@ beta ratio is sufficient to classify ADHD.
 
 Every final model's hyperparameters has been selected through tuning based on randomized search and grid search.
 
-### `3a_logistic_regressiom.ipynb`
+### `3a_logistic_regression.ipynb`
 
 The selected features sets from the Random Forest analysis were also evaluated using Logistic Regression. 
 This analysis was performed to compare the Random Forest model with a simpler linear classifier and to assess whether the two group could be separated using a linear decision boundary. 
+
+### `4a_functional_connectivity.ipynb`
+
+This notebook extracts and evaluates functional connectivity features from the EEG time series.
+For each subject, EEG signals are filtered into the frequency bands. Functional connectivity is estimated using Pearson correlation.
+Two types of connectivity features are computed: channel-level connectivity and regional one.
+The best-performing connectivity feature set is selected and Random Forest and Logistic Regression are then evaluated on the selected connectivity feature set.
+
+### `5a_final_comparison.ipynb`
+
+This notebook summarizes and compares the final results obtained from the previous notebooks.
 
 ## Notes
 
