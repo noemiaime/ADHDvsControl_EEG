@@ -1,2 +1,2 @@
 max_depth,max_features,min_samples_leaf,min_samples_split,n_estimators,best_local_grid_cv_balanced_accuracy
-1,sqrt,3,7,330,0.6444444444444445
+5,,1,9,418,0.7011111111111111

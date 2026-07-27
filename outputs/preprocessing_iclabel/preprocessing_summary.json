@@ -1,0 +1,22 @@
+{
+  "input_csv": "data\\adhdata.csv",
+  "output_csv": "outputs\\preprocessing_iclabel\\adhdata_preprocessed_1_45Hz_ICA_ICLabel.csv",
+  "sampling_frequency_hz": 128.0,
+  "bandpass_hz": [
+    1.0,
+    45.0
+  ],
+  "average_reference": true,
+  "ica_method": "Picard (Extended Infomax)",
+  "ica_n_components": 0.95,
+  "ica_random_state": 42,
+  "ica_max_iter": 3000,
+  "eye_threshold": 0.9,
+  "remove_muscle": false,
+  "muscle_threshold": 0.95,
+  "n_subjects": 121,
+  "n_rows": 929280,
+  "total_removed_components": 64,
+  "subjects_with_no_removed_components": 62,
+  "subjects_with_nonconverged_ica": 0
+}

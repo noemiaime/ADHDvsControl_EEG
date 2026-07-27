@@ -1,20 +1,53 @@
 feature_set,correlation_threshold,selected_feature,pretty_feature
-Correlation-reduced RF features,0.8,central_theta_power_mean,Central ${\theta}$ power
-Correlation-reduced RF features,0.8,temporal_theta_beta_ratio,Temporal ${\theta}/{\beta}$ ratio
-Correlation-reduced RF features,0.8,central_alpha_power_mean,Central ${\alpha}$ power
-Correlation-reduced RF features,0.8,central_beta_power_mean,Central ${\beta}$ power
-Correlation-reduced RF features,0.8,parietal_theta_power_mean,Parietal ${\theta}$ power
-Correlation-reduced RF features,0.8,occipital_theta_beta_ratio,Occipital ${\theta}/{\beta}$ ratio
-Correlation-reduced RF features,0.8,parietal_alpha_power_mean,Parietal ${\alpha}$ power
-Correlation-reduced RF features,0.8,central_theta_beta_ratio,Central ${\theta}/{\beta}$ ratio
-Correlation-reduced RF features,0.8,parietal_delta_power_mean,Parietal ${\delta}$ power
-Correlation-reduced RF features,0.8,frontal_alpha_power_mean,Frontal ${\alpha}$ power
-Correlation-reduced RF features,0.8,frontal_theta_power_mean,Frontal ${\theta}$ power
-Correlation-reduced RF features,0.8,occipital_beta_power_mean,Occipital ${\beta}$ power
-Correlation-reduced RF features,0.8,frontal_delta_power_mean,frontal_delta_power_mean
-Correlation-reduced RF features,0.8,parietal_beta_power_mean,Parietal ${\beta}$ power
-Correlation-reduced RF features,0.8,temporal_delta_power_mean,Temporal ${\delta}$ power
-Correlation-reduced RF features,0.8,occipital_alpha_power_mean,occipital_alpha_power_mean
-Correlation-reduced RF features,0.8,temporal_beta_power_mean,Temporal ${\beta}$ power
-Correlation-reduced RF features,0.8,frontal_beta_power_mean,Frontal ${\beta}$ power
-Correlation-reduced RF features,0.8,frontal_theta_beta_ratio,Frontal ${\theta}/{\beta}$ ratio
+Correlation-reduced RF features,0.75,F4_theta_beta_ratio,F4 ${\theta}/{\beta}$ ratio
+Correlation-reduced RF features,0.75,Cz_alpha_power,Cz_alpha_power
+Correlation-reduced RF features,0.75,Pz_theta_power,Pz ${\theta}$ power
+Correlation-reduced RF features,0.75,parietal_theta_beta_ratio,Parietal ${\theta}/{\beta}$ ratio
+Correlation-reduced RF features,0.75,T7_theta_beta_ratio,T7 ${\theta}/{\beta}$ ratio
+Correlation-reduced RF features,0.75,P8_alpha_power,P8_alpha_power
+Correlation-reduced RF features,0.75,P7_beta_power,P7 ${\beta}$ power
+Correlation-reduced RF features,0.75,O2_alpha_power,O2_alpha_power
+Correlation-reduced RF features,0.75,O2_theta_beta_ratio,O2 ${\theta}/{\beta}$ ratio
+Correlation-reduced RF features,0.75,C3_theta_beta_ratio,C3 ${\theta}/{\beta}$ ratio
+Correlation-reduced RF features,0.75,F7_alpha_power,F7_alpha_power
+Correlation-reduced RF features,0.75,F7_theta_beta_ratio,F7 ${\theta}/{\beta}$ ratio
+Correlation-reduced RF features,0.75,Fz_theta_power,Fz_theta_power
+Correlation-reduced RF features,0.75,Fz_delta_power,Fz_delta_power
+Correlation-reduced RF features,0.75,O1_theta_power,O1_theta_power
+Correlation-reduced RF features,0.75,Fp1_beta_power,Fp1 ${\beta}$ power
+Correlation-reduced RF features,0.75,P8_beta_power,P8_beta_power
+Correlation-reduced RF features,0.75,F3_beta_power,F3 ${\beta}$ power
+Correlation-reduced RF features,0.75,Fp1_theta_beta_ratio,Fp1 ${\theta}/{\beta}$ ratio
+Correlation-reduced RF features,0.75,C4_delta_power,C4_delta_power
+Correlation-reduced RF features,0.75,P7_theta_beta_ratio,P7 ${\theta}/{\beta}$ ratio
+Correlation-reduced RF features,0.75,T7_delta_power,T7_delta_power
+Correlation-reduced RF features,0.75,Fp2_theta_power,Fp2_theta_power
+Correlation-reduced RF features,0.75,P7_delta_power,P7 ${\delta}$ power
+Correlation-reduced RF features,0.75,C3_theta_power,C3 ${\theta}$ power
+Correlation-reduced RF features,0.75,T8_theta_beta_ratio,T8 ${\theta}/{\beta}$ ratio
+Correlation-reduced RF features,0.75,F7_theta_power,F7 ${\theta}$ power
+Correlation-reduced RF features,0.75,Fp2_beta_power,Fp2_beta_power
+Correlation-reduced RF features,0.75,P4_theta_power,P4_theta_power
+Correlation-reduced RF features,0.75,F8_beta_power,F8 ${\beta}$ power
+Correlation-reduced RF features,0.75,P3_alpha_power,P3_alpha_power
+Correlation-reduced RF features,0.75,temporal_beta_power_mean,Temporal ${\beta}$ power
+Correlation-reduced RF features,0.75,O1_theta_beta_ratio,O1 ${\theta}/{\beta}$ ratio
+Correlation-reduced RF features,0.75,P4_beta_power,P4_beta_power
+Correlation-reduced RF features,0.75,F8_theta_beta_ratio,F8 ${\theta}/{\beta}$ ratio
+Correlation-reduced RF features,0.75,Cz_theta_beta_ratio,Cz_theta_beta_ratio
+Correlation-reduced RF features,0.75,T8_delta_power,T8_delta_power
+Correlation-reduced RF features,0.75,Pz_alpha_power,Pz_alpha_power
+Correlation-reduced RF features,0.75,temporal_theta_power_mean,Temporal ${\theta}$ power
+Correlation-reduced RF features,0.75,P8_delta_power,P8_delta_power
+Correlation-reduced RF features,0.75,F8_alpha_power,F8_alpha_power
+Correlation-reduced RF features,0.75,Fz_theta_beta_ratio,Fz_theta_beta_ratio
+Correlation-reduced RF features,0.75,Cz_beta_power,Cz_beta_power
+Correlation-reduced RF features,0.75,C4_alpha_power,C4_alpha_power
+Correlation-reduced RF features,0.75,frontal_delta_power_mean,frontal_delta_power_mean
+Correlation-reduced RF features,0.75,P4_delta_power,P4_delta_power
+Correlation-reduced RF features,0.75,P7_alpha_power,P7_alpha_power
+Correlation-reduced RF features,0.75,T8_alpha_power,T8_alpha_power
+Correlation-reduced RF features,0.75,F7_beta_power,F7 ${\beta}$ power
+Correlation-reduced RF features,0.75,O1_beta_power,O1_beta_power
+Correlation-reduced RF features,0.75,O2_beta_power,O2 ${\beta}$ power
+Correlation-reduced RF features,0.75,C4_theta_power,C4 ${\theta}$ power

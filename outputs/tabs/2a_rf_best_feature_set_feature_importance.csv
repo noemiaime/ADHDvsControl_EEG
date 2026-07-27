@@ -1,26 +1,121 @@
 feature,importance,pretty_feature
-central_theta_power_mean,0.07884251606143429,Central ${\theta}$ power
-temporal_theta_beta_ratio,0.07862645717189304,Temporal ${\theta}/{\beta}$ ratio
-central_alpha_power_mean,0.06795159333899764,Central ${\alpha}$ power
-central_beta_power_mean,0.06375008693788528,Central ${\beta}$ power
-parietal_theta_power_mean,0.06153875634872036,Parietal ${\theta}$ power
-occipital_theta_beta_ratio,0.04690960016150839,Occipital ${\theta}/{\beta}$ ratio
-occipital_theta_power_mean,0.046324096201812964,Occipital ${\theta}$ power
-parietal_alpha_power_mean,0.04509481892616475,Parietal ${\alpha}$ power
-central_theta_beta_ratio,0.04331002449966064,Central ${\theta}/{\beta}$ ratio
-parietal_delta_power_mean,0.039349530257202454,Parietal ${\delta}$ power
-occipital_delta_power_mean,0.03715778235395692,Occipital ${\delta}$ power
-frontal_alpha_power_mean,0.03404650694290311,Frontal ${\alpha}$ power
-temporal_theta_power_mean,0.03272332791926084,Temporal ${\theta}$ power
-frontal_theta_power_mean,0.03240586278182375,Frontal ${\theta}$ power
-central_delta_power_mean,0.0318783867149034,Central ${\delta}$ power
-occipital_beta_power_mean,0.02992860996809067,Occipital ${\beta}$ power
-frontal_delta_power_mean,0.02935306253663967,frontal_delta_power_mean
-parietal_theta_beta_ratio,0.028212416303243785,Parietal ${\theta}/{\beta}$ ratio
-parietal_beta_power_mean,0.027688181334407466,Parietal ${\beta}$ power
-temporal_delta_power_mean,0.026642773076878675,Temporal ${\delta}$ power
-temporal_alpha_power_mean,0.025962361459851493,Temporal ${\alpha}$ power
-occipital_alpha_power_mean,0.025799957103226627,occipital_alpha_power_mean
-temporal_beta_power_mean,0.022699703860621638,Temporal ${\beta}$ power
-frontal_beta_power_mean,0.02249422939609817,Frontal ${\beta}$ power
-frontal_theta_beta_ratio,0.021309358342813958,Frontal ${\theta}/{\beta}$ ratio
+F4_theta_beta_ratio,0.17839591130111612,F4 ${\theta}/{\beta}$ ratio
+F3_theta_beta_ratio,0.04099515596520116,F3 ${\theta}/{\beta}$ ratio
+Cz_alpha_power,0.026978051919538552,Cz_alpha_power
+Pz_theta_power,0.021568670014537814,Pz ${\theta}$ power
+parietal_theta_beta_ratio,0.018560283285531845,Parietal ${\theta}/{\beta}$ ratio
+T7_theta_beta_ratio,0.01752070274529937,T7 ${\theta}/{\beta}$ ratio
+P8_alpha_power,0.017168695891965152,P8_alpha_power
+P7_beta_power,0.017065590738532973,P7 ${\beta}$ power
+O2_alpha_power,0.014881448751232065,O2_alpha_power
+O2_theta_beta_ratio,0.014759087632704003,O2 ${\theta}/{\beta}$ ratio
+F4_theta_power,0.014617524759448433,F4 ${\theta}$ power
+C3_theta_beta_ratio,0.014397969573972422,C3 ${\theta}/{\beta}$ ratio
+F7_alpha_power,0.014332024178953169,F7_alpha_power
+central_alpha_power_mean,0.014013016290636364,Central ${\alpha}$ power
+F7_theta_beta_ratio,0.013556613376171709,F7 ${\theta}/{\beta}$ ratio
+Fz_theta_power,0.013208238182199628,Fz_theta_power
+Fz_delta_power,0.012880103339799656,Fz_delta_power
+F4_alpha_power,0.012860851894208773,F4_alpha_power
+O1_theta_power,0.012844201809311102,O1_theta_power
+Fp1_beta_power,0.01284149567417833,Fp1 ${\beta}$ power
+temporal_theta_beta_ratio,0.012475037864628783,Temporal ${\theta}/{\beta}$ ratio
+Pz_theta_beta_ratio,0.012217423860790382,Pz ${\theta}/{\beta}$ ratio
+P8_beta_power,0.01197593293936824,P8_beta_power
+F3_beta_power,0.01088002529517135,F3 ${\beta}$ power
+Fp1_theta_beta_ratio,0.010837966144331657,Fp1 ${\theta}/{\beta}$ ratio
+C4_delta_power,0.009602499043389924,C4_delta_power
+P7_theta_beta_ratio,0.00940119575761092,P7 ${\theta}/{\beta}$ ratio
+parietal_delta_power_mean,0.009338631121237556,Parietal ${\delta}$ power
+C3_beta_power,0.0091920936224845,C3 ${\beta}$ power
+T7_delta_power,0.008568367963702462,T7_delta_power
+Fp2_theta_power,0.008510311341285519,Fp2_theta_power
+P7_delta_power,0.008254176984993037,P7 ${\delta}$ power
+P4_theta_beta_ratio,0.008051519796243776,P4_theta_beta_ratio
+F3_theta_power,0.008027069245173216,F3 ${\theta}$ power
+Fz_beta_power,0.007860767822831552,Fz_beta_power
+P3_theta_power,0.007815726495300719,P3 ${\theta}$ power
+C3_theta_power,0.007380719112064578,C3 ${\theta}$ power
+T8_theta_beta_ratio,0.007285380103896777,T8 ${\theta}/{\beta}$ ratio
+C4_theta_beta_ratio,0.007080181930980209,C4 ${\theta}/{\beta}$ ratio
+F7_theta_power,0.006900358786450286,F7 ${\theta}$ power
+Fp2_beta_power,0.006895137558900215,Fp2_beta_power
+P4_theta_power,0.006885443096936291,P4_theta_power
+F8_beta_power,0.006764220848555548,F8 ${\beta}$ power
+central_theta_beta_ratio,0.006698822368466397,Central ${\theta}/{\beta}$ ratio
+P3_alpha_power,0.0066243636816166315,P3_alpha_power
+temporal_beta_power_mean,0.006611920159191734,Temporal ${\beta}$ power
+F7_delta_power,0.006579855123500729,F7_delta_power
+temporal_delta_power_mean,0.006416057423269105,Temporal ${\delta}$ power
+O1_delta_power,0.006328349621289067,O1_delta_power
+Fp1_alpha_power,0.0062989397256964326,Fp1_alpha_power
+O1_theta_beta_ratio,0.006295799199772578,O1 ${\theta}/{\beta}$ ratio
+Cz_delta_power,0.006230732235560721,Cz_delta_power
+P4_beta_power,0.006193159875470777,P4_beta_power
+F4_delta_power,0.0059518517698036065,F4_delta_power
+F8_theta_beta_ratio,0.005924230686316105,F8 ${\theta}/{\beta}$ ratio
+T8_beta_power,0.005786389148247905,T8 ${\beta}$ power
+parietal_beta_power_mean,0.005606005181342965,Parietal ${\beta}$ power
+Cz_theta_beta_ratio,0.005603338517989772,Cz_theta_beta_ratio
+T8_delta_power,0.005559912247643187,T8_delta_power
+P3_theta_beta_ratio,0.00529531917839966,P3 ${\theta}/{\beta}$ ratio
+Pz_alpha_power,0.005077994358178977,Pz_alpha_power
+occipital_theta_beta_ratio,0.004916477431974654,Occipital ${\theta}/{\beta}$ ratio
+central_beta_power_mean,0.004556434936572578,Central ${\beta}$ power
+temporal_theta_power_mean,0.004487880679547892,Temporal ${\theta}$ power
+P8_delta_power,0.004468449599836581,P8_delta_power
+P4_alpha_power,0.004395955212002907,P4_alpha_power
+F8_alpha_power,0.004365087583340625,F8_alpha_power
+Fz_alpha_power,0.004331957871620699,Fz_alpha_power
+P7_theta_power,0.004301987330968824,P7 ${\theta}$ power
+Fz_theta_beta_ratio,0.0042685268222713655,Fz_theta_beta_ratio
+O1_alpha_power,0.004189038240674205,O1_alpha_power
+Cz_beta_power,0.004163952690399993,Cz_beta_power
+occipital_delta_power_mean,0.004095249869210929,Occipital ${\delta}$ power
+C4_alpha_power,0.004094410422661123,C4_alpha_power
+T8_theta_power,0.004056842761709426,T8 ${\theta}$ power
+C4_beta_power,0.004050525049178626,C4 ${\beta}$ power
+frontal_delta_power_mean,0.003926258419355921,frontal_delta_power_mean
+F4_beta_power,0.0038658383841534,F4 ${\beta}$ power
+T7_beta_power,0.0037451998098675695,T7_beta_power
+O2_delta_power,0.0037289560459763367,O2_delta_power
+F8_theta_power,0.0037197822098510966,F8 ${\theta}$ power
+Pz_beta_power,0.0036815091263361316,Pz ${\beta}$ power
+C3_delta_power,0.003592016141888174,C3_delta_power
+P4_delta_power,0.0035703789863413982,P4_delta_power
+Pz_delta_power,0.003478473714091628,Pz ${\delta}$ power
+P7_alpha_power,0.0034647949215719383,P7_alpha_power
+occipital_alpha_power_mean,0.0034221542923240276,occipital_alpha_power_mean
+T8_alpha_power,0.003294364085574359,T8_alpha_power
+central_delta_power_mean,0.0032807822599231983,Central ${\delta}$ power
+T7_alpha_power,0.0032399545960175307,T7_alpha_power
+F7_beta_power,0.0032278012078659564,F7 ${\beta}$ power
+Fp2_alpha_power,0.00321785019934307,Fp2_alpha_power
+F8_delta_power,0.0031848152344091923,F8_delta_power
+P3_beta_power,0.003128750664204814,P3 ${\beta}$ power
+Cz_theta_power,0.0029019289460019125,Cz_theta_power
+O1_beta_power,0.0028561229335900087,O1_beta_power
+Fp2_theta_beta_ratio,0.0028499174696009267,Fp2_theta_beta_ratio
+parietal_alpha_power_mean,0.0028331790679310817,Parietal ${\alpha}$ power
+parietal_theta_power_mean,0.0028018701853724467,Parietal ${\theta}$ power
+Fp2_delta_power,0.002691849110402896,Fp2_delta_power
+frontal_beta_power_mean,0.0026267746159228584,Frontal ${\beta}$ power
+O2_beta_power,0.00262393398412985,O2 ${\beta}$ power
+P8_theta_beta_ratio,0.0025079372489506904,P8_theta_beta_ratio
+O2_theta_power,0.0024541169876055573,O2 ${\theta}$ power
+C3_alpha_power,0.002386193405529861,C3_alpha_power
+P3_delta_power,0.002249087311001838,P3_delta_power
+occipital_theta_power_mean,0.002205220541340839,Occipital ${\theta}$ power
+T7_theta_power,0.0021524438146134223,T7_theta_power
+central_theta_power_mean,0.00211601082164781,Central ${\theta}$ power
+C4_theta_power,0.002062236220420586,C4 ${\theta}$ power
+F3_delta_power,0.002012862652580228,F3_delta_power
+P8_theta_power,0.0019728296262018553,P8_theta_power
+occipital_beta_power_mean,0.0019585321038090636,Occipital ${\beta}$ power
+frontal_alpha_power_mean,0.0019499450152205358,Frontal ${\alpha}$ power
+Fp1_delta_power,0.0018940755833001658,Fp1_delta_power
+F3_alpha_power,0.0018856645617988902,F3_alpha_power
+Fp1_theta_power,0.0016831256677886978,Fp1 ${\theta}$ power
+temporal_alpha_power_mean,0.0015907513330977341,Temporal ${\alpha}$ power
+frontal_theta_power_mean,0.0013494797320265119,Frontal ${\theta}$ power
+frontal_theta_beta_ratio,0.0011425896964251372,Frontal ${\theta}/{\beta}$ ratio

@@ -7,130 +7,184 @@
 \babel@aux{italian}{}
 \babel@aux{italian}{}
 \citation{Arns2013}
+\@writefile{toc}{\contentsline {section}{\numberline {1}Introduzione}{3}{section.1}\protected@file@percent }
 \citation{Moghadam2024}
 \citation{Kaggle}
-\@writefile{toc}{\contentsline {section}{\numberline {1}Introduzione}{2}{section.1}\protected@file@percent }
-\@writefile{toc}{\contentsline {section}{\numberline {2}Metodi}{2}{section.2}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {2.1}Dataset}{2}{subsection.2.1}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {2.2}Estrazione features spettrali}{3}{subsection.2.2}\protected@file@percent }
-\@writefile{lot}{\contentsline {table}{\numberline {1}{\ignorespaces Bande di frequenza utilizzate per il calcolo delle feature spettrali.}}{3}{table.caption.2}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {2}Metodi}{5}{section.2}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {2.1}Dataset}{5}{subsection.2.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {2.1.1}Protocollo sperimentale}{6}{subsubsection.2.1.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {2.1.2}Acquisizione EEG}{6}{subsubsection.2.1.2}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {2.1.3}Struttura e limitazioni dei dati}{7}{subsubsection.2.1.3}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {2.2}Preprocessing del segnale}{7}{subsection.2.2}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {2.2.1}Uniformazione della durata delle registrazioni}{7}{subsubsection.2.2.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {2.2.2}Conversione delle unità e assegnazione del montaggio}{8}{subsubsection.2.2.2}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {2.2.3}Filtraggio passa-banda}{8}{subsubsection.2.2.3}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {2.2.4}Riferimento medio comune}{9}{subsubsection.2.2.4}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {2.2.5}Independent Component Analysis}{9}{subsubsection.2.2.5}\protected@file@percent }
+\@writefile{toc}{\contentsline {paragraph}{Motivazione e principio generale}{9}{section*.2}\protected@file@percent }
+\@writefile{toc}{\contentsline {paragraph}{Indipendenza e non gaussianità}{10}{section*.3}\protected@file@percent }
+\@writefile{toc}{\contentsline {paragraph}{PCA e numero di componenti}{10}{section*.4}\protected@file@percent }
+\@writefile{toc}{\contentsline {paragraph}{Ottimizzazione mediante Picard}{10}{section*.5}\protected@file@percent }
+\@writefile{toc}{\contentsline {paragraph}{Classificazione delle componenti}{11}{section*.6}\protected@file@percent }
+\@writefile{toc}{\contentsline {paragraph}{Ricostruzione del segnale}{12}{section*.7}\protected@file@percent }
+\@writefile{toc}{\contentsline {paragraph}{Limiti dell'ICA}{12}{section*.8}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {2.3}Estrazione delle feature spettrali}{12}{subsection.2.3}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {2.3.1}Stima della Power Spectral Density}{12}{subsubsection.2.3.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {2.3.2}Calcolo delle potenze di banda}{13}{subsubsection.2.3.2}\protected@file@percent }
+\@writefile{lot}{\contentsline {table}{\numberline {1}{\ignorespaces Bande utilizzate per l'estrazione delle feature spettrali.}}{13}{table.caption.9}\protected@file@percent }
 \providecommand*\caption@xref[2]{\@setref\relax\@undefined{#1}}
-\newlabel{tab:eeg_bands}{{1}{3}{Bande di frequenza utilizzate per il calcolo delle feature spettrali}{table.caption.2}{}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {2.3}Esplorazione featurea spettrali}{4}{subsection.2.3}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsubsection}{\numberline {2.3.1}Test di Mann-Whitney U}{4}{subsubsection.2.3.1}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsubsection}{\numberline {2.3.2}Cohen's d}{4}{subsubsection.2.3.2}\protected@file@percent }
+\newlabel{tab:eeg_bands}{{1}{13}{Bande utilizzate per l'estrazione delle feature spettrali}{table.caption.9}{}}
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {2.3.3}Theta/beta ratio}{14}{subsubsection.2.3.3}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {2.3.4}Feature regionali}{14}{subsubsection.2.3.4}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {2.3.5}Struttura del feature set spettrale}{15}{subsubsection.2.3.5}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {2.4}Esplorazione delle feature spettrali}{15}{subsection.2.4}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {2.4.1}Test di Mann--Whitney U}{15}{subsubsection.2.4.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {2.4.2}Cohen's $d$}{16}{subsubsection.2.4.2}\protected@file@percent }
 \citation{multiple}
-\@writefile{toc}{\contentsline {subsubsection}{\numberline {2.3.3}Correzione per confronti multipli}{5}{subsubsection.2.3.3}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsubsection}{\numberline {2.3.4}Analisi di correlazione}{5}{subsubsection.2.3.4}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {2.4}Classificazione}{6}{subsection.2.4}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsubsection}{\numberline {2.4.1}Random Forest}{6}{subsubsection.2.4.1}\protected@file@percent }
-\@writefile{toc}{\contentsline {paragraph}{Tuning degli iperparametri:}{7}{section*.3}\protected@file@percent }
-\@writefile{toc}{\contentsline {paragraph}{Feature importance:}{7}{section*.4}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsubsection}{\numberline {2.4.2}Logistic Regression}{7}{subsubsection.2.4.2}\protected@file@percent }
-\@writefile{toc}{\contentsline {paragraph}{Tuning degli iperparametri:}{8}{section*.5}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {2.5}Features di functional connectivity}{8}{subsection.2.5}\protected@file@percent }
-\@writefile{toc}{\contentsline {section}{\numberline {3}Risultati}{9}{section.3}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {3.1}Features spettrali}{9}{subsection.3.1}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsubsection}{\numberline {3.1.1}Differenze tra gruppi ed effect size}{9}{subsubsection.3.1.1}\protected@file@percent }
-\@writefile{lof}{\contentsline {figure}{\numberline {1}{\ignorespaces Matrice degli effect size regionali. Ogni cella riporta Cohen's $d$ per una combinazione regione-banda. L'asterisco indica una feature significativa dopo correzione FDR.}}{9}{figure.caption.6}\protected@file@percent }
-\newlabel{fig:regional_effect_size}{{1}{9}{Matrice degli effect size regionali. Ogni cella riporta Cohen's $d$ per una combinazione regione-banda. L'asterisco indica una feature significativa dopo correzione FDR}{figure.caption.6}{}}
-\@writefile{lof}{\contentsline {figure}{\numberline {2}{\ignorespaces Matrice degli effect size a livello di singolo canale. Ogni cella riporta Cohen's $d$ per una combinazione canale-banda. L'asterisco indica una feature significativa dopo correzione FDR.}}{10}{figure.caption.7}\protected@file@percent }
-\newlabel{fig:channel_effect_size}{{2}{10}{Matrice degli effect size a livello di singolo canale. Ogni cella riporta Cohen's $d$ per una combinazione canale-banda. L'asterisco indica una feature significativa dopo correzione FDR}{figure.caption.7}{}}
-\@writefile{lot}{\contentsline {table}{\numberline {2}{\ignorespaces Prime dieci feature EEG ordinate secondo il valore assoluto di Cohen's $d$.}}{11}{table.caption.8}\protected@file@percent }
-\newlabel{tab:top10_cohen}{{2}{11}{Prime dieci feature EEG ordinate secondo il valore assoluto di Cohen's $d$}{table.caption.8}{}}
-\@writefile{toc}{\contentsline {subsubsection}{\numberline {3.1.2}Feature significative dopo correzione FDR}{11}{subsubsection.3.1.2}\protected@file@percent }
-\@writefile{lot}{\contentsline {table}{\numberline {3}{\ignorespaces Feature EEG risultate significative dopo correzione FDR.}}{11}{table.caption.9}\protected@file@percent }
-\newlabel{tab:fdr_features}{{3}{11}{Feature EEG risultate significative dopo correzione FDR}{table.caption.9}{}}
-\@writefile{lof}{\contentsline {figure}{\numberline {3}{\ignorespaces Distribuzione delle feature EEG significative dopo correzione FDR.}}{12}{figure.caption.10}\protected@file@percent }
-\newlabel{fig:fdr_features_boxplot}{{3}{12}{Distribuzione delle feature EEG significative dopo correzione FDR}{figure.caption.10}{}}
-\@writefile{toc}{\contentsline {subsubsection}{\numberline {3.1.3}Correlazione tra feature}{13}{subsubsection.3.1.3}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsubsection}{\numberline {3.1.4}Correlazioni canale-livello}{13}{subsubsection.3.1.4}\protected@file@percent }
-\@writefile{lot}{\contentsline {table}{\numberline {4}{\ignorespaces Dieci correlazioni di Spearman più forti in valore assoluto tra feature canale-livello, calcolate separatamente nei gruppi ADHD e Control.}}{13}{table.caption.11}\protected@file@percent }
-\newlabel{tab:top_channel_correlations}{{4}{13}{Dieci correlazioni di Spearman più forti in valore assoluto tra feature canale-livello, calcolate separatamente nei gruppi ADHD e Control}{table.caption.11}{}}
-\@writefile{toc}{\contentsline {subsubsection}{\numberline {3.1.5}Correlazioni regionali}{13}{subsubsection.3.1.5}\protected@file@percent }
-\@writefile{lot}{\contentsline {table}{\numberline {5}{\ignorespaces Dieci correlazioni di Spearman più forti in valore assoluto tra feature regionali, calcolate separatamente nei gruppi ADHD e Control.}}{14}{table.caption.12}\protected@file@percent }
-\newlabel{tab:top_regional_correlations}{{5}{14}{Dieci correlazioni di Spearman più forti in valore assoluto tra feature regionali, calcolate separatamente nei gruppi ADHD e Control}{table.caption.12}{}}
-\@writefile{toc}{\contentsline {subsubsection}{\numberline {3.1.6}Distribuzione delle correlazioni}{14}{subsubsection.3.1.6}\protected@file@percent }
-\@writefile{lof}{\contentsline {figure}{\numberline {4}{\ignorespaces Distribuzione delle correlazioni di Spearman tra feature regionali, separatamente per ADHD e Control.}}{14}{figure.caption.13}\protected@file@percent }
-\newlabel{fig:regional_corr_distribution}{{4}{14}{Distribuzione delle correlazioni di Spearman tra feature regionali, separatamente per ADHD e Control}{figure.caption.13}{}}
-\@writefile{lof}{\contentsline {figure}{\numberline {5}{\ignorespaces Distribuzione delle correlazioni di Spearman tra feature canale-livello, separatamente per ADHD e Control.}}{15}{figure.caption.14}\protected@file@percent }
-\newlabel{fig:channel_corr_distribution}{{5}{15}{Distribuzione delle correlazioni di Spearman tra feature canale-livello, separatamente per ADHD e Control}{figure.caption.14}{}}
-\@writefile{toc}{\contentsline {subsubsection}{\numberline {3.1.7}Classificazione Random Forest}{15}{subsubsection.3.1.7}\protected@file@percent }
-\@writefile{lot}{\contentsline {table}{\numberline {6}{\ignorespaces Confronto delle performance medie in cross-validation per i tre insiemi di feature testati con Random Forest.}}{15}{table.caption.15}\protected@file@percent }
-\newlabel{tab:rf_feature_set_comparison}{{6}{15}{Confronto delle performance medie in cross-validation per i tre insiemi di feature testati con Random Forest}{table.caption.15}{}}
-\@writefile{lof}{\contentsline {figure}{\numberline {6}{\ignorespaces Confronto delle metriche di cross-validation del modello Random Forest per i tre insiemi di feature.}}{16}{figure.caption.16}\protected@file@percent }
-\newlabel{fig:rf_feature_set_comparison}{{6}{16}{Confronto delle metriche di cross-validation del modello Random Forest per i tre insiemi di feature}{figure.caption.16}{}}
-\@writefile{toc}{\contentsline {subsubsection}{\numberline {3.1.8}Performance del modello finale}{16}{subsubsection.3.1.8}\protected@file@percent }
-\@writefile{lot}{\contentsline {table}{\numberline {7}{\ignorespaces Iperparametri ottimali Random Forest su features regionali.}}{17}{table.caption.17}\protected@file@percent }
-\@writefile{lot}{\contentsline {table}{\numberline {8}{\ignorespaces Metriche finali del modello Random Forest valutato sul test set indipendente.}}{17}{table.caption.18}\protected@file@percent }
-\newlabel{tab:rf_final_metrics}{{8}{17}{Metriche finali del modello Random Forest valutato sul test set indipendente}{table.caption.18}{}}
-\@writefile{lof}{\contentsline {figure}{\numberline {7}{\ignorespaces Confusion matrix del modello Random Forest finale valutato sul test set indipendente.}}{17}{figure.caption.19}\protected@file@percent }
-\newlabel{fig:rf_confusion_matrix}{{7}{17}{Confusion matrix del modello Random Forest finale valutato sul test set indipendente}{figure.caption.19}{}}
-\@writefile{lof}{\contentsline {figure}{\numberline {8}{\ignorespaces Curva ROC del modello Random Forest finale sul test set indipendente. La linea tratteggiata rappresenta la performance casuale.}}{18}{figure.caption.20}\protected@file@percent }
-\newlabel{fig:rf_roc_curve}{{8}{18}{Curva ROC del modello Random Forest finale sul test set indipendente. La linea tratteggiata rappresenta la performance casuale}{figure.caption.20}{}}
-\@writefile{toc}{\contentsline {subsubsection}{\numberline {3.1.9}Feature importance}{18}{subsubsection.3.1.9}\protected@file@percent }
-\@writefile{lof}{\contentsline {figure}{\numberline {9}{\ignorespaces Prime dieci feature più importanti secondo il modello Random Forest finale.}}{19}{figure.caption.21}\protected@file@percent }
-\newlabel{fig:rf_feature_importance}{{9}{19}{Prime dieci feature più importanti secondo il modello Random Forest finale}{figure.caption.21}{}}
-\@writefile{lof}{\contentsline {figure}{\numberline {10}{\ignorespaces Matrice di correlazione di Spearman tra le dieci feature più importanti secondo la Random Forest.}}{20}{figure.caption.22}\protected@file@percent }
-\newlabel{fig:rf_top10_importance_corr}{{10}{20}{Matrice di correlazione di Spearman tra le dieci feature più importanti secondo la Random Forest}{figure.caption.22}{}}
-\@writefile{toc}{\contentsline {subsubsection}{\numberline {3.1.10}Riduzione del feature set in base alla correlazione}{20}{subsubsection.3.1.10}\protected@file@percent }
-\@writefile{lot}{\contentsline {table}{\numberline {9}{\ignorespaces Confronto in cross-validation delle soglie di correlazione utilizzate per ridurre il feature set. Le metriche sono calcolate sul training/validation set.}}{21}{table.caption.23}\protected@file@percent }
-\newlabel{tab:rf_corr_threshold_comparison}{{9}{21}{Confronto in cross-validation delle soglie di correlazione utilizzate per ridurre il feature set. Le metriche sono calcolate sul training/validation set}{table.caption.23}{}}
-\@writefile{lot}{\contentsline {table}{\numberline {10}{\ignorespaces Iperparametri ottimali del modello Random Forest applicato al feature set ridotto in base alla correlazione.}}{21}{table.caption.24}\protected@file@percent }
-\newlabel{tab:rf_reduced_hyperparameters}{{10}{21}{Iperparametri ottimali del modello Random Forest applicato al feature set ridotto in base alla correlazione}{table.caption.24}{}}
-\@writefile{lot}{\contentsline {table}{\numberline {11}{\ignorespaces Metriche finali del modello Random Forest con feature set ridotto, valutato sul test set indipendente.}}{21}{table.caption.25}\protected@file@percent }
-\newlabel{tab:rf_reduced_final_metrics}{{11}{21}{Metriche finali del modello Random Forest con feature set ridotto, valutato sul test set indipendente}{table.caption.25}{}}
-\@writefile{lof}{\contentsline {figure}{\numberline {11}{\ignorespaces Confusion matrix del modello Random Forest basato sul feature set ridotto in base alla correlazione.}}{22}{figure.caption.26}\protected@file@percent }
-\newlabel{fig:rf_reduced_confusion_matrix}{{11}{22}{Confusion matrix del modello Random Forest basato sul feature set ridotto in base alla correlazione}{figure.caption.26}{}}
-\@writefile{lof}{\contentsline {figure}{\numberline {12}{\ignorespaces Curva ROC del modello Random Forest basato sul feature set ridotto in base alla correlazione.}}{22}{figure.caption.27}\protected@file@percent }
-\newlabel{fig:rf_reduced_roc_curve}{{12}{22}{Curva ROC del modello Random Forest basato sul feature set ridotto in base alla correlazione}{figure.caption.27}{}}
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {2.4.3}Correzione per confronti multipli}{17}{subsubsection.2.4.3}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {2.4.4}Correlazione di Spearman}{17}{subsubsection.2.4.4}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {2.5}Classificazione}{18}{subsection.2.5}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {2.5.1}Suddivisione dei dati e cross-validation}{18}{subsubsection.2.5.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {2.5.2}Metriche di valutazione}{19}{subsubsection.2.5.2}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {2.5.3}Random Forest}{19}{subsubsection.2.5.3}\protected@file@percent }
+\@writefile{toc}{\contentsline {paragraph}{Ottimizzazione degli iperparametri}{20}{section*.10}\protected@file@percent }
+\@writefile{toc}{\contentsline {paragraph}{Impurità di Gini e feature importance}{20}{section*.11}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {2.5.4}Logistic Regression}{21}{subsubsection.2.5.4}\protected@file@percent }
+\@writefile{toc}{\contentsline {paragraph}{Regolarizzazione e tuning}{21}{section*.12}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {2.6}Feature di functional connectivity}{21}{subsection.2.6}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {2.6.1}Filtraggio nelle singole bande}{22}{subsubsection.2.6.1}\protected@file@percent }
+\@writefile{lot}{\contentsline {table}{\numberline {2}{\ignorespaces Bande utilizzate nell'analisi di functional connectivity.}}{22}{table.caption.13}\protected@file@percent }
+\newlabel{tab:connectivity_bands}{{2}{22}{Bande utilizzate nell'analisi di functional connectivity}{table.caption.13}{}}
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {2.6.2}Correlazione di Pearson}{22}{subsubsection.2.6.2}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {2.6.3}Connettività tra canali}{22}{subsubsection.2.6.3}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {2.6.4}Connettività regionale}{23}{subsubsection.2.6.4}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {3}Risultati}{23}{section.3}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.1}Feature spettrali}{23}{subsection.3.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {3.1.1}Effect size delle differenze tra i gruppi}{23}{subsubsection.3.1.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {paragraph}{Effect size a livello di singolo canale}{24}{section*.14}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {1}{\ignorespaces Distribuzione topografica degli effect size delle feature spettrali canale-livello. I valori negativi indicano feature mediamente maggiori nei controlli, mentre i valori positivi indicano feature mediamente maggiori nei soggetti ADHD. La stella identifica i canali significativi dopo correzione Benjamini--Hochberg. I colori tra gli elettrodi sono ottenuti per interpolazione e devono essere interpretati come supporto alla visualizzazione della distribuzione spaziale.}}{24}{figure.caption.15}\protected@file@percent }
+\newlabel{fig:channel_effect_size_topomaps}{{1}{24}{Distribuzione topografica degli effect size delle feature spettrali canale-livello. I valori negativi indicano feature mediamente maggiori nei controlli, mentre i valori positivi indicano feature mediamente maggiori nei soggetti ADHD. La stella identifica i canali significativi dopo correzione Benjamini--Hochberg. I colori tra gli elettrodi sono ottenuti per interpolazione e devono essere interpretati come supporto alla visualizzazione della distribuzione spaziale}{figure.caption.15}{}}
+\@writefile{toc}{\contentsline {paragraph}{Effect size a livello regionale}{25}{section*.16}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {2}{\ignorespaces Matrice degli effect size delle feature spettrali regionali. I valori negativi indicano valori medi maggiori nel gruppo Control, mentre i valori positivi indicano valori medi maggiori nel gruppo ADHD. Un eventuale asterisco indica la significatività dopo correzione FDR.}}{25}{figure.caption.17}\protected@file@percent }
+\newlabel{fig:regional_effect_size_matrix}{{2}{25}{Matrice degli effect size delle feature spettrali regionali. I valori negativi indicano valori medi maggiori nel gruppo Control, mentre i valori positivi indicano valori medi maggiori nel gruppo ADHD. Un eventuale asterisco indica la significatività dopo correzione FDR}{figure.caption.17}{}}
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {3.1.2}Feature significative dopo correzione FDR}{26}{subsubsection.3.1.2}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {3}{\ignorespaces Distribuzione del theta/beta ratio in F4, unica feature significativa dopo correzione Benjamini--Hochberg.}}{26}{figure.caption.18}\protected@file@percent }
+\newlabel{fig:fdr_significant_feature}{{3}{26}{Distribuzione del theta/beta ratio in F4, unica feature significativa dopo correzione Benjamini--Hochberg}{figure.caption.18}{}}
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {3.1.3}Ridondanza tra le feature spettrali}{26}{subsubsection.3.1.3}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {4}{\ignorespaces Reti delle correlazioni di Spearman tra le potenze calcolate nei diversi canali, rappresentate separatamente per banda e gruppo. Sono mostrate le associazioni che superano la soglia stabilita in almeno uno dei due gruppi.}}{27}{figure.caption.19}\protected@file@percent }
+\newlabel{fig:channel_spearman_networks}{{4}{27}{Reti delle correlazioni di Spearman tra le potenze calcolate nei diversi canali, rappresentate separatamente per banda e gruppo. Sono mostrate le associazioni che superano la soglia stabilita in almeno uno dei due gruppi}{figure.caption.19}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {5}{\ignorespaces Distribuzione delle correlazioni di Spearman canale-livello, separatamente per banda e gruppo.}}{27}{figure.caption.20}\protected@file@percent }
+\newlabel{fig:channel_corr_by_band}{{5}{27}{Distribuzione delle correlazioni di Spearman canale-livello, separatamente per banda e gruppo}{figure.caption.20}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {6}{\ignorespaces Distribuzione delle correlazioni di Spearman tra feature regionali, separatamente per banda e gruppo.}}{28}{figure.caption.21}\protected@file@percent }
+\newlabel{fig:regional_corr_by_band}{{6}{28}{Distribuzione delle correlazioni di Spearman tra feature regionali, separatamente per banda e gruppo}{figure.caption.21}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.2}Classificazione basata sulle feature spettrali}{28}{subsection.3.2}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {3.2.1}Confronto dei feature set mediante Random Forest}{28}{subsubsection.3.2.1}\protected@file@percent }
+\@writefile{lot}{\contentsline {table}{\numberline {3}{\ignorespaces Performance medie in cross-validation stratificata a cinque fold dei tre feature set spettrali valutati mediante Random Forest.}}{28}{table.caption.22}\protected@file@percent }
+\newlabel{tab:rf_spectral_cv_updated}{{3}{28}{Performance medie in cross-validation stratificata a cinque fold dei tre feature set spettrali valutati mediante Random Forest}{table.caption.22}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {7}{\ignorespaces Confronto delle metriche di cross-validation della Random Forest sui tre feature set spettrali.}}{29}{figure.caption.23}\protected@file@percent }
+\newlabel{fig:rf_feature_set_comparison_updated}{{7}{29}{Confronto delle metriche di cross-validation della Random Forest sui tre feature set spettrali}{figure.caption.23}{}}
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {3.2.2}Random Forest sul feature set completo}{29}{subsubsection.3.2.2}\protected@file@percent }
+\@writefile{lot}{\contentsline {table}{\numberline {4}{\ignorespaces Iperparametri selezionati per la Random Forest applicata alle 120 feature spettrali.}}{29}{table.caption.24}\protected@file@percent }
+\newlabel{tab:rf_all_spectral_hyperparameters}{{4}{29}{Iperparametri selezionati per la Random Forest applicata alle 120 feature spettrali}{table.caption.24}{}}
+\@writefile{lot}{\contentsline {table}{\numberline {5}{\ignorespaces Prestazioni della Random Forest sul feature set spettrale completo, valutate sul test set indipendente.}}{30}{table.caption.25}\protected@file@percent }
+\newlabel{tab:rf_all_spectral_test}{{5}{30}{Prestazioni della Random Forest sul feature set spettrale completo, valutate sul test set indipendente}{table.caption.25}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {8}{\ignorespaces Confusion matrix della Random Forest basata sulle 120 feature spettrali.}}{30}{figure.caption.26}\protected@file@percent }
+\newlabel{fig:rf_all_spectral_cm}{{8}{30}{Confusion matrix della Random Forest basata sulle 120 feature spettrali}{figure.caption.26}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {9}{\ignorespaces Curva ROC della Random Forest basata sulle 120 feature spettrali.}}{31}{figure.caption.27}\protected@file@percent }
+\newlabel{fig:rf_all_spectral_roc}{{9}{31}{Curva ROC della Random Forest basata sulle 120 feature spettrali}{figure.caption.27}{}}
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {3.2.3}Feature importance spettrale}{31}{subsubsection.3.2.3}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {10}{\ignorespaces Prime dieci feature spettrali ordinate secondo l'importanza basata sulla riduzione media dell'impurità.}}{32}{figure.caption.28}\protected@file@percent }
+\newlabel{fig:rf_spectral_importance_updated}{{10}{32}{Prime dieci feature spettrali ordinate secondo l'importanza basata sulla riduzione media dell'impurità}{figure.caption.28}{}}
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {3.2.4}Riduzione del feature set mediante correlazione}{32}{subsubsection.3.2.4}\protected@file@percent }
+\@writefile{lot}{\contentsline {table}{\numberline {6}{\ignorespaces Confronto in cross-validation delle soglie utilizzate per la riduzione basata sulla correlazione di Spearman.}}{32}{table.caption.29}\protected@file@percent }
+\newlabel{tab:rf_corr_threshold_updated}{{6}{32}{Confronto in cross-validation delle soglie utilizzate per la riduzione basata sulla correlazione di Spearman}{table.caption.29}{}}
+\@writefile{lot}{\contentsline {table}{\numberline {7}{\ignorespaces Iperparametri selezionati per la Random Forest applicata al feature set spettrale ridotto a 52 variabili.}}{33}{table.caption.30}\protected@file@percent }
+\newlabel{tab:rf_reduced_hyperparameters}{{7}{33}{Iperparametri selezionati per la Random Forest applicata al feature set spettrale ridotto a 52 variabili}{table.caption.30}{}}
+\@writefile{lot}{\contentsline {table}{\numberline {8}{\ignorespaces Prestazioni finali della Random Forest applicata al feature set spettrale ridotto.}}{33}{table.caption.31}\protected@file@percent }
+\newlabel{tab:rf_reduced_updated}{{8}{33}{Prestazioni finali della Random Forest applicata al feature set spettrale ridotto}{table.caption.31}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {11}{\ignorespaces Confusion matrix della Random Forest applicata al feature set spettrale ridotto a 52 variabili.}}{33}{figure.caption.32}\protected@file@percent }
+\newlabel{fig:rf_reduced_updated_cm}{{11}{33}{Confusion matrix della Random Forest applicata al feature set spettrale ridotto a 52 variabili}{figure.caption.32}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {12}{\ignorespaces Curva ROC della Random Forest applicata al feature set spettrale ridotto a 52 variabili.}}{34}{figure.caption.33}\protected@file@percent }
+\newlabel{fig:rf_reduced_updated_roc}{{12}{34}{Curva ROC della Random Forest applicata al feature set spettrale ridotto a 52 variabili}{figure.caption.33}{}}
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {3.2.5}Classificazione mediante il theta/beta ratio}{34}{subsubsection.3.2.5}\protected@file@percent }
+\@writefile{lot}{\contentsline {table}{\numberline {9}{\ignorespaces Confronto in cross-validation dei tre feature set basati esclusivamente sul theta/beta ratio. Le metriche rappresentano le medie ottenute nei cinque fold.}}{35}{table.caption.34}\protected@file@percent }
+\newlabel{tab:rf_tbr_cv_updated}{{9}{35}{Confronto in cross-validation dei tre feature set basati esclusivamente sul theta/beta ratio. Le metriche rappresentano le medie ottenute nei cinque fold}{table.caption.34}{}}
+\@writefile{lot}{\contentsline {table}{\numberline {10}{\ignorespaces Iperparametri selezionati per la Random Forest applicata ai 19 theta/beta ratio canale-livello.}}{35}{table.caption.35}\protected@file@percent }
+\newlabel{tab:rf_tbr_hyperparameters_updated}{{10}{35}{Iperparametri selezionati per la Random Forest applicata ai 19 theta/beta ratio canale-livello}{table.caption.35}{}}
+\@writefile{lot}{\contentsline {table}{\numberline {11}{\ignorespaces Prestazioni della Random Forest basata sui 19 theta/beta ratio canale-livello, valutata sul test set indipendente.}}{35}{table.caption.36}\protected@file@percent }
+\newlabel{tab:rf_tbr_test_updated}{{11}{35}{Prestazioni della Random Forest basata sui 19 theta/beta ratio canale-livello, valutata sul test set indipendente}{table.caption.36}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {13}{\ignorespaces Confusion matrix della Random Forest basata sui 19 theta/beta ratio canale-livello.}}{36}{figure.caption.37}\protected@file@percent }
+\newlabel{fig:rf_tbr_updated_cm}{{13}{36}{Confusion matrix della Random Forest basata sui 19 theta/beta ratio canale-livello}{figure.caption.37}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {14}{\ignorespaces Curva ROC della Random Forest basata sui 19 theta/beta ratio canale-livello.}}{36}{figure.caption.38}\protected@file@percent }
+\newlabel{fig:rf_tbr_updated_roc}{{14}{36}{Curva ROC della Random Forest basata sui 19 theta/beta ratio canale-livello}{figure.caption.38}{}}
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {3.2.6}Logistic Regression sulle feature spettrali}{37}{subsubsection.3.2.6}\protected@file@percent }
+\@writefile{toc}{\contentsline {paragraph}{Feature spettrali complete}{37}{section*.39}\protected@file@percent }
+\@writefile{lot}{\contentsline {table}{\numberline {12}{\ignorespaces Configurazione ottimale della Logistic Regression applicata alle 120 feature spettrali complete.}}{37}{table.caption.40}\protected@file@percent }
+\newlabel{tab:logreg_all_spectral_hyperparameters}{{12}{37}{Configurazione ottimale della Logistic Regression applicata alle 120 feature spettrali complete}{table.caption.40}{}}
+\@writefile{lot}{\contentsline {table}{\numberline {13}{\ignorespaces Prestazioni sul test set della Logistic Regression basata sulle 120 feature spettrali complete.}}{38}{table.caption.41}\protected@file@percent }
+\newlabel{tab:logreg_all_spectral_test}{{13}{38}{Prestazioni sul test set della Logistic Regression basata sulle 120 feature spettrali complete}{table.caption.41}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {15}{\ignorespaces Confusion matrix della Logistic Regression basata sulle 120 feature spettrali complete.}}{38}{figure.caption.42}\protected@file@percent }
+\newlabel{fig:logreg_all_spectral_cm}{{15}{38}{Confusion matrix della Logistic Regression basata sulle 120 feature spettrali complete}{figure.caption.42}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {16}{\ignorespaces Curva ROC della Logistic Regression basata sulle 120 feature spettrali complete.}}{38}{figure.caption.42}\protected@file@percent }
+\newlabel{fig:logreg_all_spectral_roc}{{16}{38}{Curva ROC della Logistic Regression basata sulle 120 feature spettrali complete}{figure.caption.42}{}}
+\@writefile{toc}{\contentsline {paragraph}{Feature spettrali ridotte}{38}{section*.43}\protected@file@percent }
+\@writefile{lot}{\contentsline {table}{\numberline {14}{\ignorespaces Configurazione ottimale della Logistic Regression applicata alle 52 feature spettrali ridotte.}}{39}{table.caption.44}\protected@file@percent }
+\newlabel{tab:logreg_reduced_spectral_hyperparameters}{{14}{39}{Configurazione ottimale della Logistic Regression applicata alle 52 feature spettrali ridotte}{table.caption.44}{}}
+\@writefile{lot}{\contentsline {table}{\numberline {15}{\ignorespaces Prestazioni sul test set della Logistic Regression applicata alle 52 feature spettrali ridotte.}}{39}{table.caption.45}\protected@file@percent }
+\newlabel{tab:logreg_reduced_spectral_test}{{15}{39}{Prestazioni sul test set della Logistic Regression applicata alle 52 feature spettrali ridotte}{table.caption.45}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {17}{\ignorespaces Confusion matrix della Logistic Regression applicata alle 52 feature spettrali ridotte.}}{39}{figure.caption.46}\protected@file@percent }
+\newlabel{fig:logreg_reduced_spectral_cm}{{17}{39}{Confusion matrix della Logistic Regression applicata alle 52 feature spettrali ridotte}{figure.caption.46}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {18}{\ignorespaces Curva ROC della Logistic Regression applicata alle 52 feature spettrali ridotte.}}{39}{figure.caption.46}\protected@file@percent }
+\newlabel{fig:logreg_reduced_spectral_roc}{{18}{39}{Curva ROC della Logistic Regression applicata alle 52 feature spettrali ridotte}{figure.caption.46}{}}
+\@writefile{toc}{\contentsline {paragraph}{Theta/beta ratio canale-livello}{40}{section*.47}\protected@file@percent }
+\@writefile{lot}{\contentsline {table}{\numberline {16}{\ignorespaces Configurazione ottimale della Logistic Regression basata sui 19 theta/beta ratio canale-livello.}}{40}{table.caption.48}\protected@file@percent }
+\newlabel{tab:logreg_tbr_hyperparameters}{{16}{40}{Configurazione ottimale della Logistic Regression basata sui 19 theta/beta ratio canale-livello}{table.caption.48}{}}
+\@writefile{lot}{\contentsline {table}{\numberline {17}{\ignorespaces Prestazioni sul test set della Logistic Regression basata sui 19 theta/beta ratio canale-livello.}}{40}{table.caption.49}\protected@file@percent }
+\newlabel{tab:logreg_tbr_test}{{17}{40}{Prestazioni sul test set della Logistic Regression basata sui 19 theta/beta ratio canale-livello}{table.caption.49}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {19}{\ignorespaces Confusion matrix della Logistic Regression basata sui 19 theta/beta ratio canale-livello.}}{41}{figure.caption.50}\protected@file@percent }
+\newlabel{fig:logreg_tbr_updated_cm}{{19}{41}{Confusion matrix della Logistic Regression basata sui 19 theta/beta ratio canale-livello}{figure.caption.50}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {20}{\ignorespaces Curva ROC della Logistic Regression basata sui 19 theta/beta ratio canale-livello.}}{41}{figure.caption.50}\protected@file@percent }
+\newlabel{fig:logreg_tbr_updated_roc}{{20}{41}{Curva ROC della Logistic Regression basata sui 19 theta/beta ratio canale-livello}{figure.caption.50}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.3}Feature di functional connectivity}{41}{subsection.3.3}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {3.3.1}Descrizione globale della connettività canale-livello}{41}{subsubsection.3.3.1}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {21}{\ignorespaces Connettività funzionale media di Pearson a livello di singolo canale nei gruppi Control e ADHD. Le colonne corrispondono alle bande delta, theta, alpha e beta; la prima riga rappresenta il gruppo Control e la seconda il gruppo ADHD. Per ogni pannello sono mostrate tutte le 171 coppie uniche tra i 19 canali. Il colore delle connessioni indica il segno della correlazione media: il rosso rappresenta correlazioni positive, il blu correlazioni negative e i colori prossimi al bianco indicano valori vicini a zero. Lo spessore della linea è proporzionale al valore assoluto del coefficiente medio. I colori disposti lungo la circonferenza identificano la regione di appartenenza degli elettrodi.}}{42}{figure.caption.51}\protected@file@percent }
+\newlabel{fig:all_channel_connectivity_groups}{{21}{42}{Connettività funzionale media di Pearson a livello di singolo canale nei gruppi Control e ADHD. Le colonne corrispondono alle bande delta, theta, alpha e beta; la prima riga rappresenta il gruppo Control e la seconda il gruppo ADHD. Per ogni pannello sono mostrate tutte le 171 coppie uniche tra i 19 canali. Il colore delle connessioni indica il segno della correlazione media: il rosso rappresenta correlazioni positive, il blu correlazioni negative e i colori prossimi al bianco indicano valori vicini a zero. Lo spessore della linea è proporzionale al valore assoluto del coefficiente medio. I colori disposti lungo la circonferenza identificano la regione di appartenenza degli elettrodi}{figure.caption.51}{}}
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {3.3.2}Confronto dei feature set di connettività}{43}{subsubsection.3.3.2}\protected@file@percent }
+\@writefile{lot}{\contentsline {table}{\numberline {18}{\ignorespaces Prestazioni medie in cross-validation della Random Forest sui feature set di functional connectivity.}}{43}{table.caption.52}\protected@file@percent }
+\newlabel{tab:rf_connectivity_cv_updated}{{18}{43}{Prestazioni medie in cross-validation della Random Forest sui feature set di functional connectivity}{table.caption.52}{}}
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {3.3.3}Random Forest sulla functional connectivity}{43}{subsubsection.3.3.3}\protected@file@percent }
+\@writefile{lot}{\contentsline {table}{\numberline {19}{\ignorespaces Iperparametri della Random Forest applicata alle 724 feature di connettività.}}{43}{table.caption.53}\protected@file@percent }
+\newlabel{tab:rf_connectivity_hyperparameters_updated}{{19}{43}{Iperparametri della Random Forest applicata alle 724 feature di connettività}{table.caption.53}{}}
+\@writefile{lot}{\contentsline {table}{\numberline {20}{\ignorespaces Prestazioni finali della Random Forest basata sul set completo di functional connectivity.}}{44}{table.caption.54}\protected@file@percent }
+\newlabel{tab:rf_connectivity_test_updated}{{20}{44}{Prestazioni finali della Random Forest basata sul set completo di functional connectivity}{table.caption.54}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {22}{\ignorespaces Confusion matrix della Random Forest basata sulle 724 feature di functional connectivity.}}{44}{figure.caption.55}\protected@file@percent }
+\newlabel{fig:rf_connectivity_updated_cm}{{22}{44}{Confusion matrix della Random Forest basata sulle 724 feature di functional connectivity}{figure.caption.55}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {23}{\ignorespaces Curva ROC della Random Forest basata sulla functional connectivity.}}{45}{figure.caption.56}\protected@file@percent }
+\newlabel{fig:rf_connectivity_updated_roc}{{23}{45}{Curva ROC della Random Forest basata sulla functional connectivity}{figure.caption.56}{}}
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {3.3.4}Feature importance delle connessioni}{45}{subsubsection.3.3.4}\protected@file@percent }
+\@writefile{lot}{\contentsline {table}{\numberline {21}{\ignorespaces Prime dieci feature di functional connectivity secondo la feature importance della Random Forest.}}{45}{table.caption.57}\protected@file@percent }
+\newlabel{tab:top_connectivity_importance}{{21}{45}{Prime dieci feature di functional connectivity secondo la feature importance della Random Forest}{table.caption.57}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {24}{\ignorespaces Prime quindici connessioni ordinate secondo l'importanza nella Random Forest.}}{46}{figure.caption.58}\protected@file@percent }
+\newlabel{fig:connectivity_importance_updated}{{24}{46}{Prime quindici connessioni ordinate secondo l'importanza nella Random Forest}{figure.caption.58}{}}
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {3.3.5}Logistic Regression sulla functional connectivity}{46}{subsubsection.3.3.5}\protected@file@percent }
+\@writefile{lot}{\contentsline {table}{\numberline {22}{\ignorespaces Prestazioni della Logistic Regression basata sulle 724 feature di functional connectivity.}}{46}{table.caption.59}\protected@file@percent }
+\newlabel{tab:logreg_connectivity_updated}{{22}{46}{Prestazioni della Logistic Regression basata sulle 724 feature di functional connectivity}{table.caption.59}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {25}{\ignorespaces Confusion matrix della Logistic Regression basata sulla functional connectivity.}}{47}{figure.caption.60}\protected@file@percent }
+\newlabel{fig:logreg_connectivity_updated_cm}{{25}{47}{Confusion matrix della Logistic Regression basata sulla functional connectivity}{figure.caption.60}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {4}Conclusioni}{47}{section.4}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {26}{\ignorespaces Confronto complessivo delle metriche di classificazione sul test set indipendente per le differenti rappresentazioni EEG e i modelli considerati. Precision, recall e F1-score si riferiscono alla classe ADHD.}}{47}{figure.caption.61}\protected@file@percent }
+\newlabel{fig:overall_model_comparison}{{26}{47}{Confronto complessivo delle metriche di classificazione sul test set indipendente per le differenti rappresentazioni EEG e i modelli considerati. Precision, recall e F1-score si riferiscono alla classe ADHD}{figure.caption.61}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.1}Sintesi dei risultati}{48}{subsection.4.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.2}Caratterizzazione dei gruppi nel dataset analizzato}{49}{subsection.4.2}\protected@file@percent }
+\citation{Moghadam2024}
+\citation{Moghadam2024}
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.3}Confronto con il lavoro di Ahmadi Moghadam et al.}{50}{subsection.4.3}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.4}Criticità e limitazioni}{51}{subsection.4.4}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.5}Sviluppi futuri}{52}{subsection.4.5}\protected@file@percent }
 \citation{Arns2013}
-\@writefile{toc}{\contentsline {subsubsection}{\numberline {3.1.11}Studio feature theta/beta ratio}{23}{subsubsection.3.1.11}\protected@file@percent }
-\@writefile{lot}{\contentsline {table}{\numberline {12}{\ignorespaces Confronto in cross-validation dei tre insiemi di feature basati esclusivamente sul rapporto theta/beta.}}{23}{table.caption.28}\protected@file@percent }
-\newlabel{tab:rf_tbr_cv_comparison}{{12}{23}{Confronto in cross-validation dei tre insiemi di feature basati esclusivamente sul rapporto theta/beta}{table.caption.28}{}}
-\@writefile{lot}{\contentsline {table}{\numberline {13}{\ignorespaces Iperparametri ottimali del modello Random Forest basato sulle sole feature theta/beta ratio.}}{23}{table.caption.29}\protected@file@percent }
-\newlabel{tab:rf_tbr_hyperparameters}{{13}{23}{Iperparametri ottimali del modello Random Forest basato sulle sole feature theta/beta ratio}{table.caption.29}{}}
-\@writefile{lot}{\contentsline {table}{\numberline {14}{\ignorespaces Metriche finali del modello Random Forest basato sulle sole feature theta/beta ratio, valutato sul test set indipendente.}}{23}{table.caption.30}\protected@file@percent }
-\newlabel{tab:rf_tbr_final_metrics}{{14}{23}{Metriche finali del modello Random Forest basato sulle sole feature theta/beta ratio, valutato sul test set indipendente}{table.caption.30}{}}
-\@writefile{lof}{\contentsline {figure}{\numberline {13}{\ignorespaces Confusion matrix del modello Random Forest basato sulle sole feature theta/beta ratio.}}{24}{figure.caption.31}\protected@file@percent }
-\newlabel{fig:rf_tbr_confusion_matrix}{{13}{24}{Confusion matrix del modello Random Forest basato sulle sole feature theta/beta ratio}{figure.caption.31}{}}
-\@writefile{lof}{\contentsline {figure}{\numberline {14}{\ignorespaces Curva ROC del modello Random Forest basato sulle sole feature theta/beta ratio.}}{24}{figure.caption.32}\protected@file@percent }
-\newlabel{fig:rf_tbr_roc_curve}{{14}{24}{Curva ROC del modello Random Forest basato sulle sole feature theta/beta ratio}{figure.caption.32}{}}
-\@writefile{toc}{\contentsline {subsubsection}{\numberline {3.1.12}Classificazione con Logistic Regression}{25}{subsubsection.3.1.12}\protected@file@percent }
-\@writefile{lot}{\contentsline {table}{\numberline {15}{\ignorespaces Performance della Logistic Regression sui diversi insiemi di feature spettrali, valutate sul test set indipendente.}}{25}{table.caption.33}\protected@file@percent }
-\newlabel{tab:logreg_spectral_results}{{15}{25}{Performance della Logistic Regression sui diversi insiemi di feature spettrali, valutate sul test set indipendente}{table.caption.33}{}}
-\@writefile{lof}{\contentsline {figure}{\numberline {15}{\ignorespaces Confusion matrix della Logistic Regression basata sulle feature theta/beta ratio, valutata sul test set indipendente.}}{25}{figure.caption.34}\protected@file@percent }
-\newlabel{fig:logreg_tbr_confusion_matrix}{{15}{25}{Confusion matrix della Logistic Regression basata sulle feature theta/beta ratio, valutata sul test set indipendente}{figure.caption.34}{}}
-\@writefile{lof}{\contentsline {figure}{\numberline {16}{\ignorespaces Curva ROC della Logistic Regression basata sulle feature theta/beta ratio. La linea tratteggiata rappresenta la performance casuale.}}{26}{figure.caption.35}\protected@file@percent }
-\newlabel{fig:logreg_tbr_roc_curve}{{16}{26}{Curva ROC della Logistic Regression basata sulle feature theta/beta ratio. La linea tratteggiata rappresenta la performance casuale}{figure.caption.35}{}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {3.2}Feature di functional connectivity}{26}{subsection.3.2}\protected@file@percent }
-\@writefile{lot}{\contentsline {table}{\numberline {16}{\ignorespaces Confronto in cross-validation dei tre insiemi di feature di functional connectivity mediante Random Forest.}}{26}{table.caption.36}\protected@file@percent }
-\newlabel{tab:rf_connectivity_cv_comparison}{{16}{26}{Confronto in cross-validation dei tre insiemi di feature di functional connectivity mediante Random Forest}{table.caption.36}{}}
-\@writefile{lot}{\contentsline {table}{\numberline {17}{\ignorespaces Iperparametri ottimali del modello Random Forest basato sulle feature regionali di functional connectivity.}}{27}{table.caption.37}\protected@file@percent }
-\newlabel{tab:rf_connectivity_hyperparameters}{{17}{27}{Iperparametri ottimali del modello Random Forest basato sulle feature regionali di functional connectivity}{table.caption.37}{}}
-\@writefile{lot}{\contentsline {table}{\numberline {18}{\ignorespaces Metriche finali del modello Random Forest basato su feature regionali di functional connectivity, valutato sul test set indipendente.}}{27}{table.caption.38}\protected@file@percent }
-\newlabel{tab:rf_connectivity_final_metrics}{{18}{27}{Metriche finali del modello Random Forest basato su feature regionali di functional connectivity, valutato sul test set indipendente}{table.caption.38}{}}
-\@writefile{lof}{\contentsline {figure}{\numberline {17}{\ignorespaces Confusion matrix del modello Random Forest basato su feature regionali di functional connectivity.}}{27}{figure.caption.39}\protected@file@percent }
-\newlabel{fig:rf_connectivity_confusion_matrix}{{17}{27}{Confusion matrix del modello Random Forest basato su feature regionali di functional connectivity}{figure.caption.39}{}}
-\@writefile{lof}{\contentsline {figure}{\numberline {18}{\ignorespaces Curva ROC del modello Random Forest basato su feature regionali di functional connectivity. La linea tratteggiata rappresenta la performance casuale.}}{28}{figure.caption.40}\protected@file@percent }
-\newlabel{fig:rf_connectivity_roc_curve}{{18}{28}{Curva ROC del modello Random Forest basato su feature regionali di functional connectivity. La linea tratteggiata rappresenta la performance casuale}{figure.caption.40}{}}
-\@writefile{toc}{\contentsline {subsubsection}{\numberline {3.2.1}Feature importance delle connessioni funzionali}{28}{subsubsection.3.2.1}\protected@file@percent }
-\@writefile{lof}{\contentsline {figure}{\numberline {19}{\ignorespaces Prime quindici feature di functional connectivity più importanti secondo il modello Random Forest.}}{29}{figure.caption.41}\protected@file@percent }
-\newlabel{fig:rf_connectivity_feature_importance}{{19}{29}{Prime quindici feature di functional connectivity più importanti secondo il modello Random Forest}{figure.caption.41}{}}
-\@writefile{toc}{\contentsline {subsubsection}{\numberline {3.2.2}Classificazione con Logistic Regression}{29}{subsubsection.3.2.2}\protected@file@percent }
-\@writefile{lof}{\contentsline {figure}{\numberline {20}{\ignorespaces Confusion matrix della Logistic Regression basata su feature regionali di functional connectivity.}}{30}{figure.caption.42}\protected@file@percent }
-\newlabel{fig:logreg_connectivity_confusion_matrix}{{20}{30}{Confusion matrix della Logistic Regression basata su feature regionali di functional connectivity}{figure.caption.42}{}}
-\@writefile{lof}{\contentsline {figure}{\numberline {21}{\ignorespaces Curva ROC della Logistic Regression basata su feature regionali di functional connectivity.}}{30}{figure.caption.43}\protected@file@percent }
-\newlabel{fig:logreg_connectivity_roc_curve}{{21}{30}{Curva ROC della Logistic Regression basata su feature regionali di functional connectivity}{figure.caption.43}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.6}Conclusione generale}{53}{subsection.4.6}\protected@file@percent }
 \bibstyle{plain}
 \bibdata{references.bib}
 \bibcite{Moghadam2024}{1}
-\bibcite{Kaggle}{2}
-\bibcite{Arns2013}{3}
-\bibcite{multiple}{4}
-\bibcite{test}{5}
-\bibcite{Welch}{6}
-\@writefile{toc}{\contentsline {section}{\numberline {4}Conclusioni}{31}{section.4}\protected@file@percent }
-\@writefile{lof}{\contentsline {figure}{\numberline {22}{\ignorespaces Confronto complessivo delle metriche di classificazione sul test set indipendente per le diverse rappresentazioni EEG e i diversi modelli.}}{31}{figure.caption.44}\protected@file@percent }
-\newlabel{fig:overall_model_comparison}{{22}{31}{Confronto complessivo delle metriche di classificazione sul test set indipendente per le diverse rappresentazioni EEG e i diversi modelli}{figure.caption.44}{}}
-\gdef \@abspage@last{32}
+\bibcite{Arns2013}{2}
+\gdef \@abspage@last{54}

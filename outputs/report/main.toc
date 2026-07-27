@@ -1,36 +1,75 @@
 \babel@toc {italian}{}\relax 
 \babel@toc {italian}{}\relax 
-\contentsline {section}{\numberline {1}Introduzione}{2}{section.1}%
-\contentsline {section}{\numberline {2}Metodi}{2}{section.2}%
-\contentsline {subsection}{\numberline {2.1}Dataset}{2}{subsection.2.1}%
-\contentsline {subsection}{\numberline {2.2}Estrazione features spettrali}{3}{subsection.2.2}%
-\contentsline {subsection}{\numberline {2.3}Esplorazione featurea spettrali}{4}{subsection.2.3}%
-\contentsline {subsubsection}{\numberline {2.3.1}Test di Mann-Whitney U}{4}{subsubsection.2.3.1}%
-\contentsline {subsubsection}{\numberline {2.3.2}Cohen's d}{4}{subsubsection.2.3.2}%
-\contentsline {subsubsection}{\numberline {2.3.3}Correzione per confronti multipli}{5}{subsubsection.2.3.3}%
-\contentsline {subsubsection}{\numberline {2.3.4}Analisi di correlazione}{5}{subsubsection.2.3.4}%
-\contentsline {subsection}{\numberline {2.4}Classificazione}{6}{subsection.2.4}%
-\contentsline {subsubsection}{\numberline {2.4.1}Random Forest}{6}{subsubsection.2.4.1}%
-\contentsline {paragraph}{Tuning degli iperparametri:}{7}{section*.3}%
-\contentsline {paragraph}{Feature importance:}{7}{section*.4}%
-\contentsline {subsubsection}{\numberline {2.4.2}Logistic Regression}{7}{subsubsection.2.4.2}%
-\contentsline {paragraph}{Tuning degli iperparametri:}{8}{section*.5}%
-\contentsline {subsection}{\numberline {2.5}Features di functional connectivity}{8}{subsection.2.5}%
-\contentsline {section}{\numberline {3}Risultati}{9}{section.3}%
-\contentsline {subsection}{\numberline {3.1}Features spettrali}{9}{subsection.3.1}%
-\contentsline {subsubsection}{\numberline {3.1.1}Differenze tra gruppi ed effect size}{9}{subsubsection.3.1.1}%
-\contentsline {subsubsection}{\numberline {3.1.2}Feature significative dopo correzione FDR}{11}{subsubsection.3.1.2}%
-\contentsline {subsubsection}{\numberline {3.1.3}Correlazione tra feature}{13}{subsubsection.3.1.3}%
-\contentsline {subsubsection}{\numberline {3.1.4}Correlazioni canale-livello}{13}{subsubsection.3.1.4}%
-\contentsline {subsubsection}{\numberline {3.1.5}Correlazioni regionali}{13}{subsubsection.3.1.5}%
-\contentsline {subsubsection}{\numberline {3.1.6}Distribuzione delle correlazioni}{14}{subsubsection.3.1.6}%
-\contentsline {subsubsection}{\numberline {3.1.7}Classificazione Random Forest}{15}{subsubsection.3.1.7}%
-\contentsline {subsubsection}{\numberline {3.1.8}Performance del modello finale}{16}{subsubsection.3.1.8}%
-\contentsline {subsubsection}{\numberline {3.1.9}Feature importance}{18}{subsubsection.3.1.9}%
-\contentsline {subsubsection}{\numberline {3.1.10}Riduzione del feature set in base alla correlazione}{20}{subsubsection.3.1.10}%
-\contentsline {subsubsection}{\numberline {3.1.11}Studio feature theta/beta ratio}{23}{subsubsection.3.1.11}%
-\contentsline {subsubsection}{\numberline {3.1.12}Classificazione con Logistic Regression}{25}{subsubsection.3.1.12}%
-\contentsline {subsection}{\numberline {3.2}Feature di functional connectivity}{26}{subsection.3.2}%
-\contentsline {subsubsection}{\numberline {3.2.1}Feature importance delle connessioni funzionali}{28}{subsubsection.3.2.1}%
-\contentsline {subsubsection}{\numberline {3.2.2}Classificazione con Logistic Regression}{29}{subsubsection.3.2.2}%
-\contentsline {section}{\numberline {4}Conclusioni}{31}{section.4}%
+\contentsline {section}{\numberline {1}Introduzione}{3}{section.1}%
+\contentsline {section}{\numberline {2}Metodi}{5}{section.2}%
+\contentsline {subsection}{\numberline {2.1}Dataset}{5}{subsection.2.1}%
+\contentsline {subsubsection}{\numberline {2.1.1}Protocollo sperimentale}{6}{subsubsection.2.1.1}%
+\contentsline {subsubsection}{\numberline {2.1.2}Acquisizione EEG}{6}{subsubsection.2.1.2}%
+\contentsline {subsubsection}{\numberline {2.1.3}Struttura e limitazioni dei dati}{7}{subsubsection.2.1.3}%
+\contentsline {subsection}{\numberline {2.2}Preprocessing del segnale}{7}{subsection.2.2}%
+\contentsline {subsubsection}{\numberline {2.2.1}Uniformazione della durata delle registrazioni}{7}{subsubsection.2.2.1}%
+\contentsline {subsubsection}{\numberline {2.2.2}Conversione delle unità e assegnazione del montaggio}{8}{subsubsection.2.2.2}%
+\contentsline {subsubsection}{\numberline {2.2.3}Filtraggio passa-banda}{8}{subsubsection.2.2.3}%
+\contentsline {subsubsection}{\numberline {2.2.4}Riferimento medio comune}{9}{subsubsection.2.2.4}%
+\contentsline {subsubsection}{\numberline {2.2.5}Independent Component Analysis}{9}{subsubsection.2.2.5}%
+\contentsline {paragraph}{Motivazione e principio generale}{9}{section*.2}%
+\contentsline {paragraph}{Indipendenza e non gaussianità}{10}{section*.3}%
+\contentsline {paragraph}{PCA e numero di componenti}{10}{section*.4}%
+\contentsline {paragraph}{Ottimizzazione mediante Picard}{10}{section*.5}%
+\contentsline {paragraph}{Classificazione delle componenti}{11}{section*.6}%
+\contentsline {paragraph}{Ricostruzione del segnale}{12}{section*.7}%
+\contentsline {paragraph}{Limiti dell'ICA}{12}{section*.8}%
+\contentsline {subsection}{\numberline {2.3}Estrazione delle feature spettrali}{12}{subsection.2.3}%
+\contentsline {subsubsection}{\numberline {2.3.1}Stima della Power Spectral Density}{12}{subsubsection.2.3.1}%
+\contentsline {subsubsection}{\numberline {2.3.2}Calcolo delle potenze di banda}{13}{subsubsection.2.3.2}%
+\contentsline {subsubsection}{\numberline {2.3.3}Theta/beta ratio}{14}{subsubsection.2.3.3}%
+\contentsline {subsubsection}{\numberline {2.3.4}Feature regionali}{14}{subsubsection.2.3.4}%
+\contentsline {subsubsection}{\numberline {2.3.5}Struttura del feature set spettrale}{15}{subsubsection.2.3.5}%
+\contentsline {subsection}{\numberline {2.4}Esplorazione delle feature spettrali}{15}{subsection.2.4}%
+\contentsline {subsubsection}{\numberline {2.4.1}Test di Mann--Whitney U}{15}{subsubsection.2.4.1}%
+\contentsline {subsubsection}{\numberline {2.4.2}Cohen's $d$}{16}{subsubsection.2.4.2}%
+\contentsline {subsubsection}{\numberline {2.4.3}Correzione per confronti multipli}{17}{subsubsection.2.4.3}%
+\contentsline {subsubsection}{\numberline {2.4.4}Correlazione di Spearman}{17}{subsubsection.2.4.4}%
+\contentsline {subsection}{\numberline {2.5}Classificazione}{18}{subsection.2.5}%
+\contentsline {subsubsection}{\numberline {2.5.1}Suddivisione dei dati e cross-validation}{18}{subsubsection.2.5.1}%
+\contentsline {subsubsection}{\numberline {2.5.2}Metriche di valutazione}{19}{subsubsection.2.5.2}%
+\contentsline {subsubsection}{\numberline {2.5.3}Random Forest}{19}{subsubsection.2.5.3}%
+\contentsline {paragraph}{Ottimizzazione degli iperparametri}{20}{section*.10}%
+\contentsline {paragraph}{Impurità di Gini e feature importance}{20}{section*.11}%
+\contentsline {subsubsection}{\numberline {2.5.4}Logistic Regression}{21}{subsubsection.2.5.4}%
+\contentsline {paragraph}{Regolarizzazione e tuning}{21}{section*.12}%
+\contentsline {subsection}{\numberline {2.6}Feature di functional connectivity}{21}{subsection.2.6}%
+\contentsline {subsubsection}{\numberline {2.6.1}Filtraggio nelle singole bande}{22}{subsubsection.2.6.1}%
+\contentsline {subsubsection}{\numberline {2.6.2}Correlazione di Pearson}{22}{subsubsection.2.6.2}%
+\contentsline {subsubsection}{\numberline {2.6.3}Connettività tra canali}{22}{subsubsection.2.6.3}%
+\contentsline {subsubsection}{\numberline {2.6.4}Connettività regionale}{23}{subsubsection.2.6.4}%
+\contentsline {section}{\numberline {3}Risultati}{23}{section.3}%
+\contentsline {subsection}{\numberline {3.1}Feature spettrali}{23}{subsection.3.1}%
+\contentsline {subsubsection}{\numberline {3.1.1}Effect size delle differenze tra i gruppi}{23}{subsubsection.3.1.1}%
+\contentsline {paragraph}{Effect size a livello di singolo canale}{24}{section*.14}%
+\contentsline {paragraph}{Effect size a livello regionale}{25}{section*.16}%
+\contentsline {subsubsection}{\numberline {3.1.2}Feature significative dopo correzione FDR}{26}{subsubsection.3.1.2}%
+\contentsline {subsubsection}{\numberline {3.1.3}Ridondanza tra le feature spettrali}{26}{subsubsection.3.1.3}%
+\contentsline {subsection}{\numberline {3.2}Classificazione basata sulle feature spettrali}{28}{subsection.3.2}%
+\contentsline {subsubsection}{\numberline {3.2.1}Confronto dei feature set mediante Random Forest}{28}{subsubsection.3.2.1}%
+\contentsline {subsubsection}{\numberline {3.2.2}Random Forest sul feature set completo}{29}{subsubsection.3.2.2}%
+\contentsline {subsubsection}{\numberline {3.2.3}Feature importance spettrale}{31}{subsubsection.3.2.3}%
+\contentsline {subsubsection}{\numberline {3.2.4}Riduzione del feature set mediante correlazione}{32}{subsubsection.3.2.4}%
+\contentsline {subsubsection}{\numberline {3.2.5}Classificazione mediante il theta/beta ratio}{34}{subsubsection.3.2.5}%
+\contentsline {subsubsection}{\numberline {3.2.6}Logistic Regression sulle feature spettrali}{37}{subsubsection.3.2.6}%
+\contentsline {paragraph}{Feature spettrali complete}{37}{section*.39}%
+\contentsline {paragraph}{Feature spettrali ridotte}{38}{section*.43}%
+\contentsline {paragraph}{Theta/beta ratio canale-livello}{40}{section*.47}%
+\contentsline {subsection}{\numberline {3.3}Feature di functional connectivity}{41}{subsection.3.3}%
+\contentsline {subsubsection}{\numberline {3.3.1}Descrizione globale della connettività canale-livello}{41}{subsubsection.3.3.1}%
+\contentsline {subsubsection}{\numberline {3.3.2}Confronto dei feature set di connettività}{43}{subsubsection.3.3.2}%
+\contentsline {subsubsection}{\numberline {3.3.3}Random Forest sulla functional connectivity}{43}{subsubsection.3.3.3}%
+\contentsline {subsubsection}{\numberline {3.3.4}Feature importance delle connessioni}{45}{subsubsection.3.3.4}%
+\contentsline {subsubsection}{\numberline {3.3.5}Logistic Regression sulla functional connectivity}{46}{subsubsection.3.3.5}%
+\contentsline {section}{\numberline {4}Conclusioni}{47}{section.4}%
+\contentsline {subsection}{\numberline {4.1}Sintesi dei risultati}{48}{subsection.4.1}%
+\contentsline {subsection}{\numberline {4.2}Caratterizzazione dei gruppi nel dataset analizzato}{49}{subsection.4.2}%
+\contentsline {subsection}{\numberline {4.3}Confronto con il lavoro di Ahmadi Moghadam et al.}{50}{subsection.4.3}%
+\contentsline {subsection}{\numberline {4.4}Criticità e limitazioni}{51}{subsection.4.4}%
+\contentsline {subsection}{\numberline {4.5}Sviluppi futuri}{52}{subsection.4.5}%
+\contentsline {subsection}{\numberline {4.6}Conclusione generale}{53}{subsection.4.6}%

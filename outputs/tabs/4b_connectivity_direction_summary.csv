@@ -1,0 +1,17 @@
+feature_level,band,direction,n_features
+channel,alpha,ADHD > Control,78
+channel,alpha,Control > ADHD,93
+channel,beta,ADHD > Control,74
+channel,beta,Control > ADHD,97
+channel,delta,ADHD > Control,89
+channel,delta,Control > ADHD,82
+channel,theta,ADHD > Control,79
+channel,theta,Control > ADHD,92
+regional,alpha,ADHD > Control,6
+regional,alpha,Control > ADHD,4
+regional,beta,ADHD > Control,5
+regional,beta,Control > ADHD,5
+regional,delta,ADHD > Control,6
+regional,delta,Control > ADHD,4
+regional,theta,ADHD > Control,5
+regional,theta,Control > ADHD,5

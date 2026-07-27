@@ -1,12 +1,444 @@
 \section{Conclusioni}
+
 \begin{figure}[H]
 	\centering
-	\includegraphics[width=0.98\textwidth]{../figures/5_model_comparison_all_metrics.png}
-	\caption{Confronto complessivo delle metriche di classificazione sul test set indipendente per le diverse rappresentazioni EEG e i diversi modelli.}
+	\includegraphics[width=0.98\textwidth]
+	{../figures/5_model_comparison_all_metrics.png}
+	\caption{Confronto complessivo delle metriche di classificazione
+		sul test set indipendente per le differenti rappresentazioni EEG
+		e i modelli considerati. Precision, recall e F1-score si
+		riferiscono alla classe ADHD.}
 	\label{fig:overall_model_comparison}
 \end{figure}
-Il confronto complessivo mostra che le feature di functional connectivity regionale ottengono le prestazioni migliori tra tutte le rappresentazioni EEG considerate. Le feature spettrali e il rapporto theta/beta risultano comunque informative, ma mostrano prestazioni inferiori rispetto alla connettività. Questo suggerisce che, nel dataset analizzato, le relazioni funzionali tra regioni EEG rappresentino una descrizione più efficace per la classificazione ADHD vs Control rispetto alle sole misure di potenza spettrale.
 
-È importante sottolineare alcune limitazioni. Il numero di soggetti è relativamente ridotto e il dataset deriva da una specifica condizione sperimentale. 
+Nel complesso, la functional connectivity risulta la rappresentazione
+più informativa nel dataset analizzato. La Random Forest applicata
+alle 724 connessioni ottiene il risultato migliore, suggerendo che
+possano essere utili relazioni non lineari o interazioni tra le
+connessioni. Anche la Logistic Regression raggiunge comunque
+prestazioni elevate, indicando che una parte consistente
+dell'informazione discriminante è rappresentabile linearmente.
 
-Sviluppi futuri potrebbero includere il confronto con ulteriori misure di connettività. 
+Tra le feature spettrali, il theta/beta ratio canale-livello è il set
+più efficace, soprattutto in termini di sensibilità verso la classe
+ADHD. Tuttavia, la minore specificità della Random Forest basata sul
+TBR e l'eterogeneità degli effect size confermano che tale indice non
+può essere interpretato come marker diagnostico autonomo.
+
+Il risultato della Random Forest sulla connettività deve essere
+interpretato con cautela. L'accuracy del 96\% corrisponde a
+24 soggetti correttamente classificati su un test set di soli
+25 partecipanti. Inoltre, la balanced accuracy ottenuta in
+cross-validation durante il tuning è pari a circa $0.707$, molto
+inferiore al valore osservato sul test. Questa differenza indica che
+le prestazioni finali possono dipendere favorevolmente dallo specifico
+split e non costituiscono ancora una stima stabile della
+generalizzazione su nuovi campioni.
+
+\subsection{Sintesi dei risultati}
+
+L'obiettivo del presente lavoro era confrontare differenti
+rappresentazioni dello stesso segnale EEG per distinguere bambini con
+ADHD e soggetti di controllo. Sono state considerate, da un lato, le
+caratteristiche spettrali locali, comprendenti le potenze nelle bande
+delta, theta, alpha e beta e il theta/beta ratio; dall'altro, la
+functional connectivity, descritta attraverso la correlazione di
+Pearson tra segnali registrati in canali e regioni differenti.
+
+Il risultato complessivo più importante è che le feature di
+functional connectivity hanno fornito prestazioni nettamente
+superiori rispetto alle sole caratteristiche spettrali. Il miglior
+modello è risultato essere la Random Forest applicata al set completo
+di 724 feature di connettività, comprendente sia le connessioni tra
+singoli canali sia quelle tra segnali regionali. 
+La confusion matrix mostra che sono stati classificati correttamente
+tutti i 13 soggetti ADHD e 11 dei 12 controlli. L'unico errore
+corrisponde quindi a un soggetto di controllo classificato come ADHD.
+
+La Logistic Regression applicata alle stesse 724 feature di
+connettività ha ottenuto prestazioni inferiori, ma comunque elevate.
+
+Nel presente esperimento, quindi, la Random Forest risulta superiore
+alla Logistic Regression quando entrambe ricevono l'intero insieme
+delle connessioni. Questo suggerisce che la separazione tra i due
+gruppi possa dipendere non soltanto da una combinazione lineare delle
+singole connessioni, ma anche da interazioni e relazioni non lineari
+tra esse. Tale conclusione rimane tuttavia limitata allo specifico
+campione e allo specifico test set utilizzati.
+
+Le rappresentazioni spettrali hanno invece prodotto prestazioni più
+moderate. Il modello Random Forest applicato alle 120 feature
+spettrali complete ha ottenuto una balanced accuracy pari a 0.638,
+mentre la riduzione basata sulla correlazione, che ha conservato 52
+feature, ha aumentato la balanced accuracy a 0.676. La riduzione della
+ridondanza ha quindi prodotto un modello più compatto e leggermente
+più efficace, ma il miglioramento non è stato sufficiente a colmare
+la distanza rispetto alla functional connectivity.
+
+Tra le rappresentazioni spettrali, il theta/beta ratio calcolato sui
+19 canali è risultato il set più informativo. La Logistic Regression
+basata esclusivamente sul TBR ha raggiunto una balanced accuracy pari
+a 0.756, mentre la Random Forest ha raggiunto 0.712. Il TBR contiene
+quindi informazione utile, ma non ha raggiunto le prestazioni delle
+feature di connettività e non può essere considerato un indicatore
+diagnostico autonomo.
+
+
+\subsection{Caratterizzazione dei gruppi nel dataset analizzato}
+
+L'analisi univariata delle feature spettrali non ha confermato
+l'ipotesi classica di un theta/beta ratio sistematicamente più elevato
+nei soggetti ADHD. Al contrario, gli effect size del TBR sono risultati
+prevalentemente negativi, indicando valori medi maggiori nel gruppo
+di controllo.
+
+Dopo la correzione Benjamini--Hochberg per confronti multipli, l'unica
+feature statisticamente significativa è risultata:
+
+\begin{equation}
+	\texttt{F4\_theta\_beta\_ratio},
+	\qquad
+	d=-0.851,
+	\qquad
+	p_{\mathrm{FDR}}=0.0158.
+\end{equation}
+
+Il theta/beta ratio in F4 è quindi mediamente inferiore nei soggetti
+ADHD rispetto ai controlli. Anche il TBR temporale e le potenze theta
+in posizioni parietali presentano effect size negativi, sebbene non
+rimangano significativi dopo la correzione per confronti multipli.
+
+Nel campione analizzato, la differenza nel TBR sembra dipendere
+soprattutto da una minore potenza theta nel gruppo ADHD, mentre le
+differenze nella banda beta risultano meno uniformi. L'alpha mostra
+generalmente effect size contenuti e sembra discriminare poco i due
+gruppi quando viene considerata soltanto come potenza locale.
+
+Questi risultati non implicano che la theta o il TBR siano
+generalmente inferiori nell'ADHD. La registrazione è stata effettuata
+durante un compito di attenzione visiva e non in condizioni di riposo.
+Durante un compito, l'attività theta può riflettere processi di
+controllo cognitivo, monitoraggio e mantenimento dell'attenzione,
+oltre che sonnolenza o ridotta vigilanza. La direzione osservata deve
+pertanto essere interpretata come una caratteristica dello specifico
+dataset e della specifica condizione sperimentale.
+
+L'analisi della functional connectivity mostra un quadro più
+distribuito. Non emerge una semplice riduzione o un semplice aumento
+globale della connettività nei soggetti ADHD. Le differenze dipendono
+dalla banda e dalla coppia di elettrodi considerata.
+
+Nei controlli risultano descrittivamente più forti diverse connessioni
+fronto-centrali destre, tra cui \texttt{F4--Cz} nelle bande delta,
+theta e alpha e \texttt{F4--C4} nelle stesse bande. Nei soggetti ADHD
+risultano invece più elevate alcune connessioni centro-parietali,
+in particolare:
+
+\begin{equation}
+	\texttt{C3--P3}
+	\quad\text{e}\quad
+	\texttt{C4--P4},
+\end{equation}
+
+soprattutto nelle bande alpha e beta. Anche la connessione
+frontopolare-frontale \texttt{Fp1--F3} risulta maggiore negli ADHD in
+più bande.
+
+Le feature maggiormente utilizzate dalla Random Forest comprendono
+infatti:
+
+\begin{itemize}
+	\item \texttt{C3--P3} nella banda beta;
+	\item \texttt{O1--Pz} nella banda alpha;
+	\item \texttt{C4--P4} nella banda beta;
+	\item \texttt{C3--Cz} e \texttt{P4--Cz} nella banda beta;
+	\item \texttt{Fp1--F3} nella banda theta.
+\end{itemize}
+
+Nel presente studio, i soggetti ADHD sembrano quindi caratterizzati
+da una differente organizzazione delle relazioni temporali tra
+segnali, soprattutto lungo connessioni centro-parietali e
+fronto-frontali. I controlli mostrano invece correlazioni più elevate
+in alcune connessioni fronto-centrali. Queste osservazioni sono
+descrittive e non dimostrano l'esistenza di connessioni anatomiche
+dirette, né consentono di attribuire una direzione causale
+all'interazione.
+
+Il fatto che la functional connectivity discrimini i gruppi meglio
+delle potenze spettrali suggerisce che, durante il compito di
+attenzione visiva, la differenza più informativa non riguardi
+soltanto quanta attività sia presente in una determinata banda, ma
+come l'attività di posizioni differenti vari congiuntamente nel
+tempo.
+
+
+\subsection{Confronto con il lavoro di Ahmadi Moghadam et al.}
+
+Il risultato ottenuto è coerente con la motivazione generale del
+lavoro di Ahmadi Moghadam et al. \cite{Moghadam2024}: le relazioni
+tra segnali EEG contengono informazione particolarmente utile per
+distinguere soggetti ADHD e controlli.
+
+Il confronto numerico tra i due lavori deve tuttavia essere svolto
+con cautela. Gli autori utilizzano lo stesso dataset, ma adottano una
+pipeline differente descritta in precedenza.
+
+Il loro modello migliore è ottenuto nella banda theta e raggiunge un'accuracy pari al 98.88\%, con precision del 98.41\%, recall del 98.19\% e F1-score del 98.30\%.
+Nel confronto puramente numerico, il modello del paper ottiene quindi
+un'accuracy superiore al 96\% raggiunto dalla Random Forest del
+presente lavoro. \cite{Moghadam2024}
+
+Non è tuttavia corretto concludere che la CNN sia necessariamente
+superiore alla Random Forest, perché i due risultati non derivano
+dallo stesso protocollo di valutazione. Cambiano infatti:
+
+\begin{itemize}
+	\item l'unità di input, costituita da epoche nel paper e da una
+	rappresentazione globale di 60 secondi nel presente lavoro;
+	
+	\item le misure di connettività, poiché il paper combina Pearson
+	e PLV, mentre il presente progetto utilizza soltanto Pearson;
+	
+	\item la rappresentazione dei dati, trattata come matrice
+	bidimensionale dalla CNN e come vettore di feature nei modelli
+	tradizionali;
+	
+	\item il preprocessing e l'ottimizzazione del modello;
+	
+	\item la suddivisione in training, validation e test.
+\end{itemize}
+
+Il paper ``vince'' quindi in termini di accuracy riportata, mentre il
+presente approccio presenta vantaggi differenti: è più semplice,
+richiede minori risorse computazionali e permette di identificare
+direttamente le connessioni che contribuiscono alla classificazione.
+
+Un risultato interessante è che, anche utilizzando soltanto la
+correlazione di Pearson e classificatori relativamente semplici, la
+functional connectivity raggiunge prestazioni elevate. Ciò suggerisce
+che una parte consistente dell'informazione discriminante sia già
+presente nella covariazione lineare tra i segnali. Non è però
+possibile stabilire, sulla base del confronto attuale, quanto
+l'ulteriore vantaggio del paper dipenda dal PLV, dalla segmentazione
+in epoche, dalla CNN, dal modulo di attention o dallo specifico split
+dei dati.
+
+Un confronto realmente informativo richiederebbe di applicare entrambe
+le pipeline allo stesso preprocessing, agli stessi soggetti di
+training e test e alle stesse unità di analisi, eseguendo anche
+un'analisi di ablazione tra Pearson, PLV e mappe fuse.
+
+
+\subsection{Criticità e limitazioni}
+
+La principale limitazione riguarda la numerosità del campione. Il
+dataset comprende 121 soggetti e il test set soltanto 25 partecipanti.
+In un campione di queste dimensioni, un singolo errore modifica
+l'accuracy di quattro punti percentuali. Il valore del 96\%
+corrisponde infatti a 24 soggetti correttamente classificati su 25 e
+deve essere considerato una stima con elevata incertezza.
+
+Un ulteriore elemento di cautela è la differenza tra la performance
+ottenuta durante il tuning e quella osservata sul test. La Random
+Forest sulla connettività ha raggiunto una balanced accuracy media
+in cross-validation pari a circa 0.707, ma una balanced accuracy di
+0.958 sul test. Il forte miglioramento sul test può indicare che lo
+specifico insieme di 25 soggetti sia risultato particolarmente
+favorevole. Non costituisce quindi una prova sufficiente di
+generalizzazione.
+
+Il problema è inoltre fortemente ad alta dimensionalità: il modello
+di connettività utilizza 724 predittori, mentre il training set
+contiene circa 96 soggetti. Il numero di feature è quindi molto
+maggiore del numero di osservazioni, condizione che aumenta il rischio
+di overfitting e rende più instabile l'importanza attribuita alle
+singole connessioni.
+
+La feature importance della Random Forest è basata sulla riduzione
+dell'impurità e può essere distribuita tra feature correlate. Non
+indica la direzione dell'effetto, non rappresenta un'associazione
+causale e non garantisce che le stesse connessioni risulterebbero
+importanti in un campione differente.
+
+La correlazione di Pearson rappresenta una misura di connettività
+funzionale statica e a ritardo nullo. È sensibile alla conduzione di
+volume, alla presenza di sorgenti comuni e alla scelta del riferimento
+EEG. Una correlazione elevata tra due elettrodi non implica quindi
+necessariamente una comunicazione funzionale diretta tra le regioni
+corticali sottostanti.
+
+La connettività è stata riassunta su un unico intervallo di 60
+secondi. Questa scelta produce una rappresentazione stabile a livello
+del soggetto, ma elimina le variazioni temporali che possono avvenire
+durante il compito. I bambini osservavano immagini successive, ma il
+dataset non contiene marcatori relativi alla presentazione degli
+stimoli o alle risposte. Non è quindi possibile stabilire se una
+determinata configurazione di connettività sia associata a uno
+specifico momento del task.
+
+Anche il preprocessing presenta alcune limitazioni. Il dataset non
+dispone di canali EOG separati e la selezione delle componenti
+oculari è stata effettuata automaticamente mediante ICLabel.
+Con soltanto 19 canali, la separazione ICA ha inoltre una risoluzione
+limitata. Possono quindi rimanere artefatti residui oppure essere
+rimosse componenti contenenti una combinazione di attività artefattuale
+e neurale.
+
+I dati provengono infine da un singolo centro e da una sola condizione
+sperimentale. Non sono disponibili informazioni sufficientemente
+dettagliate per studiare separatamente sottotipi di ADHD, gravità dei
+sintomi, qualità del sonno, prestazione al compito o risposta ai
+singoli stimoli. I risultati non possono pertanto essere generalizzati
+automaticamente ad altre età, condizioni di riposo, task differenti
+o popolazioni cliniche.
+
+
+\subsection{Sviluppi futuri}
+
+Un primo sviluppo riguarda l'introduzione di una Logistic Regression
+con regolarizzazione $L_1$. A differenza della penalizzazione $L_2$
+utilizzata nel presente lavoro, la penalizzazione $L_1$ può portare
+esattamente a zero i coefficienti meno informativi:
+
+\begin{equation}
+	\lambda
+	\sum_{j=1}^{p}|w_j|.
+\end{equation}
+
+Questo permetterebbe di svolgere contemporaneamente classificazione
+e selezione delle feature, ottenendo un insieme più sparso e
+interpretabile di connessioni. Tale approccio sarebbe particolarmente
+utile per le 724 feature di functional connectivity. Poiché molte
+connessioni sono correlate, sarebbe inoltre opportuno confrontare
+$L_1$ con Elastic Net, che combina penalizzazione $L_1$ e $L_2$ e
+può produrre una selezione più stabile dei gruppi di feature
+ridondanti.
+
+La selezione della forza di regolarizzazione e, nel caso di Elastic
+Net, del rapporto tra le due penalizzazioni dovrebbe essere eseguita
+mediante nested cross-validation. Sarebbe inoltre utile valutare la
+stabilità delle feature selezionate ripetendo la procedura su più
+suddivisioni del campione.
+
+Un secondo sviluppo riguarda l'utilizzo di modelli più profondi per
+le feature spettrali. Le potenze di banda sono state attualmente
+riassunte in un vettore e analizzate con modelli tabellari. Una rete
+neurale potrebbe invece ricevere:
+
+\begin{itemize}
+	\item mappe canale $\times$ frequenza della PSD;
+	\item rappresentazioni topografiche separate per banda;
+	\item sequenze temporali di potenze calcolate su finestre
+	successive;
+	\item direttamente segmenti del segnale EEG.
+\end{itemize}
+
+Una CNN potrebbe apprendere pattern spaziali tra elettrodi vicini,
+mentre una rete temporale, una LSTM o un Transformer potrebbero
+modellare l'evoluzione delle oscillazioni durante il task. Con un
+campione di soli 121 soggetti, tali modelli richiederebbero però una
+regolarizzazione molto forte, una validazione subject-wise e,
+idealmente, un dataset più ampio o tecniche di transfer learning.
+
+Un terzo sviluppo consiste nel riprodurre più direttamente la
+pipeline di Ahmadi Moghadam et al., costruendo separatamente:
+
+\begin{enumerate}
+	\item mappe basate soltanto sulla correlazione di Pearson;
+	\item mappe basate soltanto sul Phase-Locking Value;
+	\item mappe fuse Pearson--PLV.
+\end{enumerate}
+
+Le tre rappresentazioni potrebbero essere valutate sia con i modelli
+tradizionali sia con una CNN con attention, mantenendo identici
+preprocessing, split dei soggetti e metriche. Un'analisi di ablazione
+permetterebbe così di stabilire quale contributo derivi dalla misura
+di fase, quale dalla fusione e quale dall'architettura profonda.
+
+Un ulteriore sviluppo particolarmente rilevante è rappresentato dalla
+dynamic functional connectivity. Nel presente lavoro ogni
+connessione è descritta da un unico coefficiente calcolato sull'intero
+intervallo di 60 secondi:
+
+\begin{equation}
+	r_{ij}^{\mathrm{static}}
+	=
+	\operatorname{corr}
+	\left(x_i(t),x_j(t)\right).
+\end{equation}
+
+La connettività dinamica può invece essere calcolata su finestre
+temporali successive, eventualmente sovrapposte:
+
+\begin{equation}
+	r_{ij}^{(w)}
+	=
+	\operatorname{corr}
+	\left(
+	x_i(t\in w),
+	x_j(t\in w)
+	\right),
+\end{equation}
+
+dove $w$ identifica una finestra temporale.
+
+Per ogni connessione sarebbe quindi possibile estrarre non soltanto
+il valore medio, ma anche la variabilità, il range, la velocità di
+cambiamento e la persistenza nel tempo. Le matrici ottenute nelle
+diverse finestre potrebbero inoltre essere raggruppate in stati
+ricorrenti di connettività mediante clustering o Hidden Markov
+Models. Si potrebbe così verificare se ADHD e controlli differiscano
+non tanto per una rete media, quanto per la frequenza con cui
+raggiungono determinati stati o per la stabilità delle configurazioni
+funzionali.
+
+La dynamic functional connectivity sarebbe particolarmente adatta a
+un compito attentivo, nel quale il livello di concentrazione e la
+risposta allo stimolo possono cambiare nel corso della registrazione.
+La mancanza di marcatori degli eventi impedirebbe comunque di
+associare direttamente gli stati a immagini o risposte specifiche.
+
+Altri sviluppi potrebbero comprendere misure meno sensibili alla
+conduzione di volume, come Phase-Lag Index, weighted Phase-Lag Index
+o imaginary coherence, e l'estrazione di metriche di teoria dei
+grafi, quali forza dei nodi, clustering coefficient, efficienza,
+modularità e centralità.
+
+Infine, la priorità metodologica dovrebbe essere la validazione dei
+risultati. Sarebbe necessario utilizzare repeated nested
+cross-validation, stimare intervalli di confidenza delle metriche,
+applicare permutation test alla performance e verificare la pipeline
+su un dataset esterno. Solo dopo una validazione indipendente sarebbe
+possibile valutare se le configurazioni di connettività osservate
+rappresentino pattern riproducibili associati all'ADHD.
+
+
+\subsection{Conclusione generale}
+
+Nel complesso, il progetto mostra che il segnale EEG contiene
+informazione utile per distinguere i due gruppi, ma che tale
+informazione dipende fortemente dalla rappresentazione adottata.
+
+Le potenze spettrali e il theta/beta ratio evidenziano alcune
+differenze, ma non descrivono un pattern semplice e universale. In
+particolare, il TBR non risulta maggiore negli ADHD e, nonostante
+fornisca prestazioni moderate nella classificazione, non può essere
+interpretato come biomarcatore diagnostico autonomo. Questo risultato
+è coerente con le conclusioni della meta-analisi di Arns et al.
+\cite{Arns2013}.
+
+La functional connectivity produce invece una separazione molto più
+marcata, suggerendo che, durante il compito di attenzione visiva,
+l'organizzazione congiunta dell'attività EEG sia più informativa della
+sola potenza locale. Il risultato non identifica una singola
+connessione responsabile della classificazione, ma un pattern
+distribuito che coinvolge soprattutto connessioni centro-parietali,
+fronto-centrali e occipito-parietali nelle bande beta, alpha e theta.
+
+Il contributo principale del lavoro non consiste quindi
+nell'individuazione di un nuovo marker diagnostico, ma nel mostrare
+che la scelta della rappresentazione del segnale può essere più
+determinante della complessità del classificatore. Prima di attribuire
+a questi risultati un significato clinico, sarà tuttavia necessario
+verificarne la stabilità su campioni più ampi, split ripetuti e dataset
+indipendenti.

@@ -1,26 +1,121 @@
 feature_set,selected_feature,pretty_feature
-Regional mean features,frontal_delta_power_mean,frontal_delta_power_mean
-Regional mean features,frontal_theta_power_mean,Frontal ${\theta}$ power
-Regional mean features,frontal_alpha_power_mean,Frontal ${\alpha}$ power
-Regional mean features,frontal_beta_power_mean,Frontal ${\beta}$ power
-Regional mean features,frontal_theta_beta_ratio,Frontal ${\theta}/{\beta}$ ratio
-Regional mean features,central_delta_power_mean,Central ${\delta}$ power
-Regional mean features,central_theta_power_mean,Central ${\theta}$ power
-Regional mean features,central_alpha_power_mean,Central ${\alpha}$ power
-Regional mean features,central_beta_power_mean,Central ${\beta}$ power
-Regional mean features,central_theta_beta_ratio,Central ${\theta}/{\beta}$ ratio
-Regional mean features,parietal_delta_power_mean,Parietal ${\delta}$ power
-Regional mean features,parietal_theta_power_mean,Parietal ${\theta}$ power
-Regional mean features,parietal_alpha_power_mean,Parietal ${\alpha}$ power
-Regional mean features,parietal_beta_power_mean,Parietal ${\beta}$ power
-Regional mean features,parietal_theta_beta_ratio,Parietal ${\theta}/{\beta}$ ratio
-Regional mean features,temporal_delta_power_mean,Temporal ${\delta}$ power
-Regional mean features,temporal_theta_power_mean,Temporal ${\theta}$ power
-Regional mean features,temporal_alpha_power_mean,Temporal ${\alpha}$ power
-Regional mean features,temporal_beta_power_mean,Temporal ${\beta}$ power
-Regional mean features,temporal_theta_beta_ratio,Temporal ${\theta}/{\beta}$ ratio
-Regional mean features,occipital_delta_power_mean,Occipital ${\delta}$ power
-Regional mean features,occipital_theta_power_mean,Occipital ${\theta}$ power
-Regional mean features,occipital_alpha_power_mean,occipital_alpha_power_mean
-Regional mean features,occipital_beta_power_mean,Occipital ${\beta}$ power
-Regional mean features,occipital_theta_beta_ratio,Occipital ${\theta}/{\beta}$ ratio
+All EEG features,Fp1_delta_power,Fp1_delta_power
+All EEG features,Fp1_theta_power,Fp1 ${\theta}$ power
+All EEG features,Fp1_alpha_power,Fp1_alpha_power
+All EEG features,Fp1_beta_power,Fp1 ${\beta}$ power
+All EEG features,Fp1_theta_beta_ratio,Fp1 ${\theta}/{\beta}$ ratio
+All EEG features,Fp2_delta_power,Fp2_delta_power
+All EEG features,Fp2_theta_power,Fp2_theta_power
+All EEG features,Fp2_alpha_power,Fp2_alpha_power
+All EEG features,Fp2_beta_power,Fp2_beta_power
+All EEG features,Fp2_theta_beta_ratio,Fp2_theta_beta_ratio
+All EEG features,F3_delta_power,F3_delta_power
+All EEG features,F3_theta_power,F3 ${\theta}$ power
+All EEG features,F3_alpha_power,F3_alpha_power
+All EEG features,F3_beta_power,F3 ${\beta}$ power
+All EEG features,F3_theta_beta_ratio,F3 ${\theta}/{\beta}$ ratio
+All EEG features,F4_delta_power,F4_delta_power
+All EEG features,F4_theta_power,F4 ${\theta}$ power
+All EEG features,F4_alpha_power,F4_alpha_power
+All EEG features,F4_beta_power,F4 ${\beta}$ power
+All EEG features,F4_theta_beta_ratio,F4 ${\theta}/{\beta}$ ratio
+All EEG features,C3_delta_power,C3_delta_power
+All EEG features,C3_theta_power,C3 ${\theta}$ power
+All EEG features,C3_alpha_power,C3_alpha_power
+All EEG features,C3_beta_power,C3 ${\beta}$ power
+All EEG features,C3_theta_beta_ratio,C3 ${\theta}/{\beta}$ ratio
+All EEG features,C4_delta_power,C4_delta_power
+All EEG features,C4_theta_power,C4 ${\theta}$ power
+All EEG features,C4_alpha_power,C4_alpha_power
+All EEG features,C4_beta_power,C4 ${\beta}$ power
+All EEG features,C4_theta_beta_ratio,C4 ${\theta}/{\beta}$ ratio
+All EEG features,P3_delta_power,P3_delta_power
+All EEG features,P3_theta_power,P3 ${\theta}$ power
+All EEG features,P3_alpha_power,P3_alpha_power
+All EEG features,P3_beta_power,P3 ${\beta}$ power
+All EEG features,P3_theta_beta_ratio,P3 ${\theta}/{\beta}$ ratio
+All EEG features,P4_delta_power,P4_delta_power
+All EEG features,P4_theta_power,P4_theta_power
+All EEG features,P4_alpha_power,P4_alpha_power
+All EEG features,P4_beta_power,P4_beta_power
+All EEG features,P4_theta_beta_ratio,P4_theta_beta_ratio
+All EEG features,O1_delta_power,O1_delta_power
+All EEG features,O1_theta_power,O1_theta_power
+All EEG features,O1_alpha_power,O1_alpha_power
+All EEG features,O1_beta_power,O1_beta_power
+All EEG features,O1_theta_beta_ratio,O1 ${\theta}/{\beta}$ ratio
+All EEG features,O2_delta_power,O2_delta_power
+All EEG features,O2_theta_power,O2 ${\theta}$ power
+All EEG features,O2_alpha_power,O2_alpha_power
+All EEG features,O2_beta_power,O2 ${\beta}$ power
+All EEG features,O2_theta_beta_ratio,O2 ${\theta}/{\beta}$ ratio
+All EEG features,F7_delta_power,F7_delta_power
+All EEG features,F7_theta_power,F7 ${\theta}$ power
+All EEG features,F7_alpha_power,F7_alpha_power
+All EEG features,F7_beta_power,F7 ${\beta}$ power
+All EEG features,F7_theta_beta_ratio,F7 ${\theta}/{\beta}$ ratio
+All EEG features,F8_delta_power,F8_delta_power
+All EEG features,F8_theta_power,F8 ${\theta}$ power
+All EEG features,F8_alpha_power,F8_alpha_power
+All EEG features,F8_beta_power,F8 ${\beta}$ power
+All EEG features,F8_theta_beta_ratio,F8 ${\theta}/{\beta}$ ratio
+All EEG features,T7_delta_power,T7_delta_power
+All EEG features,T7_theta_power,T7_theta_power
+All EEG features,T7_alpha_power,T7_alpha_power
+All EEG features,T7_beta_power,T7_beta_power
+All EEG features,T7_theta_beta_ratio,T7 ${\theta}/{\beta}$ ratio
+All EEG features,T8_delta_power,T8_delta_power
+All EEG features,T8_theta_power,T8 ${\theta}$ power
+All EEG features,T8_alpha_power,T8_alpha_power
+All EEG features,T8_beta_power,T8 ${\beta}$ power
+All EEG features,T8_theta_beta_ratio,T8 ${\theta}/{\beta}$ ratio
+All EEG features,P7_delta_power,P7 ${\delta}$ power
+All EEG features,P7_theta_power,P7 ${\theta}$ power
+All EEG features,P7_alpha_power,P7_alpha_power
+All EEG features,P7_beta_power,P7 ${\beta}$ power
+All EEG features,P7_theta_beta_ratio,P7 ${\theta}/{\beta}$ ratio
+All EEG features,P8_delta_power,P8_delta_power
+All EEG features,P8_theta_power,P8_theta_power
+All EEG features,P8_alpha_power,P8_alpha_power
+All EEG features,P8_beta_power,P8_beta_power
+All EEG features,P8_theta_beta_ratio,P8_theta_beta_ratio
+All EEG features,Fz_delta_power,Fz_delta_power
+All EEG features,Fz_theta_power,Fz_theta_power
+All EEG features,Fz_alpha_power,Fz_alpha_power
+All EEG features,Fz_beta_power,Fz_beta_power
+All EEG features,Fz_theta_beta_ratio,Fz_theta_beta_ratio
+All EEG features,Cz_delta_power,Cz_delta_power
+All EEG features,Cz_theta_power,Cz_theta_power
+All EEG features,Cz_alpha_power,Cz_alpha_power
+All EEG features,Cz_beta_power,Cz_beta_power
+All EEG features,Cz_theta_beta_ratio,Cz_theta_beta_ratio
+All EEG features,Pz_delta_power,Pz ${\delta}$ power
+All EEG features,Pz_theta_power,Pz ${\theta}$ power
+All EEG features,Pz_alpha_power,Pz_alpha_power
+All EEG features,Pz_beta_power,Pz ${\beta}$ power
+All EEG features,Pz_theta_beta_ratio,Pz ${\theta}/{\beta}$ ratio
+All EEG features,frontal_delta_power_mean,frontal_delta_power_mean
+All EEG features,frontal_theta_power_mean,Frontal ${\theta}$ power
+All EEG features,frontal_alpha_power_mean,Frontal ${\alpha}$ power
+All EEG features,frontal_beta_power_mean,Frontal ${\beta}$ power
+All EEG features,frontal_theta_beta_ratio,Frontal ${\theta}/{\beta}$ ratio
+All EEG features,central_delta_power_mean,Central ${\delta}$ power
+All EEG features,central_theta_power_mean,Central ${\theta}$ power
+All EEG features,central_alpha_power_mean,Central ${\alpha}$ power
+All EEG features,central_beta_power_mean,Central ${\beta}$ power
+All EEG features,central_theta_beta_ratio,Central ${\theta}/{\beta}$ ratio
+All EEG features,parietal_delta_power_mean,Parietal ${\delta}$ power
+All EEG features,parietal_theta_power_mean,Parietal ${\theta}$ power
+All EEG features,parietal_alpha_power_mean,Parietal ${\alpha}$ power
+All EEG features,parietal_beta_power_mean,Parietal ${\beta}$ power
+All EEG features,parietal_theta_beta_ratio,Parietal ${\theta}/{\beta}$ ratio
+All EEG features,temporal_delta_power_mean,Temporal ${\delta}$ power
+All EEG features,temporal_theta_power_mean,Temporal ${\theta}$ power
+All EEG features,temporal_alpha_power_mean,Temporal ${\alpha}$ power
+All EEG features,temporal_beta_power_mean,Temporal ${\beta}$ power
+All EEG features,temporal_theta_beta_ratio,Temporal ${\theta}/{\beta}$ ratio
+All EEG features,occipital_delta_power_mean,Occipital ${\delta}$ power
+All EEG features,occipital_theta_power_mean,Occipital ${\theta}$ power
+All EEG features,occipital_alpha_power_mean,occipital_alpha_power_mean
+All EEG features,occipital_beta_power_mean,Occipital ${\beta}$ power
+All EEG features,occipital_theta_beta_ratio,Occipital ${\theta}/{\beta}$ ratio

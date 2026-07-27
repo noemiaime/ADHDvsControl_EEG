@@ -1,14 +1,183 @@
 \section{Introduzione}
 
-Il disturbo da deficit di attenzione e iperattività (ADHD) è un disturbo del neurosviluppo caratterizzato da sintomi di disattenzione, impulsività e iperattività. Questo può influire sul comportamento durante compiti che richiedono concentrazione e risposta a stimoli esterni.
+Il disturbo da deficit di attenzione e iperattività
+(\textit{Attention-Deficit Hyperactivity Disorder}, ADHD) è un
+disturbo del neurosviluppo caratterizzato da livelli persistenti di
+disattenzione, impulsività e iperattività. Poiché i sintomi
+riguardano anche la capacità di selezionare gli stimoli rilevanti,
+mantenere l'attenzione e controllare la risposta comportamentale, lo
+studio dell'attività cerebrale durante compiti attentivi può fornire
+informazioni utili sui meccanismi neurofisiologici associati al
+disturbo.
 
-L'elettroencefalografia (EEG) risulta uno strumento utile per studiare l'attività cerebrale associata a questi processi, permette infatti di registrare l'attività elettrica cerebrale con elevata risoluzione temporale. I segnali EEG sono costituiti da serie temporali misurate da elettrodi posizionati sullo scalpo secondo configurazioni standard, come il sistema internazionale 10--20. Attraverso l'analisi di tali segnali è possibile estrarre informazioni sull'attività cerebrale in diverse bande di frequenza, come delta, theta, alpha e beta.
+L'elettroencefalografia (EEG) è una tecnica non invasiva che misura
+le differenze di potenziale elettrico registrate da elettrodi
+posizionati sullo scalpo. Il segnale rilevato da ciascun elettrodo non
+corrisponde all'attività di un singolo neurone o di una singola area
+cerebrale, ma riflette la sovrapposizione dell'attività sincronizzata
+di popolazioni neuronali e la sua propagazione attraverso i tessuti
+della testa. Il principale vantaggio dell'EEG è l'elevata risoluzione
+temporale, che permette di descrivere variazioni dell'attività
+cerebrale nell'ordine dei millisecondi e lo rende particolarmente
+adatto allo studio di processi dinamici come l'attenzione.
 
-Un indice molto studiato è il rapporto theta/beta, o theta/beta ratio (TBR). Il TBR è stato proposto come possibile misura quantitativa per distinguere soggetti con ADHD da soggetti di controllo. Tuttavia, il suo ruolo diagnostico è ancora discusso. Lo studio di Arns, Conners e Kraemer (\cite{Arns2013}) ha mostrato che, sebbene molti studi abbiano riportato un TBR aumentato nei soggetti con ADHD, gli effect size complessivi presentavano una significativa eterogeneità. Inoltre si evidenzia una riduzione della differenza di TBR tra ADHD e controlli nel corso degli anni, principalmente associata a un aumento del TBR nei gruppi di controll.
+Le registrazioni EEG multicanale possono essere analizzate attraverso
+rappresentazioni differenti e complementari. Una prima possibilità
+consiste nello studiare il contenuto spettrale del segnale, cioè come
+la sua potenza sia distribuita nelle diverse frequenze. L'attività EEG
+viene comunemente suddivisa in bande, tra cui delta, theta, alpha e
+beta. Queste bande non corrispondono in modo univoco a una specifica
+funzione cognitiva: il loro significato dipende dalla regione
+considerata, dallo stato del soggetto e dalla condizione sperimentale.
+Per esempio, un aumento dell'attività theta può essere associato a
+sonnolenza o riduzione della vigilanza, ma la theta frontale può anche
+riflettere processi di controllo cognitivo e monitoraggio. Analogamente,
+l'attività alpha può diminuire nelle aree coinvolte nell'elaborazione
+visiva oppure aumentare nelle regioni che contribuiscono all'inibizione
+di informazioni irrilevanti.
 
-Per questo motivo, Arns et al. concludono che un TBR elevato non può essere considerato una misura diagnostica affidabile per l'ADHD.
-A partire da questa osservazione, il presente lavoro non assume il theta/beta ratio come unico marker diagnostico, ma lo analizza all'interno di una pipeline multifeature.
-Recentemente, l'analisi della functional connectivity EEG è stata proposta come rappresentazione complementare alle tradizionali feature spettrali per la classificazione dell'ADHD. In particolare, Ahmadi Moghadam et al. hanno proposto un approccio basato su mappe di connettività EEG ottenute combinando Pearson Correlation Coefficient e Phase-Locking Value, successivamente utilizzate come input per un modello deep learning (\cite{Moghadam2024}).
-Nel presente lavoro non viene replicata tale architettura, ma viene adottata una strategia più semplice, basata su feature di connettività derivate dalla correlazione di Pearson e valutate mediante modelli Random Forest e Logistic Regression.
+Un indice particolarmente studiato nella letteratura sull'ADHD è il
+\textit{theta/beta ratio} (TBR), definito come il rapporto tra la
+potenza della banda theta e quella della banda beta:
 
-L'obiettivo del progetto è valutare se differenti rappresentazioni dei segnali EEG possano distinguere soggetti ADHD e Control. 
+\begin{equation}
+	\mathrm{TBR} =
+	\frac{P_{\theta}}{P_{\beta}}.
+\end{equation}
+
+Storicamente, diversi studi condotti su bambini con ADHD avevano
+riportato un aumento dell'attività theta e, in alcuni casi, una
+riduzione dell'attività beta. Un TBR elevato era stato quindi
+interpretato come un maggiore peso dell'attività lenta rispetto a
+quella più rapida e proposto come possibile indicatore di una
+regolazione attentiva meno efficiente. Alcuni dei primi lavori
+riportavano una separazione molto marcata tra soggetti con ADHD e
+controlli, alimentando l'ipotesi che il TBR potesse essere utilizzato
+come biomarcatore diagnostico quantitativo.
+
+La validità di questa ipotesi è stata riesaminata da Arns, Conners e
+Kraemer attraverso una meta-analisi dedicata al TBR
+\cite{Arns2013}. Per rendere gli studi maggiormente confrontabili, gli autori hanno
+considerato esclusivamente il theta/beta ratio calcolato sul segnale
+registrato dal canale Cz durante la condizione a occhi aperti, in
+bambini e adolescenti di età compresa tra 6 e 18 anni. Cz è
+l'elettrodo situato sulla linea mediana nella regione centrale dello
+scalpo secondo il sistema internazionale 10--20. La scelta di un'unica
+posizione e di una stessa condizione di registrazione ha permesso di
+ridurre la variabilità metodologica tra gli studi. Sono stati
+inclusi nove studi, per un totale di 1253 soggetti con ADHD e 517
+controlli. L'effect size medio, calcolato come Hedges' \(d\), risultava
+pari a 0.75 nella fascia 6--13 anni e a 0.62 nella fascia 6--18 anni.
+Tali valori sembrerebbero indicare una differenza moderata o elevata;
+tuttavia, in entrambe le analisi il test di eterogeneità risultava
+significativo. Le differenze tra gli studi erano quindi troppo ampie
+per essere attribuite esclusivamente alla variabilità casuale del
+campionamento, indicando che il TBR non rappresentava un effetto
+stabile e uniforme.
+
+L'analisi degli autori ha inoltre evidenziato una progressiva
+riduzione dell'effect size negli studi più recenti. Questa tendenza
+non era principalmente determinata da una diminuzione del TBR nel
+gruppo ADHD, che rimaneva relativamente stabile, ma da un aumento del
+TBR nei gruppi di controllo. I due gruppi diventavano quindi
+progressivamente più simili. Tra le possibili spiegazioni vengono
+discusse differenze nella selezione dei controlli, nelle condizioni di
+registrazione, negli strumenti e nelle procedure di preprocessing,
+oltre a fattori fisiologici come sonno, stanchezza e livello di
+vigilanza.
+
+La conclusione della meta-analisi non è che il TBR sia completamente
+privo di informazione. Un eccesso di theta o un TBR elevato può
+caratterizzare  soggetti con ADHD e può avere valore
+prognostico, per esempio nella previsione della risposta a specifici
+trattamenti. Il suo impiego diagnostico richiederebbe invece una
+differenza stabile e riproducibile nella maggior parte dei soggetti,
+condizione che non risulta supportata dall'eterogeneità osservata.
+Il TBR non può quindi essere considerato, da solo, un marker
+diagnostico universale dell'ADHD.
+
+Questa distinzione è particolarmente importante per il presente
+lavoro. Il dataset utilizzato è stato acquisito durante un compito di
+attenzione visiva, mentre la meta-analisi di Arns et al. considera
+registrazioni a occhi aperti in condizioni standardizzate e
+limitatamente all'elettrodo Cz. L'attività theta e beta può essere
+modulata dal compito e non è quindi possibile assumere a priori che il
+TBR debba presentare nel dataset analizzato la stessa direzione
+descritta nei primi studi a riposo. Il TBR viene pertanto valutato sia
+come insieme di feature autonomo sia all'interno di una
+rappresentazione spettrale più ampia, comprendente le potenze delle
+diverse bande e la loro distribuzione sui canali e sulle regioni dello
+scalpo.
+
+Una rappresentazione complementare del segnale è fornita dalla
+\textit{functional connectivity}. Mentre le feature spettrali
+descrivono quanta attività sia presente in una determinata banda e in
+una determinata posizione, la connettività funzionale descrive il
+grado di dipendenza statistica tra segnali registrati in posizioni
+diverse. Essa non dimostra l'esistenza di una connessione anatomica
+diretta e non consente, di per sé, di stabilire una relazione causale
+o una direzione dell'interazione. Permette però di rappresentare
+l'EEG come una rete di relazioni tra elettrodi o regioni, anziché come
+un insieme di canali indipendenti.
+
+Un riferimento importante per questa seconda linea di analisi è il
+lavoro di Ahmadi Moghadam et al. \cite{Moghadam2024}, particolarmente
+rilevante perché utilizza lo stesso dataset considerato nel presente
+progetto. Gli autori analizzano registrazioni EEG di 121 bambini,
+61 con ADHD e 60 controlli, acquisite mediante 19 canali a una
+frequenza di campionamento di 128 Hz durante un compito di attenzione
+visiva. Dopo il preprocessing, i segnali vengono suddivisi nelle
+bande delta, theta, alpha, beta e gamma e segmentati in epoche non
+sovrapposte di sei secondi.
+
+Per ogni banda e per ogni epoca, gli autori costruiscono due matrici
+di connettività \(19 \times 19\). La prima utilizza il
+\textit{Pearson Correlation Coefficient} (PCC), che misura la
+covariazione lineare tra le ampiezze di due segnali. La seconda
+utilizza il \textit{Phase-Locking Value} (PLV), che misura invece la
+stabilità nel tempo della differenza di fase tra due segnali. Le due
+misure descrivono quindi aspetti differenti della relazione: due
+segnali possono mostrare una debole correlazione delle ampiezze ma
+mantenere una relazione di fase relativamente stabile.
+
+Poiché sia la matrice di Pearson sia quella di PLV sono simmetriche,
+i due triangoli di ciascuna matrice conterrebbero informazioni
+duplicate. Gli autori sfruttano questa proprietà per costruire una
+\textit{Fused Connectivity Map}: il triangolo inferiore contiene i
+valori di Pearson, mentre quello superiore contiene i valori di PLV.
+Si ottiene così una matrice della stessa dimensione di una singola
+mappa di connettività, ma contenente due forme complementari di
+informazione.
+
+Le mappe fuse vengono successivamente trattate come immagini e
+fornite in ingresso a una rete neurale convoluzionale dotata di un
+meccanismo di \textit{channel attention}. I filtri convoluzionali
+apprendono configurazioni locali nella matrice di connettività, mentre
+il modulo di attention assegna un peso maggiore alle feature map
+considerate più informative per la classificazione. In questo
+contesto, il termine ``channel'' nel modulo di attention non indica
+gli elettrodi EEG, ma le feature map interne prodotte dagli strati
+convoluzionali. Il modello migliore riportato dagli autori utilizza
+le mappe della banda theta e raggiunge un'accuracy del
+98.88\%.
+
+Nel presente progetto non viene replicata integralmente questa
+architettura. L'obiettivo non è confrontare direttamente un modello
+tradizionale con la rete neurale proposta nel paper, poiché
+preprocessing, rappresentazione dei dati, segmentazione e procedura
+di addestramento sono differenti. Viene invece ripresa la sua
+motivazione centrale: verificare se le relazioni tra segnali
+contengano informazione discriminante ulteriore rispetto alle sole
+potenze spettrali. Per mantenere la pipeline più semplice e
+interpretabile, la connettività viene stimata mediante correlazione
+di Pearson e sintetizzata sia a livello di coppie di canali sia a
+livello di coppie di regioni. 
+
+Le feature ottenute vengono quindi
+valutate mediante Random Forest e Logistic Regression.
+
+L'obiettivo generale del lavoro è dunque confrontare differenti
+rappresentazioni dello stesso segnale EEG per la classificazione di
+soggetti con ADHD e soggetti di controllo. Non è individuare a priori un singolo biomarcatore dell'ADHD, ma stabilire quale rappresentazione del
+segnale conservi l'informazione più utile per distinguere i due
+gruppi.

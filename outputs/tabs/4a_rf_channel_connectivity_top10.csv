@@ -1,0 +1,11 @@
+feature,channel_1,channel_2,band,importance
+P4_Cz_beta_connectivity,P4,Cz,beta,0.01985241586687807
+Cz_Pz_alpha_connectivity,Cz,Pz,alpha,0.014379986673743676
+C4_P4_beta_connectivity,C4,P4,beta,0.012467057428476928
+P3_Cz_beta_connectivity,P3,Cz,beta,0.011969907805646619
+P3_Cz_theta_connectivity,P3,Cz,theta,0.010827356202513473
+O1_Pz_beta_connectivity,O1,Pz,beta,0.010440407078981494
+P4_Cz_alpha_connectivity,P4,Cz,alpha,0.010217536701332196
+C4_Pz_beta_connectivity,C4,Pz,beta,0.008666891787284078
+O2_Cz_beta_connectivity,O2,Cz,beta,0.008116842421166517
+C3_O2_theta_connectivity,C3,O2,theta,0.007790931842163566

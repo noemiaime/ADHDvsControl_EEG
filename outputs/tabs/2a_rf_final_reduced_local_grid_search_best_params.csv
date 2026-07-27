@@ -1,2 +1,0 @@
-max_depth,max_features,min_samples_leaf,min_samples_split,n_estimators,best_local_grid_cv_balanced_accuracy,best_corr_threshold,n_features
-5,log2,2,5,821,0.7288888888888889,0.8,19

@@ -2,41 +2,659 @@
 
 \subsection{Dataset}
 
-Il dataset utilizzato è disponibile su Kaggle (\cite{Kaggle}). Contiene registrazioni EEG di 61 bambini con ADHD e 60 soggetti di controllo, di età compresa tra 7 e 12 anni, registrati durante un compito di attenzione visiva in cui si mostra ai bambini immagini di personaggi di cartoni animati. La distribuzione delle classi risulta approssimativamente bilanciata.
+Il dataset utilizzato nel presente lavoro è disponibile pubblicamente
+su Kaggle \cite{Kaggle} e deriva da registrazioni EEG effettuate
+presso il Psychology and Psychiatry Research Center del Roozbeh
+Hospital di Teheran.
 
-Le registrazioni sono state acquisite con frequenza di campionamento$
-f_s = 128 \ \text{Hz}$.
+Il campione comprende complessivamente 121 bambini, di cui 61 con
+diagnosi di ADHD e 60 soggetti di controllo, con età compresa tra
+7 e 12 anni. Per il gruppo di controllo sono stati esclusi soggetti con disturbi psichiatrici ed epilessia. Tutti i partecipanti erano destrimani.
 
-Il dataset contiene 19 canali EEG:
-\\
-\texttt{Fp1}, \texttt{Fp2}, \texttt{F3}, \texttt{F4}, \texttt{C3}, \texttt{C4}, \texttt{P3}, \texttt{P4}, \texttt{O1}, \texttt{O2}, \texttt{F7}, \texttt{F8}, \texttt{T7}, \texttt{T8}, \texttt{P7}, \texttt{P8}, \texttt{Fz}, \texttt{Cz}, \texttt{Pz}.
-
-I canali seguono la nomenclatura del sistema internazionale 10-20, in cui la distanza tra gli elettrodi che viene calcolata in percentuali (10$\%$ o 20$\%$) rispetto alla lunghezza della testa, misurata in senso fronto-occipitale e laterale. Le lettere dei canali indicano approssimativamente la regione corticale sottostante: \texttt{Fp} indica la regione frontopolare, \texttt{F} la regione frontale, \texttt{C} la regione centrale, \texttt{P} la regione parietale, \texttt{O} la regione occipitale e \texttt{T} la regione temporale. I numeri dispari indicano elettrodi localizzati prevalentemente sull'emisfero sinistro, mentre i numeri pari indicano elettrodi localizzati prevalentemente sull'emisfero destro. Gli elettrodi indicati con la lettera \texttt{z}, come \texttt{Fz}, \texttt{Cz} e \texttt{Pz}, si trovano lungo la linea mediana.
+La numerosità dei due gruppi è pressoché equivalente; il problema di
+classificazione può quindi essere considerato sostanzialmente
+bilanciato.
 
 
-Durante la registrazione non sono presenti variazioni di condizione associate al target e al task.
+\subsubsection{Protocollo sperimentale}
 
-\subsection{Estrazione features spettrali}
+Le registrazioni sono state effettuate durante un compito di
+attenzione visiva. Ai bambini venivano mostrate immagini contenenti
+personaggi e veniva chiesto di contarne il numero. Dopo la risposta
+del partecipante veniva immediatamente presentata l'immagine
+successiva.
 
-L'estrazione delle feature è stata effettuata a partire dalle serie temporali EEG di ciascun soggetto. Per ogni soggetto e per ogni canale EEG, il segnale temporale è stato trasformato nel dominio della frequenza mediante stima della Power Spectral Density.
+La durata della registrazione non era prefissata, ma dipendeva dal
+tempo impiegato da ciascun bambino per completare il compito. Per
+questo motivo le registrazioni presentano durate differenti tra i
+soggetti. Nel dataset originale, la durata media riportata è pari a
 
-La Power Spectral Density, o PSD, descrive come la potenza del segnale è distribuita sulle diverse frequenze.
-La PSD è stata stimata utilizzando il metodo di Welch. Tale metodo suddivide il segnale in finestre temporali parzialmente sovrapposte, calcola lo spettro per ciascuna finestra e infine media gli spettri ottenuti.
+\begin{equation}
+	154.59 \pm 58.13 \ \text{s}
+\end{equation}
 
-I parametri utilizzati per il metodo di Welch sono stati:
+per il gruppo ADHD e a
 
-$
-n_{\text{perseg}} = 512,
-\qquad
-n_{\text{overlap}} = 256
-$
+\begin{equation}
+	124.91 \pm 29.90 \ \text{s}
+\end{equation}
 
-Poiché la frequenza di campionamento è pari a 128 Hz, una finestra di 512 campioni corrisponde a $\frac{512}{128} = 4 \ \text{s}$
+per il gruppo di controllo.
 
-La risoluzione in frequenza della PSD è quindi $ \Delta f =
-\frac{f_s}{n_{\text{perseg}}}= \frac{128}{512} = 0.25 \ \text{Hz}$.
+Questa variabilità ha reso necessario, nella successiva fase di
+preprocessing, selezionare per tutti i soggetti un intervallo
+temporale della stessa durata.
 
-A partire dalla PSD sono state calcolate le potenze nelle principali bande EEG: delta, theta, alpha e beta. Gli intervalli di frequenza utilizzati sono riportati nella Tabella~\ref{tab:eeg_bands}.
+
+\subsubsection{Acquisizione EEG}
+
+I segnali EEG sono stati acquisiti con una frequenza di campionamento
+pari a
+
+\begin{equation}
+	f_s = 128 \ \text{Hz},
+\end{equation}
+Il sistema comprendeva
+19 elettrodi posizionati secondo il sistema internazionale 10--20.
+
+I canali utilizzati nelle analisi sono:
+
+\begin{center}
+	\texttt{Fp1}, \texttt{Fp2}, \texttt{F3}, \texttt{F4},
+	\texttt{C3}, \texttt{C4}, \texttt{P3}, \texttt{P4},
+	\texttt{O1}, \texttt{O2}, \texttt{F7}, \texttt{F8},
+	\texttt{T7}, \texttt{T8}, \texttt{P7}, \texttt{P8},
+	\texttt{Fz}, \texttt{Cz}, \texttt{Pz}.
+\end{center}
+
+Il sistema 10--20 definisce le posizioni degli elettrodi sulla base
+di distanze pari al 10\% o al 20\% di alcune misure anatomiche della
+testa, considerate lungo le direzioni fronto-occipitale e
+latero-laterale. Questa procedura consente di ottenere un
+posizionamento riproducibile tra soggetti con dimensioni e forme
+della testa differenti.
+
+Le lettere presenti nei nomi dei canali indicano la regione dello
+scalpo in cui l'elettrodo è collocato: \texttt{Fp} indica le
+posizioni frontopolari, \texttt{F} quelle frontali, \texttt{C}
+quelle centrali, \texttt{T} quelle temporali, \texttt{P} quelle
+parietali e \texttt{O} quelle occipitali. Tale nomenclatura fornisce
+un'indicazione topografica approssimativa e non deve essere
+interpretata come una localizzazione precisa della sorgente corticale
+che genera il segnale.
+
+I numeri dispari identificano gli elettrodi situati sul lato sinistro
+dello scalpo, mentre i numeri pari identificano quelli situati sul
+lato destro. La lettera \texttt{z}, presente nei canali
+\texttt{Fz}, \texttt{Cz} e \texttt{Pz}, indica invece le posizioni
+collocate lungo la linea mediana.
+
+Nel dataset originale gli elettrodi laterali erano indicati secondo
+la precedente nomenclatura del sistema 10--20. Prima dell'analisi i
+nomi sono stati uniformati alla nomenclatura attuale mediante le
+seguenti corrispondenze:
+
+\begin{equation}
+	\texttt{T3}\rightarrow\texttt{T7},
+	\qquad
+	\texttt{T4}\rightarrow\texttt{T8},
+	\qquad
+	\texttt{T5}\rightarrow\texttt{P7},
+	\qquad
+	\texttt{T6}\rightarrow\texttt{P8}.
+\end{equation}
+
+
+\subsubsection{Struttura e limitazioni dei dati}
+
+Il dataset è organizzato in formato tabellare. Ogni riga corrisponde
+a un campione temporale, mentre le colonne contengono i valori
+registrati dai 19 canali EEG, l'identificativo del soggetto e la
+classe diagnostica.
+
+Sebbene l'EEG sia stato acquisito durante un compito costituito da
+più immagini successive, nel dataset non sono disponibili marcatori
+temporali dettagliati relativi alla comparsa degli stimoli, alle
+risposte dei partecipanti o alla correttezza delle singole risposte.
+
+Per questa ragione le analisi sono state invece condotte sul segnale continuo, ricavando per ogni soggetto feature spettrali e di connettività che
+descrivono complessivamente l'intervallo temporale considerato.
+
+\subsection{Preprocessing del segnale}
+
+Prima di estrarre le features è necessario eseguire una fase di preprocessing.  
+
+La procedura comprendeva:
+
+\begin{enumerate}
+	\item uniformazione della durata delle registrazioni;
+	\item conversione dei valori da microvolt a volt;
+	\item assegnazione delle coordinate del montaggio standard 10--20;
+	\item filtraggio passa-banda tra 1 e 45 Hz;
+	\item applicazione del riferimento medio comune;
+	\item decomposizione ICA e classificazione delle componenti.
+\end{enumerate}
+
+
+\subsubsection{Uniformazione della durata delle registrazioni}
+
+Le registrazioni originali presentavano durate differenti, poiché il
+tempo necessario per completare il compito dipendeva dalla velocità
+di risposta del singolo partecipante.
+
+L'utilizzo di segnali di durata diversa avrebbe potuto introdurre una
+fonte di variabilità metodologica. Per garantire che tutti i
+soggetti contribuissero alle analisi con la stessa quantità di
+segnale, è stato quindi selezionato un intervallo temporale massimo comune.
+
+Per ogni soggetto sono stati esclusi i primi 2 secondi della
+registrazione e sono stati mantenuti i successivi 60 secondi. Il
+segmento analizzato corrisponde pertanto all'intervallo:
+
+\begin{equation}
+	t \in [2,62)\ \mathrm{s}.
+\end{equation}
+
+L'esclusione dei primi 2 secondi è stata introdotta per ridurre la
+possibile influenza della fase iniziale di assestamento della
+registrazione e dell'avvio del compito. Non essendo disponibili
+marcatori temporali dettagliati, tale esclusione non corrisponde alla
+rimozione di uno specifico evento sperimentale, ma rappresenta una
+scelta metodologica applicata in modo identico a tutti i soggetti.
+
+Con una frequenza di campionamento pari a 128 Hz, ogni registrazione
+preprocessata contiene quindi:
+
+\begin{equation}
+	N
+	=
+	60\ \mathrm{s}
+	\cdot
+	128\ \mathrm{campioni/s}
+	=
+	7680\ \mathrm{campioni}
+\end{equation}
+
+per ciascuno dei 19 canali.
+
+
+\subsubsection{Conversione delle unità e assegnazione del montaggio}
+
+Nel dataset i valori EEG erano espressi in microvolt. Poiché
+MNE-Python rappresenta internamente i segnali EEG nelle unità del
+Sistema Internazionale, i dati sono stati convertiti in volt:
+
+\begin{equation}
+	x_{\mathrm{V}}(t)
+	=
+	x_{\mathrm{\mu V}}(t)
+	\cdot 10^{-6}.
+\end{equation}
+
+Per ciascun soggetto è stato successivamente costruito un oggetto
+\texttt{RawArray} di MNE, organizzato nella forma
+canali $\times$ campioni.
+
+Ai canali sono state assegnate le coordinate del montaggio
+\texttt{standard\_1020}. Le coordinate spaziali sono necessarie sia
+per rappresentare le topografie EEG sia per fornire a ICLabel
+informazioni sulla distribuzione delle componenti sullo scalpo.
+
+
+\subsubsection{Filtraggio passa-banda}
+
+Il segmento EEG selezionato è stato filtrato tra 1 e 45 Hz mediante
+un filtro FIR (\textit{Finite Impulse Response}) progettato con il
+metodo \texttt{firwin} e applicato a fase zero:
+
+\begin{equation}
+	1\ \mathrm{Hz}
+	\leq
+	f
+	\leq
+	45\ \mathrm{Hz}.
+\end{equation}
+
+Un filtro FIR calcola ciascun campione del segnale in uscita come una
+combinazione lineare di un numero finito di campioni del segnale in
+ingresso:
+
+\begin{equation}
+	y[n]
+	=
+	\sum_{k=0}^{L-1}
+	h[k]x[n-k],
+\end{equation}
+
+dove $x[n]$ è il segnale originale, $y[n]$ il segnale filtrato,
+$h[k]$ sono i coefficienti del filtro e $L$ rappresenta la lunghezza
+del filtro.
+
+La denominazione \textit{finite impulse response} deriva dal fatto
+che la risposta del filtro a un impulso ha durata finita.
+
+Il limite inferiore a 1 Hz attenua le derive molto lente della linea
+di base, che possono derivare da variazioni dell'impedenza degli
+elettrodi, movimenti lenti e instabilità strumentali. Queste
+componenti possono presentare ampiezza elevata e influenzare sia la
+stima della potenza spettrale sia la decomposizione ICA.
+
+Il limite superiore a 45 Hz conserva le bande di frequenza utilizzate
+nel progetto e attenua le componenti ad alta frequenza, parte
+dell'attività muscolare e il rumore della rete elettrica localizzato
+a 50 Hz. Il filtro non elimina necessariamente in modo assoluto tutte
+le frequenze superiori a 45 Hz, ma ne riduce progressivamente
+l'ampiezza.
+
+La frequenza di campionamento del segnale è pari a 128 Hz. Secondo il
+teorema del campionamento, la massima frequenza teoricamente
+rappresentabile senza ambiguità è la frequenza di Nyquist:
+
+\begin{equation}
+	f_{\mathrm{Nyquist}}
+	=
+	\frac{f_s}{2}
+	=
+	\frac{128}{2}
+	=
+	64\ \mathrm{Hz}.
+\end{equation}
+
+Questo limite deriva dal fatto che sono necessari almeno due campioni
+per rappresentare un ciclo di oscillazione. Componenti con frequenza
+superiore a 64 Hz non possono essere rappresentate correttamente e
+possono comparire artificialmente a frequenze inferiori attraverso
+un fenomeno chiamato \textit{aliasing}.
+
+La frequenza di taglio superiore di 45 Hz è quindi inferiore alla
+frequenza di Nyquist e lascia un margine per la banda di transizione
+del filtro.
+
+I coefficienti di un filtro FIR possono essere scelti simmetrici,
+ottenendo una risposta a fase lineare. In una normale applicazione
+causale, questa proprietà introduce un ritardo temporale costante,
+approssimativamente pari a:
+
+\begin{equation}
+	\tau_g
+	=
+	\frac{L-1}{2}
+\end{equation}
+
+campioni.
+
+Nel presente lavoro il filtro è stato applicato a fase zero,
+compensando tale ritardo e mantenendo il segnale filtrato temporalmente
+allineato a quello originale. L'espressione ``fase zero'' non indica
+che la fase fisiologica del segnale EEG venga annullata, ma che il
+filtraggio non introduce uno spostamento di fase netto artificiale.
+
+
+\subsubsection{Riferimento medio comune}
+
+Dopo il filtraggio è stato applicato il riferimento medio. L'EEG non misura un potenziale elettrico assoluto, ma una differenza di potenziale rispetto a un riferimento. La scelta del riferimento influenza pertanto sia
+l'ampiezza dei segnali sia le relazioni osservate tra i canali.
+
+Per ogni istante temporale è stata calcolata la media dei 19 canali:
+
+\begin{equation}
+	\overline{x}(t)
+	=
+	\frac{1}{M}
+	\sum_{j=1}^{M}x_j(t),
+	\qquad M=19,
+\end{equation}
+
+e tale media è stata sottratta da ciascun canale:
+
+\begin{equation}
+	x_i^{\mathrm{CAR}}(t)
+	=
+	x_i(t)-\overline{x}(t).
+\end{equation}
+
+Il riferimento medio non elimina la necessità di un riferimento, ma
+sostituisce quello originario con una stima distribuita sull'intero
+insieme degli elettrodi. In questo modo si riduce la dipendenza del
+segnale da una singola posizione di riferimento e si rende più
+uniforme il confronto tra i canali.
+
+\subsubsection{Independent Component Analysis}
+
+\paragraph{Motivazione e principio generale}
+
+Un elettrodo EEG non registra l'attività di una singola sorgente
+cerebrale. Il segnale misurato in ogni posizione dello scalpo è una
+combinazione di diversi contributi, tra cui attività neurale,
+movimenti oculari, attività muscolare e rumore strumentale.
+
+Una stessa sorgente può inoltre essere rilevata da più elettrodi. Un
+battito di ciglia, per esempio, produce un segnale particolarmente
+evidente nei canali frontali, ma il suo effetto può propagarsi anche
+verso canali più posteriori.
+
+L'Independent Component Analysis (ICA) è una tecnica di
+\textit{blind source separation} che cerca di separare queste
+sorgenti a partire dai soli segnali registrati, senza conoscere in
+anticipo la loro forma.
+
+Il modello ICA assume che i segnali osservati siano combinazioni
+lineari di sorgenti non direttamente osservabili:
+
+\begin{equation}
+	\mathbf{X}
+	=
+	\mathbf{A}\mathbf{S},
+\end{equation}
+
+dove $\mathbf{X}$ contiene i segnali registrati dagli elettrodi,
+$\mathbf{S}$ contiene le componenti indipendenti e $\mathbf{A}$ è
+la matrice di mescolamento, che descrive come ogni componente si
+proietta sui diversi canali.
+
+L'algoritmo stima una matrice di separazione, indicata con
+$\mathbf{W}$, attraverso la quale ricostruire le componenti:
+
+\begin{equation}
+	\widehat{\mathbf{S}}
+	=
+	\mathbf{W}\mathbf{X}.
+\end{equation}
+
+
+\paragraph{Indipendenza e non gaussianità}
+
+L'ICA cerca componenti statisticamente il più possibile indipendenti.
+L'indipendenza è una condizione più forte della semplice assenza di
+correlazione: due segnali possono avere correlazione lineare nulla ma
+presentare comunque una relazione statistica non lineare.
+
+Nel contesto EEG, questo non significa che le sorgenti cerebrali siano
+realmente indipendenti dal punto di vista fisiologico. L'indipendenza
+viene utilizzata come criterio matematico per ottenere una
+rappresentazione nella quale attività neurale e artefatti risultino
+più separati rispetto ai segnali originali.
+
+L'ICA sfrutta anche la non gaussianità delle sorgenti. In generale,
+una combinazione di segnali indipendenti tende a essere più simile a
+una distribuzione gaussiana rispetto ai segnali originari. Cercando
+componenti con distribuzioni maggiormente non gaussiane, l'algoritmo
+può quindi risalire alle sorgenti che hanno prodotto le miscele
+registrate.
+
+Gli artefatti oculari sono spesso adatti a questo tipo di separazione,
+poiché i battiti di ciglia sono eventi relativamente brevi, di grande
+ampiezza e con una distribuzione spaziale prevalentemente frontale.
+
+
+\paragraph{PCA e numero di componenti}
+
+Prima dell'ICA, MNE centra i dati, applica una procedura di whitening
+ed esegue una Principal Component Analysis (PCA).
+
+La PCA trasforma i dati in componenti non correlate e ordinate in base
+alla quantità di varianza spiegata. L'ICA opera successivamente su
+questo spazio cercando componenti non soltanto non correlate, ma il
+più possibile indipendenti.
+
+
+Nel presente lavoro è stato impostato:
+
+\begin{equation}
+	\texttt{n\_components}=0.95.
+\end{equation}
+
+Questo valore indica che, per ogni soggetto, viene selezionato il
+numero minimo di componenti principali necessario a spiegare almeno
+il 95\% della varianza dei dati. Il numero effettivo di componenti
+può quindi variare leggermente tra i soggetti.
+
+Con 19 canali e riferimento medio comune, il rango massimo teorico
+dei dati è pari a 18, poiché la somma dei segnali riferiti alla media
+è nulla a ogni istante.
+
+Il restante contributo PCA non viene necessariamente eliminato dal
+segnale: durante la ricostruzione finale MNE può reinserire la parte
+dei dati non utilizzata per stimare l'ICA.
+
+
+\paragraph{Ottimizzazione mediante Picard}
+
+La decomposizione ICA è stata ottimizzata mediante Picard
+(\textit{Preconditioned ICA for Real Data}).
+
+Picard è un algoritmo numerico progettato per raggiungere la soluzione
+ICA in modo rapido e stabile.
+
+Nel presente lavoro è stata utilizzata la seguente configurazione:
+
+\begin{verbatim}
+	method = "picard"
+	fit_params = {
+		"ortho": False,
+		"extended": True
+	}
+\end{verbatim}
+
+L'opzione \texttt{extended=True} abilita una formulazione di tipo
+Extended Infomax. Questa permette di trattare sia componenti
+super-gaussiane, caratterizzate da eventi rari e di grande ampiezza,
+sia componenti sub-gaussiane, caratterizzate da distribuzioni più
+piatte.
+
+L'opzione \texttt{ortho=False} consente a Picard di stimare una
+matrice di separazione non vincolata all'ortogonalità, ottenendo una
+configurazione compatibile con Extended Infomax.
+
+Sono stati inoltre impostati:
+
+\begin{equation}
+	\texttt{random\_state}=42,
+	\qquad
+	\texttt{max\_iter}=3000.
+\end{equation}
+
+Il primo parametro rende riproducibile l'inizializzazione
+dell'algoritmo, mentre il secondo definisce il numero massimo di
+iterazioni consentite. La convergenza è stata verificata controllando
+che l'algoritmo terminasse prima di raggiungere tale limite.
+
+
+\paragraph{Classificazione delle componenti}
+
+L'ICA produce una decomposizione statistica, ma non stabilisce
+automaticamente quali componenti rappresentino attività cerebrale e
+quali siano dovute ad artefatti.
+
+Le componenti sono state quindi classificate mediante ICLabel, un
+modello automatico che utilizza informazioni relative alla topografia,
+allo spettro di potenza e all'andamento temporale di ciascuna
+componente.
+
+ICLabel assegna a ogni componente una probabilità di appartenenza a
+categorie quali:
+
+\begin{itemize}
+	\item attività cerebrale;
+	\item attività muscolare;
+	\item artefatto oculare;
+	\item attività cardiaca;
+	\item rumore di linea;
+	\item rumore di canale;
+	\item altre sorgenti.
+\end{itemize}
+
+Il dataset non contiene canali EOG separati, che avrebbero permesso
+di identificare direttamente gli artefatti oculari. La classificazione
+automatica ha quindi utilizzato soprattutto la distribuzione spaziale,
+le caratteristiche temporali e lo spettro delle componenti.
+
+È stata adottata una procedura conservativa, sono state eliminate
+soltanto le componenti classificate come oculari con probabilità
+almeno pari a:
+
+\begin{equation}
+	p_{\mathrm{eye}}
+	\geq
+	0.90.
+\end{equation}
+
+Le componenti classificate come muscolari, rumore di linea o altre
+sorgenti non sono state rimosse automaticamente, per ridurre il
+rischio di eliminare anche attività cerebrale.
+
+
+\paragraph{Ricostruzione del segnale}
+
+Dopo aver identificato le componenti oculari, queste sono state
+escluse dalla ricostruzione del segnale.
+
+In termini schematici, le componenti selezionate vengono poste a zero
+e il segnale viene ricostruito utilizzando tutte le componenti
+rimanenti:
+
+\begin{equation}
+	\widehat{\mathbf{X}}_{\mathrm{clean}}
+	=
+	\widehat{\mathbf{A}}
+	\widehat{\mathbf{S}}_{\mathrm{clean}}.
+\end{equation}
+
+Non vengono quindi eliminati interi elettrodi o interi intervalli
+temporali. Da ogni canale viene sottratto soltanto il contributo delle
+componenti identificate come artefatti oculari.
+
+
+\paragraph{Limiti dell'ICA}
+
+L'ICA fornisce una separazione statistica e non una ricostruzione
+anatomica esatta delle sorgenti cerebrali. Una componente può
+contenere contributi provenienti da più generatori, mentre una stessa
+sorgente può essere distribuita tra componenti differenti.
+
+La separazione è inoltre limitata dal numero di elettrodi disponibili.
+Con 19 canali è possibile ottenere soltanto una rappresentazione a
+bassa dimensionalità rispetto al numero reale di sorgenti neurali e
+artefattuali.
+
+L'ICA assume anche che la modalità con cui le sorgenti si proiettano
+sugli elettrodi rimanga approssimativamente costante durante
+l'intervallo analizzato. Movimenti degli elettrodi o variazioni
+dell'impedenza possono ridurre la validità di questa ipotesi.
+
+Infine, una componente classificata come artefattuale può contenere
+anche una parte di attività neurale. Per questo motivo è stata
+adottata una soglia elevata e una strategia conservativa di
+esclusione.
+
+\subsection{Estrazione delle feature spettrali}
+
+L'estrazione delle feature spettrali è stata effettuata a partire
+dai segnali EEG preprocessati. Per ciascun soggetto e per ciascuno
+dei 19 canali, la serie temporale di 60 secondi è stata trasformata
+dal dominio del tempo al dominio della frequenza mediante la stima
+della densità spettrale di potenza
+(\textit{Power Spectral Density}, PSD).
+
+La rappresentazione temporale descrive come il potenziale elettrico
+varia nel tempo, mentre la rappresentazione spettrale descrive come
+la potenza del segnale è distribuita tra le diverse frequenze. Questo
+passaggio è particolarmente utile per l'EEG, poiché numerosi fenomeni
+neurofisiologici vengono descritti in termini di attività oscillatoria
+all'interno di specifiche bande di frequenza.
+
+
+\subsubsection{Stima della Power Spectral Density}
+
+Per un segnale discreto $x[n]$, campionato alla frequenza $f_s$, la
+trasformata discreta di Fourier permette di rappresentare il segnale
+come combinazione di componenti sinusoidali:
+
+\begin{equation}
+	X[k]
+	=
+	\sum_{n=0}^{N-1}
+	x[n]
+	e^{-j2\pi kn/N}.
+\end{equation}
+
+Il modulo quadrato della trasformata fornisce una misura della potenza
+associata alle diverse frequenze. Una stima basata direttamente
+sull'intero segnale, detta periodogramma, presenta tuttavia una
+varianza elevata: piccole variazioni del segnale possono produrre
+oscillazioni considerevoli nella stima dello spettro.
+
+Per ottenere una PSD più stabile è stato utilizzato il metodo di
+Welch. Il segnale viene suddiviso in $K$ segmenti temporali
+parzialmente sovrapposti. Per ciascun segmento viene calcolato un
+periodogramma e le stime ottenute vengono successivamente mediate:
+
+\begin{equation}
+	\widehat{S}_{xx}(f)
+	=
+	\frac{1}{K}
+	\sum_{k=1}^{K}
+	P_k(f),
+\end{equation}
+
+dove $P_k(f)$ è il periodogramma del segmento $k$.
+
+La media dei periodogrammi riduce la varianza della stima rispetto
+all'utilizzo di un unico segmento. Il vantaggio viene ottenuto al
+prezzo di una minore risoluzione temporale, che non costituisce però
+un limite rilevante nel presente lavoro, poiché l'obiettivo è ottenere
+una rappresentazione spettrale complessiva del soggetto e non seguire
+l'evoluzione temporale delle bande durante il compito.
+
+Sono stati utilizzati i seguenti parametri:
+
+\begin{equation}
+	n_{\mathrm{perseg}}=512,
+	\qquad
+	n_{\mathrm{overlap}}=256.
+\end{equation}
+
+Poiché la frequenza di campionamento è pari a 128 Hz, ogni segmento
+contiene quattro secondi di segnale:
+
+\begin{equation}
+	T_{\mathrm{window}}
+	=
+	\frac{n_{\mathrm{perseg}}}{f_s}
+	=
+	\frac{512}{128}
+	=
+	4\ \mathrm{s}.
+\end{equation}
+
+L'overlap è pari al 50$\%$, poiché due finestre consecutive condividono
+256 dei 512 campioni. La sovrapposizione permette di aumentare il
+numero di periodogrammi disponibili per la media senza ridurre
+ulteriormente la lunghezza delle finestre.
+
+La distanza tra due frequenze consecutive della PSD è:
+
+\begin{equation}
+	\Delta f
+	=
+	\frac{f_s}{n_{\mathrm{perseg}}}
+	=
+	\frac{128}{512}
+	=
+	0.25\ \mathrm{Hz}.
+\end{equation}
+
+Una finestra di quattro secondi rappresenta quindi un compromesso tra
+la necessità di distinguere le frequenze delle bande considerate e la
+necessità di disporre di un numero sufficiente di segmenti da mediare.
+
+
+\subsubsection{Calcolo delle potenze di banda}
+
+A partire dalla PSD sono state calcolate le potenze assolute nelle
+bande delta, theta, alpha e beta. Gli intervalli utilizzati
+nell'estrazione delle feature spettrali sono riportati nella
+Tabella~\ref{tab:eeg_bands}.
 
 \begin{table}[H]
 	\centering
@@ -46,246 +664,907 @@ A partire dalla PSD sono state calcolate le potenze nelle principali bande EEG: 
 		\hline
 		Delta $(\delta)$ & 1--4 Hz \\
 		Theta $(\theta)$ & 4--8 Hz \\
-		Alpha $(\alpha)$ & 8--12 Hz \\
-		Beta $(\beta)$ & 12--30 Hz \\
+		Alpha $(\alpha)$ & 8--13 Hz \\
+		Beta $(\beta)$ & 13--30 Hz \\
 		\hline
 	\end{tabular}
-	\caption{Bande di frequenza utilizzate per il calcolo delle feature spettrali.}
+	\caption{Bande utilizzate per l'estrazione delle feature
+		spettrali.}
 	\label{tab:eeg_bands}
 \end{table}
 
-La potenza di ciascuna banda è stata calcolata integrando la PSD nell'intervallo di frequenze corrispondente ($f_1, f_2$):
+La potenza in una banda compresa tra $f_1$ e $f_2$ è definita come
+l'area della PSD nell'intervallo corrispondente:
 
 \begin{equation}
-	P_{\text{band}} =\int_{f_1}^{f_2} PSD(f),df
-\end{equation} 
-
-In aggiunta alle potenze di banda, è stato calcolato il rapporto tra theta e beta, definito come:
-
-\begin{equation}
-	TBR =\frac{P_{\theta}}{P_{\beta}}
+	P_{\mathrm{band}}
+	=
+	\int_{f_1}^{f_2}
+	\widehat{S}_{xx}(f)\,df.
 \end{equation}
 
-Ogni feature è stato calcolata sia a livello di singolo canale sia a livello regionale mediando le features dei canali appartenenti alla stessa regione. 
-
-L'output finale della features extraction è una tabella soggetto-livello contenente potenze di banda per ciascun canale, rapporti theta/beta per ciascun canale, potenze medie regionali, rapporti theta/beta regionali e metadati del soggetto, come identificativo, classe e durata della registrazione.
-
-
-\subsection{Esplorazione featurea spettrali}
-
-Dopo l'estrazione delle feature, è stata eseguita un'analisi esplorativa per studiare la distribuzione delle variabili e confrontare i due gruppi ADHD e Control.
-
-
-\subsubsection{Test di Mann-Whitney U}
-
-Per confrontare ciascuna feature tra soggetti ADHD e soggetti Control è stato utilizzato il test di Mann-Whitney U.
-
-Questo è un test non parametrico per il confronto tra due gruppi indipendenti. È stato scelto perché le feature EEG possono non seguire una distribuzione normale. A differenza del test t di Student, il test di Mann-Whitney non confronta direttamente le medie dei due gruppi, ma confronta i ranghi dei valori.
-
-Il procedimento consiste nel considerare insieme tutti i valori della feature nei due gruppi, ordinarli dal più piccolo al più grande e assegnare a ciascun valore un rango. Se i due gruppi provengono dalla stessa distribuzione, i ranghi dovrebbero essere distribuiti in modo simile tra ADHD e Control. Se invece un gruppo tende ad avere valori più alti o più bassi, anche i ranghi tenderanno a essere sistematicamente più alti o più bassi.
-
-Per un gruppo con $n_1$ osservazioni, la statistica $U_1$ può essere scritta come:
-\begin{equation}
-	U_1 =R_1 -\frac{n_1(n_1+1)}{2}
-\end{equation}
-
-dove $R_1$ è la somma dei ranghi del primo gruppo. 
-
-La statistica U finale del test viene calcolata come il valore minimo tra $U_1$ e la controparte $U_2$ del secondo gruppo. 
-
-Nel presente progetto è stato utilizzato un test a due code, poiché non si è imposto a priori che le feature dovessero essere maggiori nel gruppo ADHD o nel gruppo Control. In questo modo, il test è sensibile a differenze in entrambe le direzioni.
-
-Il p-value misura quanto la differenza osservata tra ADHD e Control sia compatibile con l'ipotesi che i due gruppi non differiscano realmente. Se il p-value è piccolo, la differenza osservata è poco compatibile con questa ipotesi e può essere considerata statisticamente significativa. Se invece il p-value è grande, la differenza potrebbe essere dovuta alla variabilità casuale dei dati.
-
-\subsubsection{Cohen's d}
-
-Oltre alla significatività statistica, è stata calcolata una misura della grandezza dell'effetto tramite Cohen's $d$.
-
-Il p-value indica se una differenza è statisticamente significativa, ma non descrive direttamente quanto tale differenza sia grande. Per questo motivo, Cohen's $d$ è stato utilizzato per quantificare la differenza standardizzata tra le medie dei due gruppi.
-
-Cohen's $d$ è definito come:
+Poiché la PSD è disponibile soltanto in corrispondenza di frequenze
+discrete, l'integrale è stato approssimato numericamente mediante la
+regola del trapezio:
 
 \begin{equation}
-	d =\frac{\mu_{ADHD} - \mu_{Control}}{s_{pooled}}
+	P_{\mathrm{band}}
+	\approx
+	\sum_{m}
+	\frac{
+		S(f_m)+S(f_{m+1})
+	}{2}
+	\left(f_{m+1}-f_m\right).
 \end{equation}
 
-dove $\mu_{ADHD}$ è la media della feature nel gruppo ADHD, $\mu_{Control}$ è la media della feature nel gruppo Control e $s_{pooled}$ è la deviazione standard pooled.
-
-La deviazione standard pooled si definisce come:
+Nel codice sono state incluse le frequenze che soddisfano:
 
 \begin{equation}
-	s_{pooled}=\sqrt{\frac{s_{ADHD}^{2} + s_{Control}^{2}}{2}}
+	f\geq f_{\mathrm{min}},
+	\qquad
+	f<f_{\mathrm{max}}.
 \end{equation}
 
-dove $s_{ADHD}$ e $s_{Control}$ sono le deviazioni standard nei due gruppi.
+Le potenze ottenute sono potenze assolute. 
 
-Il valore assoluto di Cohen's $d$ è stato utilizzato per ordinare le feature in base alla grandezza della differenza tra i gruppi.
 
-In questo modo è stato possibile identificare le feature con la maggiore separazione tra ADHD e Control, indipendentemente dalla direzione della differenza.
+\subsubsection{Theta/beta ratio}
+
+Per ciascun canale è stato inoltre calcolato il rapporto tra la potenza
+theta e la potenza beta:
+
+\begin{equation}
+	\mathrm{TBR}
+	=
+	\frac{P_{\theta}}{P_{\beta}}.
+\end{equation}
+
+Il rapporto è stato impostato come valore mancante nel caso,
+puramente teorico, in cui la potenza beta fosse pari a zero. Nei dati
+analizzati non sono stati osservati valori mancanti nelle feature
+finali.
+
+
+\subsubsection{Feature regionali}
+
+Oltre alle feature dei singoli canali, sono state costruite feature
+regionali aggregando gli elettrodi nelle seguenti cinque regioni:
+
+\begin{itemize}
+	\item frontale:
+	\texttt{Fp1}, \texttt{Fp2}, \texttt{F3}, \texttt{F4},
+	\texttt{F7}, \texttt{F8}, \texttt{Fz};
+	
+	\item centrale:
+	\texttt{C3}, \texttt{C4}, \texttt{Cz};
+	
+	\item temporale:
+	\texttt{T7}, \texttt{T8};
+	
+	\item parietale:
+	\texttt{P3}, \texttt{P4}, \texttt{P7}, \texttt{P8},
+	\texttt{Pz};
+	
+	\item occipitale:
+	\texttt{O1}, \texttt{O2}.
+\end{itemize}
+
+Per ciascuna regione e banda, la potenza regionale è stata ottenuta
+mediando le potenze dei canali appartenenti alla regione:
+
+\begin{equation}
+	P_{R,b}
+	=
+	\frac{1}{|R|}
+	\sum_{c\in R}
+	P_{c,b},
+\end{equation}
+
+dove $R$ indica la regione, $|R|$ il numero di canali appartenenti
+alla regione e $b$ la banda di frequenza.
+
+Il theta/beta ratio regionale è stato calcolato come rapporto tra la
+potenza theta media della regione e la potenza beta media della stessa
+regione:
+
+\begin{equation}
+	\mathrm{TBR}_{R}
+	=
+	\frac{P_{R,\theta}}{P_{R,\beta}}.
+\end{equation}
+
+Non è stata quindi calcolata la media dei TBR dei singoli canali;
+prima sono state mediate separatamente le potenze theta e beta e
+successivamente ne è stato calcolato il rapporto.
+
+
+\subsubsection{Struttura del feature set spettrale}
+
+Per ciascuno dei 19 canali sono state ottenute quattro potenze di banda
+e un theta/beta ratio:
+
+\begin{equation}
+	19
+	\times
+	(4+1)
+	=
+	95
+\end{equation}
+
+feature a livello di canale.
+
+Per ciascuna delle cinque regioni sono state ottenute quattro potenze
+medie e un theta/beta ratio:
+
+\begin{equation}
+	5
+	\times
+	(4+1)
+	=
+	25
+\end{equation}
+
+feature regionali.
+
+Il numero complessivo di predittori spettrali è quindi:
+
+\begin{equation}
+	95+25=120.
+\end{equation}
+
+La tabella finale contiene una riga per soggetto e 124 colonne:
+120 feature predittive e quattro variabili descrittive,
+\texttt{ID}, \texttt{Class}, \texttt{n\_samples} e
+\texttt{duration\_sec}.
+
+
+\subsection{Esplorazione delle feature spettrali}
+
+Prima dell'addestramento dei classificatori è stata effettuata
+un'analisi esplorativa con due obiettivi principali:
+
+\begin{enumerate}
+	\item descrivere la direzione e l'ampiezza delle differenze tra
+	soggetti ADHD e controlli per ciascuna feature;
+	
+	\item valutare il grado di ridondanza tra le feature estratte.
+\end{enumerate}
+
+
+\subsubsection{Test di Mann--Whitney U}
+
+Per confrontare i due gruppi è stato utilizzato il test di
+Mann-Whitney U, un test non parametrico per due campioni indipendenti.
+
+La scelta di un test non parametrico è motivata dal fatto che le
+potenze EEG e i rapporti tra potenze possono presentare distribuzioni
+asimmetriche e valori estremi. Non è stata quindi assunta la normalità
+delle feature richiesta dal comune test $t$ parametrico.
+
+Per ogni feature, i valori dei soggetti ADHD e dei controlli vengono
+considerati congiuntamente, ordinati e trasformati in ranghi. Per il
+primo gruppo, la statistica può essere espressa come:
+
+\begin{equation}
+	U_1
+	=
+	R_1
+	-
+	\frac{n_1(n_1+1)}{2},
+\end{equation}
+
+dove $R_1$ è la somma dei ranghi del primo gruppo e $n_1$ la sua
+numerosità. Analogamente si ottiene:
+
+\begin{equation}
+	U_2
+	=
+	n_1n_2-U_1.
+\end{equation}
+
+Il test valuta se le osservazioni di uno dei due gruppi tendono a
+occupare ranghi sistematicamente più alti o più bassi rispetto
+all'altro gruppo.
+
+È stato utilizzato un test a due code:
+
+\begin{equation}
+	H_0:
+	\text{assenza di una differenza sistematica tra i gruppi},
+\end{equation}
+
+\begin{equation}
+	H_1:
+	\text{presenza di una differenza in una delle due direzioni}.
+\end{equation}
+
+Non è stata imposta a priori una direzione, poiché, nonostante le
+ipotesi formulate sulla base della letteratura, il task attentivo
+poteva produrre differenze diverse da quelle osservate nelle
+registrazioni a riposo.
+
+Un p-value piccolo indica che il risultato osservato è poco
+compatibile con l'ipotesi nulla. Un p-value elevato, al contrario,
+non dimostra che i gruppi siano identici, ma indica che i dati non
+forniscono evidenza sufficiente per rifiutare l'ipotesi nulla.
+
+
+\subsubsection{Cohen's \texorpdfstring{$d$}{d}}
+
+La significatività statistica non fornisce una misura diretta
+dell'ampiezza della differenza. Per questo motivo, per ogni feature è
+stato calcolato anche Cohen's $d$:
+
+\begin{equation}
+	d
+	=
+	\frac{
+		\overline{x}_{\mathrm{ADHD}}
+		-
+		\overline{x}_{\mathrm{Control}}
+	}{
+		s_{\mathrm{pooled}}
+	}.
+\end{equation}
+
+Nel notebook la deviazione standard combinata è stata calcolata come:
+
+\begin{equation}
+	s_{\mathrm{pooled}}
+	=
+	\sqrt{
+		\frac{
+			s_{\mathrm{ADHD}}^2
+			+
+			s_{\mathrm{Control}}^2
+		}{2}
+	}.
+\end{equation}
+
+Questa formulazione assegna lo stesso peso alle varianze dei due
+gruppi ed è appropriata nel presente dataset, nel quale le numerosità
+sono quasi identiche, rispettivamente 61 e 60 soggetti.
+
+Con la convenzione adottata:
+
+\begin{equation}
+	d>0
+	\quad\Longrightarrow\quad
+	\overline{x}_{\mathrm{ADHD}}
+	>
+	\overline{x}_{\mathrm{Control}},
+\end{equation}
+
+mentre:
+
+\begin{equation}
+	d<0
+	\quad\Longrightarrow\quad
+	\overline{x}_{\mathrm{Control}}
+	>
+	\overline{x}_{\mathrm{ADHD}}.
+\end{equation}
+
+Il valore assoluto $|d|$ descrive invece la grandezza della
+separazione standardizzata ed è stato utilizzato per ordinare le
+feature.
+
+Mann--Whitney e Cohen's $d$ forniscono informazioni complementari:
+il primo è basato sui ranghi e valuta l'evidenza statistica di una
+differenza, mentre il secondo descrive la differenza tra le medie in
+unità di deviazione standard. 
+
 
 \subsubsection{Correzione per confronti multipli}
 
-Poiché il confronto statistico è stato ripetuto su molte feature EEG, è stato necessario correggere i p-value per confronti multipli (\cite{multiple}).
+Il test di Mann--Whitney è stato ripetuto per tutte le 120 feature
+spettrali. Applicando indipendentemente la soglia $p<0.05$ a molti
+test, la probabilità di ottenere almeno alcuni risultati
+apparentemente significativi per effetto del caso aumenta.
 
-Eseguendo diversi test statistici aumenta la probabilità di ottenere risultati apparentemente significativi solo per caso. Per ridurre questo rischio è stata utilizzata la procedura Benjamini-Hochberg per il controllo del False Discovery Rate.
+Per controllare questo problema è stata applicata la procedura
+Benjamini--Hochberg per il controllo del
+\textit{False Discovery Rate} (FDR) \cite{multiple}.
 
-Il False Discovery Rate controlla la proporzione attesa di falsi positivi tra le feature dichiarate significative.
-
-La procedura Benjamini-Hochberg ordina i p-value dal più piccolo al più grande:
-
-\begin{equation}
-	p_{(1)} \leq p_{(2)} \leq ... \leq p_{(m)}
-\end{equation}
-
-dove $m$ è il numero totale di test eseguiti.
-
-Ogni p-value ordinato viene confrontato con una soglia che dipende dalla sua posizione $ \frac{i}{m}Q$ dove $i$ è il rango del p-value ordinato, $m$ è il numero totale di test e $Q$ è il livello di False Discovery Rate scelto.
-
-Nel progetto sono state considerate significative dopo correzione le feature con:
-
-$
-p_{FDR} < 0.05
-$
-
-\subsubsection{Analisi di correlazione}
-
-Dopo il confronto tra gruppi, è stata analizzata la correlazione tra tutte le feature EEG numeriche.
-
-Molte feature EEG possono essere correlate tra loro perché derivano dalla stessa banda di frequenza, da canali spazialmente vicini o da rapporti calcolati a partire dalle stesse grandezze.
-
-È stata utilizzata la correlazione di Spearman, una misura non parametrica di associazione monotona tra due variabili. A differenza della correlazione di Pearson, Spearman non richiede che la relazione tra le variabili sia lineare e non richiede l'assunzione di normalità.
-
-Il coefficiente di Spearman si basa sui ranghi delle osservazioni. Date due variabili $X$ e $Y$, i valori vengono trasformati nei rispettivi ranghi $R(X)$ e $R(Y)$, e la correlazione viene calcolata sui ranghi.
-
-Nel caso senza ranghi uguali, il coefficiente di Spearman può essere scritto come:
+Indicando con $m$ il numero totale di test, i p-value vengono ordinati:
 
 \begin{equation}
-	\rho =1 -\frac{6 \sum_{i=1}^{n} d_i^2}{n(n^2 - 1)}
+	p_{(1)}
+	\leq
+	p_{(2)}
+	\leq
+	\ldots
+	\leq
+	p_{(m)}.
 \end{equation}
 
-dove $d_i$ è la differenza tra i ranghi delle due variabili per l'osservazione $i$, e $n$ è il numero di osservazioni.
+Ciascun p-value ordinato viene confrontato con:
 
-Il coefficiente $\rho$ varia tra $-1$ e $1$ e $\rho = 1$ indica una relazione monotona positiva perfetta e $ \rho = -1$ indica una relazione monotona negativa perfetta, mentre $ \rho = 0$ indica assenza di relazione monotona.
+\begin{equation}
+	\frac{i}{m}q,
+\end{equation}
+
+dove $i$ è la sua posizione nell'ordinamento e $q=0.05$ è il livello
+di FDR scelto.
+
+La procedura individua il massimo indice $i^\ast$ per cui:
+
+\begin{equation}
+	p_{(i^\ast)}
+	\leq
+	\frac{i^\ast}{m}q.
+\end{equation}
+
+Vengono quindi rifiutate le ipotesi associate ai p-value fino a tale
+posizione. Nel notebook sono stati inoltre calcolati direttamente i
+p-value corretti, indicati come $p_{\mathrm{FDR}}$, e sono state
+considerate significative le feature che soddisfacevano:
+
+\begin{equation}
+	p_{\mathrm{FDR}}<0.05.
+\end{equation}
+
+Il controllo FDR limita la proporzione attesa di falsi positivi tra i
+risultati dichiarati significativi; non garantisce invece che ogni
+singolo risultato significativo sia vero.
+
+
+\subsubsection{Correlazione di Spearman}
+
+Dopo il confronto tra i gruppi è stata analizzata la ridondanza tra le
+feature mediante il coefficiente di correlazione di Spearman.
+
+A differenza dell'analisi precedente, questa procedura non verifica se
+una feature differisca tra ADHD e controlli. Valuta invece se i
+soggetti che presentano valori elevati in una feature tendano a
+presentare valori elevati, o bassi, anche in un'altra feature.
+
+Spearman è definita come la correlazione di Pearson calcolata sui
+ranghi:
+
+\begin{equation}
+	\rho_s
+	=
+	\operatorname{corr}
+	\left[
+	R(X),R(Y)
+	\right],
+\end{equation}
+
+dove $R(X)$ e $R(Y)$ sono i ranghi delle osservazioni delle due
+variabili.
+
+Nel caso in cui non siano presenti ranghi uguali, il coefficiente può
+anche essere espresso come:
+
+\begin{equation}
+	\rho_s
+	=
+	1
+	-
+	\frac{
+		6\sum_{i=1}^{n}d_i^2
+	}{
+		n(n^2-1)
+	},
+\end{equation}
+
+dove $d_i$ è la differenza tra i ranghi delle due variabili per il
+soggetto $i$.
+
+Il coefficiente assume valori compresi tra $-1$ e $1$:
+
+\begin{itemize}
+	\item $\rho_s=1$ indica un'associazione monotona positiva
+	perfetta;
+	
+	\item $\rho_s=-1$ indica un'associazione monotona negativa
+	perfetta;
+	
+	\item un valore vicino a zero indica l'assenza di una chiara
+	associazione monotona.
+\end{itemize}
+
+Un valore nullo non esclude necessariamente la presenza di relazioni
+non monotone.
+
+Spearman è stata preferita a Pearson per l'analisi delle feature
+spettrali perché è basata sui ranghi, non richiede normalità ed è meno
+sensibile ai valori estremi.
+
+Le correlazioni sono state calcolate anche separatamente nei gruppi
+ADHD e Control, sia per le feature di canale sia per quelle regionali.
+Sono state inoltre studiate separatamente le correlazioni tra le
+potenze della stessa banda nei diversi canali.
 
 
 \subsection{Classificazione}
 
-Dopo l'estrazione e l'analisi esplorativa delle feature EEG, si sono classificati i re soggetti ADHD e soggetti Control. Ogni soggetto è stato rappresentato mediante un vettore di feature, ottenuto a partire dalle registrazioni EEG. La classe diagnostica, ADHD oppure Control, è stata utilizzata come variabile target.
+Ogni soggetto è stato rappresentato mediante un vettore di feature e
+la classe diagnostica è stata utilizzata come variabile target:
 
-Sono stati considerati due modelli di classificazione: Random Forest e Logistic Regression. La Random Forest è stata utilizzata come modello non lineare, capace di catturare relazioni complesse tra le feature EEG. La Logistic Regression è stata invece utilizzata come modello lineare di confronto, con l'obiettivo di verificare se la separazione tra i due gruppi potesse essere ottenuta anche tramite una combinazione lineare delle feature.
+\begin{equation}
+	y=
+	\begin{cases}
+		0, & \text{Control},\\
+		1, & \text{ADHD}.
+	\end{cases}
+\end{equation}
 
-Prima dell'addestramento, il dataset soggetto-livello è stato diviso in due sottoinsiemi:
+Sono stati considerati due classificatori:
 
 \begin{itemize}
-	\item [--] training/validation set, pari all'80$\%$ dei soggetti;
-	\item [--] test set indipendente, pari al 20$\%$ dei soggetti.
+	\item Random Forest, come modello capace di rappresentare
+	relazioni non lineari e interazioni tra feature;
+	
+	\item Logistic Regression, come modello lineare di confronto.
 \end{itemize}
 
-La divisione è stata effettuata in modo da mantenere proporzioni simili di soggetti ADHD e Control nei due sottoinsiemi. Il test set è stato mantenuto separato durante la fase di selezione del modello e di ottimizzazione degli iperparametri, ed è stato utilizzato solo per la valutazione finale. 
 
-Sul training/validation set è stata eseguita una cross-validation stratificata a 5 fold. In ogni iterazione, il modello è stato addestrato su quattro fold e validato sul fold rimanente. La procedura è stata ripetuta cinque volte, in modo che ogni fold fosse utilizzato una volta come validation set.
+\subsubsection{Suddivisione dei dati e cross-validation}
 
-Le metriche utilizzate per valutare le prestazioni dei modelli sono state: accuracy, balanced accuracy, precision, recall, F1-score, ROC-AUC e confusion matrix.
+Prima di qualsiasi confronto tra feature set o ottimizzazione degli
+iperparametri, i 121 soggetti sono stati suddivisi in:
+
+\begin{itemize}
+	\item training set, pari all'80\% del campione;
+	\item test set indipendente, pari al 20\% del campione.
+\end{itemize}
+
+La divisione è stata eseguita mediante campionamento stratificato, in
+modo da mantenere proporzioni simili di ADHD e controlli nei due
+sottoinsiemi, utilizzando:
+
+\begin{equation}
+	\texttt{random\_state}=42.
+\end{equation}
+
+Il test set non è stato utilizzato per confrontare i feature set,
+scegliere il modello o ottimizzare gli iperparametri.
+
+Sul solo training set è stata applicata una cross-validation
+stratificata a cinque fold, con mescolamento dei soggetti e
+\texttt{random\_state}=42. In ciascuna iterazione, quattro fold sono
+stati utilizzati per l'addestramento e il quinto per la validazione.
+La procedura è stata ripetuta cinque volte, affinché ciascun fold
+fosse utilizzato una volta come validation set.
+
+Dopo la selezione della configurazione migliore, il modello è stato
+addestrato nuovamente sull'intero training set e valutato una sola
+volta sul test set.
+
+
+\subsubsection{Metriche di valutazione}
+
+Sono state considerate le seguenti metriche:
+
+\begin{equation}
+	\mathrm{Accuracy}
+	=
+	\frac{TP+TN}{TP+TN+FP+FN},
+\end{equation}
+
+\begin{equation}
+	\mathrm{Recall}
+	=
+	\frac{TP}{TP+FN},
+\end{equation}
+
+\begin{equation}
+	\mathrm{Precision}
+	=
+	\frac{TP}{TP+FP},
+\end{equation}
+
+\begin{equation}
+	F_1
+	=
+	2
+	\frac{
+		\mathrm{Precision}\cdot\mathrm{Recall}
+	}{
+		\mathrm{Precision}+\mathrm{Recall}
+	}.
+\end{equation}
+
+La balanced accuracy è la media del recall delle due classi:
+
+\begin{equation}
+	\mathrm{Balanced\ Accuracy}
+	=
+	\frac{
+		\mathrm{Sensitivity}
+		+
+		\mathrm{Specificity}
+	}{2}.
+\end{equation}
+
+È stata inoltre calcolata la ROC-AUC, che misura la capacità del
+modello di assegnare punteggi più elevati ai soggetti ADHD rispetto
+ai controlli considerando tutte le possibili soglie decisionali.
 
 
 \subsubsection{Random Forest}
 
-La Random Forest è un modello di classificazione ensemble basato sulla combinazione di molti alberi decisionali. Ogni albero viene addestrato su una diversa sottoinsieme del training set e, durante la costruzione dei nodi, considera solo un sottoinsieme casuale delle feature disponibili. Questa doppia casualità riduce la dipendenza del modello da un singolo albero e migliora la capacità di generalizzazione.
+La Random Forest è un metodo ensemble costituito da numerosi alberi
+decisionali.
 
-Nel caso della classificazione, ogni albero della Random Forest produce una predizione di classe. La predizione finale corrisponde a quella di maggioranza. Nell'implementazione di \texttt{scikit-learn}, la Random Forest stima inoltre la probabilità di appartenenza a ciascuna classe mediando le probabilità prodotte dai singoli alberi, e assegna il campione alla classe con probabilità media più alta.
+Ogni albero viene addestrato su un campione del training
+set, ottenuto mediante estrazione casuale con reinserimento. Alcuni
+soggetti possono quindi comparire più volte nel campione di uno
+specifico albero, mentre altri possono non essere inclusi.
+
+Inoltre, a ogni nodo viene valutato soltanto un sottoinsieme casuale
+delle feature. Questa seconda fonte di casualità riduce la
+correlazione tra gli alberi: alberi differenti tendono a costruire
+regole differenti e a commettere errori non perfettamente coincidenti.
+
+La combinazione delle previsioni riduce soprattutto la varianza
+rispetto a un singolo albero. Nell'implementazione di
+\texttt{scikit-learn}, le probabilità di classe prodotte dai singoli
+alberi vengono mediate e viene selezionata la classe con probabilità
+media maggiore.
+
+Per il confronto iniziale tra feature set è stata utilizzata una
+Random Forest con:
+
+\begin{verbatim}
+	n_estimators = 500
+	max_depth = None
+	min_samples_leaf = 2
+	class_weight = "balanced"
+	random_state = 42
+\end{verbatim}
+
+Il parametro \texttt{class\_weight="balanced"} assegna pesi
+inversamente proporzionali alle numerosità delle classi. Sebbene il
+dataset sia quasi perfettamente bilanciato, il parametro è stato
+mantenuto per rendere il modello robusto alle piccole differenze
+presenti nei singoli fold.
 
 
-Nel presente lavoro, la Random Forest è stata utilizzata sia per valutare le performance di classificazione sia per stimare l'importanza relativa delle feature. È stato inoltre utilizzato il parametro \texttt{class\_weight="balanced"} per compensare eventuali differenze nella distribuzione delle classi.
+\paragraph{Ottimizzazione degli iperparametri}
+
+Il tuning è stato effettuato esclusivamente sul training set in due
+fasi.
+
+Nella prima fase è stata utilizzata una
+\texttt{RandomizedSearchCV}, valutando 80 combinazioni estratte da uno
+spazio ampio:
+
+\begin{verbatim}
+	n_estimators:       valori interi tra 200 e 1499
+	max_depth:          None, 3, 5, 7, 10, 15, 20, 30
+	min_samples_leaf:   valori interi tra 1 e 9
+	min_samples_split:  valori interi tra 2 e 14
+	max_features:       "sqrt", "log2", None
+\end{verbatim}
+
+La ricerca randomizzata permette di esplorare lo spazio degli
+iperparametri senza valutare esaustivamente tutte le possibili
+combinazioni.
+
+Nella seconda fase è stata applicata una
+\texttt{GridSearchCV} locale costruita intorno ai valori migliori
+individuati nella prima ricerca. Questa fase ha permesso di esplorare
+sistematicamente una regione più ristretta dello spazio degli
+iperparametri.
+
+Entrambe le ricerche hanno utilizzato la cross-validation
+stratificata a cinque fold e la balanced accuracy come funzione
+obiettivo.
 
 
-\paragraph{Tuning degli iperparametri:}
+\paragraph{Impurità di Gini e feature importance}
 
-
-Il tuning degli iperparametri è stato eseguito sul miglior feature set selezionato nella fase precedente, utilizzando esclusivamente il training/validation set. 
-
-L'ottimizzazione degli iperparametri è stata effettuata in due passaggi. È stata inzialmente utilizzata una \texttt{RandomizedSearchCV} per esplorare in modo efficiente uno spazio ampio di possibili combinazioni di iperparametri. Successivamente, è stata applicata una \texttt{GridSearchCV} locale attorno alla migliore combinazione individuata dalla ricerca randomizzata, con l'obiettivo di raffinare ulteriormente la selezione degli iperparametri.
-
-Entrambe le fasi di tuning sono state eseguite mediante cross-validation stratificata a 5 fold sul training/validation set. La metrica utilizzata per selezionare la migliore combinazione di iperparametri è stata la balanced accuracy.
-
-Dopo la selezione finale degli iperparametri, il modello Random Forest è stato riaddestrato sull'intero training/validation set e valutato una sola volta sul test set.
-
-\paragraph{Feature importance:}
-
-
-Dopo l'addestramento del modello finale, sono stati estratti i valori di feature importance della Random Forest.
-
-La feature importance della Random Forest si basa sulla riduzione media dell'impurità, chiamata anche mean decrease in impurity. In un albero decisionale, ogni nodo viene diviso scegliendo la feature e la soglia che permettono di separare meglio le classi.
-
-Come misura comune dell'impurità si usa la Gini impurity:
+In un nodo contenente proporzioni $p_k$ delle diverse classi,
+l'impurità di Gini è:
 
 \begin{equation}
-	Gini = 1 - p_{ADHD}^{2} - p_{Control}^{2}
+	G(v)
+	=
+	1-\sum_{k=1}^{K}p_{k,v}^{\,2}.
 \end{equation}
 
-dove $p_k$ è la proporzione di campioni appartenenti alla classe $k$ nel nodo.
-
-La riduzione di impurità prodotta da uno split è calcolata come:
+Nel caso binario:
 
 \begin{equation}
-	\Delta I = I_{parent}\left(\frac{N_{left}}{N_{parent}} I_{left}+ \frac{N_{right}}{N_{parent}} I_{right}\right)
+	G(v)
+	=
+	1
+	-
+	p_{\mathrm{ADHD},v}^{\,2}
+	-
+	p_{\mathrm{Control},v}^{\,2}.
 \end{equation}
 
-Una feature viene considerata importante se viene utilizzata in split che riducono fortemente l'impurità. Nella Random Forest, l'importanza viene calcolata mediando il contributo della feature su tutti gli alberi e normalizzando i valori.
+L'impurità è nulla quando tutti i soggetti nel nodo appartengono alla
+stessa classe e raggiunge il massimo di 0.5 quando le due classi sono
+presenti in uguale proporzione.
+
+Per uno split che divide un nodo padre $v$ nei nodi figli $v_L$ e
+$v_R$, la riduzione di impurità è:
+
+\begin{equation}
+	\Delta G(v)
+	=
+	G(v)
+	-
+	\left[
+	\frac{N_L}{N_v}G(v_L)
+	+
+	\frac{N_R}{N_v}G(v_R)
+	\right].
+\end{equation}
+
+Il contributo dello split viene pesato per la proporzione di soggetti
+che raggiungono il nodo. Gli split vicini alla radice tendono quindi
+ad avere un peso maggiore rispetto a quelli che coinvolgono pochi
+soggetti.
+
+L'importanza di una feature è ottenuta sommando le riduzioni pesate di
+impurità associate agli split che utilizzano quella feature, mediando
+il risultato su tutti gli alberi e normalizzando le importanze in modo
+che la loro somma sia uguale a uno.
+
+La feature importance non indica la direzione dell'associazione e non
+deve essere interpretata come effetto causale. Inoltre, in presenza di
+feature correlate, più variabili possono essere utilizzate
+alternativamente nei diversi alberi e condividere la stessa
+importanza.
+
 
 \subsubsection{Logistic Regression}
 
-La Logistic Regression è un classificatore che stima la probabilità di appartenenza a una classe a partire da una combinazione lineare delle feature. Nel caso binario, il modello calcola una probabilità associata alla classe positiva (ADHD).
+La Logistic Regression è stata utilizzata come modello lineare di
+confronto.
 
-Data una combinazione lineare delle feature,
-
-\begin{equation}
-	z = w_0 + w_1x_1 + w_2x_2 + ... + w_px_p,
-\end{equation}
-
-la Logistic Regression applica una funzione sigmoide per trasformare il valore $z$ in una probabilità compresa tra 0 e 1:
+Il modello calcola una combinazione lineare delle feature:
 
 \begin{equation}
-	P(y=1|x) = \frac{1}{1 + e^{-z}}.
+	z
+	=
+	w_0
+	+
+	\sum_{j=1}^{p}w_jx_j,
 \end{equation}
 
-I coefficienti $w_j$ indicano il contributo delle singole feature alla classificazione. Coefficienti positivi aumentano la probabilità stimata della classe ADHD, mentre coefficienti negativi la riducono, favorendo la classe Control..
-
-La Logistic Regression è sensibile alla scala delle variabili, la standardizzazione delle feature è stata inclusa mediante \texttt{StandardScaler}, in cui la media e la deviazione standard utilizzate per la normalizzazione vengono calcolate esclusivamente sul training set in ciascun fold di cross-validation.
-
-\paragraph{Tuning degli iperparametri:}
-
-L'iperparametro principale ottimizzato è stato il parametro di regolarizzazione $C = \lambda ^{-1}$, che controlla l'intensità della penalizzazione applicata ai coefficienti del modello. Valori piccoli di $C$ corrispondono a una penalizzazione più forte, mentre valori grandi di $C$ riducono l'effetto della regolarizzazione.
-La penalizzazione utilizzata è stata $L_2$, utilizzata per ridurre il rischio di overfitting. 
-\begin{equation}
-	L_2 = \lambda \sum_{j=1}^{p} w_j^2
-\end{equation}
-
-dove $w_j$ rappresenta il coefficiente associato alla feature $j$, $p$ è il numero totale di feature e $\lambda$ controlla l'intensità della penalizzazione.
-
-Il tuning è stato eseguito mediante \texttt{GridSearchCV} con cross-validation stratificata a 5 fold sul training/validation set.
-
-\subsection{Features di functional connectivity}
-
-Per ogni soggetto, i segnali EEG sono stati filtrati separatamente nelle bande delta, theta, alpha e beta. Successivamente, per ciascuna banda, è stata calcolata la correlazione di Pearson tra tutte le coppie di canali EEG. Ogni valore di correlazione è stato utilizzato come feature di connettività canale-livello.
-
-In aggiunta, sono state calcolate feature di connettività media regionale. 
-
-Sono stati così confrontati tre insiemi di feature di connettività:
-\begin{enumerate}
-	\item tutte le feature di functional connectivity;
-	\item solo le feature di connettività tra canali;
-	\item solo le feature di connettività tra regioni.
-\end{enumerate}
-
-Dato un segnale EEG $x(t)$ e un secondo segnale $y(t)$, il coefficiente di Pearson è definito come:
+e la trasforma mediante la funzione sigmoide:
 
 \begin{equation}
-	r =
-	\frac{\sum_{i=1}^{n}(x_i-\bar{x})(y_i-\bar{y})}
-	{\sqrt{\sum_{i=1}^{n}(x_i-\bar{x})^2}
-		\sqrt{\sum_{i=1}^{n}(y_i-\bar{y})^2}}
+	P(y=1\mid\mathbf{x})
+	=
+	\sigma(z)
+	=
+	\frac{1}{1+e^{-z}}.
 \end{equation}
 
-Il coefficiente assume valori compresi tra $-1$ e $1$. Valori positivi indicano che i due segnali tendono a variare nella stessa direzione, valori negativi indicano un andamento opposto, mentre valori prossimi a zero indicano assenza di correlazione lineare.
 
-La classificazione è stata effettuata utilizzando sia Random Forest sia Logistic Regression. Questa è stata eseguita con le stesse modalità descritte per le feature spettrali.
+
+La standardizzazione è stata inserita all'interno di una pipeline:
+
+\begin{equation}
+	z_j
+	=
+	\frac{x_j-\mu_j}{s_j}.
+\end{equation}
+
+Durante ogni fold, media e deviazione standard sono state calcolate
+esclusivamente sui dati di training e successivamente applicate al
+validation set. Questa procedura evita che l'informazione contenuta
+nei dati di validazione influenzi il preprocessing.
+
+
+\paragraph{Regolarizzazione e tuning}
+
+È stata utilizzata una penalizzazione $L_2$:
+
+\begin{equation}
+	\lambda
+	\sum_{j=1}^{p}w_j^2,
+\end{equation}
+
+che riduce l'ampiezza dei coefficienti e limita la complessità del
+modello, senza effettuare normalmente una selezione esatta delle
+feature.
+
+In \texttt{scikit-learn}, la forza della penalizzazione è regolata
+mediante il parametro:
+
+\begin{equation}
+	C
+	=
+	\frac{1}{\lambda}.
+\end{equation}
+
+Valori piccoli di $C$ corrispondono quindi a una regolarizzazione più
+forte, mentre valori grandi corrispondono a una penalizzazione più
+debole.
+
+Il parametro è stato ottimizzato mediante Grid Search sui valori:
+
+\begin{equation}
+	C
+	\in
+	\{
+	0.001,\,
+	0.01,\,
+	0.1,\,
+	1,\,
+	10,\,
+	100
+	\}.
+\end{equation}
+
+Sono stati utilizzati penalizzazione $L_2$, solver
+\texttt{lbfgs}, \texttt{max\_iter}=5000 e
+\texttt{class\_weight="balanced"}. La configurazione migliore è stata
+selezionata mediante balanced accuracy nella cross-validation
+stratificata a cinque fold.
+
+
+\subsection{Feature di functional connectivity}
+
+L'analisi spettrale descrive la quantità di potenza presente in ogni
+canale, ma non descrive direttamente come due segnali varino insieme
+nel tempo. Per ottenere una rappresentazione complementare è stata
+quindi calcolata la functional connectivity EEG.
+
+Nel presente lavoro, la functional connectivity è definita come
+dipendenza statistica tra serie temporali registrate in canali o
+regioni differenti. Essa non dimostra l'esistenza di un collegamento
+anatomico diretto, non stabilisce una direzione dell'interazione e non
+permette di inferire causalità.
+
+
+\subsubsection{Filtraggio nelle singole bande}
+
+A partire dal segnale già preprocessato, per ciascun soggetto sono
+stati nuovamente isolati i segnali delle singole bande mediante un
+filtro Butterworth passa-banda di ordine quattro:
+
+\begin{table}[H]
+	\centering
+	\begin{tabular}{lc}
+		\hline
+		\textbf{Banda} & \textbf{Intervallo} \\
+		\hline
+		Delta & 1--4 Hz \\
+		Theta & 4--8 Hz \\
+		Alpha & 8--13 Hz \\
+		Beta & 13--30 Hz \\
+		\hline
+	\end{tabular}
+	\caption{Bande utilizzate nell'analisi di functional
+		connectivity.}
+	\label{tab:connectivity_bands}
+\end{table}
+
+Il filtro è stato applicato mediante \texttt{filtfilt}, eseguendo il
+filtraggio prima in avanti e poi all'indietro. Il risultato presenta
+un ritardo di fase netto nullo, caratteristica importante perché la
+connettività viene calcolata a partire dalle relazioni temporali tra
+i canali.
+
+
+\subsubsection{Correlazione di Pearson}
+
+Per due serie temporali $x(t)$ e $y(t)$, il coefficiente di Pearson è:
+
+\begin{equation}
+	r_{xy}
+	=
+	\frac{
+		\sum_{t=1}^{T}
+		\left(x_t-\overline{x}\right)
+		\left(y_t-\overline{y}\right)
+	}{
+		\sqrt{
+			\sum_{t=1}^{T}
+			\left(x_t-\overline{x}\right)^2
+		}
+		\sqrt{
+			\sum_{t=1}^{T}
+			\left(y_t-\overline{y}\right)^2
+		}
+	}.
+\end{equation}
+
+Il coefficiente assume valori compresi tra $-1$ e $1$:
+
+\begin{itemize}
+	\item $r>0$: i due segnali tendono a variare nella stessa
+	direzione;
+	
+	\item $r<0$: i due segnali tendono a variare in direzioni
+	opposte;
+	
+	\item $r\simeq0$: non emerge una chiara relazione lineare a
+	ritardo nullo.
+\end{itemize}
+
+Un valore prossimo a zero non esclude una relazione non lineare o una
+relazione caratterizzata da un ritardo temporale. Inoltre, correlazioni
+elevate possono essere influenzate dalla conduzione di volume, dalla
+scelta del riferimento e da sorgenti comuni.
+
+
+\subsubsection{Connettività tra canali}
+
+Per ciascuna banda è stata calcolata la correlazione di Pearson tra
+tutte le coppie uniche dei 19 canali.
+
+Il numero di coppie è:
+
+\begin{equation}
+	\binom{19}{2}
+	=
+	\frac{19\cdot18}{2}
+	=
+	171.
+\end{equation}
+
+Poiché sono state analizzate quattro bande, il numero totale di
+feature a livello di canale è:
+
+\begin{equation}
+	171\cdot4
+	=
+	684.
+\end{equation}
+
+Ogni feature rappresenta quindi la correlazione temporale a ritardo
+nullo tra due canali in una specifica banda. Un esempio è:
+
+\begin{center}
+	\texttt{F3\_C3\_theta\_connectivity}.
+\end{center}
+
+
+\subsubsection{Connettività regionale}
+
+Per costruire la rappresentazione regionale, dopo il filtraggio sono
+stati mediati campione per campione i segnali dei canali appartenenti
+alla stessa regione:
+
+\begin{equation}
+	x_R(t)
+	=
+	\frac{1}{|R|}
+	\sum_{c\in R}
+	x_c(t).
+\end{equation}
+
+Sono state così ottenute cinque serie temporali regionali: frontale,
+centrale, temporale, parietale e occipitale.
+
+La correlazione di Pearson è stata quindi calcolata tra ciascuna
+coppia di serie regionali. Non è stata quindi calcolata la media delle
+correlazioni tra tutte le coppie di elettrodi delle due regioni:
+prima sono stati mediati i segnali e successivamente è stata calcolata
+la correlazione tra i segnali regionali risultanti.
+
+Con cinque regioni si ottengono:
+
+\begin{equation}
+	\binom{5}{2}
+	=
+	10
+\end{equation}
+
+coppie per banda e:
+
+\begin{equation}
+	10\cdot4
+	=
+	40
+\end{equation}
+
+feature regionali.
+
+
+I  feature set sono stati confrontati mediante la stessa procedura
+di classificazione descritta per le feature spettrali: split
+stratificato 80/20, cross-validation stratificata a cinque fold sul
+training set, selezione mediante balanced accuracy, tuning degli
+iperparametri e valutazione finale sul test set indipendente.

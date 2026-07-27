@@ -1,2 +1,2 @@
 max_depth,max_features,min_samples_leaf,min_samples_split,n_estimators,best_randomized_cv_balanced_accuracy
-5,sqrt,4,9,330,0.6188888888888888
+5,,1,9,618,0.7011111111111111

@@ -1,2 +1,0 @@
-max_depth,max_features,min_samples_leaf,min_samples_split,n_estimators,best_randomized_cv_balanced_accuracy
-20,log2,3,8,530,0.7077777777777776

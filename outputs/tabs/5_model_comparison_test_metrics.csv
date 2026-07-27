@@ -1,9 +1,9 @@
 representation,model,feature_set,n_features,accuracy,balanced_accuracy,precision,recall,f1,roc_auc
-Functional connectivity,Logistic Regression,Logistic Regression - Regional connectivity features,40,0.96,0.9583333333333331,0.9285714285714286,1.0,0.9629629629629628,0.923076923076923
-Functional connectivity,Random Forest,Regional connectivity features,40,0.92,0.9198717948717948,0.9230769230769232,0.9230769230769232,0.9230769230769232,0.9294871794871794
-Spectral regional features,Random Forest,Regional mean features,25,0.76,0.7564102564102564,0.7333333333333333,0.8461538461538461,0.7857142857142857,0.7307692307692308
-Theta/beta ratio features,Random Forest,Channel-level theta/beta ratio features,19,0.76,0.7532051282051282,0.7058823529411765,0.9230769230769232,0.8,0.7051282051282052
-Correlation-reduced spectral features,Random Forest,Correlation-reduced RF features,19,0.72,0.717948717948718,0.7142857142857143,0.7692307692307693,0.7407407407407407,0.7564102564102565
-Theta/beta ratio features,Logistic Regression,Logistic Regression - Theta/beta ratio feature set,19,0.72,0.7147435897435898,0.6875,0.8461538461538461,0.7586206896551724,0.7115384615384616
-Spectral regional features,Logistic Regression,Logistic Regression - Regional mean features,25,0.6,0.5961538461538461,0.6,0.6923076923076923,0.6428571428571429,0.6153846153846154
-Correlation-reduced spectral features,Logistic Regression,Logistic Regression - Correlation-reduced feature set,19,0.56,0.5576923076923077,0.5714285714285714,0.6153846153846154,0.5925925925925926,0.5897435897435898
+Functional connectivity,Random Forest,Channel-level connectivity features,684,0.88,0.8814102564102564,0.9166666666666666,0.8461538461538461,0.88,0.9615384615384616
+Functional connectivity,Logistic Regression,Logistic Regression - Channel-level connectivity features,684,0.88,0.8814102564102564,0.9166666666666666,0.8461538461538461,0.88,0.9166666666666669
+Theta/beta ratio features,Logistic Regression,Logistic Regression - Theta/beta ratio feature set,19,0.76,0.7564102564102564,0.7333333333333333,0.8461538461538461,0.7857142857142857,0.7307692307692308
+Theta/beta ratio features,Random Forest,Channel-level theta/beta ratio features,19,0.72,0.7115384615384616,0.6666666666666666,0.9230769230769232,0.7741935483870968,0.7371794871794872
+Correlation-reduced spectral features,Random Forest,Correlation-reduced RF features,52,0.68,0.6762820512820513,0.6666666666666666,0.7692307692307693,0.7142857142857143,0.7499999999999999
+Spectral features,Random Forest,All EEG features,120,0.64,0.6378205128205128,0.6428571428571429,0.6923076923076923,0.6666666666666666,0.7307692307692307
+Correlation-reduced spectral features,Logistic Regression,Logistic Regression - Correlation-reduced feature set,52,0.52,0.5192307692307692,0.5384615384615384,0.5384615384615384,0.5384615384615384,0.5384615384615384
+Spectral features,Logistic Regression,Logistic Regression - All EEG features,120,0.48,0.4679487179487179,0.5,0.7692307692307693,0.6060606060606061,0.5448717948717949

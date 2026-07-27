@@ -5,49 +5,47 @@ Reallocating 'name_of_file' (item size: 1) to 6 items.
 The style file: plain.bst
 Reallocating 'name_of_file' (item size: 1) to 15 items.
 Database file #1: references.bib
-Warning--I didn't find a database entry for "connectivityPaper"
-Warning--empty journal in multiple
-Warning--empty journal in test
-Warning--empty journal in Welch
-You've used 6 entries,
+Warning--I didn't find a database entry for "Kaggle"
+Warning--I didn't find a database entry for "multiple"
+You've used 2 entries,
             2118 wiz_defined-function locations,
-            535 strings with 4977 characters,
-and the built_in function-call counts, 1602 in all, are:
-= -- 153
-> -- 69
+            517 strings with 4504 characters,
+and the built_in function-call counts, 781 in all, are:
+= -- 76
+> -- 41
 < -- 0
-+ -- 31
-- -- 22
-* -- 98
-:= -- 286
-add.period$ -- 18
-call.type$ -- 6
-change.case$ -- 29
++ -- 17
+- -- 14
+* -- 68
+:= -- 137
+add.period$ -- 6
+call.type$ -- 2
+change.case$ -- 13
 chr.to.int$ -- 0
-cite$ -- 9
-duplicate$ -- 59
-empty$ -- 128
-format.name$ -- 22
-if$ -- 318
+cite$ -- 2
+duplicate$ -- 22
+empty$ -- 55
+format.name$ -- 14
+if$ -- 152
 int.to.chr$ -- 0
-int.to.str$ -- 6
-missing$ -- 5
-newline$ -- 33
-num.names$ -- 12
-pop$ -- 35
+int.to.str$ -- 2
+missing$ -- 2
+newline$ -- 13
+num.names$ -- 4
+pop$ -- 9
 preamble$ -- 1
-purify$ -- 23
+purify$ -- 11
 quote$ -- 0
-skip$ -- 42
+skip$ -- 14
 stack$ -- 0
-substring$ -- 83
-swap$ -- 3
+substring$ -- 61
+swap$ -- 2
 text.length$ -- 0
 text.prefix$ -- 0
 top$ -- 0
-type$ -- 24
-warning$ -- 3
-while$ -- 16
-width$ -- 7
-write$ -- 61
-(There were 4 warnings)
+type$ -- 8
+warning$ -- 0
+while$ -- 8
+width$ -- 3
+write$ -- 24
+(There were 2 warnings)

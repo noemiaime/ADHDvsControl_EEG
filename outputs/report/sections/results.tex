@@ -1,620 +1,1270 @@
 \section{Risultati}
-\subsection{Features spettrali}
-\subsubsection{Differenze tra gruppi ed effect size}
-Si riportano le matrici di effect size per Cohen's $d$, rappresentate separatamente a livello regionale e a livello di singolo canale. L'asterisco indica una feature significativa dopo correzione FDR.
+
+\subsection{Feature spettrali}
+
+\subsubsection{Effect size delle differenze tra i gruppi}
+
+Per descrivere l'ampiezza delle differenze tra ADHD e Control è stato
+calcolato il Cohen's $d$ per ciascuna delle 120 feature spettrali:
+
+\begin{equation}
+	d
+	=
+	\frac{
+		\mu_{\mathrm{ADHD}}
+		-
+		\mu_{\mathrm{Control}}
+	}{
+		s_{\mathrm{pooled}}
+	}.
+\end{equation}
+
+Con questa definizione, un valore positivo indica che la feature è
+mediamente maggiore nel gruppo ADHD, mentre un valore negativo indica
+che è mediamente maggiore nel gruppo Control. Il valore assoluto di
+$d$ descrive invece l'ampiezza della differenza tra i gruppi,
+indipendentemente dalla sua direzione.
+
+Gli effect size sono stati rappresentati separatamente a livello di
+singolo canale e a livello regionale. Queste rappresentazioni
+descrivono la distribuzione spaziale delle differenze, ma non
+stabiliscono da sole se una feature sia statisticamente significativa.
+
+
+\paragraph{Effect size a livello di singolo canale}
+
+La Figura~\ref{fig:channel_effect_size_topomaps} mostra la
+distribuzione topografica del Cohen's $d$ per la potenza delta, theta,
+alpha e beta e per il theta/beta ratio.
 
 \begin{figure}[H]
 	\centering
-	\includegraphics[width=0.85\textwidth]{../figures/1b_regional_effect_size.png}
-	\caption{Matrice degli effect size regionali. Ogni cella riporta Cohen's $d$ per una combinazione regione-banda. L'asterisco indica una feature significativa dopo correzione FDR.}
-	\label{fig:regional_effect_size}
+	\includegraphics[width=\textwidth]
+	{../figures/1b_channel_effect_size_topomaps.png}
+	\caption{Distribuzione topografica degli effect size delle feature
+		spettrali canale-livello. I valori negativi indicano feature
+		mediamente maggiori nei controlli, mentre i valori positivi
+		indicano feature mediamente maggiori nei soggetti ADHD.
+		La stella identifica i canali significativi dopo correzione
+		Benjamini--Hochberg. I colori tra gli elettrodi sono ottenuti
+		per interpolazione e devono essere interpretati come supporto
+		alla visualizzazione della distribuzione spaziale.}
+	\label{fig:channel_effect_size_topomaps}
 \end{figure}
+
+Nella banda delta prevalgono effect size negativi, indicando una
+potenza mediamente maggiore nei controlli nella maggior parte dei
+canali. Le differenze più ampie si osservano soprattutto in F7
+($d=-0.458$), Pz ($d=-0.420$), Cz ($d=-0.409$), P7
+($d=-0.408$), F3 ($d=-0.406$) e Fz ($d=-0.405$). Nei canali Fp2
+e P8, invece, la differenza tra i gruppi è quasi nulla.
+
+Anche nella banda theta gli effect size sono quasi tutti negativi.
+Le differenze maggiori si localizzano prevalentemente nelle aree
+parietali e posteriori, con Pz ($d=-0.556$), P7 ($d=-0.529$) e
+O1 ($d=-0.452$), ma sono presenti differenze moderate anche in F7
+($d=-0.451$), T7 ($d=-0.434$), P4 ($d=-0.414$) e Cz
+($d=-0.401$). Nel dataset analizzato, la potenza theta risulta quindi
+tendenzialmente maggiore nei controlli e non nei soggetti ADHD.
+
+Per la banda alpha gli effect size sono generalmente più piccoli.
+La maggior parte dei valori rimane negativa, ma le differenze sono
+meno marcate rispetto alle bande delta e theta. I valori più elevati
+in modulo si osservano in P7 ($d=-0.358$), Pz ($d=-0.275$) e Cz
+($d=-0.270$), mentre nei canali occipitali e frontopolari le
+differenze sono prossime a zero.
+
+La banda beta presenta un pattern più eterogeneo. In alcuni canali,
+come F4 ($d=0.239$) e T8 ($d=0.227$), la potenza è mediamente
+maggiore negli ADHD. In altri, soprattutto in P7 ($d=-0.302$), P4
+($d=-0.231$), P3 ($d=-0.208$) e Cz ($d=-0.191$), è invece
+maggiore nei controlli. Gli effect size rimangono comunque
+prevalentemente piccoli o moderati.
+
+Il pattern più evidente riguarda il theta/beta ratio, per il quale
+quasi tutti i canali presentano Cohen's $d$ negativo. La differenza
+più ampia si osserva in F4 ($d=-0.851$), seguita da T7
+($d=-0.634$), T8 ($d=-0.603$), P4 ($d=-0.578$) e O2
+($d=-0.450$). Il theta/beta ratio risulta quindi generalmente
+maggiore nei controlli, con una differenza particolarmente marcata
+nella regione frontale destra e nei canali temporali.
+
+Tra tutti i valori rappresentati, soltanto il theta/beta ratio in F4
+rimane statisticamente significativo dopo la correzione FDR, come
+indicato dalla stella nella topomap.
+
+
+\paragraph{Effect size a livello regionale}
+
+Gli effect size delle 25 feature regionali sono riportati nella
+Figura~\ref{fig:regional_effect_size_matrix}. Ogni cella rappresenta
+il Cohen's $d$ calcolato per una determinata regione e una determinata
+feature spettrale.
 
 \begin{figure}[H]
 	\centering
-	\includegraphics[width=0.85\textwidth]{../figures/1b_Tchannel_effect_size.png}
-	\caption{Matrice degli effect size a livello di singolo canale. Ogni cella riporta Cohen's $d$ per una combinazione canale-banda. L'asterisco indica una feature significativa dopo correzione FDR.}
-	\label{fig:channel_effect_size}
+	\includegraphics[width=0.82\textwidth]
+	{../figures/1b_regional_effect_size.png}
+	\caption{Matrice degli effect size delle feature spettrali
+		regionali. I valori negativi indicano valori medi maggiori
+		nel gruppo Control, mentre i valori positivi indicano valori
+		medi maggiori nel gruppo ADHD. Un eventuale asterisco indica
+		la significatività dopo correzione FDR.}
+	\label{fig:regional_effect_size_matrix}
 \end{figure}
 
-Le feature con maggiore effect size sono prevalentemente associate al rapporto theta/beta e alle potenze nelle bande lente, soprattutto in regioni temporali, parietali e occipitali.
-Inoltre, la maggior parte di queste mostrano Cohen's $d$ negativo, indicando valori medi più elevati nel gruppo Control.
+La matrice regionale conferma il quadro osservato a livello di
+singolo canale. La potenza delta presenta effect size negativi in
+tutte le regioni, con differenze più evidenti nelle regioni temporale
+($d=-0.340$), frontale ($d=-0.335$) e parietale
+($d=-0.335$).
 
-Per riassumere si mostrano le prime dieci feature ordinate secondo il valore assoluto di Cohen's $d$ nella Tabella~\ref{tab:top10_cohen}.
+Anche la potenza theta è maggiore nei controlli in tutte le regioni.
+La differenza più ampia si osserva nella regione parietale
+($d=-0.490$), seguita dalle regioni centrale ($d=-0.427$),
+temporale ($d=-0.400$) e occipitale ($d=-0.369$).
 
-\begin{table}[H]
-	\centering
-	\small
-	\begin{tabular}{lrrrr}
-		\hline
-		\textbf{Feature} & \textbf{ADHD mean} & \textbf{Control mean} & \textbf{Cohen's $d$} & \textbf{$p_{FDR}$} \\
-		\hline
-		\texttt{temporal\_theta\_beta\_ratio} & 1.861 & 2.746 & -0.717 & 0.030 \\
-		\texttt{T7\_theta\_beta\_ratio} & 2.206 & 3.402 & -0.657 & 0.039 \\
-		\texttt{Pz\_theta\_beta\_ratio} & 2.449 & 3.554 & -0.638 & 0.085 \\
-		\texttt{P7\_theta\_beta\_ratio} & 1.364 & 2.097 & -0.596 & 0.039 \\
-		\texttt{P7\_theta\_power} & 2262.8 & 4606.1 & -0.585 & 0.039 \\
-		\texttt{P7\_delta\_power} & 9224.3 & 27307.8 & -0.562 & 0.030 \\
-		\texttt{Pz\_delta\_power} & 11517.6 & 26783.3 & -0.539 & 0.030 \\
-		\texttt{parietal\_delta\_power\_mean} & 12388.7 & 25533.5 & -0.534 & 0.191 \\
-		\texttt{O1\_theta\_beta\_ratio} & 1.673 & 2.329 & -0.505 & 0.227 \\
-		\texttt{occipital\_theta\_beta\_ratio} & 1.477 & 1.980 & -0.484 & 0.233 \\
-		\hline
-	\end{tabular}
-	\caption{Prime dieci feature EEG ordinate secondo il valore assoluto di Cohen's $d$.}
-	\label{tab:top10_cohen}
-\end{table}
+Gli effect size della potenza alpha sono generalmente più piccoli.
+Le differenze maggiori si osservano nelle regioni parietale
+($d=-0.277$) e centrale ($d=-0.252$), mentre nella regione
+occipitale il valore è praticamente nullo ($d=0.008$).
 
+La banda beta mostra nuovamente un andamento meno uniforme. La potenza
+beta è leggermente maggiore negli ADHD nelle regioni temporale
+($d=0.214$) e frontale ($d=0.109$), mentre è maggiore nei
+controlli nelle regioni parietale ($d=-0.276$) e centrale
+($d=-0.184$). Nella regione occipitale non emerge una differenza
+rilevante.
+
+Il theta/beta ratio presenta effect size negativi in tutte le cinque
+regioni. La differenza più marcata riguarda la regione temporale
+($d=-0.732$), seguita da quella frontale ($d=-0.472$),
+occipitale ($d=-0.411$) e centrale ($d=-0.387$). La regione
+parietale mostra invece una differenza più contenuta
+($d=-0.241$).
+
+Nonostante l'ampio effect size del theta/beta ratio temporale,
+nessuna feature regionale supera la soglia di significatività dopo
+correzione FDR. In particolare, il theta/beta ratio temporale
+raggiunge un valore di $p_{\mathrm{FDR}}\simeq0.056$, vicino ma
+superiore alla soglia di $0.05$.
+
+Nel complesso, gli effect size mostrano quindi un andamento
+prevalentemente caratterizzato da valori più elevati nei controlli,
+soprattutto per la potenza theta e per il theta/beta ratio. Le
+differenze alpha risultano più deboli, mentre la banda beta presenta
+un pattern spaziale più eterogeneo, con valori maggiori negli ADHD
+in alcune posizioni frontali e temporali e valori maggiori nei controlli nelle aree centro-parietali.
 
 \subsubsection{Feature significative dopo correzione FDR}
 
- Le feature con $p_{FDR} < 0.05$ sono state considerate statisticamente significative dopo correzione. I risultati sono riportati nella Tabella~\ref{tab:fdr_features} e visualizzati in Figura~\ref{fig:fdr_features_boxplot}.
+Gli effect size descritti nella sezione precedente indicano
+l'ampiezza delle differenze, ma non la loro significatività
+statistica. Dopo la correzione Benjamini--Hochberg applicata ai
+120 confronti, una sola feature rimane statisticamente significativa:
+
+
+\begin{equation}
+	\texttt{F4\_theta\_beta\_ratio},
+	\qquad
+	p_{\mathrm{FDR}}=0.0158.
+\end{equation}
+
+Per questa feature, il valore medio è pari a $1.444$ nel gruppo ADHD
+e a $2.225$ nel gruppo Control, con Cohen's $d=-0.851$.
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.85\textwidth]
+	{../figures/1b_FDR_significant_features.png}
+	\caption{Distribuzione del theta/beta ratio in F4, unica feature
+		significativa dopo correzione Benjamini--Hochberg.}
+	\label{fig:fdr_significant_feature}
+\end{figure}
+
+Le altre feature con effect size moderato o elevato non superano la
+correzione per confronti multipli. Ciò indica che, nonostante siano
+presenti tendenze descrittive diffuse, l'evidenza statistica più
+robusta è circoscritta al theta/beta ratio del canale F4.
+
+
+\subsubsection{Ridondanza tra le feature spettrali}
+
+Le correlazioni di Spearman sono state calcolate separatamente nei
+gruppi ADHD e Control per valutare la ridondanza tra le feature.
+
+Tra le associazioni canale-livello più elevate si osservano, nel
+gruppo ADHD, la correlazione tra la potenza alpha in F4 e Fz
+($\rho=0.886$) e quella tra la potenza beta in F3 e Fz
+($\rho=0.881$). Nel gruppo Control, la correlazione più elevata
+riguarda il theta/beta ratio in F3 e F4 ($\rho=0.890$), seguita
+dalla potenza delta in C4 e Cz ($\rho=0.885$).
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=\textwidth]
+	{../figures/1b_channel_spearman_correlation_networks_horizontal.png}
+	\caption{Reti delle correlazioni di Spearman tra le potenze
+		calcolate nei diversi canali, rappresentate separatamente per
+		banda e gruppo. Sono mostrate le associazioni che superano la
+		soglia stabilita in almeno uno dei due gruppi.}
+	\label{fig:channel_spearman_networks}
+\end{figure}
+
+Le distribuzioni delle 171 correlazioni possibili tra i 19 canali
+sono riportate nella Figura~\ref{fig:channel_corr_by_band}. La maggior
+parte delle associazioni è positiva. Nelle bande delta e theta, e in
+misura minore nel theta/beta ratio, la distribuzione dei controlli
+appare spostata verso coefficienti più elevati. Le distribuzioni
+alpha e beta risultano invece maggiormente sovrapposte.
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=\textwidth]
+	{../figures/1b_channel_correlation_distributions_by_band.png}
+	\caption{Distribuzione delle correlazioni di Spearman
+		canale-livello, separatamente per banda e gruppo.}
+	\label{fig:channel_corr_by_band}
+\end{figure}
+
+L'analisi regionale mostra un quadro analogo, sebbene basato soltanto
+su dieci coppie di regioni per ogni banda. Anche dopo l'aggregazione
+regionale le associazioni rimangono prevalentemente positive e
+generalmente elevate.
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=\textwidth]
+	{../figures/1b_regional_correlation_distributions_by_band.png}
+	\caption{Distribuzione delle correlazioni di Spearman tra feature
+		regionali, separatamente per banda e gruppo.}
+	\label{fig:regional_corr_by_band}
+\end{figure}
+
+enti.
+Il risultato evidenzia una marcata ridondanza interna del feature set
+spettrale.
+
+
+\subsection{Classificazione basata sulle feature spettrali}
+
+\subsubsection{Confronto dei feature set mediante Random Forest}
+
+Sono stati confrontati tre insiemi di feature: il set completo di 120
+feature, le 95 feature canale-livello e le 25 feature regionali.
 
 \begin{table}[H]
 	\centering
 	\small
-	\begin{tabular}{lrrrr}
-		\hline
-		\textbf{Feature} & \textbf{ADHD mean} & \textbf{Control mean} & \textbf{Cohen's $d$} & \textbf{$p_{FDR}$} \\
-		\hline
-		\texttt{temporal\_theta\_beta\_ratio} & 1.861 & 2.746 & -0.717 & 0.030 \\
-		\texttt{P7\_delta\_power} & 9224.3 & 27307.8 & -0.562 & 0.030 \\
-		\texttt{Pz\_delta\_power} & 11517.6 & 26783.3 & -0.539 & 0.030 \\
-		\texttt{T7\_theta\_beta\_ratio} & 2.206 & 3.402 & -0.657 & 0.039 \\
-		\texttt{P7\_theta\_beta\_ratio} & 1.364 & 2.097 & -0.596 & 0.039 \\
-		\texttt{P7\_theta\_power} & 2262.8 & 4606.1 & -0.585 & 0.039 \\
-		\texttt{F4\_beta\_power} & 2417.5 & 2254.9 & 0.060 & 0.039 \\
-		\hline
-	\end{tabular}
-	\caption{Feature EEG risultate significative dopo correzione FDR.}
-	\label{tab:fdr_features}
+	\resizebox{\textwidth}{!}{
+		\begin{tabular}{lrrrrrrr}
+			\hline
+			\textbf{Feature set} &
+			\textbf{N} &
+			\textbf{Accuracy} &
+			\textbf{Balanced acc.} &
+			\textbf{Precision} &
+			\textbf{Recall} &
+			\textbf{F1} &
+			\textbf{ROC-AUC} \\
+			\hline
+			Tutte le feature
+			& 120 & 0.605 & 0.604 & 0.593 & 0.709 & 0.642 & 0.608 \\
+			
+			Canale-livello
+			& 95 & 0.595 & 0.593 & 0.598 & 0.687 & 0.634 & 0.625 \\
+			
+			Regionali
+			& 25 & 0.604 & 0.603 & 0.599 & 0.667 & 0.628 & 0.635 \\
+			\hline
+		\end{tabular}
+	}
+	\caption{Performance medie in cross-validation stratificata a
+		cinque fold dei tre feature set spettrali valutati mediante
+		Random Forest.}
+	\label{tab:rf_spectral_cv_updated}
 \end{table}
 
-Le feature significative dopo correzione FDR confermano il coinvolgimento del rapporto theta/beta e delle bande lente in canali temporali e parietali. La maggior parte di queste feature presenta Cohen's $d$ negativo, quindi valori medi più elevati nel gruppo Control. L'unica feature significativa con effect size positivo è \texttt{F4\_beta\_power}; tuttavia, il valore di Cohen's $d$ è molto piccolo.
+Le differenze tra il set completo e quello regionale sono molto
+piccole. Poiché il criterio di selezione era la balanced accuracy,
+è stato selezionato il set completo di 120 feature, che raggiunge
+$0.604$ rispetto a $0.603$ del set regionale.
 
 \begin{figure}[H]
 	\centering
-	\includegraphics[width=0.95\textwidth]{../figures/1b_FDR_significant_features.png}
-	\caption{Distribuzione delle feature EEG significative dopo correzione FDR.}
-	\label{fig:fdr_features_boxplot}
+	\includegraphics[width=0.9\textwidth]
+	{../figures/2a_rf_feature_set_comparison.png}
+	\caption{Confronto delle metriche di cross-validation della
+		Random Forest sui tre feature set spettrali.}
+	\label{fig:rf_feature_set_comparison_updated}
 \end{figure}
 
 
-\subsubsection{Correlazione tra feature}
+\subsubsection{Random Forest sul feature set completo}
 
-\subsubsection{Correlazioni canale-livello}
-
-Le correlazioni più forti tra feature canale-livello sono riportate nella Tabella~\ref{tab:top_channel_correlations}. Sono state selezionate le dieci correlazioni più forti in valore assoluto per ciascun gruppo.
+Dopo Randomized Search e Grid Search locale, gli iperparametri
+selezionati sono:
 
 \begin{table}[H]
 	\centering
-	\scriptsize
-	\begin{tabular}{lllr}
+	\begin{tabular}{ll}
 		\hline
-		\textbf{Gruppo} & \textbf{Feature 1} & \textbf{Feature 2} & \textbf{$\rho$} \\
+		\textbf{Iperparametro} & \textbf{Valore} \\
 		\hline
-		ADHD & \texttt{F3\_alpha\_power} & \texttt{Fz\_alpha\_power} & 0.938 \\
-		ADHD & \texttt{F3\_beta\_power} & \texttt{Fz\_beta\_power} & 0.917 \\
-		ADHD & \texttt{P3\_theta\_beta\_ratio} & \texttt{Pz\_theta\_beta\_ratio} & 0.912 \\
-		ADHD & \texttt{P3\_beta\_power} & \texttt{Pz\_beta\_power} & 0.907 \\
-		ADHD & \texttt{P3\_theta\_power} & \texttt{Pz\_theta\_power} & 0.905 \\
-		ADHD & \texttt{F3\_theta\_power} & \texttt{Fz\_theta\_power} & 0.885 \\
-		ADHD & \texttt{P4\_beta\_power} & \texttt{Cz\_beta\_power} & 0.881 \\
-		ADHD & \texttt{O2\_delta\_power} & \texttt{O2\_theta\_power} & 0.876 \\
-		ADHD & \texttt{P8\_delta\_power} & \texttt{P8\_theta\_power} & 0.874 \\
-		ADHD & \texttt{F4\_beta\_power} & \texttt{C4\_beta\_power} & 0.871 \\
-		\hline
-		Control & \texttt{F3\_theta\_power} & \texttt{C3\_theta\_power} & 0.940 \\
-		Control & \texttt{F3\_alpha\_power} & \texttt{Fz\_alpha\_power} & 0.937 \\
-		Control & \texttt{F3\_theta\_power} & \texttt{Fz\_theta\_power} & 0.930 \\
-		Control & \texttt{F4\_delta\_power} & \texttt{Cz\_delta\_power} & 0.926 \\
-		Control & \texttt{O1\_delta\_power} & \texttt{P7\_delta\_power} & 0.919 \\
-		Control & \texttt{F3\_beta\_power} & \texttt{Fz\_beta\_power} & 0.918 \\
-		Control & \texttt{C3\_delta\_power} & \texttt{Pz\_delta\_power} & 0.909 \\
-		Control & \texttt{C4\_theta\_power} & \texttt{Cz\_theta\_power} & 0.909 \\
-		Control & \texttt{C3\_theta\_power} & \texttt{P3\_theta\_power} & 0.906 \\
-		Control & \texttt{P3\_delta\_power} & \texttt{Pz\_delta\_power} & 0.905 \\
+		\texttt{n\_estimators} & 1019 \\
+		\texttt{max\_depth} & \texttt{None} \\
+		\texttt{min\_samples\_leaf} & 1 \\
+		\texttt{min\_samples\_split} & 4 \\
+		\texttt{max\_features} & \texttt{None} \\
 		\hline
 	\end{tabular}
-	\caption{Dieci correlazioni di Spearman più forti in valore assoluto tra feature canale-livello, calcolate separatamente nei gruppi ADHD e Control.}
-	\label{tab:top_channel_correlations}
+	\caption{Iperparametri selezionati per la Random Forest applicata
+		alle 120 feature spettrali.}
+	\label{tab:rf_all_spectral_hyperparameters}
 \end{table}
 
-Le correlazioni canale-livello più forti in valore assoluto risultano tutte positive in entrambi i gruppi. Questo indica che le principali ridondanze tra feature derivano soprattutto da potenze della stessa banda o da feature spettrali simili misurate in canali vicini. Nel gruppo ADHD compaiono correlazioni elevate tra canali frontali e parietali, come \texttt{F3}--\texttt{Fz} e \texttt{P3}--\texttt{Pz}. Nel gruppo Control si osservano correlazioni molto alte anche tra canali centrali. Questa struttura conferma che molte feature canale-livello non sono indipendenti, ma descrivono pattern spettrali parzialmente sovrapposti.
-
-\subsubsection{Correlazioni regionali}
-Le correlazioni più forti tra feature regionali sono riportate nella Tabella~\ref{{tab:top_regional_correlations}. Sono state selezionate le dieci correlazioni più forti in valore assoluto per ciascun gruppo.
+La balanced accuracy ottenuta durante il tuning è pari a $0.638$.
+Le prestazioni sul test set indipendente sono riportate nella
+Tabella~\ref{tab:rf_all_spectral_test}.
 
 \begin{table}[H]
 	\centering
-	\scriptsize
-	\begin{tabular}{lllr}
-		\hline
-		\textbf{Gruppo} & \textbf{Feature 1} & \textbf{Feature 2} & \textbf{$\rho$} \\
-		\hline
-		ADHD & \texttt{central\_theta\_beta\_ratio} & \texttt{parietal\_theta\_beta\_ratio} & 0.834 \\
-		ADHD & \texttt{occipital\_delta\_power\_mean} & \texttt{occipital\_theta\_power\_mean} & 0.830 \\
-		ADHD & \texttt{central\_beta\_power\_mean} & \texttt{parietal\_beta\_power\_mean} & 0.830 \\
-		ADHD & \texttt{parietal\_delta\_power\_mean} & \texttt{occipital\_delta\_power\_mean} & 0.825 \\
-		ADHD & \texttt{parietal\_alpha\_power\_mean} & \texttt{temporal\_alpha\_power\_mean} & 0.788 \\
-		ADHD & \texttt{central\_delta\_power\_mean} & \texttt{parietal\_delta\_power\_mean} & 0.779 \\
-		ADHD & \texttt{parietal\_theta\_power\_mean} & \texttt{occipital\_theta\_power\_mean} & 0.772 \\
-		ADHD & \texttt{parietal\_delta\_power\_mean} & \texttt{parietal\_theta\_power\_mean} & 0.766 \\
-		ADHD & \texttt{frontal\_alpha\_power\_mean} & \texttt{temporal\_alpha\_power\_mean} & 0.757 \\
-		ADHD & \texttt{frontal\_beta\_power\_mean} & \texttt{central\_beta\_power\_mean} & 0.749 \\
-		\hline
-		Control & \texttt{parietal\_delta\_power\_mean} & \texttt{occipital\_delta\_power\_mean} & 0.919 \\
-		Control & \texttt{frontal\_alpha\_power\_mean} & \texttt{parietal\_alpha\_power\_mean} & 0.881 \\
-		Control & \texttt{central\_delta\_power\_mean} & \texttt{parietal\_delta\_power\_mean} & 0.878 \\
-		Control & \texttt{central\_delta\_power\_mean} & \texttt{occipital\_delta\_power\_mean} & 0.863 \\
-		Control & \texttt{parietal\_theta\_power\_mean} & \texttt{temporal\_theta\_power\_mean} & 0.861 \\
-		Control & \texttt{parietal\_alpha\_power\_mean} & \texttt{temporal\_alpha\_power\_mean} & 0.856 \\
-		Control & \texttt{occipital\_delta\_power\_mean} & \texttt{occipital\_theta\_power\_mean} & 0.851 \\
-		Control & \texttt{frontal\_beta\_power\_mean} & \texttt{parietal\_beta\_power\_mean} & 0.845 \\
-		Control & \texttt{central\_delta\_power\_mean} & \texttt{temporal\_delta\_power\_mean} & 0.841 \\
-		Control & \texttt{central\_alpha\_power\_mean} & \texttt{parietal\_alpha\_power\_mean} & 0.839 \\
-		\hline
-	\end{tabular}
-	\caption{Dieci correlazioni di Spearman più forti in valore assoluto tra feature regionali, calcolate separatamente nei gruppi ADHD e Control.}
-	\label{tab:top_regional_correlations}
-\end{table}
-
-Le correlazioni regionali più forti sono positive in entrambi i gruppi. Nel gruppo ADHD la correlazione più elevata riguarda il rapporto theta/beta centrale e parietale, mentre nel gruppo Control la correlazione maggiore riguarda la potenza delta parietale e occipitale.
-
-\subsubsection{Distribuzione delle correlazioni}
-
-Le distribuzioni dei coefficienti di Spearman sono riportate separatamente per feature regionali e canale-livello nelle Figure~\ref{fig:regional_corr_distribution} e~\ref{fig:channel_corr_distribution}.
-
-\begin{figure}[H]
-	\centering
-	\includegraphics[width=0.85\textwidth]{../figures/1b_regional_correlation_distribution_by_group.png}
-	\caption{Distribuzione delle correlazioni di Spearman tra feature regionali, separatamente per ADHD e Control.}
-	\label{fig:regional_corr_distribution}
-\end{figure}
-
-\begin{figure}[H]
-	\centering
-	\includegraphics[width=0.85\textwidth]{../figures/1b_channel_correlation_distribution_by_group.png}
-	\caption{Distribuzione delle correlazioni di Spearman tra feature canale-livello, separatamente per ADHD e Control.}
-	\label{fig:channel_corr_distribution}
-\end{figure}
-
-Le distribuzioni mostrano che la maggior parte delle correlazioni è positiva in entrambi i gruppi. Per le feature regionali, il gruppo Control presenta una distribuzione leggermente più spostata verso correlazioni positive elevate, suggerendo una maggiore co-variazione tra feature regionali. Per le feature canale-livello, le distribuzioni dei due gruppi sono più sovrapposte, anche se il gruppo Control mantiene una coda più estesa verso valori positivi alti.
-
-\subsubsection{Classificazione Random Forest}
-
-Per valutare il contenuto predittivo delle feature EEG, è stato addestrato un classificatore Random Forest. Sono stati confrontati tre set di feature: tutte le feature EEG, le sole feature canale-livello e le sole feature regionali. Il confronto è stato eseguito mediante cross-validation stratificata a 5 fold sul training/validation set.
-
-\begin{table}[H]
-	\centering
-	\small
-	\begin{tabular}{llllllll}
-		\hline
-		\textbf{Feature set} & \textbf{N} & \textbf{Accuracy} & \textbf{Balanced acc.} & \textbf{Precision} & \textbf{Recall} & \textbf{F1} & \textbf{ROC-AUC} \\
-		\hline
-		All & 120 & 0.676 & 0.677 & 0.660 & 0.751 & 0.699 & 0.674 \\
-		Channel-level & 95 & 0.614 & 0.610 & 0.604 & 0.707 & 0.646 & 0.681 \\
-		Regional mean & 25 & 0.676 & 0.678 & 0.670 & 0.749 & 0.700 & 0.729 \\
-		\hline
-	\end{tabular}
-	\caption{Confronto delle performance medie in cross-validation per i tre insiemi di feature testati con Random Forest.}
-	\label{tab:rf_feature_set_comparison}
-\end{table}
-
-\begin{figure}[H]
-	\centering
-	\includegraphics[width=0.95\textwidth]{../figures/2a_rf_feature_set_comparison.png}
-	\caption{Confronto delle metriche di cross-validation del modello Random Forest per i tre insiemi di feature.}
-	\label{fig:rf_feature_set_comparison}
-\end{figure}
-
-Le feature regionali ottengono la migliore balanced accuracy media. Le differenze rispetto all'insieme completo non sono ampie, ma il risultato suggerisce che una rappresentazione regionale sia sufficiente a conservare informazione discriminativa, riducendo così la dimensionalità rispetto alle feature relative ai canali singoli.
-
-\subsubsection{Performance del modello finale}
-
-Il modello finale, dopo tuning sugli iperparametri ha mostrato performance migliori con parametri: 
-
-\begin{table}[H]
-	\centering
-\begin{tabular}{ll}
-	\hline
-	\textbf{Iperparametro} & \textbf{Valori ottimali} \\
-	\hline
-	\texttt{n\_estimators} & \text{1028} \\
-	\texttt{max\_depth} & \text{15} \\
-	\texttt{min\_samples\_leaf} & 2 \\
-	\texttt{min\_samples\_split} & 2 \\
-	\texttt{max\_features} & \text{log2} \\
-	\hline
-\end{tabular}
-\caption{Iperparametri ottimali Random Forest su features regionali.}
-\end{table}
-
-È stato addestrato sull'intero training/validation set utilizzando le feature regionali, ed è stato valutato sul test set indipendente. Le metriche finali sono riportate nella Tabella~\ref{tab:rf_final_metrics}.
-
-\begin{table}[H]
-	\centering
-	\small
 	\begin{tabular}{lr}
 		\hline
 		\textbf{Metrica} & \textbf{Valore} \\
 		\hline
-		Feature set & Regional mean features \\
-		N feature & 25 \\
-		Accuracy & 0.760 \\
-		Balanced accuracy & 0.756 \\
-		Precision & 0.733 \\
-		Recall & 0.846 \\
-		F1-score & 0.786 \\
+		N feature & 120 \\
+		Accuracy & 0.640 \\
+		Balanced accuracy & 0.638 \\
+		Precision ADHD & 0.643 \\
+		Recall ADHD & 0.692 \\
+		F1-score ADHD & 0.667 \\
 		ROC-AUC & 0.731 \\
 		\hline
 	\end{tabular}
-	\caption{Metriche finali del modello Random Forest valutato sul test set indipendente.}
-	\label{tab:rf_final_metrics}
+	\caption{Prestazioni della Random Forest sul feature set spettrale
+		completo, valutate sul test set indipendente.}
+	\label{tab:rf_all_spectral_test}
 \end{table}
 
 \begin{figure}[H]
 	\centering
-	\includegraphics[width=0.60\textwidth]{../figures/2a_rf_original_best_feature_set_confusion_matrix.png}
-	\caption{Confusion matrix del modello Random Forest finale valutato sul test set indipendente.}
-	\label{fig:rf_confusion_matrix}
+	\includegraphics[width=0.58\textwidth]
+	{../figures/2a_rf_original_best_feature_set_confusion_matrix.png}
+	\caption{Confusion matrix della Random Forest basata sulle
+		120 feature spettrali.}
+	\label{fig:rf_all_spectral_cm}
 \end{figure}
 
-La confusion matrix mostra 8 soggetti Control correttamente classificati su 12 e 11 soggetti ADHD correttamente classificati su 13. Gli errori sono costituiti da 4 falsi positivi e 2 falsi negativi. Il modello presenta quindi un recall elevato per la classe ADHD, ma una specificità più limitata per la classe Control.
-
-La capacità discriminativa del modello finale è stata valutata anche tramite curva ROC.
+La confusion matrix contiene 7 controlli e 9 soggetti ADHD
+correttamente classificati. Sono presenti 5 falsi positivi e
+4 falsi negativi. Le prestazioni risultano quindi moderate e
+relativamente bilanciate tra le due classi.
 
 \begin{figure}[H]
 	\centering
-	\includegraphics[width=0.60\textwidth]{../figures/2a_rf_original_best_feature_set_roc_curve.png}
-	\caption{Curva ROC del modello Random Forest finale sul test set indipendente. La linea tratteggiata rappresenta la performance casuale.}
-	\label{fig:rf_roc_curve}
+	\includegraphics[width=0.58\textwidth]
+	{../figures/2a_rf_original_best_feature_set_roc_curve.png}
+	\caption{Curva ROC della Random Forest basata sulle
+		120 feature spettrali.}
+	\label{fig:rf_all_spectral_roc}
 \end{figure}
 
-La curva ROC mostra una capacità di separazione superiore al caso casuale. Il valore di ROC-AUC ottenuto sul test set è pari a 0.72 come già indicato in \ref{tab:rf_final_metrics}. 
 
+\subsubsection{Feature importance spettrale}
 
-\subsubsection{Feature importance}
-
-La feature importance della Random Forest è stata utilizzata per identificare le variabili maggiormente coinvolte nella classificazione. Le dieci feature più importanti sono riportate in Figura~\ref{fig:rf_feature_importance}.
+La feature più importante è il theta/beta ratio in F4, che presenta
+un'importanza nettamente superiore rispetto alle altre variabili.
+Seguono il TBR in F3, la potenza alpha in Cz, la potenza theta in Pz
+e il TBR parietale.
 
 \begin{figure}[H]
 	\centering
-	\includegraphics[width=0.85\textwidth]{../figures/2a_rf_best_feature_set_feature_importance_top10.png}
-	\caption{Prime dieci feature più importanti secondo il modello Random Forest finale.}
-	\label{fig:rf_feature_importance}
+	\includegraphics[width=0.82\textwidth]
+	{../figures/2a_rf_best_feature_set_feature_importance_top10.png}
+	\caption{Prime dieci feature spettrali ordinate secondo
+		l'importanza basata sulla riduzione media dell'impurità.}
+	\label{fig:rf_spectral_importance_updated}
 \end{figure}
 
-La feature più importante è il rapporto theta/beta temporale, coerentemente con l'analisi statistica, in cui la stessa feature presentava il maggiore effect size assoluto. Tra le altre feature rilevanti compaiono potenze di banda centrali, parietali e occipitali.
+La prevalenza di feature TBR e theta tra le prime posizioni è coerente
+con gli effect size osservati nell'analisi univariata. Tuttavia,
+l'importanza non deve essere interpretata come evidenza causale e può
+essere distribuita tra feature fortemente correlate.
 
-Per valutare la ridondanza tra le feature maggiormente utilizzate dal modello, è stata calcolata la matrice di correlazione di Spearman tra le dieci feature con maggiore feature importance.
 
-\begin{figure}[H]
-	\centering
-	\includegraphics[width=0.85\textwidth]{../figures/2a_rf_top10_feature_importance_correlation_matrix.png}
-	\caption{Matrice di correlazione di Spearman tra le dieci feature più importanti secondo la Random Forest.}
-	\label{fig:rf_top10_importance_corr}
-\end{figure}
+\subsubsection{Riduzione del feature set mediante correlazione}
 
-La matrice mostra che diverse feature importanti sono tra loro correlate. Questo indica che il modello non utilizza dieci feature completamente indipendenti, ma un insieme di variabili parzialmente ridondanti che descrivono aspetti correlati dell'attività spettrale regionale.
+A partire dalla feature importance della Random Forest e dalle
+correlazioni di Spearman tra le variabili, è stata applicata una
+procedura di riduzione del feature set.
 
-\subsubsection{Riduzione del feature set in base alla correlazione}
+Le feature sono state inizialmente ordinate in base alla loro
+importanza. Procedendo secondo tale ordinamento, una feature veniva
+mantenuta soltanto se non presentava una correlazione superiore alla
+soglia considerata con una variabile già selezionata. In questo modo
+sono state conservate prioritariamente le feature maggiormente
+utilizzate dal modello, eliminando parte dell'informazione ridondante.
 
-È stata effettuata un'analisi aggiuntiva per valutare se fosse possibile ridurre la ridondanza del feature set senza peggiorare le performance di classificazione.
-
-Le feature sono state ordinate in base alla feature importance ottenuta dal modello Random Forest finale. Successivamente partendo dalla feature più importante, una nuova feature veniva mantenuta solo se la sua correlazione assoluta di Spearman con tutte le feature già selezionate era inferiore a una soglia prefissata. In questo modo, tra feature altamente correlate, veniva conservata quella con maggiore importanza nel modello.
-
-Sono state testate diverse soglie di correlazione sul solo training/validation set mediante cross-validation stratificata a 5 fold. 
+Sono state confrontate quattro soglie di correlazione per ridurre la
+ridondanza delle 120 feature.
 
 \begin{table}[H]
 	\centering
 	\small
-	\begin{tabular}{llllllll}
+	\begin{tabular}{rrrrrrrr}
 		\hline
-		\textbf{Soglia} & \textbf{N} & \textbf{Accuracy} & \textbf{Balanced acc.} & \textbf{Precision} & \textbf{Recall} & \textbf{F1} & \textbf{ROC-AUC} \\
+		\textbf{Soglia} &
+		\textbf{N} &
+		\textbf{Accuracy} &
+		\textbf{Balanced acc.} &
+		\textbf{Precision} &
+		\textbf{Recall} &
+		\textbf{F1} &
+		\textbf{ROC-AUC} \\
 		\hline
-		0.70 & 12 & 0.645 & 0.647 & 0.640 & 0.711 & 0.664& 0.737  \\
-		0.75 & 17 & 0.665 & 0.668 & 0.657 & 0.749 & 0.693& 0.723 \\
-		0.80 & 19 & 0.718 & 0.719 & 0.700 & 0.853 & 0.750 & 0.752 \\
-		0.85 & 24 & 0.655 & 0.658 & 0.643 & 0.731 & 0.674 & 0.701\\
+		0.70 & 35 & 0.584 & 0.582 & 0.573 & 0.687 & 0.624 & 0.648 \\
+		0.75 & 52 & 0.616 & 0.617 & 0.602 & 0.731 & 0.658 & 0.661 \\
+		0.80 & 75 & 0.594 & 0.592 & 0.593 & 0.687 & 0.632 & 0.640 \\
+		0.85 & 94 & 0.563 & 0.562 & 0.574 & 0.624 & 0.591 & 0.618 \\
 		\hline
 	\end{tabular}
-	\caption{Confronto in cross-validation delle soglie di correlazione utilizzate per ridurre il feature set. Le metriche sono calcolate sul training/validation set.}
-	\label{tab:rf_corr_threshold_comparison}
+	\caption{Confronto in cross-validation delle soglie utilizzate
+		per la riduzione basata sulla correlazione di Spearman.}
+	\label{tab:rf_corr_threshold_updated}
 \end{table}
 
-La soglia selezionata è stata pari a 0.80. Il feature set ridotto risultante contiene 19 feature. Dopo la selezione della soglia, il modello Random Forest è stato nuovamente ottimizzato sul feature set ridotto mediante la stessa procedura di tuning utilizzata per il modello principale.
+La soglia selezionata è pari a $0.75$, poiché presenta la balanced
+accuracy media più elevata e mantiene 52 delle 120 feature originali.
+
+Sul feature set ridotto è stata quindi ripetuta la procedura di tuning
+mediante Randomized Search e Grid Search locale. La migliore balanced
+accuracy ottenuta in cross-validation durante il tuning è pari a
+$0.657$.
+
+Gli iperparametri selezionati sono riportati nella
+Tabella~\ref{tab:rf_reduced_hyperparameters}.
 
 \begin{table}[H]
 	\centering
-	\small
 	\begin{tabular}{ll}
 		\hline
-		\textbf{Iperparametro} & \textbf{Valore ottimale} \\
+		\textbf{Iperparametro} & \textbf{Valore} \\
 		\hline
-		\texttt{n\_estimators} & 954 \\
-		\texttt{max\_depth} & 5 \\
-		\texttt{min\_samples\_leaf} & 1 \\
-		\texttt{min\_samples\_split} & 13 \\
-		\texttt{max\_features} & \text{sqrt} \\
-		\hline
-	\end{tabular}
-	\caption{Iperparametri ottimali del modello Random Forest applicato al feature set ridotto in base alla correlazione.}
-	\label{tab:rf_reduced_hyperparameters}
-\end{table}
-
-Il modello finale basato sul feature set ridotto è stato addestrato sull'intero training/validation set e valutato sul test set indipendente. Le performance ottenute sono riportate nella Tabella~\ref{tab:rf_reduced_final_metrics}.
-
-\begin{table}[H]
-	\centering
-	\small
-	\begin{tabular}{lr}
-		\hline
-		\textbf{Metrica} & \textbf{Valore} \\
-		\hline
-		Soglia di correlazione & 0.80 \\
-		N feature & 19 \\
-		Accuracy & 0.720 \\
-		Balanced accuracy & 0.718 \\
-		Precision & 0.714 \\
-		Recall & 0.769 \\
-		F1-score & 0.741 \\
-		ROC-AUC & 0.756 \\
-		\hline
-	\end{tabular}
-	\caption{Metriche finali del modello Random Forest con feature set ridotto, valutato sul test set indipendente.}
-	\label{tab:rf_reduced_final_metrics}
-\end{table}
-
-\begin{figure}[H]
-	\centering
-	\includegraphics[width=0.60\textwidth]{../figures/2a_rf_correlation_reduced_feature_set_confusion_matrix.png}
-	\caption{Confusion matrix del modello Random Forest basato sul feature set ridotto in base alla correlazione.}
-	\label{fig:rf_reduced_confusion_matrix}
-\end{figure}
-
-\begin{figure}[H]
-	\centering
-	\includegraphics[width=0.60\textwidth]{../figures/2a_rf_correlation_reduced_feature_set_roc_curve.png}
-	\caption{Curva ROC del modello Random Forest basato sul feature set ridotto in base alla correlazione.}
-	\label{fig:rf_reduced_roc_curve}
-\end{figure}
-
-La riduzione del feature set ha permesso di diminuire il numero di variabili da 25 a 19 mantenendo prestazioni comparabili a quelle del modello basato su tutte le feature regionali. La balanced accuracy risulta leggermente inferiore rispetto al modello regionale completo, mentre la ROC-AUC è lievemente superiore. Questo suggerisce che parte dell'informazione contenuta nelle feature regionali sia ridondante.
-
-\subsubsection{Studio feature theta/beta ratio}
-
-Alla luce dell'analisi di Arns et al., è interessante distinguere tra la presenza di informazione discriminativa nel TBR e la sua sufficienza come marker diagnostico autonomo \cite{Arns2013}.
-
-Per questo motivo, è stata condotta un'analisi specifica utilizzando esclusivamente feature derivate dal rapporto theta/beta. Sono stati confrontati tre insiemi di feature: rapporti theta/beta regionali, rapporti theta/beta a livello di singolo canale e l'insieme completo di tutte le feature theta/beta ratio. I metodi utilizzati corrispondono ai precedenti.
-
-\begin{table}[H]
-	\centering
-	\small
-	\begin{tabular}{lrrrrrrr}
-		\hline
-		\textbf{Feature set} & \textbf{N} & \textbf{Accuracy} & \textbf{Balanced acc.} & \textbf{Precision} & \textbf{Recall} & \textbf{F1} & \textbf{ROC-AUC} \\
-		\hline
-		Regional TBR & 12 & 0.542 & 0.541 & 0.550 & 0.644 & 0.573 & 0.681 \\
-		Channel-level TBR & 19 & 0.575 & 0.576 & 0.586 & 0.649 & 0.609 & 0.614 \\
-		All TBR & 24 & 0.553 & 0.554 & 0.568 & 0.649 & 0.596 & 0.618\\
-		\hline
-	\end{tabular}
-	\caption{Confronto in cross-validation dei tre insiemi di feature basati esclusivamente sul rapporto theta/beta.}
-	\label{tab:rf_tbr_cv_comparison}
-\end{table}
-
-Il miglior insieme di feature theta/beta ratio è risultato essere Channel-level TBR. Questo insieme è stato quindi utilizzato per addestrare un modello Random Forest, ottimizzato con la stessa procedura adottata per i modelli precedenti.
-
-\begin{table}[H]
-	\centering
-	\small
-	\begin{tabular}{ll}
-		\hline
-		\textbf{Iperparametro} & \textbf{Valore ottimale} \\
-		\hline
-		\texttt{n\_estimators} & 330 \\
-		\texttt{max\_depth} & 1 \\
-		\texttt{min\_samples\_leaf} & 3 \\
-		\texttt{min\_samples\_split} & 7 \\
-		\texttt{max\_features} & \text{sqrt} \\
-		\hline
-	\end{tabular}
-	\caption{Iperparametri ottimali del modello Random Forest basato sulle sole feature theta/beta ratio.}
-	\label{tab:rf_tbr_hyperparameters}
-\end{table}
-
-Le metriche finali sul test set indipendente sono riportate nella Tabella~\ref{tab:rf_tbr_final_metrics}.
-
-\begin{table}[H]
-	\centering
-	\small
-	\begin{tabular}{lr}
-		\hline
-		\textbf{Metrica} & \textbf{Valore} \\
-		\hline
-		Accuracy & 0.760 \\
-		Balanced accuracy & 0.753 \\
-		Precision & 0.706 \\
-		Recall & 0.923 \\
-		F1-score & 0.800 \\
-		ROC-AUC & 0.705 \\
-		\hline
-	\end{tabular}
-	\caption{Metriche finali del modello Random Forest basato sulle sole feature theta/beta ratio, valutato sul test set indipendente.}
-	\label{tab:rf_tbr_final_metrics}
-\end{table}
-
-\begin{figure}[H]
-	\centering
-	\includegraphics[width=0.60\textwidth]{../figures/2a_rf_theta_beta_ratio_feature_set_confusion_matrix.png}
-	\caption{Confusion matrix del modello Random Forest basato sulle sole feature theta/beta ratio.}
-	\label{fig:rf_tbr_confusion_matrix}
-\end{figure}
-
-\begin{figure}[H]
-	\centering
-	\includegraphics[width=0.60\textwidth]{../figures/2a_rf_theta_beta_ratio_feature_set_roc_curve.png}
-	\caption{Curva ROC del modello Random Forest basato sulle sole feature theta/beta ratio.}
-	\label{fig:rf_tbr_roc_curve}
-\end{figure}
-
-Il modello basato sulle sole feature theta/beta ratio ha ottenuto prestazioni simili al modello Random Forest basato sulle feature regionali complete in termini di accuracy e balanced accuracy, ma con una ROC-AUC inferiore. Questo indica che il rapporto theta/beta contiene informazione discriminativa rilevante, ma non descrive completamente la separazione tra ADHD e Control. Il risultato supporta quindi l'idea che il TBR sia utile all'interno di una pipeline multifeature, ma non sufficiente come unico marker diagnostico.
-
-\subsubsection{Classificazione con Logistic Regression}
-
-Il feature set regionale, il feature set ridotto in base alla correlazione e il feature set basato esclusivamente sul rapporto theta/beta sono stati valutati mediante Logistic Regression.
-
-In tutti e tre i casi, il valore ottimale del parametro di regolarizzazione è risultato pari a $C=0.1$.
-
-I risultati finali sul test set indipendente sono riportati nella Tabella~\ref{tab:logreg_spectral_results}.
-
-\begin{table}[H]
-	\centering
-	\small
-	\begin{tabular}{lrrrrrrr}
-		\hline
-		\textbf{Feature set} & \textbf{N} & \textbf{Accuracy} & \textbf{Balanced acc.} & \textbf{Precision} & \textbf{Recall} & \textbf{F1} & \textbf{ROC-AUC} \\
-		\hline
-		Regional & 25 & 0.600 & 0.596 & 0.600 & 0.692 & 0.643 & 0.615 \\
-		Correlation-reduced& 19 & 0.560 & 0.558 & 0.571 & 0.615 & 0.593 & 0.590 \\
-		Theta/beta ratio & 19 & 0.720 & 0.715 & 0.688 & 0.846 & 0.759 & 0.712 \\
-		\hline
-	\end{tabular}
-	\caption{Performance della Logistic Regression sui diversi insiemi di feature spettrali, valutate sul test set indipendente.}
-	\label{tab:logreg_spectral_results}
-\end{table}
-
-Tra i tre insiemi di feature, il modello basato esclusivamente sul rapporto theta/beta ha ottenuto le prestazioni migliori. Di tale feature set si riporta la confusion matrix e la curva ROC. 
-
-\begin{figure}[H]
-	\centering
-	\includegraphics[width=0.60\textwidth]{../figures/2b_logreg_theta_beta_ratio_feature_set_confusion_matrix.png}
-	\caption{Confusion matrix della Logistic Regression basata sulle feature theta/beta ratio, valutata sul test set indipendente.}
-	\label{fig:logreg_tbr_confusion_matrix}
-\end{figure}
-
-
-\begin{figure}[H]
-	\centering
-	\includegraphics[width=0.60\textwidth]{../figures/2b_logreg_theta_beta_ratio_feature_set_roc_curve.png}
-	\caption{Curva ROC della Logistic Regression basata sulle feature theta/beta ratio. La linea tratteggiata rappresenta la performance casuale.}
-	\label{fig:logreg_tbr_roc_curve}
-\end{figure}
-
-Nel complesso, la Logistic Regression ha mostrato prestazioni inferiori rispetto alla Random Forest sulle feature spettrali regionali e ridotte. Tuttavia, il risultato ottenuto con le sole feature theta/beta ratio indica che queste feature sono informative anche per un modello lineare.
-
-\subsection{Feature di functional connectivity}
-
-Le feature di functional connectivity sono state valutate per verificare se le relazioni temporali tra canali e regioni EEG contenessero informazione utile per distinguere soggetti ADHD e Control. Sono stati confrontati tre insiemi di feature: tutte le feature di connettività, le sole feature di connettività canale-livello e le sole feature di connettività regionale.
-
-Il confronto in cross-validation mediante Random Forest è riportato nella Tabella~\ref{tab:rf_connectivity_cv_comparison}.
-
-\begin{table}[H]
-	\centering
-	\small
-	\begin{tabular}{lrrrrrrr}
-		\hline
-		\textbf{Feature set} & \textbf{N} & \textbf{Accuracy} & \textbf{Balanced acc.} & \textbf{Precision} & \textbf{Recall} & \textbf{F1} & \textbf{ROC-AUC} \\
-		\hline
-		All & 724 & 0.688 & 0.684 & 0.661 & 0.769 & 0.703 & 0.721 \\
-		Channel-level & 684 & 0.709 & 0.706 & 0.692 & 0.791 & 0.731 & 0.722 \\
-		Regional & 40 & 0.710 & 0.708 & 0.686 & 0.773 & 0.718 & 0.769 \\
-		\hline
-	\end{tabular}
-	\caption{Confronto in cross-validation dei tre insiemi di feature di functional connectivity mediante Random Forest.}
-	\label{tab:rf_connectivity_cv_comparison}
-\end{table}
-
-Il miglior feature set di functional connectivity è risultato essere quello basato sulle feature regionali. Questo risultato suggerisce che una rappresentazione regionale della connettività sia sufficiente a conservare informazione discriminativa, riducendo notevolmente la dimensionalità rispetto alle feature di connettività canale-livello.
-
-Il modello Random Forest basato sulle feature regionali è stato quindi ottimizzato mediante la stessa procedura di tuning utilizzata per le feature spettrali. I migliori iperparametri ottenuti sono riportati nella Tabella~\ref{tab:rf_connectivity_hyperparameters}.
-
-\begin{table}[H]
-	\centering
-	\small
-	\begin{tabular}{ll}
-		\hline
-		\textbf{Iperparametro} & \textbf{Valore ottimale} \\
-		\hline
-		\texttt{n\_estimators} & 330 \\
+		\texttt{n\_estimators} & 143 \\
 		\texttt{max\_depth} & 15 \\
 		\texttt{min\_samples\_leaf} & 3 \\
 		\texttt{min\_samples\_split} & 10 \\
 		\texttt{max\_features} & \texttt{log2} \\
 		\hline
 	\end{tabular}
-	\caption{Iperparametri ottimali del modello Random Forest basato sulle feature regionali di functional connectivity.}
-	\label{tab:rf_connectivity_hyperparameters}
+	\caption{Iperparametri selezionati per la Random Forest applicata
+		al feature set spettrale ridotto a 52 variabili.}
+	\label{tab:rf_reduced_hyperparameters}
 \end{table}
 
-Il modello finale è stato addestrato sull'intero training/validation set e valutato sul test set indipendente. Le metriche finali sono riportate nella Tabella~\ref{tab:rf_connectivity_final_metrics}.
+Le prestazioni ottenute sul test set indipendente sono riportate nella
+Tabella~\ref{tab:rf_reduced_updated}.
+
+\begin{table}[H]
+	\centering
+	\begin{tabular}{lr}
+		\hline
+		\textbf{Metrica} & \textbf{Valore} \\
+		\hline
+		N feature & 52 \\
+		Accuracy & 0.680 \\
+		Balanced accuracy & 0.676 \\
+		Precision ADHD & 0.667 \\
+		Recall ADHD & 0.769 \\
+		F1-score ADHD & 0.714 \\
+		ROC-AUC & 0.750 \\
+		\hline
+	\end{tabular}
+	\caption{Prestazioni finali della Random Forest applicata al
+		feature set spettrale ridotto.}
+	\label{tab:rf_reduced_updated}
+\end{table}
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.58\textwidth]
+	{../figures/2a_rf_correlation_reduced_feature_set_confusion_matrix.png}
+	\caption{Confusion matrix della Random Forest applicata al
+		feature set spettrale ridotto a 52 variabili.}
+	\label{fig:rf_reduced_updated_cm}
+\end{figure}
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.58\textwidth]
+	{../figures/2a_rf_correlation_reduced_feature_set_roc_curve.png}
+	\caption{Curva ROC della Random Forest applicata al
+		feature set spettrale ridotto a 52 variabili.}
+	\label{fig:rf_reduced_updated_roc}
+\end{figure}
+
+Il modello identifica correttamente 7 controlli su 12 e 10 soggetti
+ADHD su 13. Sono quindi presenti 5 controlli classificati come ADHD
+e 3 soggetti ADHD classificati come controlli.
+
+Rispetto al feature set completo, il set ridotto migliora l'accuracy
+da $0.640$ a $0.680$, la balanced accuracy da $0.638$ a $0.676$ e
+la ROC-AUC da $0.731$ a $0.750$, pur utilizzando meno della metà
+delle feature originali.
+
+Il miglioramento rimane contenuto, ma suggerisce che la rimozione di
+parte delle variabili fortemente correlate abbia ridotto la
+ridondanza senza eliminare l'informazione discriminante principale.
+
+
+\subsubsection{Classificazione mediante il theta/beta ratio}
+
+Per valutare direttamente quanta informazione discriminante fosse
+contenuta nel theta/beta ratio, sono stati confrontati tre insiemi
+di feature:
+
+\begin{itemize}
+	\item i 5 TBR regionali;
+	\item i 19 TBR calcolati sui singoli canali;
+	\item l'insieme completo dei 24 TBR regionali e canale-livello.
+\end{itemize}
+
+Il confronto è stato effettuato sul training set mediante
+cross-validation stratificata a cinque fold, utilizzando una Random
+Forest con configurazione iniziale comune.
+
+\begin{table}[H]
+	\centering
+	\small
+	\resizebox{\textwidth}{!}{
+		\begin{tabular}{lrrrrrrr}
+			\hline
+			\textbf{Feature set} &
+			\textbf{N} &
+			\textbf{Accuracy} &
+			\textbf{Balanced acc.} &
+			\textbf{Precision} &
+			\textbf{Recall} &
+			\textbf{F1} &
+			\textbf{ROC-AUC} \\
+			\hline
+			TBR regionale
+			& 5 & 0.645 & 0.648 & 0.630 & 0.711 & 0.650 & 0.663 \\
+			
+			TBR canale-livello
+			& 19 & 0.656 & 0.658 & 0.629 & 0.813 & 0.702 & 0.707 \\
+			
+			Tutti i TBR
+			& 24 & 0.636 & 0.637 & 0.623 & 0.731 & 0.658 & 0.689 \\
+			\hline
+		\end{tabular}
+	}
+	\caption{Confronto in cross-validation dei tre feature set basati
+		esclusivamente sul theta/beta ratio. Le metriche rappresentano
+		le medie ottenute nei cinque fold.}
+	\label{tab:rf_tbr_cv_updated}
+\end{table}
+
+Il set canale-livello presenta la balanced accuracy media più elevata,
+pari a $0.658$, ed è stato quindi selezionato per il tuning finale.
+Il risultato suggerisce che mantenere separata l'informazione dei
+singoli elettrodi sia più utile rispetto alla sintesi regionale,
+probabilmente perché il TBR presenta differenze spazialmente
+localizzate che possono attenuarsi quando i canali vengono mediati.
+
+Sui 19 TBR canale-livello è stata applicata la stessa procedura di
+ottimizzazione utilizzata per gli altri modelli Random Forest:
+una Randomized Search seguita da una Grid Search locale. La metrica
+ottimizzata è stata la balanced accuracy, calcolata mediante
+cross-validation stratificata sul solo training set.
+
+Gli iperparametri selezionati sono riportati nella
+Tabella.
+
+\begin{table}[H]
+	\centering
+	\begin{tabular}{ll}
+		\hline
+		\textbf{Iperparametro} & \textbf{Valore} \\
+		\hline
+		\texttt{n\_estimators}
+		& \text{5} \\
+		
+		\texttt{max\_depth}
+		& \text{None} \\
+		
+		\texttt{min\_samples\_leaf}
+		& \text{1} \\
+		
+		\texttt{min\_samples\_split}
+		& \text{9} \\
+		
+		\texttt{max\_features}
+		& \text{618} \\
+		\hline
+	\end{tabular}
+	\caption{Iperparametri selezionati per la Random Forest applicata
+		ai 19 theta/beta ratio canale-livello.}
+	\label{tab:rf_tbr_hyperparameters_updated}
+\end{table}
+
+La migliore balanced accuracy ottenuta durante il tuning è pari a
+$0.701$. Dopo la selezione degli iperparametri, il modello è stato
+riaddestrato sull'intero training set e valutato una sola volta sul
+test set indipendente.
+
+\begin{table}[H]
+	\centering
+	\begin{tabular}{lr}
+		\hline
+		\textbf{Metrica} & \textbf{Valore} \\
+		\hline
+		N feature & 19 \\
+		Accuracy & 0.720 \\
+		Balanced accuracy & 0.712 \\
+		Precision ADHD & 0.667 \\
+		Recall ADHD & 0.923 \\
+		F1-score ADHD & 0.774 \\
+		ROC-AUC & 0.737 \\
+		\hline
+	\end{tabular}
+	\caption{Prestazioni della Random Forest basata sui
+		19 theta/beta ratio canale-livello, valutata sul test set
+		indipendente.}
+	\label{tab:rf_tbr_test_updated}
+\end{table}
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.58\textwidth]
+	{../figures/2a_rf_theta_beta_ratio_feature_set_confusion_matrix.png}
+	\caption{Confusion matrix della Random Forest basata sui
+		19 theta/beta ratio canale-livello.}
+	\label{fig:rf_tbr_updated_cm}
+\end{figure}
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.58\textwidth]
+	{../figures/2a_rf_theta_beta_ratio_feature_set_roc_curve.png}
+	\caption{Curva ROC della Random Forest basata sui
+		19 theta/beta ratio canale-livello.}
+	\label{fig:rf_tbr_updated_roc}
+\end{figure}
+
+Il modello identifica correttamente 12 soggetti ADHD su 13, ma
+soltanto 6 controlli su 12. Sono quindi presenti cinque controlli
+classificati erroneamente come ADHD e un solo soggetto ADHD
+classificato come controllo.
+
+Il recall ADHD molto elevato, pari a $0.923$, mostra che il TBR
+contiene informazione utile per individuare i soggetti ADHD.
+Tuttavia, la specificità verso i controlli è pari al $50\%$.
+Il modello tende quindi ad assegnare con eccessiva frequenza la
+classe ADHD.
+
+Questi risultati indicano che il theta/beta ratio è informativo nel
+campione analizzato, ma non fornisce una separazione sufficientemente
+equilibrata per essere considerato un marker diagnostico autonomo.
+
+\subsubsection{Logistic Regression sulle feature spettrali}
+
+La Logistic Regression è stata applicata separatamente a tre
+rappresentazioni delle feature spettrali:
+
+\begin{itemize}
+	\item il feature set completo, costituito da 120 variabili;
+	\item il feature set ridotto mediante correlazione, costituito da
+	52 variabili;
+	\item i 19 theta/beta ratio canale-livello.
+\end{itemize}
+
+Per ciascun feature set è stato costruito e ottimizzato un modello
+indipendente. Non è stato quindi effettuato un confronto preliminare
+in cross-validation finalizzato alla selezione di un unico insieme
+di feature.
+
+In tutti i modelli, la standardizzazione è stata inclusa all'interno
+di una pipeline, in modo che media e deviazione standard fossero
+calcolate esclusivamente sui dati di training di ciascun fold.
+
+La Logistic Regression è stata utilizzata con penalizzazione L2,
+solver \texttt{lbfgs}, \texttt{max\_iter}=5000 e
+\texttt{class\_weight=balanced}. Per ciascun feature set, il
+parametro di regolarizzazione $C$ è stato ottimizzato separatamente
+mediante Grid Search con cross-validation stratificata a cinque fold,
+utilizzando la balanced accuracy come metrica di selezione.
+
+
+\paragraph{Feature spettrali complete}
+
+Il primo modello è stato addestrato utilizzando tutte le 120 feature
+spettrali, comprendenti le potenze di banda e i theta/beta ratio
+calcolati a livello di singolo canale e a livello regionale.
+
+La Grid Search ha selezionato un valore di $C=0.001$. Poiché in
+scikit-learn $C$ è inversamente proporzionale alla forza della
+regolarizzazione, questo valore corrisponde a una penalizzazione L2
+particolarmente forte.
+
+La balanced accuracy media ottenuta durante il tuning è pari a
+$0.572$.
+
+\begin{table}[H]
+	\centering
+	\begin{tabular}{ll}
+		\hline
+		\textbf{Parametro} & \textbf{Valore} \\
+		\hline
+		N feature & 120 \\
+		\texttt{C} & 0.001 \\
+		\texttt{penalty} & \texttt{l2} \\
+		\texttt{solver} & \texttt{lbfgs} \\
+		\texttt{max\_iter} & 5000 \\
+		\texttt{class\_weight} & \texttt{balanced} \\
+		Balanced accuracy CV & 0.572 \\
+		\hline
+	\end{tabular}
+	\caption{Configurazione ottimale della Logistic Regression
+		applicata alle 120 feature spettrali complete.}
+	\label{tab:logreg_all_spectral_hyperparameters}
+\end{table}
+
+Dopo il tuning, il modello è stato riaddestrato sull'intero training
+set e valutato sul test set indipendente.
+
+\begin{table}[H]
+	\centering
+	\begin{tabular}{lr}
+		\hline
+		\textbf{Metrica} & \textbf{Valore} \\
+		\hline
+		N feature & 120 \\
+		Accuracy & 0.480 \\
+		Balanced accuracy & 0.468 \\
+		Precision ADHD & 0.500 \\
+		Recall ADHD & 0.769 \\
+		F1-score ADHD & 0.606 \\
+		ROC-AUC & 0.545 \\
+		\hline
+	\end{tabular}
+	\caption{Prestazioni sul test set della Logistic Regression
+		basata sulle 120 feature spettrali complete.}
+	\label{tab:logreg_all_spectral_test}
+\end{table}
+
+\begin{figure}[H]
+	\centering
+	\begin{minipage}{0.48\textwidth}
+		\centering
+		\includegraphics[width=\textwidth]
+		{../figures/2b_logreg_original_best_feature_set_confusion_matrix.png}
+		\caption{Confusion matrix della Logistic Regression basata
+			sulle 120 feature spettrali complete.}
+		\label{fig:logreg_all_spectral_cm}
+	\end{minipage}
+	\hfill
+	\begin{minipage}{0.48\textwidth}
+		\centering
+		\includegraphics[width=\textwidth]
+		{../figures/2b_logreg_original_best_feature_set_roc_curve.png}
+		\caption{Curva ROC della Logistic Regression basata sulle
+			120 feature spettrali complete.}
+		\label{fig:logreg_all_spectral_roc}
+	\end{minipage}
+\end{figure}
+
+Il modello classifica correttamente 10 soggetti ADHD su 13, ma
+soltanto 2 controlli su 12. Sono quindi presenti 10 falsi positivi
+e 3 falsi negativi.
+
+Il recall ADHD relativamente elevato deriva dalla tendenza del
+modello ad assegnare molti soggetti alla classe ADHD. La balanced
+accuracy inferiore a $0.5$ e la ROC-AUC pari a $0.545$ indicano che
+il feature set completo non consente alla Logistic Regression di
+ottenere una separazione efficace e bilanciata tra le due classi.
+
+
+\paragraph{Feature spettrali ridotte}
+
+Il secondo modello è stato applicato alle 52 feature conservate dopo
+la procedura di riduzione basata sulla feature importance e sulla
+correlazione di Spearman.
+
+Per questo insieme, la Grid Search ha selezionato $C=100$, valore che
+corrisponde a una penalizzazione L2 molto debole. La balanced accuracy
+media ottenuta in cross-validation è pari a $0.583$.
+
+\begin{table}[H]
+	\centering
+	\begin{tabular}{ll}
+		\hline
+		\textbf{Parametro} & \textbf{Valore} \\
+		\hline
+		N feature & 52 \\
+		\texttt{C} & 100 \\
+		\texttt{penalty} & \texttt{l2} \\
+		\texttt{solver} & \texttt{lbfgs} \\
+		\texttt{max\_iter} & 5000 \\
+		\texttt{class\_weight} & \texttt{balanced} \\
+		Balanced accuracy CV & 0.583 \\
+		\hline
+	\end{tabular}
+	\caption{Configurazione ottimale della Logistic Regression
+		applicata alle 52 feature spettrali ridotte.}
+	\label{tab:logreg_reduced_spectral_hyperparameters}
+\end{table}
+
+Le prestazioni ottenute sul test set indipendente sono riportate
+nella Tabella~\ref{tab:logreg_reduced_spectral_test}.
+
+\begin{table}[H]
+	\centering
+	\begin{tabular}{lr}
+		\hline
+		\textbf{Metrica} & \textbf{Valore} \\
+		\hline
+		N feature & 52 \\
+		Accuracy & 0.520 \\
+		Balanced accuracy & 0.519 \\
+		Precision ADHD & 0.538 \\
+		Recall ADHD & 0.538 \\
+		F1-score ADHD & 0.538 \\
+		ROC-AUC & 0.538 \\
+		\hline
+	\end{tabular}
+	\caption{Prestazioni sul test set della Logistic Regression
+		applicata alle 52 feature spettrali ridotte.}
+	\label{tab:logreg_reduced_spectral_test}
+\end{table}
+
+\begin{figure}[H]
+	\centering
+	\begin{minipage}{0.48\textwidth}
+		\centering
+		\includegraphics[width=\textwidth]
+		{../figures/2b_logreg_correlation_reduced_feature_set_confusion_matrix.png}
+		\caption{Confusion matrix della Logistic Regression applicata
+			alle 52 feature spettrali ridotte.}
+		\label{fig:logreg_reduced_spectral_cm}
+	\end{minipage}
+	\hfill
+	\begin{minipage}{0.48\textwidth}
+		\centering
+		\includegraphics[width=\textwidth]
+		{../figures/2b_logreg_correlation_reduced_feature_set_roc_curve.png}
+		\caption{Curva ROC della Logistic Regression applicata alle
+			52 feature spettrali ridotte.}
+		\label{fig:logreg_reduced_spectral_roc}
+	\end{minipage}
+\end{figure}
+
+Il modello classifica correttamente 6 controlli su 12 e 7 soggetti
+ADHD su 13. Sono quindi presenti 6 falsi positivi e 6 falsi negativi.
+
+La riduzione delle feature produce un comportamento più equilibrato
+tra le due classi rispetto al modello completo, ma le prestazioni
+rimangono prossime al caso. La balanced accuracy pari a $0.519$ e la
+ROC-AUC pari a $0.538$ indicano che la rimozione della ridondanza non
+è sufficiente a rendere linearmente separabili i due gruppi mediante
+questo insieme di potenze e rapporti.
+
+
+\paragraph{Theta/beta ratio canale-livello}
+
+Il terzo modello è stato addestrato utilizzando esclusivamente i
+19 theta/beta ratio calcolati sui singoli canali.
+
+La Grid Search ha selezionato $C=0.1$, corrispondente a una
+regolarizzazione di intensità intermedia rispetto ai due modelli
+precedenti. La balanced accuracy media ottenuta in cross-validation
+è pari a $0.643$.
+
+\begin{table}[H]
+	\centering
+	\begin{tabular}{ll}
+		\hline
+		\textbf{Parametro} & \textbf{Valore} \\
+		\hline
+		N feature & 19 \\
+		\texttt{C} & 0.1 \\
+		\texttt{penalty} & \texttt{l2} \\
+		\texttt{solver} & \texttt{lbfgs} \\
+		\texttt{max\_iter} & 5000 \\
+		\texttt{class\_weight} & \texttt{balanced} \\
+		Balanced accuracy CV & 0.643 \\
+		\hline
+	\end{tabular}
+	\caption{Configurazione ottimale della Logistic Regression
+		basata sui 19 theta/beta ratio canale-livello.}
+	\label{tab:logreg_tbr_hyperparameters}
+\end{table}
+
+Le prestazioni ottenute sul test set sono riportate nella
+Tabella~\ref{tab:logreg_tbr_test}.
+
+\begin{table}[H]
+	\centering
+	\begin{tabular}{lr}
+		\hline
+		\textbf{Metrica} & \textbf{Valore} \\
+		\hline
+		N feature & 19 \\
+		Accuracy & 0.760 \\
+		Balanced accuracy & 0.756 \\
+		Precision ADHD & 0.733 \\
+		Recall ADHD & 0.846 \\
+		F1-score ADHD & 0.786 \\
+		ROC-AUC & 0.731 \\
+		\hline
+	\end{tabular}
+	\caption{Prestazioni sul test set della Logistic Regression
+		basata sui 19 theta/beta ratio canale-livello.}
+	\label{tab:logreg_tbr_test}
+\end{table}
+
+\begin{figure}[H]
+	\centering
+	\begin{minipage}{0.48\textwidth}
+		\centering
+		\includegraphics[width=\textwidth]
+		{../figures/2b_logreg_theta_beta_ratio_feature_set_confusion_matrix.png}
+		\caption{Confusion matrix della Logistic Regression basata
+			sui 19 theta/beta ratio canale-livello.}
+		\label{fig:logreg_tbr_updated_cm}
+	\end{minipage}
+	\hfill
+	\begin{minipage}{0.48\textwidth}
+		\centering
+		\includegraphics[width=\textwidth]
+		{../figures/2b_logreg_theta_beta_ratio_feature_set_roc_curve.png}
+		\caption{Curva ROC della Logistic Regression basata sui
+			19 theta/beta ratio canale-livello.}
+		\label{fig:logreg_tbr_updated_roc}
+	\end{minipage}
+\end{figure}
+
+Il modello classifica correttamente 8 controlli su 12 e 11 soggetti
+ADHD su 13. Sono quindi presenti 4 falsi positivi e 2 falsi negativi.
+
+La sensibilità verso la classe ADHD è pari a $0.846$, mentre la
+specificità verso i controlli è pari a $0.667$. Il modello mantiene
+quindi una maggiore capacità di riconoscere i soggetti ADHD, ma
+presenta un comportamento più equilibrato rispetto alla Random Forest
+basata sullo stesso feature set.
+
+Tra i tre modelli di Logistic Regression, quello basato sui
+theta/beta ratio ottiene le prestazioni più elevate. Questo confronto
+è puramente descrittivo dei risultati ottenuti: ciascun modello è
+stato ottimizzato indipendentemente sul training set e non è stato
+utilizzato il test set per selezionare il feature set.
+
+Le prestazioni inferiori dei modelli completo e ridotto possono
+dipendere dall'elevata dimensionalità, dalla forte correlazione tra
+le feature e dalla presenza di relazioni che non possono essere
+rappresentate efficacemente mediante una singola frontiera lineare.
+Il set dei TBR è invece più compatto e sembra contenere un pattern
+di separazione maggiormente compatibile con un modello lineare.
+
+\subsection{Feature di functional connectivity}
+
+\subsubsection{Descrizione globale della connettività canale-livello}
+
+Per confrontare globalmente l'organizzazione della functional
+connectivity nei due gruppi, sono state rappresentate le connettività
+ separatamente per le bande delta, theta,
+alpha e beta.
+
+Con 19 canali EEG, per ciascuna banda sono disponibili:
+
+\begin{equation}
+	\binom{19}{2}
+	=
+	171
+\end{equation}
+
+coppie uniche di elettrodi. Nella
+Figura~\ref{fig:all_channel_connectivity_groups} vengono mostrate
+tutte le 171 connessioni, senza applicare una selezione basata sulla
+loro intensità, sulla feature importance o sulla differenza tra i
+gruppi.
+
+Per ogni soggetto, la connettività tra una coppia di canali è stata
+descritta mediante il coefficiente di correlazione di Pearson
+calcolato tra i segnali filtrati nella stessa banda di frequenza.
+
+Ogni soggetto mantiene il proprio valore di connettività, utilizzato
+successivamente come feature per la classificazione. Soltanto per
+costruire le rappresentazioni grafiche dei due gruppi, i coefficienti
+relativi alla stessa connessione sono stati riassunti in un unico
+valore medio per il gruppo Control e in un unico valore medio per il
+gruppo ADHD.
+
+Poiché i coefficienti di correlazione sono limitati tra $-1$ e $1$,
+la media di gruppo è stata calcolata mediante la trasformazione di
+Fisher. Questa operazione è stata utilizzata esclusivamente per la
+visualizzazione descrittiva e non ha modificato i valori individuali
+impiegati nei modelli di classificazione.
+
+Questa è la trasformazione di Fisher:
+\begin{equation}
+	z_s
+	=
+	\operatorname{arctanh}(r_s),
+\end{equation}
+
+successivamente sono stati mediati e infine riportati nella scala originale:
+
+\begin{equation}
+	\overline{r}
+	=
+	\tanh
+	\left(
+	\frac{1}{N}
+	\sum_{s=1}^{N}z_s
+	\right).
+\end{equation}
+
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=\textwidth]
+	{../figures/4a_all_channel_pearson_connectivity_circle_control_vs_adhd.png}
+	\caption{Connettività funzionale media di Pearson a livello di
+		singolo canale nei gruppi Control e ADHD. Le colonne
+		corrispondono alle bande delta, theta, alpha e beta; la prima
+		riga rappresenta il gruppo Control e la seconda il gruppo ADHD.
+		Per ogni pannello sono mostrate tutte le 171 coppie uniche tra
+		i 19 canali. Il colore delle connessioni indica il segno della
+		correlazione media: il rosso rappresenta correlazioni positive,
+		il blu correlazioni negative e i colori prossimi al bianco
+		indicano valori vicini a zero. Lo spessore della linea è
+		proporzionale al valore assoluto del coefficiente medio.
+		I colori disposti lungo la circonferenza identificano la regione
+		di appartenenza degli elettrodi.}
+	\label{fig:all_channel_connectivity_groups}
+\end{figure}
+
+Le mappe mostrano una struttura di connettività complessa e distribuita
+in entrambi i gruppi. Sono presenti contemporaneamente correlazioni
+positive e negative, con intensità variabile in funzione della banda
+e della coppia di canali considerata.
+
+Dal confronto visivo non emerge un semplice aumento o una semplice
+riduzione globale della connettività nel gruppo ADHD. Le configurazioni
+generali dei due gruppi appaiono in parte simili, mentre le differenze
+sembrano riguardare specifici sottoinsiemi di connessioni e dipendere
+dalla banda di frequenza.
+
+Questo risultato è coerente con il fatto che la classificazione non
+sia guidata da una singola misura media di connettività, ma da una
+combinazione multivariata di connessioni. In particolare, la successiva
+analisi della feature importance identifica come maggiormente
+informative alcune connessioni centro-parietali nella banda beta,
+insieme a connessioni alpha e theta distribuite in altre posizioni.
+
+La rappresentazione completa permette di valutare il pattern globale,
+ma la sua elevata densità rende difficile individuare visivamente le
+singole differenze tra i gruppi. La figura deve quindi essere
+interpretata come descrizione complessiva della connettività media e
+non come test statistico delle singole connessioni. Il colore o lo
+spessore di una linea non indicano che la differenza tra ADHD e
+Control sia statisticamente significativa.
+
+\subsubsection{Confronto dei feature set di connettività}
+
+Sono stati confrontati il set completo di 724 connessioni, le
+684 connessioni canale-livello e le 40 connessioni regionali.
+
+\begin{table}[H]
+	\centering
+	\small
+	\resizebox{\textwidth}{!}{
+		\begin{tabular}{lrrrrrrr}
+			\hline
+			\textbf{Feature set} &
+			\textbf{N} &
+			\textbf{Accuracy} &
+			\textbf{Balanced acc.} &
+			\textbf{Precision} &
+			\textbf{Recall} &
+			\textbf{F1} &
+			\textbf{ROC-AUC} \\
+			\hline
+			Tutte le connessioni
+			& 724 & 0.677 & 0.672 & 0.662 & 0.724 & 0.680 & 0.732 \\
+			
+			Canale-livello
+			& 684 & 0.667 & 0.664 & 0.668 & 0.689 & 0.667 & 0.751 \\
+			
+			Regionali
+			& 40 & 0.594 & 0.593 & 0.605 & 0.624 & 0.601 & 0.639 \\
+			\hline
+		\end{tabular}
+	}
+	\caption{Prestazioni medie in cross-validation della Random Forest
+		sui feature set di functional connectivity.}
+	\label{tab:rf_connectivity_cv_updated}
+\end{table}
+
+Il set completo presenta la balanced accuracy media più elevata ed è
+stato quindi selezionato per il tuning finale. Le connessioni
+canale-livello ottengono invece la ROC-AUC media più elevata, mentre
+il set regionale perde una parte rilevante dell'informazione
+discriminativa.
+
+
+\subsubsection{Random Forest sulla functional connectivity}
+
+Gli iperparametri selezionati sono:
+
+\begin{table}[H]
+	\centering
+	\begin{tabular}{ll}
+		\hline
+		\textbf{Iperparametro} & \textbf{Valore} \\
+		\hline
+		\texttt{n\_estimators} & 984 \\
+		\texttt{max\_depth} & 15 \\
+		\texttt{min\_samples\_leaf} & 2 \\
+		\texttt{min\_samples\_split} & 11 \\
+		\texttt{max\_features} & \texttt{None} \\
+		\hline
+	\end{tabular}
+	\caption{Iperparametri della Random Forest applicata alle
+		724 feature di connettività.}
+	\label{tab:rf_connectivity_hyperparameters_updated}
+\end{table}
+
+La balanced accuracy ottenuta durante il tuning è pari a $0.707$.
+Sul test set indipendente il modello ottiene:
+
+\begin{table}[H]
+	\centering
+	\begin{tabular}{lr}
+		\hline
+		\textbf{Metrica} & \textbf{Valore} \\
+		\hline
+		N feature & 724 \\
+		Accuracy & 0.960 \\
+		Balanced accuracy & 0.958 \\
+		Precision ADHD & 0.929 \\
+		Recall ADHD & 1.000 \\
+		F1-score ADHD & 0.963 \\
+		ROC-AUC & 0.968 \\
+		\hline
+	\end{tabular}
+	\caption{Prestazioni finali della Random Forest basata sul set
+		completo di functional connectivity.}
+	\label{tab:rf_connectivity_test_updated}
+\end{table}
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.58\textwidth]
+	{../figures/4a_rf_connectivity_best_feature_set_confusion_matrix.png}
+	\caption{Confusion matrix della Random Forest basata sulle
+		724 feature di functional connectivity.}
+	\label{fig:rf_connectivity_updated_cm}
+\end{figure}
+
+Il modello classifica correttamente tutti i 13 soggetti ADHD e
+11 dei 12 controlli. L'unico errore consiste quindi in un controllo
+classificato come ADHD.
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.58\textwidth]
+	{../figures/4a_rf_connectivity_best_feature_set_roc_curve.png}
+	\caption{Curva ROC della Random Forest basata sulla
+		functional connectivity.}
+	\label{fig:rf_connectivity_updated_roc}
+\end{figure}
+
+
+\subsubsection{Feature importance delle connessioni}
+
+Le prime connessioni ordinate per feature importance sono riportate
+nella Tabella~\ref{tab:top_connectivity_importance}.
 
 \begin{table}[H]
 	\centering
 	\small
 	\begin{tabular}{lr}
 		\hline
-		\textbf{Metrica} & \textbf{Valore} \\
+		\textbf{Feature} & \textbf{Importanza} \\
 		\hline
-		Feature set & Regional connectivity features \\
-		N feature & 40 \\
-		Accuracy & 0.920 \\
-		Balanced accuracy & 0.920 \\
-		Precision & 0.923 \\
-		Recall & 0.923 \\
-		F1-score & 0.923 \\
-		ROC-AUC & 0.929 \\
+		\texttt{C3\_P3\_beta\_connectivity} & 0.0629 \\
+		\texttt{O1\_Pz\_alpha\_connectivity} & 0.0399 \\
+		\texttt{C4\_P4\_beta\_connectivity} & 0.0366 \\
+		\texttt{C3\_Cz\_beta\_connectivity} & 0.0226 \\
+		\texttt{P4\_Cz\_beta\_connectivity} & 0.0214 \\
+		\texttt{Fp1\_F3\_theta\_connectivity} & 0.0205 \\
+		\texttt{F3\_Fz\_beta\_connectivity} & 0.0190 \\
+		\texttt{P3\_Pz\_beta\_connectivity} & 0.0180 \\
+		\texttt{F3\_Fz\_theta\_connectivity} & 0.0154 \\
+		\texttt{C4\_O2\_beta\_connectivity} & 0.0145 \\
 		\hline
 	\end{tabular}
-	\caption{Metriche finali del modello Random Forest basato su feature regionali di functional connectivity, valutato sul test set indipendente.}
-	\label{tab:rf_connectivity_final_metrics}
+	\caption{Prime dieci feature di functional connectivity secondo
+		la feature importance della Random Forest.}
+	\label{tab:top_connectivity_importance}
 \end{table}
 
 \begin{figure}[H]
 	\centering
-	\includegraphics[width=0.60\textwidth]{../figures/3b_rf_connectivity_best_feature_set_confusion_matrix.png}
-	\caption{Confusion matrix del modello Random Forest basato su feature regionali di functional connectivity.}
-	\label{fig:rf_connectivity_confusion_matrix}
+	\includegraphics[width=0.82\textwidth]
+	{../figures/4a_rf_connectivity_feature_importance_top15.png}
+	\caption{Prime quindici connessioni ordinate secondo
+		l'importanza nella Random Forest.}
+	\label{fig:connectivity_importance_updated}
 \end{figure}
+
+Tra le feature più importanti prevalgono connessioni canale-livello
+della banda beta, soprattutto tra posizioni centrali e parietali.
+Compaiono inoltre connessioni alpha e theta. Il modello non sembra
+quindi dipendere da una singola banda o da una singola regione, ma
+da un pattern distribuito.
+
+
+\subsubsection{Logistic Regression sulla functional connectivity}
+
+La Logistic Regression è stata valutata sullo stesso set completo di
+724 feature. Il parametro ottimale è risultato pari a $C=100$, con
+balanced accuracy in cross-validation pari a $0.734$.
+
+\begin{table}[H]
+	\centering
+	\begin{tabular}{lr}
+		\hline
+		\textbf{Metrica} & \textbf{Valore} \\
+		\hline
+		N feature & 724 \\
+		Accuracy & 0.840 \\
+		Balanced accuracy & 0.843 \\
+		Precision ADHD & 0.909 \\
+		Recall ADHD & 0.769 \\
+		F1-score ADHD & 0.833 \\
+		ROC-AUC & 0.929 \\
+		\hline
+	\end{tabular}
+	\caption{Prestazioni della Logistic Regression basata sulle
+		724 feature di functional connectivity.}
+	\label{tab:logreg_connectivity_updated}
+\end{table}
 
 \begin{figure}[H]
 	\centering
-	\includegraphics[width=0.60\textwidth]{../figures/3b_rf_connectivity_best_feature_set_roc_curve.png}
-	\caption{Curva ROC del modello Random Forest basato su feature regionali di functional connectivity. La linea tratteggiata rappresenta la performance casuale.}
-	\label{fig:rf_connectivity_roc_curve}
+	\includegraphics[width=0.58\textwidth]
+	{../figures/4a_logreg_connectivity_best_feature_set_confusion_matrix.png}
+	\caption{Confusion matrix della Logistic Regression basata sulla
+		functional connectivity.}
+	\label{fig:logreg_connectivity_updated_cm}
 \end{figure}
 
-Il modello Random Forest basato sulle feature regionali di functional connectivity ha ottenuto prestazioni superiori rispetto ai modelli basati sulle feature spettrali. Questo risultato suggerisce che le relazioni funzionali tra regioni EEG forniscano una rappresentazione particolarmente informativa per distinguere soggetti ADHD e Control nel dataset analizzato.
+La Logistic Regression classifica correttamente 11 controlli su 12 e
+10 soggetti ADHD su 13. Le prestazioni sono inferiori rispetto alla
+Random Forest sul test set, ma rimangono superiori a quelle ottenute
+con le rappresentazioni spettrali.
 
-\subsubsection{Feature importance delle connessioni funzionali}
-
-Per interpretare il modello Random Forest basato sulle feature di functional connectivity, è stata analizzata la feature importance delle connessioni regionali. Questa analisi permette di identificare quali coppie di regioni e bande di frequenza contribuiscano maggiormente alla classificazione tra ADHD e Control.
-
-\begin{figure}[H]
-	\centering
-	\includegraphics[width=0.85\textwidth]{../figures/3b_rf_connectivity_feature_importance_top15.png}
-	\caption{Prime quindici feature di functional connectivity più importanti secondo il modello Random Forest.}
-	\label{fig:rf_connectivity_feature_importance}
-\end{figure}
-
-Le feature più importanti coinvolgono soprattutto connessioni tra regioni centrali, parietali, temporali e occipitali, in particolare nelle bande beta e alpha. Questo suggerisce che la classificazione non dipenda da una singola connessione, ma da un pattern distribuito di relazioni funzionali tra regioni EEG.
-
-\subsubsection{Classificazione con Logistic Regression}
-Successivamente, lo stesso feature set di connettività regionale è stato valutato mediante Logistic Regression, in modo da confrontare un modello non lineare con un modello lineare a parità di input.
-
-\begin{figure}[H]
-	\centering
-	\includegraphics[width=0.60\textwidth]{../figures/3b_logreg_connectivity_best_feature_set_confusion_matrix.png}
-	\caption{Confusion matrix della Logistic Regression basata su feature regionali di functional connectivity.}
-	\label{fig:logreg_connectivity_confusion_matrix}
-\end{figure}
-
-\begin{figure}[H]
-	\centering
-	\includegraphics[width=0.60\textwidth]{../figures/3b_logreg_connectivity_best_feature_set_roc_curve.png}
-	\caption{Curva ROC della Logistic Regression basata su feature regionali di functional connectivity.}
-	\label{fig:logreg_connectivity_roc_curve}
-\end{figure}
-
-La Logistic Regression basata sulle feature regionali di functional connectivity ha ottenuto prestazioni comparabili, e in parte superiori, a quelle ottenute dalla Random Forest sulle stesse feature. Questo suggerisce che le feature di connettività regionale separino i due gruppi in modo relativamente lineare, almeno nel dataset considerato.

@@ -7,31 +7,9 @@ Elham Ahmadi~Moghadam, Farhad Abedinzadeh~Torghabeh, Seyyed~Abed Hosseini, and
   through combining pearson correlation coefficient and phase-locking value.
 \newblock {\em Neuroinformatics}, 22(4):521--537, 2024.
 
-\bibitem{Kaggle}
-{Ali Motie Nasrabadi}.
-\newblock Eeg dataset for adhd.
-\newblock \url{DOI: 10.21227/rzfh-zn36}, 2025.
-
 \bibitem{Arns2013}
 Martijn Arns, C.~Keith Conners, and Helena~C. Kraemer.
 \newblock A decade of eeg theta/beta ratio research in adhd: A meta-analysis.
 \newblock {\em Journal of Attention Disorders}, 17(5):374--383, 2013.
-
-\bibitem{multiple}
-Shi-Yi Chen.
-\newblock A general introduction to adjustment for multiple comparisons.
-\newblock 2018.
-
-\bibitem{test}
-Francis~Sahngun Nahm.
-\newblock Nonparametric statistical tests for the continuous data: the basic
-  concept and the practical use.
-\newblock 2016.
-
-\bibitem{Welch}
-Peter~D. Welch.
-\newblock The use of fast fourier transform for the estimation of power
-  spectra: A method based on time averaging over short, modified periodograms.
-\newblock 1967.
 
 \end{thebibliography}
